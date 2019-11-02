@@ -18,19 +18,21 @@ public class ValidarJoin {
     }
     
     public String verificarLogin(Usuario usuario, String verificarPassword) {
-        if(!verificarLongitudNombre(usuario.getNombre())) return "Nombre incorrecto";
+        if(!verificarLongitudNombre(usuario.getNombre())) return "Longitud de nombre incorrecta";
         
-        else if(!verificarLongitudApellido(usuario.getApellido())) return "Apellido incorrecto";
+        else if(!verificarLongitudApellido(usuario.getApellido())) return "Longitud de apellido incorrecta";
         
         else if(!verificarEmail(usuario.getEmail())) return "Email incorrecto";
         
-        else if(equalEmails(usuario.getEmail())) return "Email ya existe";
+        else if(equalEmails(usuario.getEmail())) return "El email ya existe";
         
-        else if(!verificarUsername(usuario.getUsername())) return "Username incorrecto";
+        else if(!verificarLongitudUsername(usuario.getUsername())) return "Longitud de username incorrecta";
         
-        else if(equalUsernames(usuario.getUsername())) return "Username ya existe";
+        else if(!sintaxisUsername(usuario.getUsername())) return "El primer caracter del username no puede ser un número";
         
-        else if(!verificarPassword(usuario.getPassword())) return "Contraseña incorrecta";
+        else if(equalUsernames(usuario.getUsername())) return "El username ya existe";
+        
+        else if(!verificarLongitudPassword(usuario.getPassword())) return "Longitud de contraseña incorrecta";
         
         else if(!equalPassword(usuario.getPassword(), verificarPassword)) return "Las contraseñas no coinciden";
         
@@ -45,16 +47,20 @@ public class ValidarJoin {
         return(apellido.length() > 0 && apellido.length() <= 20);
     }
     
-    public boolean verificarUsername(String username) {
-        if (username.length() > 0 && username.length() <= 15) {
-            return true;
+    public boolean verificarLongitudUsername(String username) {
+        if (username.length() <= 0 || username.length() > 15) {
+            return false;
         }
         
+        return true;
+    }
+    
+    public boolean sintaxisUsername(String username) { //la primera letra del username no debe ser un número
         for(int i = 0; i < 10; i++) {
-            if(username.charAt(0) == i) return true;
+            if(username.charAt(0) == i) return false;
         }
         
-        return false;
+        return true;
     }
     
     public boolean equalUsernames(String username) {
@@ -83,7 +89,7 @@ public class ValidarJoin {
         return false;
     }
     
-    public boolean verificarPassword(String password) {
+    public boolean verificarLongitudPassword(String password) {
         return(password.length() > 0 && password.length() <= 12);
     }
     
