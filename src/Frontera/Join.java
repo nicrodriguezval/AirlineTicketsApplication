@@ -91,10 +91,6 @@ public class Join extends javax.swing.JPanel {
         verificarPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         verificarPassword.setText("Verificar contraseña");
 
-        passwordTF.setText("jPasswordField1");
-
-        verificarPasswordTF.setText("jPasswordField2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
