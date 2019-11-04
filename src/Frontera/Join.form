@@ -45,15 +45,13 @@
                           <Component id="username" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="passwordTF" alignment="0" pref="269" max="32767" attributes="0"/>
-                              <Component id="usernameTF" alignment="0" max="32767" attributes="0"/>
-                              <Component id="emailTF" alignment="0" max="32767" attributes="0"/>
-                              <Component id="apellidoTF" alignment="0" max="32767" attributes="0"/>
-                              <Component id="nombreTF" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="verificarPasswordTF" alignment="1" min="-2" pref="269" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="usernameTF" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="emailTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="apellidoTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nombreTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="verificarPasswordTF" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -75,43 +73,44 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="3" attributes="0">
-                                                          <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="nombreTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="apellido" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="apellidoTF" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nombreTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="email" min="-2" max="-2" attributes="0"/>
+                                              <Component id="apellido" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="emailTF" min="-2" max="-2" attributes="0"/>
+                                          <Component id="apellidoTF" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="username" min="-2" max="-2" attributes="0"/>
+                                      <Component id="email" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="usernameTF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailTF" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="password" min="-2" max="-2" attributes="0"/>
+                              <Component id="username" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="passwordTF" min="-2" max="-2" attributes="0"/>
+                          <Component id="usernameTF" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="verificarPassword" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="password" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="regresar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="verificarPasswordTF" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="passwordTF" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="verificarPasswordTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="verificarPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="regresar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -203,9 +202,15 @@
     </Component>
     <Component class="javax.swing.JTextField" name="usernameTF">
     </Component>
-    <Component class="javax.swing.JTextField" name="passwordTF">
+    <Component class="javax.swing.JPasswordField" name="passwordTF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="verificarPasswordTF">
+    <Component class="javax.swing.JPasswordField" name="verificarPasswordTF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

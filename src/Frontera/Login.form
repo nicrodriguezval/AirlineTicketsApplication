@@ -51,9 +51,9 @@
                               <Component id="username" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="80" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="passwordTF" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
-                              <Component id="usernameTF" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="usernameTF" pref="250" max="32767" attributes="0"/>
+                              <Component id="passwordTF" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -81,12 +81,12 @@
                       <Component id="username" min="-2" max="-2" attributes="0"/>
                       <Component id="usernameTF" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="password" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordTF" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="regresarB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="aceptarB" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -123,8 +123,6 @@
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="passwordTF">
-        </Component>
         <Component class="javax.swing.JButton" name="aceptarB">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -146,6 +144,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regresarBActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="passwordTF">
         </Component>
       </SubComponents>
     </Container>
