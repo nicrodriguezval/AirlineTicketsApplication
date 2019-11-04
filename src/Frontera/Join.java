@@ -8,6 +8,7 @@ package Frontera;
 import Control.ValidarJoin;
 import Entidad.Usuario;
 import static Frontera.FramePrincipal.sistema;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.JPasswordField;
@@ -50,6 +51,7 @@ public class Join extends javax.swing.JPanel {
         usernameTF = new javax.swing.JTextField();
         passwordTF = new javax.swing.JPasswordField();
         verificarPasswordTF = new javax.swing.JPasswordField();
+        aviso = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAutoscrolls(true);
@@ -91,12 +93,15 @@ public class Join extends javax.swing.JPanel {
         verificarPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         verificarPassword.setText("Verificar contraseña");
 
+        aviso.setForeground(java.awt.Color.red);
+        aviso.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(199, Short.MAX_VALUE)
                 .addComponent(titulo)
                 .addGap(194, 194, 194))
             .addGroup(layout.createSequentialGroup()
@@ -121,8 +126,9 @@ public class Join extends javax.swing.JPanel {
                             .addComponent(apellidoTF)
                             .addComponent(nombreTF)
                             .addComponent(passwordTF)
-                            .addComponent(verificarPasswordTF))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                            .addComponent(verificarPasswordTF)))
+                    .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +136,7 @@ public class Join extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(titulo)
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -152,18 +158,20 @@ public class Join extends javax.swing.JPanel {
                             .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(password)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(aceptar)
-                            .addComponent(regresar))
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(verificarPassword))
-                        .addGap(121, 121, 121))))
+                            .addComponent(verificarPassword))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptar)
+                    .addComponent(regresar))
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,7 +199,7 @@ public class Join extends javax.swing.JPanel {
         ValidarJoin verificar = new ValidarJoin();
         
         String respuesta = verificar.verificarLogin(usuario, verificarPassword);
-        
+        aviso.setForeground(Color.red);
         if(respuesta.equals("Registro exitoso")) {
             sistema.addUsuarios(usuario);
             System.out.println("-------");
@@ -200,6 +208,30 @@ public class Join extends javax.swing.JPanel {
             System.out.println("Apellido: " + apellido);
             System.out.println("Email: " + email);
             System.out.println("Username: " + username);
+        } else if(respuesta.equals("Longitud de nombre incorrecta")){
+            aviso.setText("Longitud de nombre incorrecta");
+            
+        } else if(respuesta.equals("Email incorrecto")){
+            aviso.setText("Email incorrecto");
+            
+        } else if(respuesta.equals("El email ya existe")){
+            aviso.setText("El email ya esta registrado");
+            
+        } else if(respuesta.equals("Longitud de username incorrecta")){
+            aviso.setText("Longitud de username incorrecta");
+            
+        } else if(respuesta.equals("El primer caracter del username no puede ser un número")){
+            aviso.setText("El primer caracter del username no puede ser un número");
+            
+        } else if(respuesta.equals("El username ya existe")){
+            aviso.setText("El username ya existe");
+            
+        } else if(respuesta.equals("Longitud de contraseña incorrecta")){
+            aviso.setText("Longitud de contraseña incorrecta");
+            
+        } else if(respuesta.equals("Las contraseñas no coinciden")){
+            aviso.setText("Las contraseñas no coinciden");
+            
         }
         
         System.out.println("-------");
@@ -211,6 +243,7 @@ public class Join extends javax.swing.JPanel {
     private javax.swing.JButton aceptar;
     private javax.swing.JLabel apellido;
     private javax.swing.JTextField apellidoTF;
+    private javax.swing.JLabel aviso;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailTF;
     private javax.swing.JLabel nombre;

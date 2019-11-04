@@ -23,7 +23,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="199" max="32767" attributes="0"/>
               <Component id="titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
           </Group>
@@ -54,8 +54,9 @@
                           <Component id="verificarPasswordTF" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="aviso" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,8 +66,8 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -94,12 +95,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="password" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="87" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="regresar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="passwordTF" min="-2" max="-2" attributes="0"/>
@@ -108,9 +104,16 @@
                           <Component id="verificarPasswordTF" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="verificarPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="aviso" pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="regresar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -205,6 +208,14 @@
     <Component class="javax.swing.JPasswordField" name="passwordTF">
     </Component>
     <Component class="javax.swing.JPasswordField" name="verificarPasswordTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="aviso">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
