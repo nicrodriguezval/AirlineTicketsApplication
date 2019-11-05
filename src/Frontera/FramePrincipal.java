@@ -192,7 +192,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         b.setApellido("Pérez");
         b.setEmail("guillermo@gmail.com");
         b.setUsername("gillermoP");
-        b.setPassword("1212");
+        b.setPassword("12121212");
         
         c.setNombre("Juan");
         c.setApellido("Tovar");

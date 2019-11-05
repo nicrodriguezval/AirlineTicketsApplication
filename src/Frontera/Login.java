@@ -152,7 +152,11 @@ public class Login extends javax.swing.JPanel {
         System.out.println(resultado);
         if(resultado.equals("Datos incorrectos")){
             aviso.setText("Datos incorrectos");
-        }
+        } else if (resultado.equals("Longitud nombre incorrecta")){
+            aviso.setText("Longitud nombre incorrecta");
+        } else if(resultado.equals("Longitud contraseña incorrecta")){
+            aviso.setText("Longitud contraseña incorrecta");
+        }       
     }//GEN-LAST:event_aceptarBActionPerformed
 
 

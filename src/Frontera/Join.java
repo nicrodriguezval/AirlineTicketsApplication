@@ -198,7 +198,7 @@ public class Join extends javax.swing.JPanel {
         
         ValidarJoin verificar = new ValidarJoin();
         
-        String respuesta = verificar.verificarLogin(usuario, verificarPassword);
+        String respuesta = verificar.verificarJoin(usuario, verificarPassword);
         aviso.setForeground(Color.red);
         if(respuesta.equals("Registro exitoso")) {
             sistema.addUsuarios(usuario);

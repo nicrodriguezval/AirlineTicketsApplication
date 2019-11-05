@@ -22,19 +22,19 @@ public class CalcularPrecioTicket {
     
     public double calcularPrecio(Reserva reserva) { //Acá falta completar porque no sé cómo calcularemos el precio del viaje teniendo en cuenta si afora equipaje o si el viaje es ida y vuelta, o ambos
         if(reserva.isEquipaje() && reserva.isIdaVuelta()) {
-            
+            return 100;
         }
         
         else if(reserva.isEquipaje() && !reserva.isIdaVuelta()) {
-            
+            return 200;
         }
         
         else if(!reserva.isEquipaje() && reserva.isIdaVuelta()) {
-            
+            return 300;
         }
         
         else {
-            
+            return 400;
         }
     }
     

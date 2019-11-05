@@ -18,16 +18,34 @@ public class ValidarLogin {
     }
     
     public String verificarLogin(Usuario usuario) {
-        if(cuentaExistene(usuario.getUsername(), usuario.getPassword())) return "¡Bienvenido " + usuario.getUsername() + '!';
         
-        else return "Datos incorrectos";
+        if(!verificarLongitudNombre(usuario.getUsername())){
+            return("Longitud nombre incorrecta");
+        } else if (!verificarLongitudPassword(usuario.getPassword())){
+            return("Longitud contraseña incorrecta");
+        } else if(cuentaExistente(usuario.getUsername(), usuario.getPassword())){
+            return "¡Bienvenido " + usuario.getUsername() + '!';
+        }
+        return "Datos incorrectos";
     }
     
-    public boolean cuentaExistene(String username, String password) {
+    public boolean verificarLongitudNombre (String nombre){
+        return (nombre.length() > 1 && nombre.length() <= 15);
+    }
+    
+    public boolean verificarLongitudPassword (String password){
+        return (password.length() > 4 && password.length() <= 12);
+    }
+    
+    public boolean cuentaExistente(String username, String password) {
         for(Usuario u : sistema.getUsuarios()) {
-            if(u.getUsername().equals(username) && u.getPassword().equals(password)) return true;
+            if(u.getUsername().equals(username) && u.getPassword().equals(password)){
+                return true;                    
+            }
         }
         
         return false;
     }
+    
+
 }

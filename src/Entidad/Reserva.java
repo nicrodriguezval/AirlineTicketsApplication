@@ -15,7 +15,7 @@ public class Reserva {
     private int peso;
     double precio, iva; /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
                                                             El precio es el precio inicial de la reserva,
-                                                            cuando el se pague la reserva se genera el tickete y se asigna el mismo precio del la reserva al ticket, 
+                                                            cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
                                                             el precio está dado en USD para más comodidad con la cantidad de dígitos*/
     private Usuario usuario;
 
