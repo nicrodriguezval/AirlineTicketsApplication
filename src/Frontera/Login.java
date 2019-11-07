@@ -156,7 +156,10 @@ public class Login extends javax.swing.JFrame {
         } else if(resultado.equals("Longitud contraseña incorrecta")){
             aviso.setText("Longitud contraseña incorrecta");
         } else {
-            //Acá falta completar para pasar a un menú principal donde estén las opciones de realizar una reservación, pagar una reservación o generar los informes
+            MenuInicial menu = new MenuInicial();
+            this.setVisible(false);
+            menu.setLocationRelativeTo(this);
+            menu.setVisible(true);
         }
     }//GEN-LAST:event_aceptarBActionPerformed
 

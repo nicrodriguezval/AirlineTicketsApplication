@@ -188,11 +188,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         a.setUsername("nicrodriguezval");
         a.setPassword("123123");
         
-        b.setNombre("Guillermo");
-        b.setApellido("Pérez");
-        b.setEmail("guillermo@gmail.com");
-        b.setUsername("gillermoP");
-        b.setPassword("12121212");
+        b.setNombre("Lucas");
+        b.setApellido("Peña");
+        b.setEmail("lucas@gmail.com");
+        b.setUsername("lucasps");
+        b.setPassword("123456");
         
         c.setNombre("Juan");
         c.setApellido("Tovar");
