@@ -9,22 +9,19 @@ import Control.ValidarJoin;
 import Entidad.Usuario;
 import static Frontera.FramePrincipal.sistema;
 import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.JPasswordField;
-
 
 /**
  *
  * @author nicro
  */
-public class Join extends javax.swing.JPanel {
+public class Join extends javax.swing.JFrame {
 
     /**
-     * Creates new form Join
+     * Creates new form NewJFrame1
      */
     public Join() {
         initComponents();
+        this.setTitle("Airline Tickets Application");
     }
 
     /**
@@ -36,6 +33,7 @@ public class Join extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPrincipal = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         apellido = new javax.swing.JLabel();
@@ -53,8 +51,13 @@ public class Join extends javax.swing.JPanel {
         verificarPasswordTF = new javax.swing.JPasswordField();
         aviso = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setAutoscrolls(true);
+        setPreferredSize(new java.awt.Dimension(550, 480));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(550, 600));
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setText("Registrarse");
@@ -96,110 +99,130 @@ public class Join extends javax.swing.JPanel {
         aviso.setForeground(java.awt.Color.red);
         aviso.setEnabled(false);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(titulo)
-                .addGap(194, 194, 194))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(regresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apellido)
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                    .addGap(0, 60, Short.MAX_VALUE)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(169, 169, 169)
+                            .addComponent(titulo))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
                             .addComponent(nombre)
+                            .addGap(102, 102, 102)
+                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(apellido)
+                            .addGap(106, 106, 106)
+                            .addComponent(apellidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
                             .addComponent(email)
-                            .addComponent(verificarPassword)
+                            .addGap(126, 126, 126)
+                            .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(username)
+                            .addGap(96, 96, 96)
+                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
                             .addComponent(password)
+                            .addGap(90, 90, 90)
+                            .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(verificarPassword)
+                            .addGap(39, 39, 39)
+                            .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(regresar)
+                            .addGap(248, 248, 248)
+                            .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 61, Short.MAX_VALUE)))
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(407, Short.MAX_VALUE)
+                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                    .addGap(0, 57, Short.MAX_VALUE)
+                    .addComponent(titulo)
+                    .addGap(32, 32, 32)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nombre)
+                        .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(15, 15, 15)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(apellido))
+                        .addComponent(apellidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(15, 15, 15)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(email))
+                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(15, 15, 15)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
                             .addComponent(username))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                            .addComponent(emailTF)
-                            .addComponent(apellidoTF)
-                            .addComponent(nombreTF)
-                            .addComponent(passwordTF)
-                            .addComponent(verificarPasswordTF)))
-                    .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(titulo)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(nombre)
-                                                    .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(apellido))
-                                            .addComponent(apellidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(email))
-                                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(username))
-                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(password)
-                        .addGap(47, 47, 47))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(verificarPassword))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar)
-                    .addComponent(regresar))
-                .addGap(38, 38, 38))
+                        .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(verificarPassword))
+                        .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(40, 40, 40)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(regresar)
+                        .addComponent(aceptar))
+                    .addGap(0, 58, Short.MAX_VALUE)))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
-        // TODO add your handling code here:
-        new FramePrincipal().setVisible(true);
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        frame.dispose(); 
-    }//GEN-LAST:event_regresarActionPerformed
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 440));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         Usuario usuario = new Usuario();
-        
+
         String nombre = nombreTF.getText(), apellido = apellidoTF.getText(), email = emailTF.getText(),
-               username = usernameTF.getText(), password = passwordTF.getText();
-        
+        username = usernameTF.getText(), password = passwordTF.getText();
+
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setUsername(username);
         usuario.setPassword(password);
         String verificarPassword = verificarPasswordTF.getText();
-        
+
         ValidarJoin verificar = new ValidarJoin();
-        
+
         String respuesta = verificar.verificarJoin(usuario, verificarPassword);
         aviso.setForeground(Color.red);
+        
         if(respuesta.equals("Registro exitoso")) {
             sistema.addUsuarios(usuario);
             System.out.println("-------");
@@ -210,34 +233,40 @@ public class Join extends javax.swing.JPanel {
             System.out.println("Username: " + username);
         } else if(respuesta.equals("Longitud de nombre incorrecta")){
             aviso.setText("Longitud de nombre incorrecta");
-            
+
         } else if(respuesta.equals("Email incorrecto")){
             aviso.setText("Email incorrecto");
-            
+
         } else if(respuesta.equals("El email ya existe")){
             aviso.setText("El email ya esta registrado");
-            
+
         } else if(respuesta.equals("Longitud de username incorrecta")){
             aviso.setText("Longitud de username incorrecta");
-            
+
         } else if(respuesta.equals("El primer caracter del username no puede ser un número")){
             aviso.setText("El primer caracter del username no puede ser un número");
-            
+
         } else if(respuesta.equals("El username ya existe")){
             aviso.setText("El username ya existe");
-            
+
         } else if(respuesta.equals("Longitud de contraseña incorrecta")){
             aviso.setText("Longitud de contraseña incorrecta");
-            
+
         } else if(respuesta.equals("Las contraseñas no coinciden")){
             aviso.setText("Las contraseñas no coinciden");
-            
         }
-        
+
         System.out.println("-------");
         System.out.println(respuesta);
     }//GEN-LAST:event_aceptarActionPerformed
 
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        FramePrincipal framePrincipal = new FramePrincipal();
+        this.setVisible(false);
+        framePrincipal.setLocationRelativeTo(this);
+        framePrincipal.setVisible(true);
+    }//GEN-LAST:event_regresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
@@ -248,6 +277,7 @@ public class Join extends javax.swing.JPanel {
     private javax.swing.JTextField emailTF;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombreTF;
+    private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel password;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton regresar;

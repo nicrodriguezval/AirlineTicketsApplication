@@ -10,57 +10,41 @@ package Entidad;
  * @author nicro
  */
 public class Reserva {
-    private String hora, origen, destino, silla;
+    private Vuelo vuelo;
     private boolean equipaje, idaVuelta;
-    private int peso;
+    private String categoria;
+    private int peso, numeroPuestos;
     double precio, iva; /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
                                                             El precio es el precio inicial de la reserva,
                                                             cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
                                                             el precio está dado en USD para más comodidad con la cantidad de dígitos*/
     private Usuario usuario;
 
-    public Reserva(String hora, String origen, String destino, String silla, boolean idaVuelta, boolean equipaje, Usuario usuario) {
-        this.hora = hora;
-        this.origen = origen;
-        this.destino = destino;
-        this.silla = silla;
+    public Reserva(Vuelo vuelo, int numeroPuestos, boolean idaVuelta, boolean equipaje, String categoria, Usuario usuario) {
+        this.vuelo = vuelo;
         this.equipaje = equipaje;
         this.idaVuelta = idaVuelta;
+        this.categoria = categoria;
         this.usuario = usuario;
+        this.numeroPuestos = numeroPuestos;
     }
 
-    public String getHora() {
-        return hora;
+    public Vuelo getVuelo() {
+        return vuelo;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setVuelo(Vuelo vuelo) {
+        this.vuelo = vuelo;
     }
 
-    public String getOrigen() {
-        return origen;
+    public int getNumeroPuestos() {
+        return numeroPuestos;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
+    public void setNumeroPuestos(int numeroPuestos) {
+        this.numeroPuestos = numeroPuestos;
     }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
-    public String getSilla() {
-        return silla;
-    }
-
-    public void setSilla(String silla) {
-        this.silla = silla;
-    }
-
+    
     public boolean isEquipaje() {
         return equipaje;
     }
@@ -75,6 +59,14 @@ public class Reserva {
 
     public void setIdaVuelta(boolean idaVuelta) {
         this.idaVuelta = idaVuelta;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
     
     public Usuario getUsuario() {

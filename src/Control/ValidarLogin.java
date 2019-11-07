@@ -7,6 +7,7 @@ package Control;
 
 import Entidad.Usuario;
 import static Frontera.FramePrincipal.sistema;
+import static Frontera.Login.user;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ValidarLogin {
         } else if (!verificarLongitudPassword(usuario.getPassword())){
             return("Longitud contraseña incorrecta");
         } else if(cuentaExistente(usuario.getUsername(), usuario.getPassword())){
-            return "¡Bienvenido " + usuario.getUsername() + '!';
+            return "¡Bienvenido " + user.getNombre() + '!';
         }
         return "Datos incorrectos";
     }
@@ -47,5 +48,11 @@ public class ValidarLogin {
         return false;
     }
     
-
+    public Usuario findUsuario(String username) {
+        for(Usuario u : sistema.getUsuarios()) {
+            if(u.getUsername().equals(username)) return u;
+        }
+        
+        return null;
+    }
 }

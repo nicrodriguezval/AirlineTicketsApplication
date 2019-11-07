@@ -58,9 +58,11 @@ public class ValidarJoin {
     }
     
     public boolean sintaxisUsername(String username) { //la primera letra del username no debe ser un número
+        String name = Character.toString(username.charAt(0));
+        
         for(int i = 0; i < 10; i++) {
-            char numero = (char)i;
-            if(username.charAt(0) == numero) return false;
+            String numero = String.valueOf(i);
+            if(name.equals(numero)) return false;          
         }
         
         return true;

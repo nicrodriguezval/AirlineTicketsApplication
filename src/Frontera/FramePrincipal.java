@@ -8,6 +8,7 @@ package Frontera;
 import Entidad.CreditCard;
 import Entidad.Sistema;
 import Entidad.Usuario;
+import Entidad.Vuelo;
 
 /**
  *
@@ -16,9 +17,6 @@ import Entidad.Usuario;
  * title="Flaticon">www.flaticon.com</a></div>
  */
 public class FramePrincipal extends javax.swing.JFrame {
-    Join registro = new Join();
-    Login ingreso = new Login();
-    
     public static Sistema sistema = new Sistema();
     
     /**
@@ -27,6 +25,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     public FramePrincipal() {
         initComponents();
         inicializacion();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Airline Tickets Application");
     }
 
     /**
@@ -46,7 +46,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 430));
+        setPreferredSize(new java.awt.Dimension(500, 320));
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setLayout(new javax.swing.OverlayLayout(panelPrincipal));
@@ -106,7 +106,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(ingresarB)
                 .addGap(30, 30, 30)
                 .addComponent(registrarseB)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         panelPrincipal.add(jPanel1);
@@ -127,18 +127,18 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private void registrarseBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseBActionPerformed
         // TODO add your handling code here:
-        panelPrincipal.setVisible(false);
-        panelPrincipal.removeAll();
-        panelPrincipal.add(registro);
-        panelPrincipal.setVisible(true);    
+        Join registro = new Join();
+        this.setVisible(false);
+        registro.setLocationRelativeTo(this);
+        registro.setVisible(true);
     }//GEN-LAST:event_registrarseBActionPerformed
 
     private void ingresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBActionPerformed
         // TODO add your handling code here:
-        panelPrincipal.setVisible(false);
-        panelPrincipal.removeAll();
-        panelPrincipal.add(ingreso);
-        panelPrincipal.setVisible(true);
+        Login ingreso = new Login();
+        this.setVisible(false);
+        ingreso.setLocationRelativeTo(this);
+        ingreso.setVisible(true);
     }//GEN-LAST:event_ingresarBActionPerformed
 
     /**
@@ -214,32 +214,15 @@ public class FramePrincipal extends javax.swing.JFrame {
             System.out.println("-------");
         }
         
-        CreditCard t1 = new CreditCard();
-        CreditCard t2 = new CreditCard();
-        CreditCard t3 = new CreditCard();
-        
-        t1.setNombreBanco("Bancolombia");
-        t1.setFechaCaducidad("10/10/2020");
-        t1.setNumeroTarjeta("656412345874569");
-        t1.setMarcaInternacional("VISA");
-        t1.setNombreTitular("Nicolás Rodríguez");
-        
-        t2.setNombreBanco("AV Villas");
-        t2.setFechaCaducidad("2/1/2021");
-        t2.setNumeroTarjeta("1234567891234567");
-        t2.setMarcaInternacional("MASTERCARD");
-        t2.setNombreTitular("Juan Alberto");
-        
-        t3.setNombreBanco("Banco Popular");
-        t3.setFechaCaducidad("1/11/2019");
-        t3.setNumeroTarjeta("4545457878121223");
-        t3.setMarcaInternacional("VISA");
-        t3.setNombreTitular("José Miguel");
+        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "656412345874569");
+        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
+        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
         
         sistema.addTarjetas(t1);
         sistema.addTarjetas(t2);
         sistema.addTarjetas(t3);
         
+        System.out.println();
         System.out.println("TARJETAS DE CRÉDITO EXISTENTES");
         System.out.println();
         
@@ -249,6 +232,26 @@ public class FramePrincipal extends javax.swing.JFrame {
             System.out.println("Numero de la tarjeta: " + t.getNumeroTarjeta());
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
+            System.out.println("-------");
+        }
+        
+        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "14:00", 300);
+        Vuelo v2 = new Vuelo("Bogotá", "Miami", "3:00", 400);
+        Vuelo v3 = new Vuelo("Cali", "Medellín", "9:00", 300);
+        
+        sistema.addVuelos(v1);
+        sistema.addVuelos(v2);
+        sistema.addVuelos(v3);
+        
+        System.out.println();
+        System.out.println("VUELOS DISPONIBLES");
+        System.out.println();
+        
+        for(Vuelo v : sistema.getVuelos()) {
+            System.out.println("Ciudad de origen: " + v.getOrigen());
+            System.out.println("Ciudad de destino: " + v.getDestino());
+            System.out.println("Hora del vuelo: " + v.getHora());
+            System.out.println("Asientos disponibles: " + v.getSillasDisponibles());
             System.out.println("-------");
         }
     }

@@ -10,12 +10,16 @@ package Entidad;
  * @author nicro
  */
 public class CreditCard {
-    private String nombreBanco, fechaCaducidad, nombreTitular, MarcaInternacional;
-    private String numeroTarjeta;
-    
-    public CreditCard() {
-    }
+    private String nombreBanco, fechaCaducidad, nombreTitular, MarcaInternacional, numeroTarjeta;
 
+    public CreditCard(String nombreBanco, String fechaCaducidad, String nombreTitular, String MarcaInternacional, String numeroTarjeta) {
+        this.nombreBanco = nombreBanco;
+        this.fechaCaducidad = fechaCaducidad;
+        this.nombreTitular = nombreTitular;
+        this.MarcaInternacional = MarcaInternacional;
+        this.numeroTarjeta = numeroTarjeta;
+    }
+    
     public String getNombreBanco() {
         return nombreBanco;
     }
