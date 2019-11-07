@@ -17,7 +17,7 @@ import java.awt.Color;
 public class Join extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame1
+     * Creates new form NewJFrame
      */
     public Join() {
         initComponents();
@@ -96,17 +96,23 @@ public class Join extends javax.swing.JFrame {
         verificarPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         verificarPassword.setText("Verificar contraseña");
 
-        aviso.setForeground(java.awt.Color.red);
+        aviso.setBackground(new java.awt.Color(255, 0, 0));
+        aviso.setForeground(new java.awt.Color(255, 0, 0));
         aviso.setEnabled(false);
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(regresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelPrincipalLayout.createSequentialGroup()
                     .addGap(0, 60, Short.MAX_VALUE)
@@ -142,23 +148,22 @@ public class Join extends javax.swing.JFrame {
                             .addGap(2, 2, 2)
                             .addComponent(verificarPassword)
                             .addGap(39, 39, 39)
-                            .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelPrincipalLayout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(regresar)
-                            .addGap(248, 248, 248)
-                            .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 61, Short.MAX_VALUE)))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(407, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(regresar)
+                    .addComponent(aceptar))
+                .addGap(45, 45, 45))
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelPrincipalLayout.createSequentialGroup()
-                    .addGap(0, 57, Short.MAX_VALUE)
+                    .addGap(0, 62, Short.MAX_VALUE)
                     .addComponent(titulo)
                     .addGap(32, 32, 32)
                     .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,14 +197,10 @@ public class Join extends javax.swing.JFrame {
                             .addGap(1, 1, 1)
                             .addComponent(verificarPassword))
                         .addComponent(verificarPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(40, 40, 40)
-                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(regresar)
-                        .addComponent(aceptar))
-                    .addGap(0, 58, Short.MAX_VALUE)))
+                    .addGap(0, 128, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 440));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,7 +224,37 @@ public class Join extends javax.swing.JFrame {
         String respuesta = verificar.verificarJoin(usuario, verificarPassword);
         aviso.setForeground(Color.red);
         
-        if(respuesta.equals("Registro exitoso")) {
+        if(respuesta.equals("Longitud de nombre incorrecta")) 
+            aviso.setText("Longitud de nombre incorrecta");
+        
+        else if(respuesta.equals("Longitud de apellido incorrecta")) 
+            aviso.setText("Longitud de apellido incorrecta");
+        
+        else if(respuesta.equals("Longitud de email incorrecto"))
+            aviso.setText("Longitud de email incorrecto");
+
+        else if(respuesta.equals("Email inválido"))
+            aviso.setText("Email inválido");
+
+        else if(respuesta.equals("Longitud de username incorrecta"))
+            aviso.setText("Longitud de username incorrecta");
+
+        else if(respuesta.equals("El primer caracter del username no puede ser un número"))
+            aviso.setText("El primer caracter del username no puede ser un número");
+
+        else if(respuesta.equals("El username ya existe"))
+            aviso.setText("El username ya existe");
+
+        else if(respuesta.equals("El email ya existe"))
+            aviso.setText("El email ya está registrado");
+        
+        else if(respuesta.equals("Longitud de contraseña incorrecta"))
+            aviso.setText("Longitud de contraseña incorrecta");
+         
+        else if(respuesta.equals("Las contraseñas no coinciden"))
+            aviso.setText("Las contraseñas no coinciden");
+        
+        else {
             sistema.addUsuarios(usuario);
             System.out.println("-------");
             System.out.println("NUEVO USUARIO AÑADIDO");
@@ -231,29 +262,6 @@ public class Join extends javax.swing.JFrame {
             System.out.println("Apellido: " + apellido);
             System.out.println("Email: " + email);
             System.out.println("Username: " + username);
-        } else if(respuesta.equals("Longitud de nombre incorrecta")){
-            aviso.setText("Longitud de nombre incorrecta");
-
-        } else if(respuesta.equals("Email incorrecto")){
-            aviso.setText("Email incorrecto");
-
-        } else if(respuesta.equals("El email ya existe")){
-            aviso.setText("El email ya esta registrado");
-
-        } else if(respuesta.equals("Longitud de username incorrecta")){
-            aviso.setText("Longitud de username incorrecta");
-
-        } else if(respuesta.equals("El primer caracter del username no puede ser un número")){
-            aviso.setText("El primer caracter del username no puede ser un número");
-
-        } else if(respuesta.equals("El username ya existe")){
-            aviso.setText("El username ya existe");
-
-        } else if(respuesta.equals("Longitud de contraseña incorrecta")){
-            aviso.setText("Longitud de contraseña incorrecta");
-
-        } else if(respuesta.equals("Las contraseñas no coinciden")){
-            aviso.setText("Las contraseñas no coinciden");
         }
 
         System.out.println("-------");

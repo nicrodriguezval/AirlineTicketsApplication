@@ -7,6 +7,7 @@ package Frontera;
 
 import Control.ValidarLogin;
 import Entidad.Usuario;
+import java.awt.Color;
 
 /**
  *
@@ -145,6 +146,8 @@ public class Login extends javax.swing.JFrame {
         System.out.println("-------");
         String resultado = validar.verificarLogin(usuario);
         System.out.println(resultado);
+        
+        aviso.setForeground(Color.red);
 
         if(resultado.equals("Datos incorrectos")){
             aviso.setText("Datos incorrectos");
@@ -164,10 +167,6 @@ public class Login extends javax.swing.JFrame {
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
     }//GEN-LAST:event_regresarBActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarB;

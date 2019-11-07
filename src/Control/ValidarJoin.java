@@ -18,27 +18,38 @@ public class ValidarJoin {
     }
     
     public String verificarJoin(Usuario usuario, String verificarPassword) {
-        if(!verificarLongitudNombre(usuario.getNombre())) return "Longitud de nombre incorrecta";
+        if(!verificarLongitudNombre(usuario.getNombre()))
+            return "Longitud de nombre incorrecta";
         
-        else if(!verificarLongitudApellido(usuario.getApellido())) return "Longitud de apellido incorrecta";
+        else if(!verificarLongitudApellido(usuario.getApellido()))
+            return "Longitud de apellido incorrecta";
        
-        else if(!verificarLongitudUsername(usuario.getUsername())) return "Longitud de username incorrecta";
+        else if(!verificarEmail(usuario.getEmail()))
+            return "Longitud de email incorrecto";
+        
+        else if(!verificarArroba(usuario.getEmail()))
+            return "Email inválido";
+        
+        else if(equalEmails(usuario.getEmail()))
+            return "El email ya existe";
+        
+        else if(!verificarLongitudUsername(usuario.getUsername()))
+            return "Longitud de username incorrecta";
        
-        else if(!sintaxisUsername(usuario.getUsername())) return "El primer caracter del username no puede ser un número";
+        else if(!sintaxisUsername(usuario.getUsername()))
+            return "El primer caracter del username no puede ser un número";
         
-        else if(equalUsernames(usuario.getUsername())) return "El username ya existe";
+        else if(equalUsernames(usuario.getUsername()))
+            return "El username ya existe";
         
-        else if(!verificarEmail(usuario.getEmail())) return "Longitud de email incorrecto";
+        else if(!verificarLongitudPassword(usuario.getPassword()))
+            return "Longitud de contraseña incorrecta";
         
-        else if(!verificarArroba(usuario.getEmail())) return "Email inválido";
+        else if(!equalPassword(usuario.getPassword(), verificarPassword))
+            return "Las contraseñas no coinciden";
         
-        else if(equalEmails(usuario.getEmail())) return "El email ya existe";
-        
-        else if(!verificarLongitudPassword(usuario.getPassword())) return "Longitud de contraseña incorrecta";
-        
-        else if(!equalPassword(usuario.getPassword(), verificarPassword)) return "Las contraseñas no coinciden";
-        
-        else return "Registro exitoso";
+        else
+            return "Registro exitoso";
     }
     
     public boolean verificarLongitudNombre(String nombre) {
