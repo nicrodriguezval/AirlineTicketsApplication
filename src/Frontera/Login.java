@@ -151,10 +151,12 @@ public class Login extends javax.swing.JFrame {
 
         if(resultado.equals("Datos incorrectos")){
             aviso.setText("Datos incorrectos");
-        } else if (resultado.equals("Longitud nombre incorrecta")){
-            aviso.setText("Longitud nombre incorrecta");
-        } else if(resultado.equals("Longitud contraseña incorrecta")){
-            aviso.setText("Longitud contraseña incorrecta");
+        } else if (resultado.equals("Longitud de username incorrecta")){
+            aviso.setText("Longitud de username incorrecta");
+        } else if(resultado.equals("Longitud de contraseña incorrecta")){
+            aviso.setText("Longitud de contraseña incorrecta");
+        } else if(resultado.equals("Contraseña incorrecta. Escríbala nuevamente")){
+            aviso.setText("Contraseña incorrecta. Escríbala nuevamente");
         } else {
             MenuInicial menu = new MenuInicial();
             this.setVisible(false);

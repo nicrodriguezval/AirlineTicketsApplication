@@ -193,22 +193,42 @@ public class TestJoin {
     }
     
     @Test
-    public void testArrobaEmail(){
+    public void testVerificarEmail(){
     Usuario u = new Usuario();
     u.setNombre("Mary");
     u.setApellido("Poppins");
     u.setUsername("marypop");
-    u.setEmail("marypoppins_gmail.com");
+    u.setEmail("m");
     u.setPassword("kdc-qkd3");
     String password2 = "kdc-qkd3";
-    assertEquals(EMAIL_SINTAX,validarJoin.verificarJoin(u, password2));
+    assertEquals(EMAIL_LONG,validarJoin.verificarJoin(u, password2));
 
     u.setNombre("Miguel");
     u.setApellido("Villanueva");
     u.setUsername("migvilla");
-    u.setEmail("nosecomohacerelarrobaayuda_hotmail.com");
+    u.setEmail("estecorreodeverdadesdemasiadolargo@hotmail.com");
     u.setPassword("dasce142");
     password2 = "dasce142";
+    assertEquals(EMAIL_LONG,validarJoin.verificarJoin(u, password2));
+    }
+    
+    @Test
+    public void testVerificarArroba(){
+    Usuario u = new Usuario();
+    u.setNombre("Ana");
+    u.setApellido("Suárez");
+    u.setUsername("anasuarez");
+    u.setEmail("esteesuncorreosinlaarroba.com");
+    u.setPassword("dc8iP9vd");
+    String password2 = "dc8iP9vd";
+    assertEquals(EMAIL_SINTAX,validarJoin.verificarJoin(u, password2));
+
+    u.setNombre("Joe");
+    u.setApellido("Arroyo");
+    u.setUsername("joestreams");
+    u.setEmail("@alprincipio.hotmail.com");
+    u.setPassword("d82d84");
+    password2 = "d82d84";
     assertEquals(EMAIL_SINTAX,validarJoin.verificarJoin(u, password2));
     }
 

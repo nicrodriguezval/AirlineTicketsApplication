@@ -22,8 +22,17 @@ public class ValidarJoin {
             return "Longitud de nombre incorrecta";
         
         else if(!verificarLongitudApellido(usuario.getApellido()))
-            return "Longitud de apellido incorrecta";
-       
+            return "Longitud de apellido incorrecta";         
+        
+        else if(!verificarLongitudUsername(usuario.getUsername()))
+            return "Longitud de username incorrecta";
+               
+        else if(!sintaxisUsername(usuario.getUsername()))
+            return "El primer caracter del username no puede ser un número";
+                
+        else if(equalUsernames(usuario.getUsername()))
+            return "El username ya existe";
+        
         else if(!verificarEmail(usuario.getEmail()))
             return "Longitud de email incorrecto";
         
@@ -32,16 +41,7 @@ public class ValidarJoin {
         
         else if(equalEmails(usuario.getEmail()))
             return "El email ya existe";
-        
-        else if(!verificarLongitudUsername(usuario.getUsername()))
-            return "Longitud de username incorrecta";
-       
-        else if(!sintaxisUsername(usuario.getUsername()))
-            return "El primer caracter del username no puede ser un número";
-        
-        else if(equalUsernames(usuario.getUsername()))
-            return "El username ya existe";
-        
+
         else if(!verificarLongitudPassword(usuario.getPassword()))
             return "Longitud de contraseña incorrecta";
         
@@ -88,7 +88,7 @@ public class ValidarJoin {
     }
     
     public boolean verificarEmail(String email) {
-        if(email.length() <= 0 && email.length() > 30) return false;
+        if(email.length() < 1 || email.length() > 30) return false;
         
         return true;
     }
@@ -110,7 +110,7 @@ public class ValidarJoin {
     }
     
     public boolean verificarLongitudPassword(String password) {
-        return(password.length() > 4 && password.length() <= 12);
+        return(password.length() > 4 && password.length() <= 18);
     }
     
     public boolean equalPassword(String password1, String password2) {

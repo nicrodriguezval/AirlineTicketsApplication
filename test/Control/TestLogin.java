@@ -7,6 +7,7 @@ package Control;
 
 import Entidad.Usuario;
 import static Frontera.FramePrincipal.sistema;
+import static Frontera.Login.user;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,6 +20,17 @@ import static org.junit.Assert.*;
  * @author Miguel Alejandro
  */
 public class TestLogin {
+    
+    private static ValidarLogin validarLogin = new ValidarLogin();
+
+    private String LUSR_ERROR = "Longitud de username incorrecta";
+    private String LPAS_ERROR = "Longitud de contraseña incorrecta";
+    private String WRONG_PASS = "Contraseña incorrecta. Escríbala nuevamente";
+    private String DATA_ERROR = "Datos incorrectos";
+    private String SUCCESS(String nombre){
+        return "¡Bienvenido " + nombre + "!";
+    }
+
     
     public TestLogin() {
     }
@@ -39,7 +51,7 @@ public class TestLogin {
         b.setApellido("Pérez");
         b.setEmail("guillermo@gmail.com");
         b.setUsername("gillermoP");
-        b.setPassword("1212");
+        b.setPassword("121212");
         
         c.setNombre("Juan");
         c.setApellido("Tovar");
@@ -74,9 +86,65 @@ public class TestLogin {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testLongitudUsername(){
+    Usuario u = new Usuario();
+    u.setUsername("abcdefghijklmnopqrstuvwxyz");
+    u.setPassword("abcdef");
+    assertEquals(LUSR_ERROR,validarLogin.verificarLogin(u));
+
+    u.setUsername("use");
+    u.setPassword("abcde");
+    assertEquals(LUSR_ERROR,validarLogin.verificarLogin(u));
+    } 
+    
+    @Test
+    public void testLongitudPassword(){
+    Usuario u = new Usuario();
+    u.setUsername("nicrodriguezval");
+    u.setPassword("123456789abcdef1234");
+    assertEquals(LPAS_ERROR,validarLogin.verificarLogin(u));
+
+    u.setUsername("nicrodriguezval");
+    u.setPassword("1234");
+    assertEquals(LPAS_ERROR,validarLogin.verificarLogin(u));
+    } 
+    
+    @Test
+    public void testCuentaExistente(){
+    Usuario u = new Usuario();
+    u.setUsername("miapenahu");
+    u.setPassword("abcdefg");
+    assertEquals(DATA_ERROR,validarLogin.verificarLogin(u));
+
+    u.setUsername("juangarciau");
+    u.setPassword("wsdreaxf");
+    assertEquals(DATA_ERROR,validarLogin.verificarLogin(u));
+    }
+    
+    @Test
+    public void testContraseniaIncorrecta(){
+    Usuario u = new Usuario();
+    u.setUsername("nicrodriguezval");
+    u.setPassword("9382sjjdb");
+    assertEquals(WRONG_PASS,validarLogin.verificarLogin(u));
+
+    u.setUsername("juancho01");
+    u.setPassword("dkan20d1");
+    assertEquals(WRONG_PASS,validarLogin.verificarLogin(u));
+    }
+
+    @Test
+    public void testAllCorrect(){
+    Usuario u = new Usuario();
+    u.setUsername("nicrodriguezval");
+    u.setPassword("123123");
+    u.setNombre("Nicolás");
+    assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
+
+    u.setUsername("gillermoP");
+    u.setPassword("121212");
+    u.setNombre("Guillermo");
+    assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
+    }
 }

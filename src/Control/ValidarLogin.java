@@ -20,33 +20,58 @@ public class ValidarLogin {
     
     public String verificarLogin(Usuario usuario) {
         
-        if(!verificarLongitudNombre(usuario.getUsername())){
-            return("Longitud nombre incorrecta");
+        if(!verificarLongitudUsername(usuario.getUsername())){
+            return("Longitud de username incorrecta");
         } else if (!verificarLongitudPassword(usuario.getPassword())){
-            return("Longitud contraseña incorrecta");
-        } else if(cuentaExistente(usuario.getUsername(), usuario.getPassword())){
-            return "¡Bienvenido " + user.getNombre() + '!';
+            return("Longitud de contraseña incorrecta");
+        } else if(cuentaExistente(usuario.getUsername())){
+            if(!verificarContrasenia(usuario.getUsername(), usuario.getPassword())){
+                return("Contraseña incorrecta. Escríbala nuevamente");
+            } else{
+                return "¡Bienvenido " + setName(usuario.getUsername()) + '!';
+            }
+            
+                        
         }
         return "Datos incorrectos";
     }
     
-    public boolean verificarLongitudNombre (String nombre){
-        return (nombre.length() > 1 && nombre.length() <= 15);
+    public boolean verificarLongitudUsername (String nombre){
+        return (nombre.length() > 3 && nombre.length() < 16);
     }
     
     public boolean verificarLongitudPassword (String password){
-        return (password.length() > 4 && password.length() <= 12);
+        return (password.length() > 4 && password.length() < 19);
     }
     
-    public boolean cuentaExistente(String username, String password) {
+
+    
+    public boolean cuentaExistente(String username) {
         for(Usuario u : sistema.getUsuarios()) {
-            if(u.getUsername().equals(username) && u.getPassword().equals(password)){
+            if(u.getUsername().equals(username)){
                 return true;                    
             }
         }
-        
         return false;
     }
+    
+    public boolean verificarContrasenia(String username, String password){
+        for(Usuario u : sistema.getUsuarios()) {
+            if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
+                return true;                    
+            }
+        }
+        return false;
+    }
+
+       public String setName(String username) {
+        for(Usuario u : sistema.getUsuarios()) {
+            if(u.getUsername().equals(username)){
+                return u.getNombre();
+            }
+        }
+        return null;
+       }
     
     public Usuario findUsuario(String username) {
         for(Usuario u : sistema.getUsuarios()) {
