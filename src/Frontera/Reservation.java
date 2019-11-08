@@ -5,6 +5,9 @@
  */
 package Frontera;
 
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author nicro
@@ -12,12 +15,16 @@ package Frontera;
 public class Reservation extends javax.swing.JFrame {
     boolean esIdaVuelta;
     boolean esEquipaje;  
+    ArrayList<String> pasajeros = new ArrayList<>();
+    String lugarOrigen, lugarDestino, hora1;
+    int puestos;
    
        
     public Reservation() {
         initComponents();
         pesoEquipaje.setVisible(false);
         pesoEquipajeCB.setVisible(false);
+        
     }
     
     /**
@@ -53,10 +60,12 @@ public class Reservation extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelPrincipal.setBackground(java.awt.Color.white);
+
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setText("Realizar reservación");
 
-        OrigenCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Item 2", "Item 3", "Item 4" }));
+        OrigenCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bogotá", "Medellin", "Cali", "Barranquilla" }));
 
         origen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         origen.setText("Origen");
@@ -64,7 +73,7 @@ public class Reservation extends javax.swing.JFrame {
         destino.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         destino.setText("Destino");
 
-        destinoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Item 2", "Item 3", "Item 4" }));
+        destinoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bogotá", "Medellin", "Cali", "Barranquilla" }));
 
         hora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         hora.setText("Hora");
@@ -83,7 +92,7 @@ public class Reservation extends javax.swing.JFrame {
         noPuestos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         noPuestos.setText("No. puestos");
 
-        noPuestosCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        noPuestosCB.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] { 1, 2, 3, 4, 5 }));
 
         categoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         categoria.setText("Categoría");
@@ -114,32 +123,29 @@ public class Reservation extends javax.swing.JFrame {
             }
         });
 
+        cancelar.setText("Cancelar");
+
+        siguiente.setText("Siguiente");
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(0, 3, Short.MAX_VALUE)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(pesoEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(titulo))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(origen)
-                        .addGap(36, 36, 36)
-                        .addComponent(OrigenCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(destino)
-                        .addGap(46, 46, 46)
-                        .addComponent(destinoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(hora)
-                        .addGap(47, 47, 47)
-                        .addComponent(horaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(noPuestos)
-                        .addGap(18, 18, 18)
-                        .addComponent(noPuestosCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(categoria)
                         .addGap(18, 18, 18)
@@ -151,13 +157,33 @@ public class Reservation extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(equipaje)
                         .addGap(6, 6, 6)
-                        .addComponent(equipajeCB)))
-                .addGap(0, 4, Short.MAX_VALUE))
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addComponent(pesoEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(equipajeCB))
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addComponent(origen)
+                            .addGap(36, 36, 36)
+                            .addComponent(OrigenCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(destino)
+                            .addGap(18, 18, 18)
+                            .addComponent(destinoCB, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cancelar)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(hora)
+                                    .addGap(47, 47, 47)
+                                    .addComponent(horaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(71, 71, 71)
+                                    .addComponent(noPuestos)))
+                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(noPuestosCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(siguiente))))))
+                .addGap(0, 34, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,33 +206,29 @@ public class Reservation extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(categoria)
                     .addComponent(categoriaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(equipaje)
-                    .addComponent(equipajeCB)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idaVuelta)
                             .addComponent(idaVueltaCB))
-                        .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pesoEquipaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addComponent(pesoEquipaje, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(equipaje)
+                            .addComponent(equipajeCB))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelar)
+                    .addComponent(siguiente))
+                .addGap(31, 31, 31))
         );
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        cancelar.setText("Cancelar");
-        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, -1, -1));
-
-        siguiente.setText("Siguiente");
-        siguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                siguienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, -1, -1));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,7 +252,11 @@ public class Reservation extends javax.swing.JFrame {
     }//GEN-LAST:event_categoriaCBActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-        ReservationResumen rResumen = new ReservationResumen();
+        lugarOrigen = OrigenCB.getItemAt(OrigenCB.getSelectedIndex());
+        lugarDestino = destinoCB.getItemAt(destinoCB.getSelectedIndex());
+        hora1 = horaCB.getItemAt(horaCB.getSelectedIndex());
+        puestos = noPuestosCB.getItemAt(noPuestosCB.getSelectedIndex());
+        ReservationResumen rResumen = new ReservationResumen(lugarOrigen, lugarDestino, hora1, lugarDestino, hora1);
         this.setVisible(false);
         rResumen.setLocationRelativeTo(this);
         rResumen.setVisible(true);
@@ -259,7 +285,7 @@ public class Reservation extends javax.swing.JFrame {
     private javax.swing.JLabel idaVuelta;
     private javax.swing.JCheckBox idaVueltaCB;
     private javax.swing.JLabel noPuestos;
-    private javax.swing.JComboBox<String> noPuestosCB;
+    private javax.swing.JComboBox<Integer> noPuestosCB;
     private javax.swing.JLabel origen;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel pesoEquipaje;
@@ -267,23 +293,31 @@ public class Reservation extends javax.swing.JFrame {
     private javax.swing.JButton siguiente;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
+
+    
+    
    
     //Variables
-//    String lugarOrigen = OrigenCB.getItemAt(0);
-//    String lugarDestino = destinoCB.getItemAt(0);
-//    String hora1 = horaCB.getItemAt(0);
-//    String puestos = noPuestosCB.getItemAt(0); 
     
-    boolean idayVuelta(){
-        return esIdaVuelta;
-    }
-    
-   
-    
-    public boolean equipaje(){
-        return esEquipaje;
+
+    public String getLugarOrigen() {
+        return lugarOrigen;
     }
 
+    public String getLugarDestino() {
+        return lugarDestino;
+    }
+
+    public String getHora1() {
+        return hora1;
+    }
+
+    public int getPuestos() {
+        return puestos;
+    }
+    
+    
+    
     
     
 }

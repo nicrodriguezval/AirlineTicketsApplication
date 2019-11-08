@@ -5,18 +5,42 @@
  */
 package Frontera;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author lucas
  */
 public class ReservationResumen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ReservationResumen
-     */
+     String origen, destino, fechaSalida, fechaRegreso, idVuelo;
+    
     public ReservationResumen() {
         initComponents();
     }
+
+    public ReservationResumen(String origen, String destino, String fechaSalida, String fechaRegreso, String idVuelo) {
+        
+        this.origen = origen;
+        this.destino = destino;
+        this.fechaSalida = fechaSalida;
+        this.fechaRegreso = fechaRegreso;
+        this.idVuelo = idVuelo;
+        initComponents();
+        nombreTF.setText("Lucas");
+        docIDTF.setText("1234567");
+        origenTF.setText(origen);
+        destinoTF.setText(destino);
+        salidaTF.setText(fechaSalida);
+        regresoTF.setText(fechaRegreso);
+        vueloTF.setText(idVuelo);
+        System.out.println("Print shit");        
+        
+    }
+    
+    
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,17 +51,178 @@ public class ReservationResumen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        nombrePasajero = new java.awt.Label();
+        label = new java.awt.Label();
+        docID1 = new java.awt.Label();
+        nombrePasajero1 = new java.awt.Label();
+        nombrePasajero2 = new java.awt.Label();
+        nombrePasajero3 = new java.awt.Label();
+        nombrePasajero4 = new java.awt.Label();
+        nombrePasajero5 = new java.awt.Label();
+        nombreTF = new javax.swing.JLabel();
+        docIDTF = new javax.swing.JLabel();
+        nReserva = new javax.swing.JLabel();
+        origenTF = new javax.swing.JLabel();
+        destinoTF = new javax.swing.JLabel();
+        salidaTF = new javax.swing.JLabel();
+        regresoTF = new javax.swing.JLabel();
+        vueloTF = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(java.awt.Color.white);
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jLabel1.setText("RESERVA");
+
+        nombrePasajero.setBackground(java.awt.Color.lightGray);
+        nombrePasajero.setText("Nombre pasajero:");
+
+        label.setBackground(java.awt.Color.lightGray);
+        label.setText("Doc. de Identidad:");
+
+        docID1.setBackground(java.awt.Color.lightGray);
+        docID1.setText("Número de Reserva:");
+
+        nombrePasajero1.setAlignment(java.awt.Label.CENTER);
+        nombrePasajero1.setBackground(java.awt.Color.lightGray);
+        nombrePasajero1.setText("Origen");
+
+        nombrePasajero2.setAlignment(java.awt.Label.CENTER);
+        nombrePasajero2.setBackground(java.awt.Color.lightGray);
+        nombrePasajero2.setText("Destino");
+
+        nombrePasajero3.setAlignment(java.awt.Label.CENTER);
+        nombrePasajero3.setBackground(java.awt.Color.lightGray);
+        nombrePasajero3.setText("Fecha Salida");
+
+        nombrePasajero4.setAlignment(java.awt.Label.CENTER);
+        nombrePasajero4.setBackground(java.awt.Color.lightGray);
+        nombrePasajero4.setText("Fecha Regreso");
+
+        nombrePasajero5.setAlignment(java.awt.Label.CENTER);
+        nombrePasajero5.setBackground(java.awt.Color.lightGray);
+        nombrePasajero5.setText("Vuelo");
+
+        nombreTF.setText("nombre");
+
+        docIDTF.setText("docID");
+
+        nReserva.setText("numero Reserva");
+
+        origenTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        origenTF.setText("Origen");
+
+        destinoTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        destinoTF.setText("destino");
+
+        salidaTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salidaTF.setText("salida");
+
+        regresoTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresoTF.setText("regreso");
+
+        vueloTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vueloTF.setText("vuelo");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(docIDTF)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombrePasajero1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(origenTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombrePasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(destinoTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombrePasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salidaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nombrePasajero4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombrePasajero5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(regresoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(vueloTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(docID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nReserva)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombrePasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreTF))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docIDTF))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(docID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombrePasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombrePasajero4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombrePasajero5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(regresoTF)
+                                    .addComponent(vueloTF)))
+                            .addComponent(nombrePasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nombrePasajero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(origenTF)
+                                    .addComponent(destinoTF)
+                                    .addComponent(salidaTF)))))
+                    .addComponent(nReserva))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -45,7 +230,27 @@ public class ReservationResumen extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel destinoTF;
+    private java.awt.Label docID1;
+    private javax.swing.JLabel docIDTF;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private java.awt.Label label;
+    private javax.swing.JLabel nReserva;
+    private java.awt.Label nombrePasajero;
+    private java.awt.Label nombrePasajero1;
+    private java.awt.Label nombrePasajero2;
+    private java.awt.Label nombrePasajero3;
+    private java.awt.Label nombrePasajero4;
+    private java.awt.Label nombrePasajero5;
+    private javax.swing.JLabel nombreTF;
+    private javax.swing.JLabel origenTF;
+    private javax.swing.JLabel regresoTF;
+    private javax.swing.JLabel salidaTF;
+    private javax.swing.JLabel vueloTF;
     // End of variables declaration//GEN-END:variables
 
-    Reservation res = new Reservation();
+    
+
+    
 }
