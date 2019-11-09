@@ -6,6 +6,7 @@
 package Frontera;
 
 import Control.ValidarLogin;
+import DAO.UsuarioDAO;
 import Entidad.Usuario;
 import java.awt.Color;
 
@@ -15,7 +16,7 @@ import java.awt.Color;
  */
 public class Login extends javax.swing.JFrame {
     public static Usuario user;
-
+    
     /**
      * Creates new form NewJFrame
      */

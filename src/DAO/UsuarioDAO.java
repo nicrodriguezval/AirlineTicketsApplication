@@ -3,86 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidad;
-
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-/**
- *
- * @author nicro
- */
-
-@Entity
-@Table(name="usuarios")
-public class Usuario implements Serializable{
-    private String nombre, apellido, username, email, password;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    public Usuario() {
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}
-/*
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- 
 package DAO;
 
 import Entidad.Usuario;
@@ -95,7 +15,7 @@ import javax.persistence.Query;
 /**
  *
  * @author Miguel Alejandro
-
+ */
 public class UsuarioDAO {
     
     private static EntityManagerFactory
@@ -107,7 +27,7 @@ public class UsuarioDAO {
         em.getTransaction().begin();
         try {
             em.persist(object);
-            em.getTransaction().begin();
+            em.getTransaction().commit();
         } catch(Exception e){
             e.printStackTrace();
             em.getTransaction().rollback();
@@ -133,19 +53,15 @@ public class UsuarioDAO {
         }
     }
     
+
+    
     public Usuario leer(Usuario par){
         EntityManager em = emf.createEntityManager();
         Usuario usuario = null;
-        Query q = em.createQuery("SELECT u FROM Ususario u " +
-                "WHERE u.nombre LIKE :nombre" +
-                " AND u.apellido LIKE :apellido" +
-                " AND u.username LIKE :username" +
-                " AND u.email LIKE :email" +
+        Query q = em.createQuery("SELECT u FROM Usuario u " +
+                "WHERE u.username LIKE :username" + 
                 " AND u.password LIKE :password")
-                .setParameter("nombre", par.getNombre())
-                .setParameter("apellido",par.getApellido())
                 .setParameter("username",par.getUsername())
-                .setParameter("email", par.getEmail())
                 .setParameter("password",par.getPassword());
         try{
             usuario = (Usuario) q.getSingleResult();
@@ -158,15 +74,13 @@ public class UsuarioDAO {
             return usuario;
         }
     }
-    
-        public Usuario leerusername(Usuario par){
+        
+        public Usuario leerusername(String username){
         EntityManager em = emf.createEntityManager();
         Usuario usuario = null;
         Query q = em.createQuery("SELECT u FROM Ususario u " +
-                "WHERE u.username LIKE :username" + 
-                " AND u.password LIKE :password")
-                .setParameter("username",par.getUsername())
-                .setParameter("password",par.getPassword());
+                "WHERE u.username LIKE :username")
+                .setParameter("username",username);
         try{
             usuario = (Usuario) q.getSingleResult();
         } catch(NonUniqueResultException e){
@@ -200,5 +114,3 @@ public class UsuarioDAO {
         }
     }
 }
-
-*/

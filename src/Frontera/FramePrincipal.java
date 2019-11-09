@@ -178,41 +178,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
     
     public void inicializacion() {
-        Usuario a = new Usuario();
-        Usuario b = new Usuario();
-        Usuario c = new Usuario();
-        
-        a.setNombre("Nicolás");
-        a.setApellido("Rodríguez");
-        a.setEmail("nicrodriguezval@unal.edu.co");
-        a.setUsername("nicrodriguezval");
-        a.setPassword("123123");
-        
-        b.setNombre("Lucas");
-        b.setApellido("Peña");
-        b.setEmail("lucas@gmail.com");
-        b.setUsername("lucasps");
-        b.setPassword("123456");
-        
-        c.setNombre("Juan");
-        c.setApellido("Tovar");
-        c.setEmail("juancho@hotmail.com");
-        c.setUsername("juancho01");
-        c.setPassword("a1b2c3");
-        
-        sistema.addUsuarios(a);
-        sistema.addUsuarios(b);
-        sistema.addUsuarios(c);
-        
-        System.out.println("USUARIOS EXISTENTES");
-        System.out.println();
-        
-        for(Usuario u : sistema.getUsuarios()) {
-            System.out.println("Nombre(s): " + u.getNombre());
-            System.out.println("Apellido(s): " + u.getApellido());
-            System.out.println("Username: " + u.getUsername());
-            System.out.println("-------");
-        }
+       // INICIALIZACIÓN DE USUARIOS MOVIDA A Test Packages.Control.Inicializacion.java
         
         CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "656412345874569");
         CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");

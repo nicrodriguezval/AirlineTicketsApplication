@@ -6,7 +6,8 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
+import DAO.UsuarioDAO;
 import static Frontera.Login.user;
 
 /**
@@ -14,6 +15,8 @@ import static Frontera.Login.user;
  * @author nicro
  */
 public class ValidarLogin {
+    
+    private UsuarioDAO dao = new UsuarioDAO();
     
     public ValidarLogin() {
     }
@@ -47,37 +50,51 @@ public class ValidarLogin {
 
     
     public boolean cuentaExistente(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)){
                 return true;                    
             }
+        }*/
+        if(dao.leerusername(username) != null){
+            return true;
         }
         return false;
     }
     
     public boolean verificarContrasenia(String username, String password){
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
                 return true;                    
             }
+        }*/
+        Usuario u = new Usuario();
+        u.setUsername(username);
+        u.setPassword(password);
+        if(dao.leer(u) != null){
+            return true;
         }
         return false;
     }
 
        public String setName(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)){
                 return u.getNombre();
             }
+        }*/
+        if(dao.leerusername(username)!= null){
+            return dao.leerusername(username).getNombre();
         }
         return null;
        }
     
     public Usuario findUsuario(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)) return u;
+        }*/
+        if(dao.leerusername(username) != null){
+            return dao.leerusername(username);
         }
-        
         return null;
     }
 }
