@@ -113,7 +113,7 @@ public class TestLogin {
     @Test
     public void testCuentaExistente(){
     Usuario u = new Usuario();
-    u.setUsername("miapenahu");
+    u.setUsername("juanandres");
     u.setPassword("abcdefg");
     assertEquals(DATA_ERROR,validarLogin.verificarLogin(u));
 
@@ -142,9 +142,9 @@ public class TestLogin {
     u.setNombre("Nicolás");
     assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
 
-    u.setUsername("gillermoP");
-    u.setPassword("121212");
-    u.setNombre("Guillermo");
+    u.setUsername("miapenahu");
+    u.setPassword("Abcd1234");
+    u.setNombre("Miguel");
     assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
     }
 }
