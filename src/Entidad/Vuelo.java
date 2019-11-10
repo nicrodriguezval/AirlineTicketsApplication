@@ -10,16 +10,27 @@ package Entidad;
  * @author nicro
  */
 public class Vuelo {
-    private String origen, destino, hora;
-    private int sillasDisponibles;
+    private String origen, destino, hora, fecha;
+    private int sillasTotales, id;
+    private boolean sillasDisponibles[];
 
-    public Vuelo(String origen, String destino, String hora, int sillasDisponibles) {
+    public Vuelo(int id, String origen, String destino, String fecha, String hora) {
+        this.id = id;
         this.origen = origen;
         this.destino = destino;
+        this.fecha = fecha;
         this.hora = hora;
-        this.sillasDisponibles = sillasDisponibles;
+        sillasDisponibles = new boolean[sillasTotales];
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getOrigen() {
         return origen;
     }
@@ -44,11 +55,27 @@ public class Vuelo {
         this.hora = hora;
     }
 
-    public int getSillasDisponibles() {
+    public int getSillasTotales() {
+        return sillasTotales;
+    }
+
+    public void setSillasTotales(int sillasTotales) {
+        this.sillasTotales = sillasTotales;
+    }
+
+    public boolean[] getSillasDisponibles() {
         return sillasDisponibles;
     }
 
-    public void setSillasDisponibles(int sillasDisponibles) {
+    public void setSillasDisponibles(boolean[] sillasDisponibles) {
         this.sillasDisponibles = sillasDisponibles;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
  }

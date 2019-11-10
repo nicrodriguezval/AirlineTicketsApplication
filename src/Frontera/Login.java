@@ -158,10 +158,10 @@ public class Login extends javax.swing.JFrame {
         } else if(resultado.equals("Contraseña incorrecta. Escríbala nuevamente")){
             aviso.setText("Contraseña incorrecta. Escríbala nuevamente");
         } else {
-            MenuInicial menu = new MenuInicial();
+            Welcome welcome = new Welcome();
             this.setVisible(false);
-            menu.setLocationRelativeTo(this);
-            menu.setVisible(true);
+            welcome.setLocationRelativeTo(this);
+            welcome.setVisible(true);
         }
     }//GEN-LAST:event_aceptarBActionPerformed
 

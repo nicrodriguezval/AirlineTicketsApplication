@@ -10,7 +10,8 @@ package Entidad;
  * @author nicro
  */
 public class Reserva {
-    private Vuelo vuelo;
+    private int id;
+    private Vuelo vueloIda, vueloVuelta;
     private boolean equipaje, idaVuelta;
     private String categoria;
     private int peso, numeroPuestos;
@@ -19,9 +20,14 @@ public class Reserva {
                                                             cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
                                                             el precio está dado en USD para más comodidad con la cantidad de dígitos*/
     private Usuario usuario;
+    
+    private boolean equipajeVuelta;
+    private String categoriaVuelta;
+    private int pesoVuelta, numeroPuestosVuelta;
 
-    public Reserva(Vuelo vuelo, int numeroPuestos, boolean idaVuelta, boolean equipaje, String categoria, Usuario usuario) {
-        this.vuelo = vuelo;
+    public Reserva(int id, Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, String categoria, Usuario usuario) {
+        this.id = id;
+        this.vueloIda = vueloIda;
         this.equipaje = equipaje;
         this.idaVuelta = idaVuelta;
         this.categoria = categoria;
@@ -29,14 +35,23 @@ public class Reserva {
         this.numeroPuestos = numeroPuestos;
     }
 
-    public Vuelo getVuelo() {
-        return vuelo;
+    public Vuelo getVueloIda() {
+        return vueloIda;
     }
 
-    public void setVuelo(Vuelo vuelo) {
-        this.vuelo = vuelo;
+    public void setVueloIda(Vuelo vueloIda) {
+        this.vueloIda = vueloIda;
     }
 
+    public Vuelo getVueloVuelta() {
+        return vueloVuelta;
+    }
+
+    public void setVueloVuelta(Vuelo vueloVuelta) {
+        this.vueloVuelta = vueloVuelta;
+    }
+    
+    
     public int getNumeroPuestos() {
         return numeroPuestos;
     }
@@ -99,5 +114,37 @@ public class Reserva {
 
     public void setIva(double iva) {
         this.iva = iva;
+    }
+
+    public boolean isEquipajeVuelta() {
+        return equipajeVuelta;
+    }
+
+    public void setEquipajeVuelta(boolean equipajeVuelta) {
+        this.equipajeVuelta = equipajeVuelta;
+    }
+
+    public String getCategoriaVuelta() {
+        return categoriaVuelta;
+    }
+
+    public void setCategoriaVuelta(String categoriaVuelta) {
+        this.categoriaVuelta = categoriaVuelta;
+    }
+
+    public int getPesoVuelta() {
+        return pesoVuelta;
+    }
+
+    public void setPesoVuelta(int pesoVuelta) {
+        this.pesoVuelta = pesoVuelta;
+    }
+
+    public int getNumeroPuestosVuelta() {
+        return numeroPuestosVuelta;
+    }
+
+    public void setNumeroPuestosvuelta(int numeroPuestosVuelta) {
+        this.numeroPuestosVuelta = numeroPuestosVuelta;
     }
 }

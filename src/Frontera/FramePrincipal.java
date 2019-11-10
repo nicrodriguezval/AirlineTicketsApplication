@@ -18,6 +18,7 @@ import Entidad.Vuelo;
  */
 public class FramePrincipal extends javax.swing.JFrame {
     public static Sistema sistema = new Sistema();
+    public static int idVuelo = 0;
     
     /**
      * Creates new form FramePrincipal
@@ -235,23 +236,48 @@ public class FramePrincipal extends javax.swing.JFrame {
             System.out.println("-------");
         }
         
-        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "14:00", 300);
-        Vuelo v2 = new Vuelo("Bogotá", "Miami", "3:00", 400);
-        Vuelo v3 = new Vuelo("Cali", "Medellín", "9:00", 300);
+        Vuelo v1 = new Vuelo(idVuelo++, "Bogotá", "Medellín", "01/1/2020", "14:00");
+        Vuelo v2 = new Vuelo(idVuelo++, "Madrid", "Miami", "30/12/2019", "3:00");
+        Vuelo v3 = new Vuelo(idVuelo++, "Cali", "Bucaramanga", "01/12/2019", "9:00");
+        
+        v1.setId(0);
+        v2.setId(1);
+        v3.setId(2);
+        
+        v1.setSillasTotales(300);
+        v2.setSillasTotales(400);
+        v3.setSillasTotales(300);
+        
+        Vuelo v4 = new Vuelo(idVuelo++, "Medellín", "Bogotá", "05/1/2020", "12:00");
+        Vuelo v5 = new Vuelo(idVuelo++, "Miami", "Madrid", "15/1/2020", "5:00");
+        Vuelo v6 = new Vuelo(idVuelo++, "Bucaramanga", "Cali", "15/12/2019", "11:00");
+        
+        v4.setId(3);
+        v5.setId(4);
+        v6.setId(5);
+        
+        v4.setSillasTotales(400);
+        v5.setSillasTotales(500);
+        v6.setSillasTotales(200);
         
         sistema.addVuelos(v1);
         sistema.addVuelos(v2);
         sistema.addVuelos(v3);
+        sistema.addVuelos(v4);
+        sistema.addVuelos(v5);
+        sistema.addVuelos(v6);
         
         System.out.println();
         System.out.println("VUELOS DISPONIBLES");
         System.out.println();
         
         for(Vuelo v : sistema.getVuelos()) {
+            System.out.println("ID vuelo: " + v.getId());
             System.out.println("Ciudad de origen: " + v.getOrigen());
             System.out.println("Ciudad de destino: " + v.getDestino());
+            System.out.println("Fecha del vuelo: " + v.getFecha());
             System.out.println("Hora del vuelo: " + v.getHora());
-            System.out.println("Asientos disponibles: " + v.getSillasDisponibles());
+            System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
         }
     }
