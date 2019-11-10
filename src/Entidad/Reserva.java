@@ -25,15 +25,26 @@ public class Reserva {
     private String categoriaVuelta;
     private int pesoVuelta, numeroPuestosVuelta;
 
-    public Reserva(int id, Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, String categoria, Usuario usuario) {
+    public Reserva(int id, Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
         this.id = id;
         this.vueloIda = vueloIda;
         this.equipaje = equipaje;
         this.idaVuelta = idaVuelta;
+        this.peso = peso;
         this.categoria = categoria;
         this.usuario = usuario;
         this.numeroPuestos = numeroPuestos;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public Vuelo getVueloIda() {
         return vueloIda;

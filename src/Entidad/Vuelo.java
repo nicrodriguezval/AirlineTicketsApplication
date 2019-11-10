@@ -11,15 +11,19 @@ package Entidad;
  */
 public class Vuelo {
     private String origen, destino, hora, fecha;
-    private int sillasTotales, id;
+    private int sillasTotales, id; 
+    private double precioClaseTurista, precioClaseEjecutiva, precioPrimeraClase;
     private boolean sillasDisponibles[];
 
-    public Vuelo(int id, String origen, String destino, String fecha, String hora) {
+    public Vuelo(int id, String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase) {
         this.id = id;
         this.origen = origen;
         this.destino = destino;
         this.fecha = fecha;
         this.hora = hora;
+        this.precioClaseTurista = precioClaseTurista;
+        this.precioClaseEjecutiva = precioClaseEjecutiva;
+        this.precioPrimeraClase = precioPrimeraClase;
         sillasDisponibles = new boolean[sillasTotales];
     }
 
@@ -78,4 +82,30 @@ public class Vuelo {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public double getPrecioClaseTurista() {
+        return precioClaseTurista;
+    }
+
+    public void setPrecioClaseTurista(double precioClaseTurista) {
+        this.precioClaseTurista = precioClaseTurista;
+    }
+
+    public double getPrecioClaseEjecutiva() {
+        return precioClaseEjecutiva;
+    }
+
+    public void setPrecioClaseEjecutiva(double precioClaseEjecutiva) {
+        this.precioClaseEjecutiva = precioClaseEjecutiva;
+    }
+
+    public double getPrecioPrimeraClase() {
+        return precioPrimeraClase;
+    }
+
+    public void setPrecioPrimeraClase(double precioPrimeraClase) {
+        this.precioPrimeraClase = precioPrimeraClase;
+    }
+    
+    
  }
