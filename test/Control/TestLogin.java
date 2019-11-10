@@ -36,7 +36,7 @@ public class TestLogin {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {/*
         Usuario a = new Usuario();
         Usuario b = new Usuario();
         Usuario c = new Usuario();
@@ -71,7 +71,7 @@ public class TestLogin {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-        }
+        }*/
     }
     
     @AfterClass

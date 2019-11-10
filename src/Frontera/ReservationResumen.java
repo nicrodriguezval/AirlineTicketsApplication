@@ -5,6 +5,10 @@
  */
 package Frontera;
 
+import Entidad.Reserva;
+import Entidad.Vuelo;
+import static Frontera.FramePrincipal.sistema;
+import static Frontera.Login.user;
 import javax.swing.JTextField;
 
 /**
@@ -12,36 +16,38 @@ import javax.swing.JTextField;
  * @author lucas
  */
 public class ReservationResumen extends javax.swing.JFrame {
-
-     String origen, destino, fechaSalida, fechaRegreso, idVuelo;
+    public static int idReserva = 0;
+    int numeroReserva;
     
-    public ReservationResumen() {
-        initComponents();
-    }
-
-    public ReservationResumen(String origen, String destino, String fechaSalida, String fechaRegreso, String idVuelo) {
-        
-        this.origen = origen;
-        this.destino = destino;
-        this.fechaSalida = fechaSalida;
-        this.fechaRegreso = fechaRegreso;
-        this.idVuelo = idVuelo;
-        initComponents();
-        nombreTF.setText("Lucas");
-        docIDTF.setText("1234567");
-        origenTF.setText(origen);
-        destinoTF.setText(destino);
-        salidaTF.setText(fechaSalida);
-        regresoTF.setText(fechaRegreso);
-        vueloTF.setText(idVuelo);
-        System.out.println("Print shit");        
-        
-    }
+    private String origen, destino, fechaSalida, horaSalida, categoria, peso1;
+    private boolean isIdaVuelta, isEquipaje;
+    int puestosReservados, peso;
+    private Vuelo vueloIda;
     
-    
+    private String categoriaVuelta, peso1Vuelta;
+    private boolean isEquipajeVuelta;
+    int puestosReservadosVuelta, pesoVuelta;
+    private Vuelo vueloVuelta1;
    
+    public ReservationResumen(int numeroReserva, Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
+        this.numeroReserva = numeroReserva;
+        this.vueloIda = vueloIda;
+        this.origen = vueloIda.getOrigen();
+        this.puestosReservados = puestosReservados;
+        this.destino = vueloIda.getDestino();
+        this.fechaSalida = vueloIda.getFecha();
+        this.horaSalida = vueloIda.getHora();
+        this.categoria = categoria;
+        this.isIdaVuelta = isIdaVuelta;    
+        this.isEquipaje = isEquipaje;
+        this.peso = peso;
+        this.peso1 = peso1;
+        
+        initComponents();
+        configuracionInicial();
+        this.setTitle("Airline Tickets Application");
+    }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,23 +60,56 @@ public class ReservationResumen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nombrePasajero = new java.awt.Label();
-        label = new java.awt.Label();
-        docID1 = new java.awt.Label();
-        nombrePasajero1 = new java.awt.Label();
-        nombrePasajero2 = new java.awt.Label();
-        nombrePasajero3 = new java.awt.Label();
-        nombrePasajero4 = new java.awt.Label();
-        nombrePasajero5 = new java.awt.Label();
-        nombreTF = new javax.swing.JLabel();
-        docIDTF = new javax.swing.JLabel();
-        nReserva = new javax.swing.JLabel();
-        origenTF = new javax.swing.JLabel();
-        destinoTF = new javax.swing.JLabel();
-        salidaTF = new javax.swing.JLabel();
-        regresoTF = new javax.swing.JLabel();
-        vueloTF = new javax.swing.JLabel();
+        docIdentidadT = new java.awt.Label();
+        numeroReservaT = new java.awt.Label();
+        nombreL = new javax.swing.JLabel();
+        docIDL = new javax.swing.JLabel();
+        nReservaL = new javax.swing.JLabel();
+        confirmarB = new javax.swing.JButton();
+        volverB = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        origenT = new java.awt.Label();
+        destinoT = new java.awt.Label();
+        fechaSalidaT = new java.awt.Label();
+        horaSalidaT = new java.awt.Label();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        IDVueloT = new java.awt.Label();
+        origenL = new javax.swing.JLabel();
+        destinoL = new javax.swing.JLabel();
+        fechaSalidaL = new javax.swing.JLabel();
+        horaSalidaL = new javax.swing.JLabel();
+        vueloL = new javax.swing.JLabel();
+        equipajeL = new javax.swing.JLabel();
+        pesoEquipajeL = new javax.swing.JLabel();
+        categoriaT = new java.awt.Label();
+        categoriaL = new javax.swing.JLabel();
+        noPuestosT = new java.awt.Label();
+        noPuestosL = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        origenVueltaT = new java.awt.Label();
+        destinoVueltaT = new java.awt.Label();
+        fechaVueltaT = new java.awt.Label();
+        horaVuelta = new java.awt.Label();
+        label3 = new java.awt.Label();
+        label4 = new java.awt.Label();
+        vueloVuelta = new java.awt.Label();
+        origenVueltaL = new javax.swing.JLabel();
+        destinoVueltaL = new javax.swing.JLabel();
+        fechaVueltaL = new javax.swing.JLabel();
+        horaVueltaL = new javax.swing.JLabel();
+        vueloVueltaL = new javax.swing.JLabel();
+        equipajeVueltaL = new javax.swing.JLabel();
+        pesoEquipajeVueltaL = new javax.swing.JLabel();
+        categoriaVueltaT = new java.awt.Label();
+        categoriaVueltaL = new javax.swing.JLabel();
+        noPuestosVueltaT = new java.awt.Label();
+        noPuestosVueltaL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
 
@@ -80,97 +119,368 @@ public class ReservationResumen extends javax.swing.JFrame {
         nombrePasajero.setBackground(java.awt.Color.lightGray);
         nombrePasajero.setText("Nombre pasajero:");
 
-        label.setBackground(java.awt.Color.lightGray);
-        label.setText("Doc. de Identidad:");
+        docIdentidadT.setBackground(java.awt.Color.lightGray);
+        docIdentidadT.setText("Doc. de Identidad:");
 
-        docID1.setBackground(java.awt.Color.lightGray);
-        docID1.setText("Número de Reserva:");
+        numeroReservaT.setBackground(java.awt.Color.lightGray);
+        numeroReservaT.setText("Número de Reserva:");
 
-        nombrePasajero1.setAlignment(java.awt.Label.CENTER);
-        nombrePasajero1.setBackground(java.awt.Color.lightGray);
-        nombrePasajero1.setText("Origen");
+        nombreL.setText("nombre");
 
-        nombrePasajero2.setAlignment(java.awt.Label.CENTER);
-        nombrePasajero2.setBackground(java.awt.Color.lightGray);
-        nombrePasajero2.setText("Destino");
+        docIDL.setText("docID");
 
-        nombrePasajero3.setAlignment(java.awt.Label.CENTER);
-        nombrePasajero3.setBackground(java.awt.Color.lightGray);
-        nombrePasajero3.setText("Fecha Salida");
+        nReservaL.setText("numero Reserva");
 
-        nombrePasajero4.setAlignment(java.awt.Label.CENTER);
-        nombrePasajero4.setBackground(java.awt.Color.lightGray);
-        nombrePasajero4.setText("Fecha Regreso");
+        confirmarB.setText("Confirmar");
+        confirmarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarBActionPerformed(evt);
+            }
+        });
 
-        nombrePasajero5.setAlignment(java.awt.Label.CENTER);
-        nombrePasajero5.setBackground(java.awt.Color.lightGray);
-        nombrePasajero5.setText("Vuelo");
+        volverB.setText("Volver");
+        volverB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverBActionPerformed(evt);
+            }
+        });
 
-        nombreTF.setText("nombre");
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
-        docIDTF.setText("docID");
+        origenT.setAlignment(java.awt.Label.CENTER);
+        origenT.setBackground(java.awt.Color.lightGray);
+        origenT.setText("Origen");
 
-        nReserva.setText("numero Reserva");
+        destinoT.setAlignment(java.awt.Label.CENTER);
+        destinoT.setBackground(java.awt.Color.lightGray);
+        destinoT.setText("Destino");
 
-        origenTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        origenTF.setText("Origen");
+        fechaSalidaT.setAlignment(java.awt.Label.CENTER);
+        fechaSalidaT.setBackground(java.awt.Color.lightGray);
+        fechaSalidaT.setText("Fecha");
 
-        destinoTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        destinoTF.setText("destino");
+        horaSalidaT.setAlignment(java.awt.Label.CENTER);
+        horaSalidaT.setBackground(java.awt.Color.lightGray);
+        horaSalidaT.setText("Hora");
 
-        salidaTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        salidaTF.setText("salida");
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setBackground(java.awt.Color.lightGray);
+        label1.setText("Equipaje");
 
-        regresoTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regresoTF.setText("regreso");
+        label2.setAlignment(java.awt.Label.CENTER);
+        label2.setBackground(java.awt.Color.lightGray);
+        label2.setText("Peso Equipaje");
 
-        vueloTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        vueloTF.setText("vuelo");
+        IDVueloT.setAlignment(java.awt.Label.CENTER);
+        IDVueloT.setBackground(java.awt.Color.lightGray);
+        IDVueloT.setText("Vuelo");
+
+        origenL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        origenL.setText("Origen");
+
+        destinoL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        destinoL.setText("Destino");
+
+        fechaSalidaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fechaSalidaL.setText("Fecha");
+
+        horaSalidaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        horaSalidaL.setText("Hora");
+
+        vueloL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vueloL.setText("Vuelo");
+
+        equipajeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equipajeL.setText("Equipaje");
+
+        pesoEquipajeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pesoEquipajeL.setText("Peso equipaje");
+
+        categoriaT.setAlignment(java.awt.Label.CENTER);
+        categoriaT.setBackground(java.awt.Color.lightGray);
+        categoriaT.setText("Categoría");
+
+        categoriaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        categoriaL.setText("Categoría");
+
+        noPuestosT.setAlignment(java.awt.Label.CENTER);
+        noPuestosT.setBackground(java.awt.Color.lightGray);
+        noPuestosT.setText("No. puestos");
+
+        noPuestosL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noPuestosL.setText("No. Puestos");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(origenT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(destinoT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(origenL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(destinoL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(noPuestosT, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(noPuestosL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaSalidaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaSalidaT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(horaSalidaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horaSalidaT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(categoriaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(categoriaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(equipajeL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pesoEquipajeL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vueloL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDVueloT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(IDVueloT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horaSalidaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaSalidaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(destinoT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(origenT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noPuestosT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(origenL)
+                    .addComponent(destinoL)
+                    .addComponent(fechaSalidaL)
+                    .addComponent(horaSalidaL)
+                    .addComponent(vueloL)
+                    .addComponent(equipajeL)
+                    .addComponent(pesoEquipajeL)
+                    .addComponent(categoriaL)
+                    .addComponent(noPuestosL))
+                .addContainerGap())
+        );
+
+        horaSalidaT.getAccessibleContext().setAccessibleName("");
+        fechaSalidaL.getAccessibleContext().setAccessibleName("Fecha");
+
+        jTabbedPane1.addTab("Vuelo Ida", jPanel2);
+
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
+        origenVueltaT.setAlignment(java.awt.Label.CENTER);
+        origenVueltaT.setBackground(java.awt.Color.lightGray);
+        origenVueltaT.setText("Origen");
+
+        destinoVueltaT.setAlignment(java.awt.Label.CENTER);
+        destinoVueltaT.setBackground(java.awt.Color.lightGray);
+        destinoVueltaT.setText("Destino");
+
+        fechaVueltaT.setAlignment(java.awt.Label.CENTER);
+        fechaVueltaT.setBackground(java.awt.Color.lightGray);
+        fechaVueltaT.setText("Fecha");
+
+        horaVuelta.setAlignment(java.awt.Label.CENTER);
+        horaVuelta.setBackground(java.awt.Color.lightGray);
+        horaVuelta.setText("Hora");
+
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setBackground(java.awt.Color.lightGray);
+        label3.setText("Equipaje");
+
+        label4.setAlignment(java.awt.Label.CENTER);
+        label4.setBackground(java.awt.Color.lightGray);
+        label4.setText("Peso Equipaje");
+
+        vueloVuelta.setAlignment(java.awt.Label.CENTER);
+        vueloVuelta.setBackground(java.awt.Color.lightGray);
+        vueloVuelta.setText("Vuelo");
+
+        origenVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        origenVueltaL.setText("Ninguno");
+
+        destinoVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        destinoVueltaL.setText("Ninguno");
+
+        fechaVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fechaVueltaL.setText("Ninguna");
+
+        horaVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        horaVueltaL.setText("Ninguna");
+
+        vueloVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vueloVueltaL.setText("Ninguno");
+
+        equipajeVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equipajeVueltaL.setText("Ninguno");
+
+        pesoEquipajeVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pesoEquipajeVueltaL.setText("Ninguno");
+
+        categoriaVueltaT.setAlignment(java.awt.Label.CENTER);
+        categoriaVueltaT.setBackground(java.awt.Color.lightGray);
+        categoriaVueltaT.setText("Categoría");
+
+        categoriaVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        categoriaVueltaL.setText("Ninguna");
+
+        noPuestosVueltaT.setAlignment(java.awt.Label.CENTER);
+        noPuestosVueltaT.setBackground(java.awt.Color.lightGray);
+        noPuestosVueltaT.setText("No. Puestos");
+
+        noPuestosVueltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noPuestosVueltaL.setText("Ninguno");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(origenVueltaL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(origenVueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(destinoVueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(destinoVueltaL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(noPuestosVueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(noPuestosVueltaL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(fechaVueltaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(horaVueltaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horaVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(categoriaVueltaL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(categoriaVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vueloVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(equipajeVueltaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pesoEquipajeVueltaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(vueloVueltaL, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(323, 323, 323))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(categoriaVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(categoriaVueltaL))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(vueloVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(horaVuelta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(destinoVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(origenVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(noPuestosVueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(origenVueltaL)
+                            .addComponent(destinoVueltaL)
+                            .addComponent(fechaVueltaL)
+                            .addComponent(horaVueltaL)
+                            .addComponent(vueloVueltaL)
+                            .addComponent(equipajeVueltaL)
+                            .addComponent(pesoEquipajeVueltaL)
+                            .addComponent(noPuestosVueltaL))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Vuelo Vuelta", jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverB, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmarB, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(docIDTF)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombrePasajero1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(origenTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombrePasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(destinoTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nombrePasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salidaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nombrePasajero4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(numeroReservaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(docIdentidadT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombrePasajero5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(regresoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vueloTF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreL, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(docIDL)
+                                    .addComponent(nReservaL)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(docID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nReserva)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,77 +490,212 @@ public class ReservationResumen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombrePasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreTF))
+                    .addComponent(nombreL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(docIDTF))
+                    .addComponent(docIdentidadT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docIDL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(docID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombrePasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombrePasajero4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombrePasajero5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(regresoTF)
-                                    .addComponent(vueloTF)))
-                            .addComponent(nombrePasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nombrePasajero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(origenTF)
-                                    .addComponent(destinoTF)
-                                    .addComponent(salidaTF)))))
-                    .addComponent(nReserva))
-                .addContainerGap(81, Short.MAX_VALUE))
+                    .addComponent(numeroReservaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nReservaL))
+                .addGap(33, 33, 33)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmarB)
+                    .addComponent(volverB))
+                .addGap(33, 33, 33))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void confirmarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBActionPerformed
+        // TODO add your handling code here:
+        Reserva reserva = new Reserva(idReserva++, vueloIda, puestosReservados, isIdaVuelta, isEquipaje, categoria, user);
+        if(isEquipaje)
+                reserva.setPesoVuelta(peso);
+        reserva.setNumeroPuestos(puestosReservados);
+        
+        if(isIdaVuelta) {
+            reserva.setVueloVuelta(vueloVuelta1);
+            reserva.setEquipajeVuelta(isEquipajeVuelta);
+            reserva.setCategoriaVuelta(categoriaVuelta);
+            if(isEquipajeVuelta)
+                reserva.setPesoVuelta(pesoVuelta);
+            reserva.setNumeroPuestosvuelta(puestosReservadosVuelta);
+            
+        }
+            
+        sistema.addReservas(reserva);
+        
+        MenuInicial menu = new MenuInicial();
+        this.setVisible(false);
+        menu.setLocationRelativeTo(this);
+        menu.setVisible(true);
+    }//GEN-LAST:event_confirmarBActionPerformed
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        if(isIdaVuelta) {
+            origenVueltaL.setText(destino);
+            destinoVueltaL.setText(origen);
+            fechaVueltaL.setText(vueloVuelta1.getFecha());
+            horaVueltaL.setText(vueloVuelta1.getHora());
+            categoriaVueltaL.setText(categoriaVuelta);
+            String resultado2;
+            if(isEquipajeVuelta) resultado2 = "Sí";
+            else resultado2 = "No";
+            noPuestosVueltaL.setText(("" + puestosReservadosVuelta));
+            equipajeVueltaL.setText(resultado2);
+            pesoEquipajeVueltaL.setText(peso1Vuelta);
+            vueloVueltaL.setText(("" + vueloVuelta1.getId()));
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void volverBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverBActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        if(isIdaVuelta) {
+            reservationVuelta reservacion = new reservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
+            reservacion.setLocationRelativeTo(this);
+            reservacion.setVisible(true);
+        }
+        
+        else {
+            ReservationIda reservacion = new ReservationIda();
+            reservacion.setLocationRelativeTo(this);
+            reservacion.setVisible(true);
+        }
+    }//GEN-LAST:event_volverBActionPerformed
+    
+    private void configuracionInicial() {
+        nombreL.setText(user.getNombre());
+        nReservaL.setText(("" + numeroReserva));
+        docIDL.setText("101010");
+        origenL.setText(origen);
+        destinoL.setText(destino);
+        noPuestosL.setText(("" + puestosReservados));
+        fechaSalidaL.setText(fechaSalida);
+        horaSalidaL.setText(horaSalida);
+        categoriaL.setText(categoria);
+        String resultado1;
+        if(isEquipaje) resultado1 = "Sí";
+        else resultado1 = "No";
+        equipajeL.setText(resultado1);
+        pesoEquipajeL.setText(peso1);
+        vueloL.setText(("" + vueloIda.getId()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel destinoTF;
-    private java.awt.Label docID1;
-    private javax.swing.JLabel docIDTF;
+    private java.awt.Label IDVueloT;
+    private javax.swing.JLabel categoriaL;
+    private java.awt.Label categoriaT;
+    private javax.swing.JLabel categoriaVueltaL;
+    private java.awt.Label categoriaVueltaT;
+    private javax.swing.JButton confirmarB;
+    private javax.swing.JLabel destinoL;
+    private java.awt.Label destinoT;
+    private javax.swing.JLabel destinoVueltaL;
+    private java.awt.Label destinoVueltaT;
+    private javax.swing.JLabel docIDL;
+    private java.awt.Label docIdentidadT;
+    private javax.swing.JLabel equipajeL;
+    private javax.swing.JLabel equipajeVueltaL;
+    private javax.swing.JLabel fechaSalidaL;
+    private java.awt.Label fechaSalidaT;
+    private javax.swing.JLabel fechaVueltaL;
+    private java.awt.Label fechaVueltaT;
+    private javax.swing.JLabel horaSalidaL;
+    private java.awt.Label horaSalidaT;
+    private java.awt.Label horaVuelta;
+    private javax.swing.JLabel horaVueltaL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private java.awt.Label label;
-    private javax.swing.JLabel nReserva;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
+    private javax.swing.JLabel nReservaL;
+    private javax.swing.JLabel noPuestosL;
+    private java.awt.Label noPuestosT;
+    private javax.swing.JLabel noPuestosVueltaL;
+    private java.awt.Label noPuestosVueltaT;
+    private javax.swing.JLabel nombreL;
     private java.awt.Label nombrePasajero;
-    private java.awt.Label nombrePasajero1;
-    private java.awt.Label nombrePasajero2;
-    private java.awt.Label nombrePasajero3;
-    private java.awt.Label nombrePasajero4;
-    private java.awt.Label nombrePasajero5;
-    private javax.swing.JLabel nombreTF;
-    private javax.swing.JLabel origenTF;
-    private javax.swing.JLabel regresoTF;
-    private javax.swing.JLabel salidaTF;
-    private javax.swing.JLabel vueloTF;
+    private java.awt.Label numeroReservaT;
+    private javax.swing.JLabel origenL;
+    private java.awt.Label origenT;
+    private javax.swing.JLabel origenVueltaL;
+    private java.awt.Label origenVueltaT;
+    private javax.swing.JLabel pesoEquipajeL;
+    private javax.swing.JLabel pesoEquipajeVueltaL;
+    private javax.swing.JButton volverB;
+    private javax.swing.JLabel vueloL;
+    private java.awt.Label vueloVuelta;
+    private javax.swing.JLabel vueloVueltaL;
     // End of variables declaration//GEN-END:variables
 
-    
+    public String getCategoriaVuelta() {
+        return categoriaVuelta;
+    }
 
+    public void setCategoriaVuelta(String categoriaVuelta) {
+        this.categoriaVuelta = categoriaVuelta;
+    }
+
+    public boolean isIsEquipajeVuelta() {
+        return isEquipajeVuelta;
+    }
+
+    public void setIsEquipajeVuelta(boolean isEquipajeVuelta) {
+        this.isEquipajeVuelta = isEquipajeVuelta;
+    }
+
+    public int getPuestosReservadosVuelta() {
+        return puestosReservadosVuelta;
+    }
+
+    public void setPuestosReservadosVuelta(int puestosReservadosVuelta) {
+        this.puestosReservadosVuelta = puestosReservadosVuelta;
+    }
+
+    public int getPesoVuelta() {
+        return pesoVuelta;
+    }
+
+    public void setPesoVuelta(int pesoVuelta) {
+        this.pesoVuelta = pesoVuelta;
+    }
+
+    public String getPeso1Vuelta() {
+        return peso1Vuelta;
+    }
+
+    public void setPeso1vuelta(String peso1Vuelta) {
+        this.peso1Vuelta = peso1Vuelta;
+    }
     
+    public Vuelo getVueloVuelta1() {
+        return vueloVuelta1;
+    }
+
+    public void setVueloVuelta1(Vuelo vueloVuelta1) {
+        this.vueloVuelta1 = vueloVuelta1;
+    }
 }

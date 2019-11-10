@@ -3,6 +3,10 @@
   <persistence-unit name="AirlineApp_JPAPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entidad.Usuario</class>
+    <class>Entidad.Ticket</class>
+    <class>Entidad.Vuelo</class>
+    <class>Entidad.Reserva</class>
+    <class>Entidad.CreditCard</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/AirlineApp_JPA"/>
       <property name="javax.persistence.jdbc.user" value="AirlineApp"/>

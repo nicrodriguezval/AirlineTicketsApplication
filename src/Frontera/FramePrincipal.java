@@ -18,13 +18,14 @@ import Entidad.Vuelo;
  */
 public class FramePrincipal extends javax.swing.JFrame {
     public static Sistema sistema = new Sistema();
+    public static int idVuelo = 0;
     
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
-        inicializacion();
+        //inicializacion();
         this.setLocationRelativeTo(null);
         this.setTitle("Airline Tickets Application");
     }
@@ -177,50 +178,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
     }
     
-    public void inicializacion() {
+ /*   public void inicializacion() {
        // INICIALIZACIÓN DE USUARIOS MOVIDA A Test Packages.Control.Inicializacion.java
-        
-        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "656412345874569");
-        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
-        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
-        
-        sistema.addTarjetas(t1);
-        sistema.addTarjetas(t2);
-        sistema.addTarjetas(t3);
-        
-        System.out.println();
-        System.out.println("TARJETAS DE CRÉDITO EXISTENTES");
-        System.out.println();
-        
-        for(CreditCard t : sistema.getTarjetas()) {
-            System.out.println("Nombre del banco: " + t.getNombreBanco());
-            System.out.println("Nombre del titular: " + t.getNombreTitular());
-            System.out.println("Numero de la tarjeta: " + t.getNumeroTarjeta());
-            System.out.println("Marca internacional: " + t.getMarcaInternacional());
-            System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
-            System.out.println("-------");
-        }
-        
-        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "14:00", 300);
-        Vuelo v2 = new Vuelo("Bogotá", "Miami", "3:00", 400);
-        Vuelo v3 = new Vuelo("Cali", "Medellín", "9:00", 300);
-        
-        sistema.addVuelos(v1);
-        sistema.addVuelos(v2);
-        sistema.addVuelos(v3);
-        
-        System.out.println();
-        System.out.println("VUELOS DISPONIBLES");
-        System.out.println();
-        
-        for(Vuelo v : sistema.getVuelos()) {
-            System.out.println("Ciudad de origen: " + v.getOrigen());
-            System.out.println("Ciudad de destino: " + v.getDestino());
-            System.out.println("Hora del vuelo: " + v.getHora());
-            System.out.println("Asientos disponibles: " + v.getSillasDisponibles());
-            System.out.println("-------");
-        }
-    }
+       // INICIALIZACIÓN DE TARJETAS MOVIDA A Test Packages.Control.Inicializacion.java
+       // INICIALIZACIÓN DE VUELOS MOVIDA A Test Packages.Control.Inicializacion.java 
+       
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ingresarB;
