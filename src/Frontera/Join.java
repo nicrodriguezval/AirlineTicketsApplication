@@ -9,6 +9,7 @@ import Control.ValidarJoin;
 import Entidad.Usuario;
 import static Frontera.FramePrincipal.sistema;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Join extends javax.swing.JFrame {
     public Join() {
         initComponents();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
 
     /**

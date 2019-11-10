@@ -8,6 +8,7 @@ package Frontera;
 import Entidad.Vuelo;
 import static Frontera.FramePrincipal.sistema;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -26,6 +27,7 @@ public class ReservationIda extends javax.swing.JFrame {
         initComponents();
         configuracionInicial();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
     
     /**

@@ -7,6 +7,7 @@ package Frontera;
 
 import Entidad.Reserva;
 import static Frontera.Login.user;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +21,7 @@ public class MenuInicial extends javax.swing.JFrame {
     public MenuInicial() {
         initComponents();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
 
     /**

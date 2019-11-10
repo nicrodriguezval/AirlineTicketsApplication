@@ -9,6 +9,7 @@ import Entidad.Vuelo;
 import static Frontera.FramePrincipal.sistema;
 import static Frontera.ReservationIda.idReserva;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -42,6 +43,7 @@ public class reservationVuelta extends javax.swing.JFrame {
         
         initComponents();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
         configuracionInicial();
     }
 
