@@ -8,6 +8,7 @@ package Frontera;
 import static Frontera.Login.user;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Welcome extends javax.swing.JFrame {
     public Welcome() {
         initComponents();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
         configuracionInicial();
     }
 
@@ -92,7 +94,7 @@ public class Welcome extends javax.swing.JFrame {
             }
         };
         
-        timer.schedule(task, 2000);
+        timer.schedule(task, 1600);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

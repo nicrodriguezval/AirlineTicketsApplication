@@ -11,7 +11,6 @@ import DAO.VueloDAO;
 import Entidad.CreditCard;
 import Entidad.Usuario;
 import Entidad.Vuelo;
-import static Frontera.FramePrincipal.idVuelo;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,6 +47,8 @@ public class Inicializacion {
     @Test
     public void initData(){
         
+        int idVuelo = 1;
+
         UsuarioDAO udao = new UsuarioDAO();
         CreditCardDAO tdao = new CreditCardDAO();
         VueloDAO vdao = new VueloDAO();
@@ -133,18 +134,18 @@ public class Inicializacion {
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
         
-        Vuelo v1 = new Vuelo(idVuelo++, "Bogotá", "Medellín", "01/1/2020", "14:00");
-        Vuelo v2 = new Vuelo(idVuelo++, "Madrid", "Miami", "30/12/2019", "3:00");
-        Vuelo v3 = new Vuelo(idVuelo++, "Cali", "Bucaramanga", "01/12/2019", "9:00");
+        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/1/2020", "14:00",100,500,1000);
+        Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000);
+        Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000);
         
 
         v1.setSillasTotales(300);
         v2.setSillasTotales(400);
         v3.setSillasTotales(300);
         
-        Vuelo v4 = new Vuelo(idVuelo++, "Medellín", "Bogotá", "05/1/2020", "12:00");
-        Vuelo v5 = new Vuelo(idVuelo++, "Miami", "Madrid", "15/1/2020", "5:00");
-        Vuelo v6 = new Vuelo(idVuelo++, "Bucaramanga", "Cali", "15/12/2019", "11:00");
+        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/1/2020", "12:00",100,500,1000);
+        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/1/2020", "5:00",100,500,1000);
+        Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000);
         
 
         v4.setSillasTotales(400);

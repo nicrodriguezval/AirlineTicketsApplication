@@ -5,9 +5,10 @@
  */
 package Frontera;
 
+import DAO.VueloDAO;
 import Entidad.Vuelo;
-import static Frontera.FramePrincipal.sistema;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -16,7 +17,8 @@ import javax.swing.JLabel;
  * @author nicro
  */
 public class ReservationIda extends javax.swing.JFrame {
-    public static int idReserva = 0;
+    private VueloDAO vdao = new VueloDAO();
+    //public static int idReserva = 0;
     
     private boolean esIdaVuelta, esEquipaje;
     private String lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1;
@@ -26,6 +28,7 @@ public class ReservationIda extends javax.swing.JFrame {
         initComponents();
         configuracionInicial();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
     
     /**
@@ -329,12 +332,11 @@ public class ReservationIda extends javax.swing.JFrame {
         else {
             Vuelo vuelo = null;
             
-            for(Vuelo v : sistema.getVuelos()) {
-                if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino) && v.getFecha().equals(fechaSalida) && v.getHora().equals(horaSalida))
-                    vuelo = v;
+            if(vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida) != null){
+                vuelo = vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
             }
 
-            ReservationResumen rResumen = new ReservationResumen(idReserva, vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
+            ReservationResumen rResumen = new ReservationResumen(vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
             rResumen.setLocationRelativeTo(this);
             rResumen.setVisible(true);   
         }
@@ -351,13 +353,11 @@ public class ReservationIda extends javax.swing.JFrame {
         int count = 0;
         lugarOrigen = OrigenCB.getItemAt(OrigenCB.getSelectedIndex());
         ArrayList<String> al = new ArrayList<>();
-        
-        for(Vuelo v : sistema.getVuelos()) {
-            if(v.getOrigen().equals(lugarOrigen)) {
+        String query = "v.origen LIKE "+"'"+lugarOrigen+"'";
+        for(Vuelo v : vdao.leerquerytolist(query)){
                 count++;
                 al.add(v.getDestino());
             }
-        }
         
         String ciudadesDestino[] = new String[(count + 1)];
         ciudadesDestino[0] = "Ninguno";
@@ -373,13 +373,13 @@ public class ReservationIda extends javax.swing.JFrame {
         lugarDestino = destinoCB.getItemAt(destinoCB.getSelectedIndex());
         ArrayList<String> al = new ArrayList<>();
         int count = 0;
+        String query = "v.origen LIKE '" + lugarOrigen + "' AND v.destino LIKE '" + lugarDestino + "'";
         
-        for(Vuelo v : sistema.getVuelos()) {
-            if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino)) {
-                count++;
-                al.add(v.getFecha());
-            }
-        }
+        for(Vuelo v : vdao.leerquerytolist(query)){
+            count++;
+            System.out.println("");
+            al.add(v.getFecha());
+        } 
         
         String fechasSalida[] = new String[(count + 1)];
         fechasSalida[0] = "Ninguna";
@@ -405,14 +405,12 @@ public class ReservationIda extends javax.swing.JFrame {
         fechaSalida = fechaCB.getItemAt(fechaCB.getSelectedIndex());
         ArrayList<String> al = new ArrayList<>();
         int count = 0;
-        
-        for(Vuelo v : sistema.getVuelos()) {
-            if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino) && v.getFecha().equals(fechaSalida)) {
+        String query = "v.origen LIKE '" + lugarOrigen + "' AND v.destino LIKE '" + lugarDestino + "' AND v.fecha LIKE '" + fechaSalida + "'";
+        for(Vuelo v : vdao.leerquerytolist(query)){
                 count++;
-                al.add(v.getHora());   
-            }
-        }
-        
+                System.out.println("");
+                al.add(v.getHora());
+            }   
         String horasSalida[] = new String[(count + 1)];
         horasSalida[0] = "Ninguna";
         
@@ -433,13 +431,13 @@ public class ReservationIda extends javax.swing.JFrame {
     private void configuracionInicial() {
         pesoEquipaje.setVisible(false);
         pesoEquipajeCB.setVisible(false);
-        
-        String ciudadesOrigen[] = new String[(sistema.getVuelos().size() + 1)];
+
+        int x = vdao.leeralltolist().size();
+        String ciudadesOrigen[] = new String[(x + 1)];
         ciudadesOrigen[0] = "Ninguno";
         
         int i = 1;
-        
-        for(Vuelo v : sistema.getVuelos()) {
+        for(Vuelo v : vdao.leeralltolist()){
             ciudadesOrigen[i] = v.getOrigen();
             i++;
         }

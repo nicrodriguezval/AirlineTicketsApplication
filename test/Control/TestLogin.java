@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
 import static Frontera.Login.user;
 import org.junit.After;
 import org.junit.AfterClass;

@@ -9,6 +9,7 @@ import Entidad.CreditCard;
 import Entidad.Sistema;
 import Entidad.Usuario;
 import Entidad.Vuelo;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,8 +18,8 @@ import Entidad.Vuelo;
  * title="Flaticon">www.flaticon.com</a></div>
  */
 public class FramePrincipal extends javax.swing.JFrame {
-    public static Sistema sistema = new Sistema();
-    public static int idVuelo = 0;
+    //public static Sistema sistema = new Sistema();
+    //public static int idVuelo = 1;
     
     /**
      * Creates new form FramePrincipal
@@ -28,6 +29,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         //inicializacion();
         this.setLocationRelativeTo(null);
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
 
     /**

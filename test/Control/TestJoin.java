@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
 import static javafx.scene.input.KeyCode.S;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -42,7 +41,7 @@ public class TestJoin {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {/*
         Usuario a = new Usuario();
         Usuario b = new Usuario();
         Usuario c = new Usuario();
@@ -77,7 +76,7 @@ public class TestJoin {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-        }
+        }*/
     }
     
     @AfterClass

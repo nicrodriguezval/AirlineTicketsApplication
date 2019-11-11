@@ -9,6 +9,7 @@ import Control.ValidarLogin;
 import DAO.UsuarioDAO;
 import Entidad.Usuario;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
     }
 
     /**

@@ -5,8 +5,9 @@
  */
 package Control;
 
+import DAO.UsuarioDAO;
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
 
 /**
  *
@@ -14,6 +15,7 @@ import static Frontera.FramePrincipal.sistema;
  */
 public class ValidarJoin {
 
+    private UsuarioDAO udao = new UsuarioDAO();
     public ValidarJoin() {
     }
     
@@ -80,10 +82,12 @@ public class ValidarJoin {
     }
     
     public boolean equalUsernames(String username) {
-        for(Usuario u: sistema.getUsuarios()) {
-            if(u.getUsername().equals(username)) return true;
+//        for(Usuario u: sistema.getUsuarios()) {
+//            if(u.getUsername().equals(username)) return true;
+//      }
+        if(udao.leerusername(username) != null){
+            return true;
         }
-        
         return false;
     }
     
@@ -102,10 +106,12 @@ public class ValidarJoin {
     }
     
     public boolean equalEmails(String email) {
-        for(Usuario u : sistema.getUsuarios()) {
-            if(u.getEmail().equals(email)) return true;
+//        for(Usuario u : sistema.getUsuarios()) {
+//            if(u.getEmail().equals(email)) return true;
+//        }
+        if(udao.leeremail(email) != null){
+            return true;
         }
-        
         return false;
     }
     

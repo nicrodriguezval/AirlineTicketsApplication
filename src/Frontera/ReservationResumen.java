@@ -5,10 +5,12 @@
  */
 package Frontera;
 
+import Control.CalcularPrecio;
+import DAO.ReservaDAO;
 import Entidad.Reserva;
 import Entidad.Vuelo;
-import static Frontera.FramePrincipal.sistema;
 import static Frontera.Login.user;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 /**
@@ -16,8 +18,11 @@ import javax.swing.JTextField;
  * @author lucas
  */
 public class ReservationResumen extends javax.swing.JFrame {
-    public static int idReserva = 0;
-    int numeroReserva;
+    private double precioSubtotal, precioImpuestos, precioTotal;
+    //public static int idReserva = 0;
+    private int numeroReserva;
+    
+    private Reserva reserva;
     
     private String origen, destino, fechaSalida, horaSalida, categoria, peso1;
     private boolean isIdaVuelta, isEquipaje;
@@ -29,8 +34,8 @@ public class ReservationResumen extends javax.swing.JFrame {
     int puestosReservadosVuelta, pesoVuelta;
     private Vuelo vueloVuelta1;
    
-    public ReservationResumen(int numeroReserva, Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
-        this.numeroReserva = numeroReserva;
+    public ReservationResumen(/*int numeroReserva,*/ Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
+        //this.numeroReserva = numeroReserva;
         this.vueloIda = vueloIda;
         this.origen = vueloIda.getOrigen();
         this.puestosReservados = puestosReservados;
@@ -42,10 +47,12 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.isEquipaje = isEquipaje;
         this.peso = peso;
         this.peso1 = peso1;
-        
         initComponents();
-        configuracionInicial();
         this.setTitle("Airline Tickets Application");
+        this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
+        
+        if(!isIdaVuelta)
+            configuracionInicial();
     }
     
     /**
@@ -106,6 +113,14 @@ public class ReservationResumen extends javax.swing.JFrame {
         categoriaVueltaL = new javax.swing.JLabel();
         noPuestosVueltaT = new java.awt.Label();
         noPuestosVueltaL = new javax.swing.JLabel();
+        panelPrecio = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        subTotalL = new javax.swing.JLabel();
+        impuestosL = new javax.swing.JLabel();
+        totalL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -295,7 +310,6 @@ public class ReservationResumen extends javax.swing.JFrame {
         );
 
         horaSalidaT.getAccessibleContext().setAccessibleName("");
-        fechaSalidaL.getAccessibleContext().setAccessibleName("Fecha");
 
         jTabbedPane1.addTab("Vuelo Ida", jPanel2);
 
@@ -451,55 +465,115 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vuelo Vuelta", jPanel3);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Precio");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Sub total");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Impuestos");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Total");
+
+        javax.swing.GroupLayout panelPrecioLayout = new javax.swing.GroupLayout(panelPrecio);
+        panelPrecio.setLayout(panelPrecioLayout);
+        panelPrecioLayout.setHorizontalGroup(
+            panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrecioLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(panelPrecioLayout.createSequentialGroup()
+                        .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(28, 28, 28)
+                        .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(subTotalL, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(impuestosL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(totalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        panelPrecioLayout.setVerticalGroup(
+            panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrecioLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(subTotalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(impuestosL, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrecioLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(totalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(numeroReservaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(docIdentidadT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreL, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(docIDL)
+                            .addComponent(nReservaL))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(223, 223, 223))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(volverB, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmarB, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(numeroReservaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(docIdentidadT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombreL, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(docIDL)
-                                    .addComponent(nReservaL)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombrePasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(docIdentidadT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(docIDL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeroReservaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nReservaL))
-                .addGap(33, 33, 33)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombrePasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(docIdentidadT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(docIDL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroReservaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nReservaL))
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(panelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,22 +589,16 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     private void confirmarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBActionPerformed
         // TODO add your handling code here:
-        Reserva reserva = new Reserva(idReserva++, vueloIda, puestosReservados, isIdaVuelta, isEquipaje, categoria, user);
-        if(isEquipaje)
-                reserva.setPesoVuelta(peso);
-        reserva.setNumeroPuestos(puestosReservados);
-        
-        if(isIdaVuelta) {
-            reserva.setVueloVuelta(vueloVuelta1);
-            reserva.setEquipajeVuelta(isEquipajeVuelta);
-            reserva.setCategoriaVuelta(categoriaVuelta);
-            if(isEquipajeVuelta)
-                reserva.setPesoVuelta(pesoVuelta);
-            reserva.setNumeroPuestosvuelta(puestosReservadosVuelta);
-            
-        }
-            
-        sistema.addReservas(reserva);
+        ReservaDAO rdao = new ReservaDAO();
+        //sistema.addReservas(reserva);
+        rdao.crear(reserva);
+        System.out.println("-------");
+        System.out.println("RESERVACIÓN REALIZADA");
+        System.out.println();
+        System.out.println("Nombre: " + reserva.getUsuario().getNombre());
+        System.out.println("Apellido: " + reserva.getUsuario().getApellido());
+        System.out.println("ID reserva: " + reserva.getId());
+        System.out.println("Es ida y vuelta: " + reserva.isIdaVuelta());
         
         MenuInicial menu = new MenuInicial();
         this.setVisible(false);
@@ -597,6 +665,27 @@ public class ReservationResumen extends javax.swing.JFrame {
         equipajeL.setText(resultado1);
         pesoEquipajeL.setText(peso1);
         vueloL.setText(("" + vueloIda.getId()));
+        
+        CalcularPrecio calcular = new CalcularPrecio();
+        
+        reserva = new Reserva(vueloIda, puestosReservados, isIdaVuelta, isEquipaje, peso, categoria, user);
+        reserva.setPeso(peso);
+        
+        if(isIdaVuelta) {
+            reserva.setVueloVuelta(vueloVuelta1);
+            reserva.setEquipajeVuelta(isEquipajeVuelta);
+            reserva.setCategoriaVuelta(categoriaVuelta);
+            reserva.setPesoVuelta(pesoVuelta);
+            reserva.setNumeroPuestosvuelta(puestosReservadosVuelta);
+        }
+        
+        precioSubtotal = (calcular.calcularPrecio(reserva) * (puestosReservados + puestosReservadosVuelta));
+        precioImpuestos = (calcular.calcularIva(reserva) * (puestosReservados + puestosReservadosVuelta));
+        precioTotal = (calcular.precioFinal(reserva) * (puestosReservados + puestosReservadosVuelta));
+        
+        subTotalL.setText(("" + precioSubtotal + " USD"));
+        impuestosL.setText(("" + precioImpuestos + " USD"));
+        totalL.setText(("" + precioTotal + " USD"));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -622,7 +711,12 @@ public class ReservationResumen extends javax.swing.JFrame {
     private java.awt.Label horaSalidaT;
     private java.awt.Label horaVuelta;
     private javax.swing.JLabel horaVueltaL;
+    private javax.swing.JLabel impuestosL;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -643,8 +737,11 @@ public class ReservationResumen extends javax.swing.JFrame {
     private java.awt.Label origenT;
     private javax.swing.JLabel origenVueltaL;
     private java.awt.Label origenVueltaT;
+    private javax.swing.JPanel panelPrecio;
     private javax.swing.JLabel pesoEquipajeL;
     private javax.swing.JLabel pesoEquipajeVueltaL;
+    private javax.swing.JLabel subTotalL;
+    private javax.swing.JLabel totalL;
     private javax.swing.JButton volverB;
     private javax.swing.JLabel vueloL;
     private java.awt.Label vueloVuelta;
@@ -681,6 +778,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     public void setPesoVuelta(int pesoVuelta) {
         this.pesoVuelta = pesoVuelta;
+        configuracionInicial();
     }
 
     public String getPeso1Vuelta() {
@@ -697,5 +795,6 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     public void setVueloVuelta1(Vuelo vueloVuelta1) {
         this.vueloVuelta1 = vueloVuelta1;
+        
     }
 }

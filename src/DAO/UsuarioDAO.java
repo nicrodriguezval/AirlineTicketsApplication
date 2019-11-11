@@ -75,7 +75,7 @@ public class UsuarioDAO {
         }
     }
         
-        public Usuario leerusername(String username){
+    public Usuario leerusername(String username){
         EntityManager em = emf.createEntityManager();
         Usuario usuario = null;
         Query q = em.createQuery("SELECT u FROM Usuario u " +
@@ -93,6 +93,24 @@ public class UsuarioDAO {
         }
     }
     
+    public Usuario leeremail(String email){
+        EntityManager em = emf.createEntityManager();
+        Usuario usuario = null;
+        Query q = em.createQuery("SELECT u FROM Usuario u " +
+                "WHERE u.email LIKE :uemail")
+                .setParameter("email",email);
+        try{
+            usuario = (Usuario) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            usuario = (Usuario) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return usuario;
+        }
+    }
+                
     public boolean actualizar(Usuario object, Usuario nuevoObjeto){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
