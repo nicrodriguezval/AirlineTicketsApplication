@@ -134,6 +134,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         registro.setLocationRelativeTo(this);
         registro.setVisible(true);
+        registro.setAlwaysOnTop( true );
     }//GEN-LAST:event_registrarseBActionPerformed
 
     private void ingresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBActionPerformed
@@ -142,6 +143,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         ingreso.setLocationRelativeTo(this);
         ingreso.setVisible(true);
+        ingreso.setAlwaysOnTop( true );
     }//GEN-LAST:event_ingresarBActionPerformed
 
     /**

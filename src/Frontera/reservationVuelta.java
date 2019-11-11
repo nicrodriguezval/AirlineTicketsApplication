@@ -366,6 +366,7 @@ public class reservationVuelta extends javax.swing.JFrame {
         ReservationIda reservacion = new ReservationIda();
         reservacion.setLocationRelativeTo(this);
         reservacion.setVisible(true);
+        reservacion.isAlwaysOnTop();
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void configuracionInicial() {

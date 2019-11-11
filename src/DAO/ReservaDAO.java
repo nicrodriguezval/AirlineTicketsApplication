@@ -6,11 +6,13 @@
 package DAO;
 
 import Entidad.Reserva;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -18,7 +20,7 @@ import javax.persistence.Query;
  */
 public class ReservaDAO {
 
-private static EntityManagerFactory
+    private static EntityManagerFactory
     emf = Persistence.createEntityManagerFactory("AirlineApp_JPAPU");
     
     public void crear(Reserva object){
@@ -71,6 +73,36 @@ private static EntityManagerFactory
         }
     }
         
+    public List<Reserva> leeralltolist(){
+        EntityManager em = emf.createEntityManager();
+        List<Reserva> reserva = null;
+        TypedQuery<Reserva> q = em.createQuery("SELECT r FROM Reserva r ",Reserva.class);
+        try{
+            reserva = q.getResultList();
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return reserva;
+        }
+    }
+    
+    public long leerallcount(){
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        Query q = em.createQuery("SELECT COUNT(r) FROM Reserva r");
+        try{
+            count = (long) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            count = (long) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return count;
+        }
+    }
+    
     public boolean actualizarId(Reserva object, Reserva nuevoObjeto){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -87,4 +119,24 @@ private static EntityManagerFactory
             return ret;
         }
     }     
+
+        public boolean resetId(int i){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try{
+            em.createNativeQuery("ALTER TABLE reservas ALTER COLUMN id RESTART WITH " + i).executeUpdate();
+            ret = true;
+        } catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally{
+            em.close();
+            return ret;
+        }
+    }    
+    
+
 }
+
+

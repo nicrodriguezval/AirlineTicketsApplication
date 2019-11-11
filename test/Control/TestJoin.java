@@ -237,7 +237,7 @@ public class TestJoin {
     u.setNombre("Darío");
     u.setApellido("Gómez");
     u.setUsername("dario_g69");
-    u.setEmail("miapenahu@unal.edu.co"); //EDITAR EN CASOS DE PRUEBA!!!
+    u.setEmail("miapenahu@unal.edu.co");
     u.setPassword("s2f49g20s");
     String password2 = "s2f49g20s";
     assertEquals(EMAIL_DUPLIC,validarJoin.verificarJoin(u, password2));
@@ -266,7 +266,7 @@ public class TestJoin {
     u.setApellido("Arias");
     u.setUsername("gab_arias");
     u.setEmail("gab_arias2@outlook.es");
-    u.setPassword("123456789abcdef123456789"); //EDITAR EN CASOS DE PRUEBA!!!
+    u.setPassword("123456789abcdef123456789"); 
     password2 = "123456789abcdef123456789";
     assertEquals(LPAS_ERROR,validarJoin.verificarJoin(u, password2));
     }

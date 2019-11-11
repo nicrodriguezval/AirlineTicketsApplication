@@ -6,9 +6,11 @@
 package Control;
 
 import DAO.CreditCardDAO;
+import DAO.ReservaDAO;
 import DAO.UsuarioDAO;
 import DAO.VueloDAO;
 import Entidad.CreditCard;
+import Entidad.Reserva;
 import Entidad.Usuario;
 import Entidad.Vuelo;
 import java.util.ArrayList;
@@ -52,6 +54,7 @@ public class Inicializacion {
         UsuarioDAO udao = new UsuarioDAO();
         CreditCardDAO tdao = new CreditCardDAO();
         VueloDAO vdao = new VueloDAO();
+        ReservaDAO rdao = new ReservaDAO();
         
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         
@@ -180,5 +183,62 @@ public class Inicializacion {
             System.out.println("-------");
             //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
+       
+   /* private Vuelo vueloIda, vueloVuelta;
+    private boolean equipaje, idaVuelta;
+    private String categoria;
+    private int peso, numeroPuestos;
+    double precio, iva; /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
+                                                            El precio es el precio inicial de la reserva,
+                                                            cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
+                                                            el precio está dado en USD para más comodidad con la cantidad de dígitos
+    private Usuario usuario;
+    
+    private boolean equipajeVuelta;
+    private String categoriaVuelta;
+    private int pesoVuelta, numeroPuestosVuelta; */
+        
+   /*     ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+        
+        Reserva r1 = new Reserva(v1,1,true,true,20,"Turista",a);
+        Reserva r2 = new Reserva(v2,2,true,false,0,"Ejecutiva",b);
+        Reserva r3 = new Reserva(v3,3,false,true,10,"Primera clase",c);
+         
+        r1.setCategoriaVuelta("Ejecutiva");
+        r1.setEquipajeVuelta(true);
+        r1.setNumeroPuestosvuelta(1);
+        r1.setPesoVuelta(30);
+        r1.setVueloVuelta(v4);
+        r1.setNumeroPuestosvuelta(1);
+        r1.setIva(19.0);
+        
+        rdao.crear(r1);
+         
+        reservas.add(r1);
+        reservas.add(r2);
+        reservas.add(r3);
+         
+        System.out.println();
+        System.out.println("RESERVAS REGISTRADAS");
+        System.out.println();
+        
+        
+        for(Reserva r : reservas){
+            System.out.println("ID reserva: " + r.getId());
+            System.out.println("Vuelo de ida: " + r.getVueloIda());
+            System.out.println("Vuelo de vuelta: " + r.getVueloVuelta());
+            System.out.println("Número de asientos ida: " + r.getNumeroPuestos());
+            System.out.println("Numero de asientos vuelta: " + r.getNumeroPuestosVuelta());
+            System.out.println("Categoría vuelo ida: " + r.getCategoria());
+            System.out.println("Categoría vuelo vuelta: " + r.getCategoriaVuelta());
+            System.out.println("Peso equipaje ida: " + r.getPeso());
+            System.out.println("Peso equipaje vuelta: " + r.getPesoVuelta());
+
+            System.out.println("");
+            System.out.println("");
+            System.out.println("-------");
+            //.crear(r1); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+        }*/
+        
     }
 }

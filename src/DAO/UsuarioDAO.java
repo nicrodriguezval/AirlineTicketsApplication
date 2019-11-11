@@ -17,9 +17,8 @@ import javax.persistence.Query;
  * @author Miguel Alejandro
  */
 public class UsuarioDAO {
-    
     private static EntityManagerFactory
-            emf = Persistence.createEntityManagerFactory("AirlineApp_JPAPU");
+    emf = Persistence.createEntityManagerFactory("AirlineApp_JPAPU");
     
     public void crear(Usuario object){
         

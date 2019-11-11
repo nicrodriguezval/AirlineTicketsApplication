@@ -16,7 +16,7 @@ import static Frontera.Login.user;
  */
 public class ValidarLogin {
     
-    private UsuarioDAO dao = new UsuarioDAO();
+    private UsuarioDAO udao = new UsuarioDAO();
     
     public ValidarLogin() {
     }
@@ -55,22 +55,15 @@ public class ValidarLogin {
                 return true;                    
             }
         }*/
-        if(dao.leerusername(username) != null){
+        if(udao.leerusername(username) != null){
             return true;
         }
         return false;
     }
     
     public boolean verificarContrasenia(String username, String password){
-        /*for(Usuario u : sistema.getUsuarios()) {
-            if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
-                return true;                    
-            }
-        }*/
-        Usuario u = new Usuario();
-        u.setUsername(username);
-        u.setPassword(password);
-        if(dao.leer(u) != null){
+        String query = "u.username LIKE '"+username+"' AND u.password LIKE '"+password+"'";
+        if(udao.leerquerycount(query) != 0){
             return true;
         }
         return false;
@@ -82,8 +75,8 @@ public class ValidarLogin {
                 return u.getNombre();
             }
         }*/
-        if(dao.leerusername(username)!= null){
-            return dao.leerusername(username).getNombre();
+        if(udao.leerusername(username)!= null){
+            return udao.leerusername(username).getNombre();
         }
         return null;
        }
@@ -92,8 +85,8 @@ public class ValidarLogin {
         /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)) return u;
         }*/
-        if(dao.leerusername(username) != null){
-            return dao.leerusername(username);
+        if(udao.leerusername(username) != null){
+            return udao.leerusername(username);
         }
         return null;
     }

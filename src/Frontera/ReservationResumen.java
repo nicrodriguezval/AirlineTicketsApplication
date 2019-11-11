@@ -35,7 +35,7 @@ public class ReservationResumen extends javax.swing.JFrame {
     private Vuelo vueloVuelta1;
    
     public ReservationResumen(/*int numeroReserva,*/ Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
-        //this.numeroReserva = numeroReserva;
+        this.numeroReserva = numeroReserva;
         this.vueloIda = vueloIda;
         this.origen = vueloIda.getOrigen();
         this.puestosReservados = puestosReservados;
@@ -279,7 +279,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(vueloL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IDVueloT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,9 +507,9 @@ public class ReservationResumen extends javax.swing.JFrame {
                     .addComponent(subTotalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(impuestosL, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(impuestosL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrecioLayout.createSequentialGroup()
@@ -604,6 +604,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setLocationRelativeTo(this);
         menu.setVisible(true);
+        menu.setAlwaysOnTop( true );
     }//GEN-LAST:event_confirmarBActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
@@ -650,8 +651,19 @@ public class ReservationResumen extends javax.swing.JFrame {
     }//GEN-LAST:event_volverBActionPerformed
     
     private void configuracionInicial() {
+        ReservaDAO rdao = new ReservaDAO();
+        /*        int aux = 0;*/
+        int s = (int) rdao.leerallcount() + 1;
+        /*for(Reserva r : rdao.leeralltolist()){
+        aux = Math.max(aux,r.getId());
+        }
+        if((aux != 1 && s <= 1) || (aux > (s - 1))){
+        // rdao.resetId(1);
+        System.out.println("Successfully reseted Reserva.id!");
+        s = 1;
+        }*/
         nombreL.setText(user.getNombre());
-        nReservaL.setText(("" + numeroReserva));
+        nReservaL.setText(("" + (s)/*numeroReserva*/));
         docIDL.setText("101010");
         origenL.setText(origen);
         destinoL.setText(destino);
@@ -682,6 +694,9 @@ public class ReservationResumen extends javax.swing.JFrame {
         precioSubtotal = (calcular.calcularPrecio(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioImpuestos = (calcular.calcularIva(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioTotal = (calcular.precioFinal(reserva) * (puestosReservados + puestosReservadosVuelta));
+        
+        reserva.setPrecio(precioTotal);
+        reserva.setIva(calcular.calcularIva(reserva));
         
         subTotalL.setText(("" + precioSubtotal + " USD"));
         impuestosL.setText(("" + precioImpuestos + " USD"));

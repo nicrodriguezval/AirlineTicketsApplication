@@ -212,6 +212,7 @@ public class Join extends javax.swing.JFrame {
         ValidarJoin verificar = new ValidarJoin();
 
         String respuesta = verificar.verificarJoin(usuario, verificarPassword);
+        
         aviso.setForeground(Color.red);
         
         if(respuesta.equals("Longitud de nombre incorrecta")) 
@@ -245,6 +246,7 @@ public class Join extends javax.swing.JFrame {
             aviso.setText("Las contraseñas no coinciden");
         
         else {
+            aviso.setText("Registro exitoso");
             //sistema.addUsuarios(usuario);
             System.out.println("-------");
             System.out.println("NUEVO USUARIO AÑADIDO");

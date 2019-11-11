@@ -91,6 +91,7 @@ public class Welcome extends javax.swing.JFrame {
                 setVisible(false);
                 menu.setLocationRelativeTo(null);
                 menu.setVisible(true);
+                menu.setAlwaysOnTop( true );
             }
         };
         

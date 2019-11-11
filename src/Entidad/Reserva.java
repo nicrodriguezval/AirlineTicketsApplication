@@ -33,7 +33,7 @@ public class Reserva {
     private int pesoVuelta, numeroPuestosVuelta;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //ALTER TABLE reservas AUTO_INCREMENT = 0 para resetear
     private int id;
     
     public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
