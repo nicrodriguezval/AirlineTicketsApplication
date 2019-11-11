@@ -238,29 +238,21 @@ public class FramePrincipal extends javax.swing.JFrame {
             System.out.println("-------");
         }
         
-        Vuelo v1 = new Vuelo(idVuelo++, "Bogotá", "Medellín", "01/1/2020", "14:00", 110, 200, 600);
-        Vuelo v2 = new Vuelo(idVuelo++, "Madrid", "Miami", "30/12/2019", "3:00", 500, 620, 870);
-        Vuelo v3 = new Vuelo(idVuelo++, "Cali", "Bucaramanga", "01/12/2019", "9:00", 130, 240, 580);
+        Vuelo v1 = new Vuelo(idVuelo++, "Bogotá", "Medellín", "01/1/2020", "14:00", 110, 200, 600, 300);
+        Vuelo v2 = new Vuelo(idVuelo++, "Madrid", "Miami", "30/12/2019", "3:00", 500, 620, 870, 400);
+        Vuelo v3 = new Vuelo(idVuelo++, "Cali", "Bucaramanga", "01/12/2019", "9:00", 130, 240, 580, 300);
         
         v1.setId(0);
         v2.setId(1);
         v3.setId(2);
         
-        v1.setSillasTotales(300);
-        v2.setSillasTotales(400);
-        v3.setSillasTotales(300);
-        
-        Vuelo v4 = new Vuelo(idVuelo++, "Medellín", "Bogotá", "05/1/2020", "12:00", 100, 250, 500);
-        Vuelo v5 = new Vuelo(idVuelo++, "Miami", "Madrid", "15/1/2020", "5:00", 505, 750, 1000);
-        Vuelo v6 = new Vuelo(idVuelo++, "Bucaramanga", "Cali", "15/12/2019", "11:00", 200, 370, 510);
+        Vuelo v4 = new Vuelo(idVuelo++, "Medellín", "Bogotá", "05/1/2020", "12:00", 100, 250, 500, 400);
+        Vuelo v5 = new Vuelo(idVuelo++, "Miami", "Madrid", "15/1/2020", "5:00", 505, 750, 1000, 500);
+        Vuelo v6 = new Vuelo(idVuelo++, "Bucaramanga", "Cali", "15/12/2019", "11:00", 200, 370, 510, 200);
         
         v4.setId(3);
         v5.setId(4);
         v6.setId(5);
-        
-        v4.setSillasTotales(400);
-        v5.setSillasTotales(500);
-        v6.setSillasTotales(200);
         
         sistema.addVuelos(v1);
         sistema.addVuelos(v2);

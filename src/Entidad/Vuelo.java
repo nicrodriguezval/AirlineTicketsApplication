@@ -15,7 +15,7 @@ public class Vuelo {
     private double precioClaseTurista, precioClaseEjecutiva, precioPrimeraClase;
     private boolean sillasDisponibles[];
 
-    public Vuelo(int id, String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase) {
+    public Vuelo(int id, String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales) {
         this.id = id;
         this.origen = origen;
         this.destino = destino;
@@ -24,7 +24,11 @@ public class Vuelo {
         this.precioClaseTurista = precioClaseTurista;
         this.precioClaseEjecutiva = precioClaseEjecutiva;
         this.precioPrimeraClase = precioPrimeraClase;
+        this.sillasTotales = sillasTotales;
         sillasDisponibles = new boolean[sillasTotales];
+        
+        for(int i = 0; i < sillasDisponibles.length; i++)
+            sillasDisponibles[i] = true;
     }
 
     public int getId() {
