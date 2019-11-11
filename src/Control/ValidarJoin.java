@@ -85,15 +85,19 @@ public class ValidarJoin {
 //        for(Usuario u: sistema.getUsuarios()) {
 //            if(u.getUsername().equals(username)) return true;
 //      }
-        if(udao.leerusername(username) != null){
+        String query = " u.username LIKE '"+username+"'";
+        int count = (int) udao.leerquerycount(query);
+        System.out.println("count username: "+ count);
+        if(count != 0){
             return true;
         }
         return false;
     }
     
     public boolean verificarEmail(String email) {
-        if(email.length() < 1 || email.length() > 30) return false;
-        
+        if(email.length() <= 1 || email.length() > 30){
+            return false;
+        }
         return true;
     }
     
@@ -109,7 +113,10 @@ public class ValidarJoin {
 //        for(Usuario u : sistema.getUsuarios()) {
 //            if(u.getEmail().equals(email)) return true;
 //        }
-        if(udao.leeremail(email) != null){
+        String query = " u.email LIKE '"+email+"'";
+        int count = (int) udao.leerquerycount(query);
+        System.out.println("count email: " + count);
+        if(count != 0){
             return true;
         }
         return false;

@@ -93,11 +93,27 @@ public class UsuarioDAO {
         }
     }
     
+        public long leerquerycount(String condition){
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        Query q = em.createQuery("SELECT COUNT(u) FROM Usuario u WHERE " + condition);
+        try{
+            count = (long) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            count = (long) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return count;
+        }
+    }
+    
     public Usuario leeremail(String email){
         EntityManager em = emf.createEntityManager();
         Usuario usuario = null;
         Query q = em.createQuery("SELECT u FROM Usuario u " +
-                "WHERE u.email LIKE :uemail")
+                "WHERE u.email LIKE :email")
                 .setParameter("email",email);
         try{
             usuario = (Usuario) q.getSingleResult();
