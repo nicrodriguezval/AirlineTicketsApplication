@@ -623,7 +623,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         jLabel9.setText(origen.substring(0,3).toUpperCase());
         jLabel10.setText(destino.substring(0, 3).toUpperCase());
         nReservaL.setText(("" + numeroReserva));
-        docIDL.setText("101010");
+        docIDL.setText("");
         origenL.setText(origen);
         destinoL.setText(destino);
         noPuestosL.setText(("" + puestosReservados));
