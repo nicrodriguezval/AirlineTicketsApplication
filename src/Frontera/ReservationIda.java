@@ -5,12 +5,15 @@
  */
 package Frontera;
 
+import Control.ValidarReserva;
 import DAO.VueloDAO;
 import Entidad.Vuelo;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import Frontera.ReservationVuelta;
 
 /**
  *
@@ -62,11 +65,14 @@ public class ReservationIda extends javax.swing.JFrame {
         siguiente = new javax.swing.JButton();
         fecha = new javax.swing.JLabel();
         fechaCB = new javax.swing.JComboBox<>();
+        aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(java.awt.Color.white);
+        panelPrincipal.setForeground(java.awt.Color.red);
+        panelPrincipal.setToolTipText("");
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setText("Realizar reservación");
@@ -176,57 +182,59 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(0, 51, Short.MAX_VALUE)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(pesoEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(titulo))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 35, Short.MAX_VALUE)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addComponent(pesoEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addComponent(titulo))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(idaVuelta)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(idaVueltaCB)
+                                    .addGap(51, 51, 51)
+                                    .addComponent(equipaje))
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(categoria)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(categoriaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fechaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(6, 6, 6)
+                            .addComponent(equipajeCB))
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(idaVuelta)
-                                .addGap(6, 6, 6)
-                                .addComponent(idaVueltaCB)
-                                .addGap(51, 51, 51)
-                                .addComponent(equipaje))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(categoria)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(origen)
+                                    .addComponent(fecha))
+                                .addGap(36, 36, 36)
+                                .addComponent(OrigenCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(categoriaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(6, 6, 6)
-                        .addComponent(equipajeCB))
-                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelPrincipalLayout.createSequentialGroup()
-                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(origen)
-                                .addComponent(fecha))
-                            .addGap(36, 36, 36)
-                            .addComponent(OrigenCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(18, 18, 18)
-                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(noPuestos)
-                                .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(destino)
-                                        .addComponent(hora))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(destinoCB, 0, 115, Short.MAX_VALUE)
-                                        .addComponent(horaCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addGroup(panelPrincipalLayout.createSequentialGroup()
-                            .addGap(209, 209, 209)
-                            .addComponent(cancelar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(siguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(noPuestosCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(0, 52, Short.MAX_VALUE))
+                                    .addComponent(noPuestos)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(destino)
+                                            .addComponent(hora))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(destinoCB, 0, 115, Short.MAX_VALUE)
+                                            .addComponent(horaCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(cancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(siguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(noPuestosCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,18 +264,20 @@ public class ReservationIda extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(equipaje)
+                            .addComponent(equipajeCB))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idaVuelta)
                             .addComponent(idaVueltaCB))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pesoEquipaje, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                            .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(equipaje)
-                            .addComponent(equipajeCB))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(pesoEquipajeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(5, 5, 5)
+                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(siguiente))
@@ -311,36 +321,48 @@ public class ReservationIda extends javax.swing.JFrame {
         horaSalida = horaCB.getItemAt(horaCB.getSelectedIndex());
         puestos = noPuestosCB.getItemAt(noPuestosCB.getSelectedIndex());
         
+        ValidarReserva validar = new ValidarReserva();
+        
+        System.out.println("-------");
+        String resultado = validar.VerificarReservaIda(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
+        System.out.println(resultado);
+        
+        aviso.setForeground(Color.red);
+
+        if(resultado.equals("Ubicación de origen inválida. Por favor escoja una de las opciones")){
+            aviso.setText("Ubicación de origen inválida. Por favor escoja una de las opciones");
+        } else if(resultado.equals("Ubicación de destino inválida. Por favor escoja una de las opciones")){
+            aviso.setText("Ubicaión de destino inválida. Por favor escoja una de las opciones");
+        } else if(resultado.equals("Fecha de vuelo inválida. Por favor escoja una de las opciones")){
+            aviso.setText("Fecha de vuelo inválida. Por favor escoja una de las opciones");
+        } else if(resultado.equals("Hora de vuelo inválida. Por favor escoja una de las opciones")){
+            aviso.setText("Hora de vuelo inválida. Por favor escoja una de las opciones");
+        } else{
         if(esEquipaje){
             peso1 = pesoEquipajeCB.getItemAt(pesoEquipajeCB.getSelectedIndex());
             peso = pesoEquipajeCB.getSelectedIndex() + 1;
-        }
-        
-        else {
+        } else {
             peso1 = "Ninguno";
             peso = 0;
         }
-        
         this.setVisible(false);
-        
         if(esIdaVuelta) {
             ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
-        }
-        
-        else {
+            reservacion.setAlwaysOnTop(true);
+        } else {
             Vuelo vuelo = null;
-            
+           
             if(vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida) != null){
                 vuelo = vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
             }
-
             ReservationResumen rResumen = new ReservationResumen(vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
             rResumen.setLocationRelativeTo(this);
             rResumen.setVisible(true);
             rResumen.setAlwaysOnTop( true );
         }
+    }
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void pesoEquipajeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoEquipajeCBActionPerformed
@@ -453,6 +475,7 @@ public class ReservationIda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> OrigenCB;
+    private javax.swing.JLabel aviso;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel categoria;
     private javax.swing.JComboBox<String> categoriaCB;

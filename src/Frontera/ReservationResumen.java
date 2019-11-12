@@ -682,6 +682,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         Seat seat = new Seat(reserva);
         seat.setLocationRelativeTo(this);
         seat.setVisible(true);
+        seat.setAlwaysOnTop(true);
     }//GEN-LAST:event_asientoIconMouseClicked
     
     private void configuracionInicial() {

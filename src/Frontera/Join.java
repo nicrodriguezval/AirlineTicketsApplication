@@ -98,7 +98,6 @@ public class Join extends javax.swing.JFrame {
         verificarPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         verificarPassword.setText("Verificar contraseña");
 
-        aviso.setBackground(new java.awt.Color(255, 0, 0));
         aviso.setForeground(new java.awt.Color(255, 0, 0));
         aviso.setEnabled(false);
 
