@@ -597,7 +597,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.setVisible(false);
         
         if(isIdaVuelta) {
-            reservationVuelta reservacion = new reservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
+            ReservationVuelta reservacion = new ReservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
         }

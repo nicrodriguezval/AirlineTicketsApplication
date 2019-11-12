@@ -216,7 +216,7 @@ public class ReservationIda extends javax.swing.JFrame {
         this.setVisible(false);
         
         if(esIdaVuelta) {
-            reservationVuelta reservacion = new reservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
+            ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
         }
