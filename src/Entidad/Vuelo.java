@@ -33,7 +33,7 @@ public class Vuelo implements Serializable{
         
     }
 
-    public Vuelo(/*int id,*/ String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase) {
+    public Vuelo(/*int id,*/ String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales) {
         //this.id = id;
         this.origen = origen;
         this.destino = destino;

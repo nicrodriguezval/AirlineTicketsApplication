@@ -137,18 +137,13 @@ public class Inicializacion {
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
         
-        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/1/2020", "14:00",100,500,1000);
-        Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000);
-        Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000);
+        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/1/2020", "14:00",100,500,1000,300);
+        Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000,400);
+        Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000,300);
         
-
-        v1.setSillasTotales(300);
-        v2.setSillasTotales(400);
-        v3.setSillasTotales(300);
-        
-        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/1/2020", "12:00",100,500,1000);
-        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/1/2020", "5:00",100,500,1000);
-        Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000);
+        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/1/2020", "12:00",100,500,1000,400);
+        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/1/2020", "5:00",100,500,1000,500);
+        Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000,200);
         
 
         v4.setSillasTotales(400);
