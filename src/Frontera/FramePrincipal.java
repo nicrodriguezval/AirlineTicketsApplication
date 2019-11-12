@@ -52,77 +52,63 @@ public class FramePrincipal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(500, 320));
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        panelPrincipal.setLayout(new javax.swing.OverlayLayout(panelPrincipal));
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        titulo.setText("Airline tickets application");
+        titulo.setText("Airline Tickets Application");
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
-        ingresarB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ingresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ingresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
         ingresarB.setText("Ingresar");
+        ingresarB.setContentAreaFilled(false);
+        ingresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ingresarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
+        ingresarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginG.png"))); // NOI18N
+        ingresarB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        ingresarB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         ingresarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingresarBActionPerformed(evt);
             }
         });
+        jPanel1.add(ingresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 99, 90));
 
-        registrarseB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        registrarseB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        registrarseB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
         registrarseB.setText("Registrarse");
+        registrarseB.setContentAreaFilled(false);
+        registrarseB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        registrarseB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
+        registrarseB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroG.png"))); // NOI18N
+        registrarseB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        registrarseB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         registrarseB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarseBActionPerformed(evt);
             }
         });
+        jPanel1.add(registrarseB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(titulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ingresarB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registrarseB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(titulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1)))
-                .addGap(41, 41, 41)
-                .addComponent(ingresarB)
-                .addGap(30, 30, 30)
-                .addComponent(registrarseB)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-
-        panelPrincipal.add(jPanel1);
+        panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

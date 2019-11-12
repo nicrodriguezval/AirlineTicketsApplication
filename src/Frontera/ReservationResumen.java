@@ -68,10 +68,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nombrePasajero = new java.awt.Label();
-        docIdentidadT = new java.awt.Label();
-        numeroReservaT = new java.awt.Label();
         nombreL = new javax.swing.JLabel();
         docIDL = new javax.swing.JLabel();
         nReservaL = new javax.swing.JLabel();
@@ -126,30 +122,24 @@ public class ReservationResumen extends javax.swing.JFrame {
         totalL = new javax.swing.JLabel();
         asientoIcon = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jLabel1.setText("RESERVA");
-
-        nombrePasajero.setBackground(java.awt.Color.lightGray);
-        nombrePasajero.setText("Nombre pasajero:");
-
-        docIdentidadT.setBackground(java.awt.Color.lightGray);
-        docIdentidadT.setText("Doc. de Identidad:");
-
-        numeroReservaT.setBackground(java.awt.Color.lightGray);
-        numeroReservaT.setText("Número de Reserva:");
-
-        nombreL.setText("nombre");
-
-        docIDL.setText("docID");
-
-        nReservaL.setText("numero Reserva");
+        nombreL.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        nombreL.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel1.add(nombreL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 30));
+        jPanel1.add(docIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 140, 20));
+        jPanel1.add(nReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 100, 20));
 
         confirmarB.setText("Confirmar");
         confirmarB.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +147,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 confirmarBActionPerformed(evt);
             }
         });
+        jPanel1.add(confirmarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(859, 265, 112, -1));
 
         volverB.setText("Volver");
         volverB.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +155,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 volverBActionPerformed(evt);
             }
         });
+        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(742, 265, 111, -1));
 
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -470,6 +462,8 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vuelo Vuelta", jPanel3);
 
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 158, 961, 90));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Precio");
 
@@ -524,92 +518,32 @@ public class ReservationResumen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(panelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
+
         asientoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/asiento.png"))); // NOI18N
         asientoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 asientoIconMouseClicked(evt);
             }
         });
+        jPanel1.add(asientoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Ver asientos");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 210, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 210, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(numeroReservaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nombrePasajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(docIdentidadT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreL, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(docIDL)
-                            .addComponent(nReservaL))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(asientoIcon)))
-                .addGap(40, 40, 40))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(volverB, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(confirmarB, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nombrePasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nombreL))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(docIdentidadT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(docIDL))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(numeroReservaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nReservaL))
-                            .addGap(33, 33, 33))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(panelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(asientoIcon)
-                        .addGap(31, 31, 31)))
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarB)
-                    .addComponent(volverB))
-                .addGap(52, 52, 52))
-        );
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 80));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 340));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 120, 80));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Check.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 440));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -663,7 +597,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.setVisible(false);
         
         if(isIdaVuelta) {
-            ReservationVuelta reservacion = new ReservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
+            reservationVuelta reservacion = new reservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
         }
@@ -683,7 +617,11 @@ public class ReservationResumen extends javax.swing.JFrame {
     }//GEN-LAST:event_asientoIconMouseClicked
     
     private void configuracionInicial() {
+        jLabel1.setText(user.getNombre());
         nombreL.setText(user.getNombre());
+        jLabel8.setText(user.getApellido());
+        jLabel9.setText(origen.substring(0,3).toUpperCase());
+        jLabel10.setText(destino.substring(0, 3).toUpperCase());
         nReservaL.setText(("" + numeroReserva));
         docIDL.setText("101010");
         origenL.setText(origen);
@@ -767,7 +705,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private javax.swing.JLabel destinoVueltaL;
     private java.awt.Label destinoVueltaT;
     private javax.swing.JLabel docIDL;
-    private java.awt.Label docIdentidadT;
     private javax.swing.JLabel equipajeL;
     private javax.swing.JLabel equipajeVueltaL;
     private javax.swing.JLabel fechaSalidaL;
@@ -780,11 +717,15 @@ public class ReservationResumen extends javax.swing.JFrame {
     private javax.swing.JLabel horaVueltaL;
     private javax.swing.JLabel impuestosL;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -799,8 +740,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private javax.swing.JLabel noPuestosVueltaL;
     private java.awt.Label noPuestosVueltaT;
     private javax.swing.JLabel nombreL;
-    private java.awt.Label nombrePasajero;
-    private java.awt.Label numeroReservaT;
     private javax.swing.JLabel origenL;
     private java.awt.Label origenT;
     private javax.swing.JLabel origenVueltaL;

@@ -36,101 +36,51 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPrincipal = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
         usernameTF = new javax.swing.JTextField();
-        password = new javax.swing.JLabel();
         aceptarB = new javax.swing.JButton();
         regresarB = new javax.swing.JButton();
         passwordTF = new javax.swing.JPasswordField();
         aviso = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 190, -1));
 
-        titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        titulo.setText("Iniciar sesión");
-
-        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        username.setText("Username");
-
-        password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        password.setText("Contraseña");
-
-        aceptarB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        aceptarB.setText("Aceptar");
+        aceptarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        aceptarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
+        aceptarB.setText("Ingresar");
+        aceptarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);
             }
         });
+        panelPrincipal.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 160, 30));
 
-        regresarB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        regresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         regresarB.setText("Regresar");
+        regresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         regresarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBActionPerformed(evt);
             }
         });
+        panelPrincipal.add(regresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 160, 30));
+        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, -1));
 
         aviso.setForeground(java.awt.Color.red);
+        panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 156, 310, 22));
 
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(password)
-                                    .addComponent(username))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(passwordTF)))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(regresarB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(aceptarB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37))))
-        );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(username)
-                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password)
-                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regresarB)
-                    .addComponent(aceptarB))
-                .addGap(31, 31, 31))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login.png"))); // NOI18N
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 350));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, -1));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,12 +128,10 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarB;
     private javax.swing.JLabel aviso;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelPrincipal;
-    private javax.swing.JLabel password;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton regresarB;
-    private javax.swing.JLabel titulo;
-    private javax.swing.JLabel username;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 }
