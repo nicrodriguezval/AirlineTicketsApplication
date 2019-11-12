@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
 import static javafx.scene.input.KeyCode.S;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -42,7 +41,7 @@ public class TestJoin {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {/*
         Usuario a = new Usuario();
         Usuario b = new Usuario();
         Usuario c = new Usuario();
@@ -77,7 +76,7 @@ public class TestJoin {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-        }
+        }*/
     }
     
     @AfterClass
@@ -238,7 +237,7 @@ public class TestJoin {
     u.setNombre("Darío");
     u.setApellido("Gómez");
     u.setUsername("dario_g69");
-    u.setEmail("guillermo@gmail.com");
+    u.setEmail("miapenahu@unal.edu.co");
     u.setPassword("s2f49g20s");
     String password2 = "s2f49g20s";
     assertEquals(EMAIL_DUPLIC,validarJoin.verificarJoin(u, password2));
@@ -267,8 +266,8 @@ public class TestJoin {
     u.setApellido("Arias");
     u.setUsername("gab_arias");
     u.setEmail("gab_arias2@outlook.es");
-    u.setPassword("123456789abcdef");
-    password2 = "123456789abcdef";
+    u.setPassword("123456789abcdef123456789"); 
+    password2 = "123456789abcdef123456789";
     assertEquals(LPAS_ERROR,validarJoin.verificarJoin(u, password2));
     }
     

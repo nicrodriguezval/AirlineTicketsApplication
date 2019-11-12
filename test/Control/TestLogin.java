@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
 import static Frontera.Login.user;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -36,7 +35,7 @@ public class TestLogin {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() {/*
         Usuario a = new Usuario();
         Usuario b = new Usuario();
         Usuario c = new Usuario();
@@ -71,7 +70,7 @@ public class TestLogin {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-        }
+        }*/
     }
     
     @AfterClass
@@ -113,7 +112,7 @@ public class TestLogin {
     @Test
     public void testCuentaExistente(){
     Usuario u = new Usuario();
-    u.setUsername("miapenahu");
+    u.setUsername("juanandres");
     u.setPassword("abcdefg");
     assertEquals(DATA_ERROR,validarLogin.verificarLogin(u));
 
@@ -142,9 +141,9 @@ public class TestLogin {
     u.setNombre("Nicolás");
     assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
 
-    u.setUsername("gillermoP");
-    u.setPassword("121212");
-    u.setNombre("Guillermo");
+    u.setUsername("miapenahu");
+    u.setPassword("Abcd1234");
+    u.setNombre("Miguel");
     assertEquals(SUCCESS(u.getNombre()),validarLogin.verificarLogin(u));
     }
 }
