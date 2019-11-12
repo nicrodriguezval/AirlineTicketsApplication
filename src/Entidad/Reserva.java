@@ -31,14 +31,15 @@ public class Reserva {
     private boolean equipajeVuelta;
     private String categoriaVuelta;
     private int pesoVuelta, numeroPuestosVuelta;
+    private int puestosIda[], puestosVuelta[];
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //ALTER TABLE reservas AUTO_INCREMENT = 0 para resetear
     private int id;
     
     public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
-        
-    }
+    }    
+
     public int getId() {
         return id;
     }
@@ -46,7 +47,6 @@ public class Reserva {
     public void setId(int id) {
         this.id = id;
     }
-    
 
     public Reserva(/*int id,*/ Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
         //this.id = id;
@@ -57,8 +57,18 @@ public class Reserva {
         this.categoria = categoria;
         this.usuario = usuario;
         this.numeroPuestos = numeroPuestos;
+        puestosIda = new int[numeroPuestos];
+        puestosIda = new int[numeroPuestosVuelta];
     }
 
+    public int[] getPuestosIda() {
+        return puestosIda;
+    }
+
+    public void setPuestosIda(int[] puestosIda) {
+        this.puestosIda = puestosIda;
+    }
+    
     public Vuelo getVueloIda() {
         return vueloIda;
     }
@@ -170,5 +180,13 @@ public class Reserva {
 
     public void setNumeroPuestosvuelta(int numeroPuestosVuelta) {
         this.numeroPuestosVuelta = numeroPuestosVuelta;
+    }
+
+    public int[] getPuestosVuelta() {
+        return puestosVuelta;
+    }
+
+    public void setPuestosVuelta(int[] puestosVuelta) {
+        this.puestosVuelta = puestosVuelta;
     }
 }

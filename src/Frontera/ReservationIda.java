@@ -324,7 +324,7 @@ public class ReservationIda extends javax.swing.JFrame {
         this.setVisible(false);
         
         if(esIdaVuelta) {
-            reservationVuelta reservacion = new reservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
+            ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
         }
@@ -437,7 +437,7 @@ public class ReservationIda extends javax.swing.JFrame {
         int x = vdao.leeralltolist().size();
         String ciudadesOrigen[] = new String[(x + 1)];
         ciudadesOrigen[0] = "Ninguno";
-        
+
         int i = 1;
         for(Vuelo v : vdao.leeralltolist()){
             ciudadesOrigen[i] = v.getOrigen();

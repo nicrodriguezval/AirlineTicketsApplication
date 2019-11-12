@@ -104,7 +104,7 @@ public class Inicializacion {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-            //udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
@@ -132,7 +132,7 @@ public class Inicializacion {
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
             System.out.println("-------");
-            //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
@@ -181,29 +181,16 @@ public class Inicializacion {
             System.out.println("Hora del vuelo: " + v.getHora());
             System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
-            //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
        
-   /* private Vuelo vueloIda, vueloVuelta;
-    private boolean equipaje, idaVuelta;
-    private String categoria;
-    private int peso, numeroPuestos;
-    double precio, iva; /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
-                                                            El precio es el precio inicial de la reserva,
-                                                            cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
-                                                            el precio está dado en USD para más comodidad con la cantidad de dígitos
-    private Usuario usuario;
-    
-    private boolean equipajeVuelta;
-    private String categoriaVuelta;
-    private int pesoVuelta, numeroPuestosVuelta; */
-        
-   /*     ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+/*        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         
         Reserva r1 = new Reserva(v1,1,true,true,20,"Turista",a);
         Reserva r2 = new Reserva(v2,2,true,false,0,"Ejecutiva",b);
         Reserva r3 = new Reserva(v3,3,false,true,10,"Primera clase",c);
          
+        r1.setId(10);
         r1.setCategoriaVuelta("Ejecutiva");
         r1.setEquipajeVuelta(true);
         r1.setNumeroPuestosvuelta(1);
@@ -211,10 +198,12 @@ public class Inicializacion {
         r1.setVueloVuelta(v4);
         r1.setNumeroPuestosvuelta(1);
         r1.setIva(19.0);
+        int[] puestos = new int[] {1};;
+        r1.setPuestosIda(puestos);
         
         rdao.crear(r1);
          
-        reservas.add(r1);
+        /*reservas.add(r1);
         reservas.add(r2);
         reservas.add(r3);
          

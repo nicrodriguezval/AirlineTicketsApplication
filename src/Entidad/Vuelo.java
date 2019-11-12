@@ -42,7 +42,11 @@ public class Vuelo implements Serializable{
         this.precioClaseTurista = precioClaseTurista;
         this.precioClaseEjecutiva = precioClaseEjecutiva;
         this.precioPrimeraClase = precioPrimeraClase;
+        this.sillasTotales = sillasTotales;
         sillasDisponibles = new boolean[sillasTotales];
+        
+        for(int i = 0; i < sillasDisponibles.length; i++)
+            sillasDisponibles[i] = true;
     }
 
     public int getId() {
