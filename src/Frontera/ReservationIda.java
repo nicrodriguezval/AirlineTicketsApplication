@@ -5,6 +5,7 @@
  */
 package Frontera;
 
+import Control.ValidarReserva;
 import Entidad.Vuelo;
 import static Frontera.FramePrincipal.sistema;
 import java.util.ArrayList;
@@ -213,26 +214,34 @@ public class ReservationIda extends javax.swing.JFrame {
             peso = 0;
         }
         
-        this.setVisible(false);
+        ValidarReserva validar = new ValidarReserva();
         
-        if(esIdaVuelta) {
-            ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
-            reservacion.setLocationRelativeTo(this);
-            reservacion.setVisible(true);
-        }
+        String resultado = validar.verificarReservaIda(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
         
-        else {
-            Vuelo vuelo = null;
-            
-            for(Vuelo v : sistema.getVuelos()) {
-                if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino) && v.getFecha().equals(fechaSalida) && v.getHora().equals(horaSalida))
-                    vuelo = v;
+       if(resultado.equals("Todo correcto")) {
+            this.setVisible(false);
+        
+            if(esIdaVuelta) {
+                ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
+                reservacion.setLocationRelativeTo(this);
+                reservacion.setVisible(true);
             }
+        
+            else {
+                Vuelo vuelo = null;
+            
+                for(Vuelo v : sistema.getVuelos()) {
+                    if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino) && v.getFecha().equals(fechaSalida) && v.getHora().equals(horaSalida))
+                    vuelo = v;
+                }
 
-            ReservationResumen rResumen = new ReservationResumen(idReserva, vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
-            rResumen.setLocationRelativeTo(this);
-            rResumen.setVisible(true);   
+                ReservationResumen rResumen = new ReservationResumen(idReserva, vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
+                rResumen.setLocationRelativeTo(this);
+                rResumen.setVisible(true);   
+            }
         }
+        
+        System.out.println(resultado);
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void pesoEquipajeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoEquipajeCBActionPerformed
