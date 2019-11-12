@@ -75,7 +75,8 @@ public class ValidarLogin {
                 return u.getNombre();
             }
         }*/
-        if(udao.leerusername(username)!= null){
+        String query = "u.username LIKE '"+username+"'";
+        if(udao.leerquerycount(query) != 0){
             return udao.leerusername(username).getNombre();
         }
         return null;
@@ -85,7 +86,8 @@ public class ValidarLogin {
         /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)) return u;
         }*/
-        if(udao.leerusername(username) != null){
+        String query = "u.username LIKE '"+username+"'";
+        if(udao.leerquerycount(query) != 0){
             return udao.leerusername(username);
         }
         return null;
