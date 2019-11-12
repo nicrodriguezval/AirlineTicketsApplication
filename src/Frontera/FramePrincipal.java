@@ -6,7 +6,7 @@
 package Frontera;
 
 import Entidad.CreditCard;
-import Entidad.Sistema;
+//import Entidad.Sistema;
 import Entidad.Usuario;
 import Entidad.Vuelo;
 import javax.swing.ImageIcon;
@@ -18,15 +18,15 @@ import javax.swing.ImageIcon;
  * title="Flaticon">www.flaticon.com</a></div>
  */
 public class FramePrincipal extends javax.swing.JFrame {
-    public static Sistema sistema = new Sistema();
-    public static int idVuelo = 1;
+    //public static Sistema sistema = new Sistema();
+    //public static int idVuelo = 1;
     
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
-        inicializacion();
+        //inicializacion();
         this.setLocationRelativeTo(null);
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
@@ -120,6 +120,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         registro.setLocationRelativeTo(this);
         registro.setVisible(true);
+        registro.setAlwaysOnTop(true);
     }//GEN-LAST:event_registrarseBActionPerformed
 
     private void ingresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBActionPerformed
@@ -128,6 +129,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         ingreso.setLocationRelativeTo(this);
         ingreso.setVisible(true);
+        ingreso.setAlwaysOnTop(true);
     }//GEN-LAST:event_ingresarBActionPerformed
 
     /**
@@ -166,101 +168,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
     }
     
-    public void inicializacion() {
-        Usuario a = new Usuario();
-        Usuario b = new Usuario();
-        Usuario c = new Usuario();
-        
-        a.setNombre("Nicolás");
-        a.setApellido("Rodríguez");
-        a.setEmail("nicrodriguezval@unal.edu.co");
-        a.setUsername("nicrodriguezval");
-        a.setPassword("123123");
-        
-        b.setNombre("Lucas");
-        b.setApellido("Peña");
-        b.setEmail("lucas@gmail.com");
-        b.setUsername("lucasps");
-        b.setPassword("123456");
-        
-        c.setNombre("Juan");
-        c.setApellido("Tovar");
-        c.setEmail("juancho@hotmail.com");
-        c.setUsername("juancho01");
-        c.setPassword("a1b2c3");
-        
-        sistema.addUsuarios(a);
-        sistema.addUsuarios(b);
-        sistema.addUsuarios(c);
-        
-        System.out.println("USUARIOS EXISTENTES");
-        System.out.println();
-        
-        for(Usuario u : sistema.getUsuarios()) {
-            System.out.println("Nombre(s): " + u.getNombre());
-            System.out.println("Apellido(s): " + u.getApellido());
-            System.out.println("Username: " + u.getUsername());
-            System.out.println("-------");
-        }
-        
-        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "656412345874569");
-        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
-        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
-        
-        sistema.addTarjetas(t1);
-        sistema.addTarjetas(t2);
-        sistema.addTarjetas(t3);
-        
-        System.out.println();
-        System.out.println("TARJETAS DE CRÉDITO EXISTENTES");
-        System.out.println();
-        
-        for(CreditCard t : sistema.getTarjetas()) {
-            System.out.println("Nombre del banco: " + t.getNombreBanco());
-            System.out.println("Nombre del titular: " + t.getNombreTitular());
-            System.out.println("Numero de la tarjeta: " + t.getNumeroTarjeta());
-            System.out.println("Marca internacional: " + t.getMarcaInternacional());
-            System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
-            System.out.println("-------");
-        }
-        
-        Vuelo v1 = new Vuelo(idVuelo++, "Bogotá", "Medellín", "01/1/2020", "14:00", 110, 200, 600, 300);
-        Vuelo v2 = new Vuelo(idVuelo++, "Madrid", "Miami", "30/12/2019", "3:00", 500, 620, 870, 400);
-        Vuelo v3 = new Vuelo(idVuelo++, "Cali", "Bucaramanga", "01/12/2019", "9:00", 130, 240, 580, 300);
-        
-        v1.setId(0);
-        v2.setId(1);
-        v3.setId(2);
-        
-        Vuelo v4 = new Vuelo(idVuelo++, "Medellín", "Bogotá", "05/1/2020", "12:00", 100, 250, 500, 400);
-        Vuelo v5 = new Vuelo(idVuelo++, "Miami", "Madrid", "15/1/2020", "5:00", 505, 750, 1000, 500);
-        Vuelo v6 = new Vuelo(idVuelo++, "Bucaramanga", "Cali", "15/12/2019", "11:00", 200, 370, 510, 200);
-        
-        v4.setId(3);
-        v5.setId(4);
-        v6.setId(5);
-        
-        sistema.addVuelos(v1);
-        sistema.addVuelos(v2);
-        sistema.addVuelos(v3);
-        sistema.addVuelos(v4);
-        sistema.addVuelos(v5);
-        sistema.addVuelos(v6);
-        
-        System.out.println();
-        System.out.println("VUELOS DISPONIBLES");
-        System.out.println();
-        
-        for(Vuelo v : sistema.getVuelos()) {
-            System.out.println("ID vuelo: " + v.getId());
-            System.out.println("Ciudad de origen: " + v.getOrigen());
-            System.out.println("Ciudad de destino: " + v.getDestino());
-            System.out.println("Fecha del vuelo: " + v.getFecha());
-            System.out.println("Hora del vuelo: " + v.getHora());
-            System.out.println("Asientos disponibles: " + v.getSillasTotales());
-            System.out.println("-------");
-        }
-    }
+     /*   public void inicializacion() {
+       // INICIALIZACIÓN DE USUARIOS MOVIDA A Test Packages.Control.Inicializacion.java
+       // INICIALIZACIÓN DE TARJETAS MOVIDA A Test Packages.Control.Inicializacion.java
+       // INICIALIZACIÓN DE VUELOS MOVIDA A Test Packages.Control.Inicializacion.java 
+       
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ingresarB;

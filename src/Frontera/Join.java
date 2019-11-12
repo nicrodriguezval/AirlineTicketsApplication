@@ -6,8 +6,9 @@
 package Frontera;
 
 import Control.ValidarJoin;
+import DAO.UsuarioDAO;
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -104,6 +105,7 @@ public class Join extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         Usuario usuario = new Usuario();
+        UsuarioDAO udao = new UsuarioDAO();
 
         String nombre = nombreTF.getText(), apellido = apellidoTF.getText(), email = emailTF.getText(),
         username = usernameTF.getText(), password = passwordTF.getText();
@@ -151,7 +153,7 @@ public class Join extends javax.swing.JFrame {
             aviso.setText("Las contraseñas no coinciden");
         
         else {
-            sistema.addUsuarios(usuario);
+            //sistema.addUsuarios(usuario);
             System.out.println("-------");
             System.out.println("NUEVO USUARIO AÑADIDO");
             System.out.println("Nombre: " + nombre);

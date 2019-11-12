@@ -5,14 +5,36 @@
  */
 package Entidad;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author nicro
  */
-public class Usuario {
-    private String nombre, apellido, username, email, password;
 
-    public Usuario() {
+@Entity
+@Table(name="usuarios")
+public class Usuario implements Serializable{
+    private String nombre, apellido, username, email, password;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public Usuario() { //NECESARIO PARA HACER PERSITENCIA!
     }
 
     public String getNombre() {

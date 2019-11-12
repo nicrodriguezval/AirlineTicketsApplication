@@ -5,8 +5,9 @@
  */
 package Control;
 
+import DAO.UsuarioDAO;
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
 
 /**
  *
@@ -14,6 +15,7 @@ import static Frontera.FramePrincipal.sistema;
  */
 public class ValidarJoin {
 
+    private UsuarioDAO udao = new UsuarioDAO();
     public ValidarJoin() {
     }
     
@@ -80,16 +82,22 @@ public class ValidarJoin {
     }
     
     public boolean equalUsernames(String username) {
-        for(Usuario u: sistema.getUsuarios()) {
-            if(u.getUsername().equals(username)) return true;
+//        for(Usuario u: sistema.getUsuarios()) {
+//            if(u.getUsername().equals(username)) return true;
+//      }
+        String query = " u.username LIKE '"+username+"'";
+        int count = (int) udao.leerquerycount(query);
+        System.out.println("count username: "+ count);
+        if(count != 0){
+            return true;
         }
-        
         return false;
     }
     
     public boolean verificarEmail(String email) {
-        if(email.length() < 1 || email.length() > 30) return false;
-        
+        if(email.length() <= 1 || email.length() > 30){
+            return false;
+        }
         return true;
     }
     
@@ -102,10 +110,15 @@ public class ValidarJoin {
     }
     
     public boolean equalEmails(String email) {
-        for(Usuario u : sistema.getUsuarios()) {
-            if(u.getEmail().equals(email)) return true;
+//        for(Usuario u : sistema.getUsuarios()) {
+//            if(u.getEmail().equals(email)) return true;
+//        }
+        String query = " u.email LIKE '"+email+"'";
+        int count = (int) udao.leerquerycount(query);
+        System.out.println("count email: " + count);
+        if(count != 0){
+            return true;
         }
-        
         return false;
     }
     

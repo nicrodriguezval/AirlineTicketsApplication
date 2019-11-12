@@ -139,6 +139,7 @@ public class MenuInicial extends javax.swing.JFrame {
        this.setVisible(false);
        reservation.setLocationRelativeTo(this);
        reservation.setVisible(true);
+       reservation.setAlwaysOnTop(true);
     }//GEN-LAST:event_reservaActionPerformed
 
     private void reservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reservaMouseClicked
@@ -152,6 +153,7 @@ public class MenuInicial extends javax.swing.JFrame {
         FramePrincipal framePrincipal = new FramePrincipal();
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
+        framePrincipal.setAlwaysOnTop(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -5,18 +5,36 @@
  */
 package Entidad;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author nicro
  */
-public class Vuelo {
+
+@Entity
+@Table(name="vuelos")
+public class Vuelo implements Serializable{
     private String origen, destino, hora, fecha;
-    private int sillasTotales, id; 
+    private int sillasTotales; 
     private double precioClaseTurista, precioClaseEjecutiva, precioPrimeraClase;
     private boolean sillasDisponibles[];
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public Vuelo(int id, String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales) {
-        this.id = id;
+    public Vuelo(){ //NECESARIO PARA HACER PERSITENCIA!
+        
+    }
+
+    public Vuelo(/*int id,*/ String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales) {
+        //this.id = id;
         this.origen = origen;
         this.destino = destino;
         this.fecha = fecha;

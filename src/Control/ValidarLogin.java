@@ -6,7 +6,8 @@
 package Control;
 
 import Entidad.Usuario;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
+import DAO.UsuarioDAO;
 import static Frontera.Login.user;
 
 /**
@@ -14,6 +15,8 @@ import static Frontera.Login.user;
  * @author nicro
  */
 public class ValidarLogin {
+    
+    private UsuarioDAO udao = new UsuarioDAO();
     
     public ValidarLogin() {
     }
@@ -47,37 +50,44 @@ public class ValidarLogin {
 
     
     public boolean cuentaExistente(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)){
                 return true;                    
             }
+        }*/
+        if(udao.leerusername(username) != null){
+            return true;
         }
         return false;
     }
     
     public boolean verificarContrasenia(String username, String password){
-        for(Usuario u : sistema.getUsuarios()) {
-            if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
-                return true;                    
-            }
+        String query = "u.username LIKE '"+username+"' AND u.password LIKE '"+password+"'";
+        if(udao.leerquerycount(query) != 0){
+            return true;
         }
         return false;
     }
 
        public String setName(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)){
                 return u.getNombre();
             }
+        }*/
+        if(udao.leerusername(username)!= null){
+            return udao.leerusername(username).getNombre();
         }
         return null;
        }
     
     public Usuario findUsuario(String username) {
-        for(Usuario u : sistema.getUsuarios()) {
+        /*for(Usuario u : sistema.getUsuarios()) {
             if(u.getUsername().equals(username)) return u;
+        }*/
+        if(udao.leerusername(username) != null){
+            return udao.leerusername(username);
         }
-        
         return null;
     }
 }

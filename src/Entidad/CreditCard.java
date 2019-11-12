@@ -5,19 +5,43 @@
  */
 package Entidad;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author nicro
  */
-public class CreditCard {
+@Entity
+@Table(name="tarjetas")
+public class CreditCard implements Serializable {
     private String nombreBanco, fechaCaducidad, nombreTitular, MarcaInternacional, numeroTarjeta;
 
+    public CreditCard(){//NECESARIO PARA HACER PERSITENCIA!
+    }
+    
     public CreditCard(String nombreBanco, String fechaCaducidad, String nombreTitular, String MarcaInternacional, String numeroTarjeta) {
         this.nombreBanco = nombreBanco;
         this.fechaCaducidad = fechaCaducidad;
         this.nombreTitular = nombreTitular;
         this.MarcaInternacional = MarcaInternacional;
         this.numeroTarjeta = numeroTarjeta;
+    }
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getNombreBanco() {

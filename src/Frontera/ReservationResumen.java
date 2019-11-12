@@ -6,9 +6,10 @@
 package Frontera;
 
 import Control.CalcularPrecio;
+import DAO.ReservaDAO;
 import Entidad.Reserva;
 import Entidad.Vuelo;
-import static Frontera.FramePrincipal.sistema;
+//import static Frontera.FramePrincipal.sistema;
 import static Frontera.Login.user;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -37,7 +38,7 @@ public class ReservationResumen extends javax.swing.JFrame {
     int puestosReservadosVuelta, pesoVuelta;
     private Vuelo vueloVuelta1;
    
-    public ReservationResumen(int numeroReserva, Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
+    public ReservationResumen(/*int numeroReserva,*/ Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
         this.numeroReserva = numeroReserva;
         this.vueloIda = vueloIda;
         this.origen = vueloIda.getOrigen();
@@ -550,8 +551,9 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     private void confirmarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBActionPerformed
         // TODO add your handling code here:
-        sistema.addReservas(reserva);
-        
+        //sistema.addReservas(reserva);
+        ReservaDAO rdao = new ReservaDAO();
+        rdao.crear(reserva);
         System.out.println("-------");
         System.out.println("RESERVACIÓN REALIZADA");
         System.out.println();
@@ -600,12 +602,14 @@ public class ReservationResumen extends javax.swing.JFrame {
             ReservationVuelta reservacion = new ReservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
+            reservacion.setAlwaysOnTop(true);
         }
         
         else {
             ReservationIda reservacion = new ReservationIda();
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
+            reservacion.setAlwaysOnTop(true);
         }
     }//GEN-LAST:event_volverBActionPerformed
 
@@ -614,15 +618,18 @@ public class ReservationResumen extends javax.swing.JFrame {
         Seat seat = new Seat(reserva);
         seat.setLocationRelativeTo(this);
         seat.setVisible(true);
+        seat.setAlwaysOnTop(true);
     }//GEN-LAST:event_asientoIconMouseClicked
     
     private void configuracionInicial() {
+        ReservaDAO rdao = new ReservaDAO();
+        int s = (int) rdao.leerallcount() + 1;
         jLabel1.setText(user.getNombre());
         nombreL.setText(user.getNombre());
         jLabel8.setText(user.getApellido());
         jLabel9.setText(origen.substring(0,3).toUpperCase());
         jLabel10.setText(destino.substring(0, 3).toUpperCase());
-        nReservaL.setText(("" + numeroReserva));
+        nReservaL.setText(("" + (s)));
         docIDL.setText("");
         origenL.setText(origen);
         destinoL.setText(destino);
@@ -639,7 +646,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         
         CalcularPrecio calcular = new CalcularPrecio();
         
-        reserva = new Reserva(idReserva++, vueloIda, puestosReservados, isIdaVuelta, isEquipaje, peso, categoria, user);
+        reserva = new Reserva(vueloIda, puestosReservados, isIdaVuelta, isEquipaje, peso, categoria, user);
         reserva.setPeso(peso);
         
         if(isIdaVuelta) {
@@ -653,6 +660,9 @@ public class ReservationResumen extends javax.swing.JFrame {
         precioSubtotal = (calcular.calcularPrecio(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioImpuestos = (calcular.calcularIva(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioTotal = (calcular.precioFinal(reserva) * (puestosReservados + puestosReservadosVuelta));
+        
+        reserva.setPrecio(precioTotal);
+        reserva.setIva(calcular.calcularIva(reserva));
         
         subTotalL.setText(("" + precioSubtotal + " USD"));
         impuestosL.setText(("" + precioImpuestos + " USD"));

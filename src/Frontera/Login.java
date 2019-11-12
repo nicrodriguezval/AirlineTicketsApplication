@@ -114,6 +114,7 @@ public class Login extends javax.swing.JFrame {
             this.setVisible(false);
             welcome.setLocationRelativeTo(this);
             welcome.setVisible(true);
+            welcome.setAlwaysOnTop(true);
         }
     }//GEN-LAST:event_aceptarBActionPerformed
 
@@ -123,6 +124,7 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
+        framePrincipal.setAlwaysOnTop( true );
     }//GEN-LAST:event_regresarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

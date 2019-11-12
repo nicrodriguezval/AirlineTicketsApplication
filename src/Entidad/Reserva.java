@@ -5,12 +5,19 @@
  */
 package Entidad;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author nicro
  */
+@Entity
+@Table(name="reservas")
 public class Reserva {
-    private int id;
     private Vuelo vueloIda, vueloVuelta;
     private boolean equipaje, idaVuelta;
     private String categoria;
@@ -26,8 +33,23 @@ public class Reserva {
     private int pesoVuelta, numeroPuestosVuelta;
     private int puestosIda[], puestosVuelta[];
 
-    public Reserva(int id, Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //ALTER TABLE reservas AUTO_INCREMENT = 0 para resetear
+    private int id;
+    
+    public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
+    }    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public Reserva(/*int id,*/ Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
+        //this.id = id;
         this.vueloIda = vueloIda;
         this.equipaje = equipaje;
         this.idaVuelta = idaVuelta;
@@ -37,14 +59,6 @@ public class Reserva {
         this.numeroPuestos = numeroPuestos;
         puestosIda = new int[numeroPuestos];
         puestosIda = new int[numeroPuestosVuelta];
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int[] getPuestosIda() {

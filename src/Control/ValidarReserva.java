@@ -5,57 +5,79 @@
  */
 package Control;
 
+import DAO.ReservaDAO;
+import DAO.VueloDAO;
+import Entidad.Reserva;
+import Entidad.Vuelo;
+
 /**
  *
- * @author alemr
+ * @author Miguel Alejandro
  */
 public class ValidarReserva {
-    
+    private ReservaDAO rdao = new ReservaDAO();
+    private VueloDAO vdao = new VueloDAO();
+
     public ValidarReserva() {
-        
     }
     
-    public String verificarReservaIda(String origen, String destino, String fecha, String hora) {
-        if(verificarOrigen(origen))
-            return "Elija una ciudad de origen";
-        
-        else if(verificarDestino(destino))
-            return "Elija una ciudad de destino";
-        
-        else if(verificarFecha(fecha))
-            return "Elija una fecha para el vuelo";
-        
-        else if(verificarHora(hora))
-            return "Elija una hora para el vuelo";
-        
-        else
-            return "Todo correcto";
+    public String VerificarReservaIda(String origen, String destino, String fecha, String hora){
+        if(!verificarOrigenSelected(origen)){
+            return "Ubicación de origen inválida. Por favor escoja una de las opciones";
+        } else if (!verificarDestinoSelected(destino)){
+            return "Ubicación de destino inválida. Por favor escoja una de las opciones";
+        } else if (!verificarFechaSelected(fecha)){
+            return "Fecha de vuelo inválida. Por favor escoja una de las opciones";
+        } else if (!verificarHoraSelected(hora)){
+            return "Hora de vuelo inválida. Por favor escoja una de las opciones";
+        } else{
+            return "Reserva Exitosa";
+        }
     }
     
-    public String verificarReservaVuelta(String fecha, String hora) {
-        if(verificarFecha(fecha))
-            return "Elija una fecha para el vuelo";
-        
-        else if(verificarHora(hora))
-            return "Elija una hora para el vuelo";
-        
-        else
-            return "Todo correcto";
+        public String VerificarReservaVuelta(String fecha, String hora){
+        if(!verificarFechaSelected(fecha)){
+            return "Fecha de vuelo inválida. Por favor escoja una de las opciones";
+        } else if (!verificarHoraSelected(hora)){
+            return "Hora de vuelo inválida. Por favor escoja una de las opciones";
+        } else{
+            return "Reserva Exitosa";
+        }
     }
-    
-    public boolean verificarOrigen(String origen) {
-        return(origen.equals("Ninguno"));
+
+    public boolean verificarOrigenSelected(String origen){
+       for(Vuelo v : vdao.leeralltolist()){
+            if(v.getOrigen().equals(origen)){
+                return true;
+            }
+       }
+        return false;
     }
-    
-    public boolean verificarDestino(String destino) {
-        return(destino.equals("Ninguno"));
+
+    public boolean verificarDestinoSelected(String destino){
+       for(Vuelo v : vdao.leeralltolist()){
+            if(v.getDestino().equals(destino)){
+                return true;
+            }
+       }
+        return false;
     }
-    
-    public boolean verificarFecha(String fecha) {
-        return(fecha.equals("Ninguna"));
+
+    public boolean verificarFechaSelected(String fecha){
+       for(Vuelo v : vdao.leeralltolist()){
+            if(v.getFecha().equals(fecha)){
+                return true;
+            }
+       }
+        return false;
     }
-    
-    public boolean verificarHora(String hora) {
-        return(hora.equals("Ninguna"));
+
+    public boolean verificarHoraSelected(String hora){
+       for(Vuelo v : vdao.leeralltolist()){
+            if(v.getHora().equals(hora)){
+                return true;
+            }
+       }
+        return false;
     }
 }

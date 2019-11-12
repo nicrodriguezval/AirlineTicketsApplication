@@ -7,17 +7,22 @@ package Entidad;
 
 import java.util.ArrayList;
 
+
+
 /**
  *
  * @author nicro
  */
-public class Sistema {
+
+
+public class Sistema{
     private ArrayList<Usuario> usuarios;
     private ArrayList<Vuelo> vuelos;
     private ArrayList<Reserva> reservas;
     private ArrayList<CreditCard> tarjetas;
     private ArrayList<Ticket> tickets;
 
+    
     public Sistema() {
         usuarios = new ArrayList<>();
         vuelos = new ArrayList<>();
