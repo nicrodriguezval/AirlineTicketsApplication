@@ -55,7 +55,8 @@ public class ValidarLogin {
                 return true;                    
             }
         }*/
-        if(udao.leerusername(username) != null){
+        String query = "u.username LIKE '"+username+"'";
+        if(udao.leerquerycount(query) != 0){
             return true;
         }
         return false;

@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  *
  * @author nicro
  */
-public class ReservationVuelta extends javax.swing.JFrame {
+public class ReservationVueltas extends javax.swing.JFrame {
     
     private VueloDAO vdao = new VueloDAO();
     
@@ -34,7 +34,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
      * Creates new form reservationVuelta
      */
 
-    public ReservationVuelta(boolean esEquipaje, String lugarOrigen, String lugarDestino, String fechaSalida, String horaSalida, String categoria1, String peso1, int puestos, int peso) {
+    public ReservationVueltas(boolean esEquipaje, String lugarOrigen, String lugarDestino, String fechaSalida, String horaSalida, String categoria1, String peso1, int puestos, int peso) {
         this.esEquipaje = esEquipaje;
         this.lugarOrigen = lugarOrigen;
         this.lugarDestino = lugarDestino;
@@ -259,9 +259,9 @@ public class ReservationVuelta extends javax.swing.JFrame {
         int count = 0;
         
         String query = "v.origen LIKE '"+lugarDestino+"' AND v.destino LIKE '"+lugarOrigen+"' AND v.fecha LIKE '"+fechaVuelta+"'";
-        for(Vuelo v : vdao.leerquerytolist(query)){
+        for(String s : vdao.leerdiffparametertolist("hora",query)){
             count++;
-            al.add(v.getHora());
+            al.add(s);
         }
         
         /*for(Vuelo v : sistema.getVuelos()) {
@@ -300,9 +300,9 @@ public class ReservationVuelta extends javax.swing.JFrame {
         int count = 0;
         
         String query = "v.origen LIKE '"+lugarDestino+"' AND v.destino LIKE '"+lugarOrigen+"'";
-        for(Vuelo v : vdao.leerquerytolist(query)){
+        for(String s : vdao.leerdiffparametertolist("fecha",query)){
             count++;
-            al.add(v.getFecha());
+            al.add(s);
         }
         
         /*for(Vuelo v : sistema.getVuelos()) {

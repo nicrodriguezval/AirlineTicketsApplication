@@ -48,6 +48,8 @@ public class Vuelo implements Serializable{
         for(int i = 0; i < sillasDisponibles.length; i++)
             sillasDisponibles[i] = true;
     }
+    
+    
 
     public int getId() {
         return id;

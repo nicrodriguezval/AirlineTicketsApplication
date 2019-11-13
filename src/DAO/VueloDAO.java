@@ -8,6 +8,7 @@ package DAO;
 import Entidad.Vuelo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NonUniqueResultException;
@@ -74,7 +75,7 @@ private static EntityManagerFactory
         }
     }
     
-    public List<Vuelo> leeralltolist(){
+    public List<Vuelo> leeralltolist(){ //RETORNA UNA LISTA CON TODOS LOS VUELOS EN LA DATABASE
         EntityManager em = emf.createEntityManager();
         List<Vuelo> vuelo = null;
         TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v ",Vuelo.class);
@@ -100,6 +101,89 @@ private static EntityManagerFactory
         } finally{
             em.close();
             return vuelo;
+        }
+    }
+    
+    public long leerquerycount(String condition){
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        Query q = em.createQuery("SELECT COUNT(v) FROM Vuelo v WHERE " + condition);
+        try{
+            count = (long) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            count = (long) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return count;
+        }
+    }
+        
+    public List<String> leerdiffparametertolist(String param, String condition){
+        EntityManager em = emf.createEntityManager();
+        List<String> par = new ArrayList<String>();
+        List<Vuelo> result = null;
+        List<String> uniques = new ArrayList<String>();
+        TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v WHERE " +
+                condition,Vuelo.class);
+        try{
+            result = q.getResultList();
+            for(Vuelo v : result){
+                if(param.equals("origen")){par.add(v.getOrigen());}
+                else if(param.equals("destino")){par.add(v.getDestino());}
+                else if(param.equals("fecha")){par.add(v.getFecha());}
+                else if(param.equals("hora")){par.add(v.getHora());}
+                else if(param.equals("id")){par.add("" + v.getId());}
+                else if(param.equals("sillasTotales")){par.add("" + v.getSillasTotales());}
+                else if(param.equals("precioClaseEjecutiva")){par.add("" + v.getPrecioClaseEjecutiva());}
+                else if(param.equals("precioClaseTurista")){par.add("" + v.getPrecioClaseTurista());}
+                else if(param.equals("precioPrimeraClase")){par.add("" + v.getPrecioPrimeraClase());}
+                else {uniques = null;}
+                }
+            for(String s : par){
+                if(!uniques.contains(s)){
+                    uniques.add(s);
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return uniques;
+        }
+    }
+    
+        public List<String> leerdiffallparametertolist(String param){
+        EntityManager em = emf.createEntityManager();
+        List<String> par = new ArrayList<String>();
+        List<Vuelo> result = null;
+        List<String> uniques = new ArrayList<String>();
+        TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v",Vuelo.class);
+        try{
+            result = q.getResultList();
+            for(Vuelo v : result){
+                if(param.equals("origen")){par.add(v.getOrigen());}
+                else if(param.equals("destino")){par.add(v.getDestino());}
+                else if(param.equals("fecha")){par.add(v.getFecha());}
+                else if(param.equals("hora")){par.add(v.getHora());}
+                else if(param.equals("id")){par.add("" + v.getId());}
+                else if(param.equals("sillasTotales")){par.add("" + v.getSillasTotales());}
+                else if(param.equals("precioClaseEjecutiva")){par.add("" + v.getPrecioClaseEjecutiva());}
+                else if(param.equals("precioClaseTurista")){par.add("" + v.getPrecioClaseTurista());}
+                else if(param.equals("precioPrimeraClase")){par.add("" + v.getPrecioPrimeraClase());}
+                else {uniques = null;}
+                }
+            for(String s : par){
+                if(!uniques.contains(s)){
+                    uniques.add(s);
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return uniques;
         }
     }
     

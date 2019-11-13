@@ -237,7 +237,7 @@ public class ReservationIda extends javax.swing.JFrame {
         }
         this.setVisible(false);
         if(esIdaVuelta) {
-            ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
+            reservationVuelta reservacion = new reservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
             reservacion.setAlwaysOnTop(true);
@@ -267,10 +267,10 @@ public class ReservationIda extends javax.swing.JFrame {
         lugarOrigen = OrigenCB.getItemAt(OrigenCB.getSelectedIndex());
         ArrayList<String> al = new ArrayList<>();
         
-        String query = "v.origen LIKE "+"'"+lugarOrigen+"'";
-        for(Vuelo v : vdao.leerquerytolist(query)){
+        String query = "v.origen LIKE '"+lugarOrigen+"'";
+        for(String s : vdao.leerdiffparametertolist("destino",query)){
                 count++;
-                al.add(v.getDestino());
+                al.add(s);
             }
         
        /* for(Vuelo v : sistema.getVuelos()) {
@@ -296,10 +296,9 @@ public class ReservationIda extends javax.swing.JFrame {
         int count = 0;
         
         String query = "v.origen LIKE '" + lugarOrigen + "' AND v.destino LIKE '" + lugarDestino + "'";
-        for(Vuelo v : vdao.leerquerytolist(query)){
+        for(String s : vdao.leerdiffparametertolist("fecha",query)){
             count++;
-            System.out.println("");
-            al.add(v.getFecha());
+            al.add(s);
         } 
         
         /*for(Vuelo v : sistema.getVuelos()) {
@@ -335,10 +334,9 @@ public class ReservationIda extends javax.swing.JFrame {
         int count = 0;
 
         String query = "v.origen LIKE '" + lugarOrigen + "' AND v.destino LIKE '" + lugarDestino + "' AND v.fecha LIKE '" + fechaSalida + "'";
-        for(Vuelo v : vdao.leerquerytolist(query)){
+        for(String s : vdao.leerdiffparametertolist("hora",query)){
                 count++;
-                System.out.println("");
-                al.add(v.getHora());
+                al.add(s);
             }   
         /*for(Vuelo v : sistema.getVuelos()) {
             if(v.getOrigen().equals(lugarOrigen) && v.getDestino().equals(lugarDestino) && v.getFecha().equals(fechaSalida)) {
@@ -369,13 +367,13 @@ public class ReservationIda extends javax.swing.JFrame {
         pesoEquipaje.setVisible(false);
         pesoEquipajeCB.setVisible(false);
         
-        int x = vdao.leeralltolist().size();
+        int x = vdao.leerdiffallparametertolist("origen").size();
         String ciudadesOrigen[] = new String[(x + 1)];
         ciudadesOrigen[0] = "Ninguno";
         
         int i = 1;
-        for(Vuelo v : vdao.leeralltolist()){
-            ciudadesOrigen[i] = v.getOrigen();
+        for(String s : vdao.leerdiffallparametertolist("origen")){
+            ciudadesOrigen[i] = s;
             i++;
         }
         /*for(Vuelo v : sistema.getVuelos()) {

@@ -137,19 +137,27 @@ public class Inicializacion {
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
         
-        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/1/2020", "14:00",100,500,1000,300);
+        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "14:00",100,500,1000,300);
         Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000,400);
         Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000,300);
         
-        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/1/2020", "12:00",100,500,1000,400);
-        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/1/2020", "5:00",100,500,1000,500);
+        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/01/2020", "12:00",100,500,1000,400);
+        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/01/2020", "5:00",100,500,1000,500);
         Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000,200);
         
-
-        v4.setSillasTotales(400);
-        v5.setSillasTotales(500);
-        v6.setSillasTotales(200);
-        
+        //TRES VUELOS DE IDA DESDE BOGOTÁ HASTA MEDELLÍN EL MISMO DÍA, A DIFERENTES HORAS
+        Vuelo v7 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "16:00",100,500,1000,300);
+        Vuelo v8 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "18:00",100,500,1000,300);
+        //TRES VUELOS MÁS DESDE BOGOTÁ HACIA DEDELLÍN, EL SIGUIENTE DÍA, A DIFERENTES HORAS
+        Vuelo v9 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "12:00",100,500,1000,300);
+        Vuelo v10 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "13:00",100,500,1000,300);
+        Vuelo v11 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "15:00",100,500,1000,300);
+        //DOS UBICACIONES MÁS DESDE BOGOTÁ: MIAMI Y BUCARAMANGA
+        Vuelo v12 = new Vuelo("Bogotá", "Miami", "01/01/2020", "20:00",100,500,1000,300);
+        Vuelo v13 = new Vuelo("Bogotá", "Bucaramanga", "01/01/2020", "18:00",100,500,1000,300);
+        //LOS VUELOS DE VUELTA PAR LOS ULTIMOS DOS
+        Vuelo v14 = new Vuelo("Miami","Bogotá","01/05/2020", "23:00",100,500,1000,300);
+        Vuelo v15 = new Vuelo("Bucaramanga","Bogotá", "01/06/2020", "6:00",100,500,1000,300);
         //sistema.addVuelos(v1);
         //sistema.addVuelos(v2);
         //sistema.addVuelos(v3);
@@ -162,6 +170,15 @@ public class Inicializacion {
         vuelos.add(v4);
         vuelos.add(v5);
         vuelos.add(v6);
+        vuelos.add(v7);
+        vuelos.add(v8);
+        vuelos.add(v9);
+        vuelos.add(v10);
+        vuelos.add(v11);
+        vuelos.add(v12);
+        vuelos.add(v13);
+        vuelos.add(v14);
+        vuelos.add(v15);
         
         System.out.println();
         System.out.println("VUELOS DISPONIBLES");
