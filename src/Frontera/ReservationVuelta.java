@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  *
  * @author nicro
  */
-public class ReservationVueltas extends javax.swing.JFrame {
+public class ReservationVuelta extends javax.swing.JFrame {
     
     private VueloDAO vdao = new VueloDAO();
     
@@ -34,7 +34,7 @@ public class ReservationVueltas extends javax.swing.JFrame {
      * Creates new form reservationVuelta
      */
 
-    public ReservationVueltas(boolean esEquipaje, String lugarOrigen, String lugarDestino, String fechaSalida, String horaSalida, String categoria1, String peso1, int puestos, int peso) {
+    public ReservationVuelta(boolean esEquipaje, String lugarOrigen, String lugarDestino, String fechaSalida, String horaSalida, String categoria1, String peso1, int puestos, int peso) {
         this.esEquipaje = esEquipaje;
         this.lugarOrigen = lugarOrigen;
         this.lugarDestino = lugarDestino;
