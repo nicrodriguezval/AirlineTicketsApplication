@@ -8,7 +8,6 @@ package Control;
 import Entidad.Usuario;
 //import static Frontera.FramePrincipal.sistema;
 import DAO.UsuarioDAO;
-import static Frontera.Login.user;
 
 /**
  *

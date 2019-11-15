@@ -22,7 +22,6 @@ public class CreditCardDAO {
     emf = Persistence.createEntityManagerFactory("AirlineApp_JPAPU");
     
     public void crear(CreditCard object){
-        
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {

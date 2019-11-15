@@ -20,16 +20,19 @@ import javax.persistence.Table;
 @Table(name="tarjetas")
 public class CreditCard implements Serializable {
     private String nombreBanco, fechaCaducidad, nombreTitular, MarcaInternacional, numeroTarjeta;
+    private double cupoGastado, cupoMaximo;
 
     public CreditCard(){//NECESARIO PARA HACER PERSITENCIA!
     }
     
-    public CreditCard(String nombreBanco, String fechaCaducidad, String nombreTitular, String MarcaInternacional, String numeroTarjeta) {
+    public CreditCard(String nombreBanco, String fechaCaducidad, String nombreTitular, String MarcaInternacional, String numeroTarjeta, double cupoGastado, double cupoMaximo) {
         this.nombreBanco = nombreBanco;
         this.fechaCaducidad = fechaCaducidad;
         this.nombreTitular = nombreTitular;
         this.MarcaInternacional = MarcaInternacional;
         this.numeroTarjeta = numeroTarjeta;
+        this.cupoGastado = cupoGastado;
+        this.cupoMaximo = cupoMaximo;
     }
     
     @Id
@@ -82,5 +85,21 @@ public class CreditCard implements Serializable {
 
     public void setNumeroTarjeta(String numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public double getCupoGastado() {
+        return cupoGastado;
+    }
+
+    public void setCupoGastado(double cupoGastado) {
+        this.cupoGastado = cupoGastado;
+    }
+
+    public double getCupoMaximo() {
+        return cupoMaximo;
+    }
+
+    public void setCupoMaximo(double cupoMaximo) {
+        this.cupoMaximo = cupoMaximo;
     }
 }

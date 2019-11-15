@@ -72,6 +72,24 @@ public class ReservaDAO {
             return reserva;
         }
     }
+    
+    public Reserva getReserva(int id){
+        EntityManager em = emf.createEntityManager();
+        Reserva reserva = null;
+        Query q = em.createQuery("SELECT r FROM Reserva r " +
+                "WHERE r.id LIKE :id")
+                .setParameter("id", id);
+        try{
+            reserva = (Reserva) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            reserva = (Reserva) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return reserva;
+        }
+    }
         
     public List<Reserva> leeralltolist(){
         EntityManager em = emf.createEntityManager();

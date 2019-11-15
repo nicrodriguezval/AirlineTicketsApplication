@@ -109,9 +109,9 @@ public class Inicializacion {
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
         
-        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "656412345874569");
-        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
-        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
+        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "6564123458745691", 100.2, 3000);
+        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567", 1000, 3500);
+        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223", 0, 2000);
         
         //sistema.addTarjetas(t1);
         //sistema.addTarjetas(t2);
