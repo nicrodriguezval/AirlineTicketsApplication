@@ -20,9 +20,6 @@ import javax.persistence.Table;
 @Table(name="tickets")
 public class Ticket implements Serializable{
     Reserva reserva;
-    Usuario usuario;
-    double precio, iva;
-    String origen, destino;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +38,13 @@ public class Ticket implements Serializable{
 
     public Ticket(Reserva reserva) {
         this.reserva = reserva;
-        usuario = reserva.getUsuario();
-        precio = reserva.getPrecio();
-        iva = reserva.getIva();
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }

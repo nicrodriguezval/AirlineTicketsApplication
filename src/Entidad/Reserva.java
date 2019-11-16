@@ -37,15 +37,15 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //ALTER TABLE reservas AUTO_INCREMENT = 0 para resetear
     private int id;
     
-    public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
-    }    
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
     }
 
     public Reserva(/*int id,*/ Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
@@ -60,7 +60,7 @@ public class Reserva {
         puestosIda = new int[numeroPuestos];
         puestosIda = new int[numeroPuestosVuelta];
     }
-
+    
     public int[] getPuestosIda() {
         return puestosIda;
     }

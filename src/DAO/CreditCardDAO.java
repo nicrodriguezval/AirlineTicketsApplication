@@ -6,11 +6,14 @@
 package DAO;
 
 import Entidad.CreditCard;
+import Entidad.Reserva;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -84,6 +87,20 @@ public class CreditCardDAO {
         } finally{
             em.close();
             return ret;
+        }
+    }
+    
+    public List<CreditCard> leeralltolist(){
+        EntityManager em = emf.createEntityManager();
+        List<CreditCard> creditCard = null;
+        TypedQuery<CreditCard> q = em.createQuery("SELECT t FROM CreditCard t ", CreditCard.class);
+        try {
+            creditCard = q.getResultList();
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return creditCard;
         }
     }
  

@@ -24,7 +24,6 @@ import javax.swing.JTextField;
 public class ReservationResumen extends javax.swing.JFrame {
     private double precioSubtotal, precioImpuestos, precioTotal;
     public static int idReserva = 0;
-    private int numeroReserva;
     
     private Reserva reserva;
     
@@ -39,7 +38,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private Vuelo vueloVuelta1;
    
     public ReservationResumen(/*int numeroReserva,*/ Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
-        this.numeroReserva = numeroReserva;
         this.vueloIda = vueloIda;
         this.origen = vueloIda.getOrigen();
         this.puestosReservados = puestosReservados;

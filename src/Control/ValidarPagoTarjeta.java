@@ -8,6 +8,8 @@ package Control;
 import DAO.CreditCardDAO;
 import DAO.ReservaDAO;
 import Entidad.CreditCard;
+import Entidad.Reserva;
+import java.util.List;
 
 /**
  *
@@ -16,6 +18,8 @@ import Entidad.CreditCard;
 public class ValidarPagoTarjeta {
     private ReservaDAO rdao = new ReservaDAO();
     private CreditCardDAO tdao = new CreditCardDAO();
+    private List<Reserva> listReservas = rdao.leeralltolist();
+    private List<CreditCard> listTarjetas = tdao.leeralltolist();
 
     public ValidarPagoTarjeta() {
     }
@@ -36,7 +40,7 @@ public class ValidarPagoTarjeta {
         else if(!verificarMarcaInternacional(tarjeta.getMarcaInternacional()))
             return "Longitud de marca internacional incorrecta";
         
-        else if(verificarNumeroTarjeta(tarjeta.getNumeroTarjeta()))
+        else if(!verificarNumeroTarjeta(tarjeta.getNumeroTarjeta()))
             return "Longitud del numero de la tarjeta incorrecta";
         
         else if(!verificarTarjeta(tarjeta)) 
@@ -50,11 +54,11 @@ public class ValidarPagoTarjeta {
     }
     
     public boolean verificarReserva(int id) {
-        if(rdao.getReserva(id) != null) 
-            return true;
+        for(int i = 0; i < listReservas.size(); i++)
+            if(listReservas.get(i).getId() == id)
+                return true;
         
-        else
-            return false;
+        return false;
     }
     
     public boolean verificarNombreBanco(String nombreBanco) {
@@ -78,11 +82,12 @@ public class ValidarPagoTarjeta {
     }
     
     public boolean verificarTarjeta(CreditCard tarjeta) {
-        if(tdao.leerId(tarjeta) != null)
-            return true;
+        for(int i = 0; i < listTarjetas.size(); i++)
+            if(listTarjetas.get(i).getNombreBanco().equals(tarjeta.getNombreBanco()) && listTarjetas.get(i).getFechaCaducidad().equals(tarjeta.getFechaCaducidad()) && listTarjetas.get(i).getMarcaInternacional().equals(tarjeta.getMarcaInternacional())
+                        && listTarjetas.get(i).getNombreTitular().equals(tarjeta.getNombreTitular()) && listTarjetas.get(i).getNumeroTarjeta().equals(tarjeta.getNumeroTarjeta()))
+                return true;
         
-        else
-            return false;
+        return false;
     }
 
     public boolean validarCompra(double cupoGastado, double cupoMaximo, double precioReserva) {
