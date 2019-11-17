@@ -87,7 +87,7 @@ public class ValidarJoin {
 //      }
         String query = " u.username LIKE '"+username+"'";
         int count = (int) udao.leerquerycount(query);
-        System.out.println("count username: "+ count);
+        //System.out.println("count username: "+ count);
         if(count != 0){
             return true;
         }

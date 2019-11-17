@@ -10,6 +10,7 @@ import DAO.UsuarioDAO;
 import Entidad.Usuario;
 //import static Frontera.FramePrincipal.sistema;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -46,6 +47,12 @@ public class Join extends javax.swing.JFrame {
         passwordTF = new javax.swing.JPasswordField();
         verificarPasswordTF = new javax.swing.JPasswordField();
         aviso = new javax.swing.JLabel();
+        nombreL = new javax.swing.JLabel();
+        apellidoL = new javax.swing.JLabel();
+        usernameL = new javax.swing.JLabel();
+        emailL = new javax.swing.JLabel();
+        verificarPasswordL = new javax.swing.JLabel();
+        passwordL = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,42 +69,115 @@ public class Join extends javax.swing.JFrame {
         aceptar.setText("Registrar");
         aceptar.setContentAreaFilled(false);
         aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        aceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         aceptar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 160, 40));
+        panelPrincipal.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 160, 40));
 
         regresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         regresar.setText("Regresar");
         regresar.setContentAreaFilled(false);
         regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        regresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         regresar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 160, 30));
-        panelPrincipal.add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 190, -1));
-        panelPrincipal.add(apellidoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, -1));
-        panelPrincipal.add(emailTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 210, -1));
-        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 190, -1));
-        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 190, -1));
-        panelPrincipal.add(verificarPasswordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 160, -1));
+        panelPrincipal.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 160, 40));
 
-        aviso.setBackground(new java.awt.Color(255, 0, 0));
-        aviso.setForeground(new java.awt.Color(255, 0, 0));
-        aviso.setEnabled(false);
-        panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 260, 20));
+        nombreTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Formulario.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
+        apellidoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoTFActionPerformed(evt);
+            }
+        });
+        apellidoTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(apellidoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 190, -1));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
+        emailTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                emailTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(emailTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 210, -1));
+
+        usernameTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernameTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, -1));
+
+        passwordTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 190, -1));
+
+        verificarPasswordTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                verificarPasswordTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(verificarPasswordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 190, -1));
+
+        aviso.setBackground(new java.awt.Color(255, 255, 255));
+        aviso.setForeground(Color.red);
+        aviso.setEnabled(true);
+        panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 340, 20));
+
+        nombreL.setBackground(new java.awt.Color(255, 255, 255));
+        nombreL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombreL.setText("Nombre");
+        panelPrincipal.add(nombreL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        apellidoL.setBackground(new java.awt.Color(255, 255, 255));
+        apellidoL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        apellidoL.setText("Apellido");
+        panelPrincipal.add(apellidoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        usernameL.setBackground(new java.awt.Color(255, 255, 255));
+        usernameL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        usernameL.setText("Username");
+        panelPrincipal.add(usernameL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        emailL.setBackground(new java.awt.Color(255, 255, 255));
+        emailL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailL.setText("E-mail");
+        panelPrincipal.add(emailL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+
+        verificarPasswordL.setBackground(new java.awt.Color(255, 255, 255));
+        verificarPasswordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        verificarPasswordL.setText("Ver. Contraseña");
+        panelPrincipal.add(verificarPasswordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        passwordL.setBackground(new java.awt.Color(255, 255, 255));
+        passwordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        passwordL.setText("Contraseña");
+        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JoinFormulario.png"))); // NOI18N
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 570));
+
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,8 +232,10 @@ public class Join extends javax.swing.JFrame {
         else if(respuesta.equals("Las contraseñas no coinciden"))
             aviso.setText("Las contraseñas no coinciden");
         
-        else {
+        else if(respuesta.equals("Registro exitoso")){
+            aviso.setText("REGISTRO EXITOSO!");
             //sistema.addUsuarios(usuario);
+            udao.crear(usuario);
             System.out.println("-------");
             System.out.println("NUEVO USUARIO AÑADIDO");
             System.out.println("Nombre: " + nombre);
@@ -174,17 +256,69 @@ public class Join extends javax.swing.JFrame {
         framePrincipal.setVisible(true);
     }//GEN-LAST:event_regresarActionPerformed
 
+    private void apellidoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoTFActionPerformed
+
+    private void nombreTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_nombreTFKeyTyped
+
+    private void apellidoTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_apellidoTFKeyTyped
+
+    private void usernameTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_usernameTFKeyTyped
+
+    private void passwordTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_passwordTFKeyTyped
+
+    private void verificarPasswordTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificarPasswordTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_verificarPasswordTFKeyTyped
+
+    private void emailTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptar.doClick();
+        }
+    }//GEN-LAST:event_emailTFKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
+    private javax.swing.JLabel apellidoL;
     private javax.swing.JTextField apellidoTF;
     private javax.swing.JLabel aviso;
+    private javax.swing.JLabel emailL;
     private javax.swing.JTextField emailTF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nombreL;
     private javax.swing.JTextField nombreTF;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JLabel passwordL;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton regresar;
+    private javax.swing.JLabel usernameL;
     private javax.swing.JTextField usernameTF;
+    private javax.swing.JLabel verificarPasswordL;
     private javax.swing.JPasswordField verificarPasswordTF;
     // End of variables declaration//GEN-END:variables
 }

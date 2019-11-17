@@ -8,6 +8,7 @@ package Frontera;
 import Control.ValidarLogin;
 import Entidad.Usuario;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -41,6 +42,8 @@ public class Login extends javax.swing.JFrame {
         regresarB = new javax.swing.JButton();
         passwordTF = new javax.swing.JPasswordField();
         aviso = new javax.swing.JLabel();
+        usernameL = new javax.swing.JLabel();
+        passwordL = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,38 +52,65 @@ public class Login extends javax.swing.JFrame {
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 190, -1));
 
+        usernameTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernameTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 280, -1));
+
+        aceptarB.setBackground(new java.awt.Color(0, 0, 0));
         aceptarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         aceptarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         aceptarB.setText("Ingresar");
+        aceptarB.setContentAreaFilled(false);
         aceptarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        aceptarB.setOpaque(false);
+        aceptarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 160, 30));
+        panelPrincipal.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 160, 40));
 
         regresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         regresarB.setText("Regresar");
+        regresarB.setContentAreaFilled(false);
         regresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        regresarB.setOpaque(false);
+        regresarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         regresarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(regresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 160, 30));
-        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, -1));
+        panelPrincipal.add(regresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 160, 40));
+
+        passwordTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordTFKeyTyped(evt);
+            }
+        });
+        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 280, -1));
 
         aviso.setForeground(java.awt.Color.red);
-        panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 156, 310, 22));
+        panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 480, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 350));
+        usernameL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        usernameL.setText("Username");
+        panelPrincipal.add(usernameL, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 350));
+        passwordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        passwordL.setText("Contraseña");
+        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LoginFormulario.png"))); // NOI18N
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 370));
+
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,13 +157,29 @@ public class Login extends javax.swing.JFrame {
         framePrincipal.setAlwaysOnTop( true );
     }//GEN-LAST:event_regresarBActionPerformed
 
+    private void usernameTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptarB.doClick();
+        }
+    }//GEN-LAST:event_usernameTFKeyTyped
+
+    private void passwordTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTFKeyTyped
+        char c = evt.getKeyChar();
+        if(c == KeyEvent.VK_ENTER){
+            aceptarB.doClick();
+        }       
+    }//GEN-LAST:event_passwordTFKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarB;
     private javax.swing.JLabel aviso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JLabel passwordL;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton regresarB;
+    private javax.swing.JLabel usernameL;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 }
