@@ -121,6 +121,22 @@ public class ReservaDAO {
         }
     }
     
+    public long leerquerycount(String condition){
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        Query q = em.createQuery("SELECT COUNT(r) FROM Reserva r WHERE " + condition);
+        try{
+            count = (long) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            count = (long) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return count;
+        }
+    }
+    
     public boolean actualizarId(Reserva object, Reserva nuevoObjeto){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

@@ -45,7 +45,7 @@ public class Reserva {
         this.id = id;
     }
     
-    public Reserva(){ //NECESARIO PARA HACER PERSITENCIA!
+    public Reserva(){ //NECESARIO PARA HACER PERSISTENCIA!
     }
 
     public Reserva(/*int id,*/ Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {

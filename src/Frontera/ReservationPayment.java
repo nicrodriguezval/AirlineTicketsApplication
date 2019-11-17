@@ -101,7 +101,6 @@ public class ReservationPayment extends javax.swing.JFrame {
             }
         });
 
-        avisoL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         avisoL.setForeground(java.awt.Color.red);
 
         informacionTarjetaL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -327,22 +326,26 @@ public class ReservationPayment extends javax.swing.JFrame {
             CreditCardDAO tdao = new CreditCardDAO();
             List<CreditCard> lista = tdao.leeralltolist();
             CreditCard tarjetaAntigua = null;
-                
-            for(int i = 0; i < lista.size(); i++) {
+            String resultado = null;
+            
+          /*for(int i = 0; i < lista.size(); i++) {
                 if(lista.get(i).getNombreBanco().equals(nombreBanco) && lista.get(i).getFechaCaducidad().equals(fechaCaducidad) && lista.get(i).getMarcaInternacional().equals(marcaInternacional)
                         && lista.get(i).getNombreTitular().equals(nombreTitular) && lista.get(i).getNumeroTarjeta().equals(numeroTarjeta)) {
                         
                     tarjetaAntigua = lista.get(i);
                 }
-            }
-                
-            String resultado = null;
-                
-            if(tarjetaAntigua.equals(null)) {
+            }*/
+            String query = "t.nombreBanco LIKE '"+nombreBanco+"' AND t.fechaCaducidad LIKE '"+fechaCaducidad+
+                    "' AND t.nombreTitular LIKE '"+nombreTitular+"' AND t.MarcaInternacional LIKE '"+marcaInternacional+
+                    "' AND t.numeroTarjeta LIKE '"+numeroTarjeta+"'";
+            if(tdao.leerquerycount(query) == 1){
+                for(CreditCard t : tdao.leerquerytolist(query)){
+                    tarjetaAntigua = t;
+                }
+                resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
+            } else if(tdao.leerquerycount(query) == 0) {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaIngresada, reserva.getPrecio());
-            }
-                
-            else {
+            } else {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
             }
             
@@ -364,15 +367,15 @@ public class ReservationPayment extends javax.swing.JFrame {
             else if(resultado.equals("La tarjeta de crédito no se encuentra registrada"))
                 avisoL.setText("La tarjeta de crédito no se encuentra registrada");
             
-            else if(resultado.equals("No hay cupo necesario en la tarjeta para realizar el pago")) 
-                avisoL.setText("No hay cupo necesario en la tarjeta para realizar el pago");
+            else if(resultado.equals("No hay cupo suficiente en la tarjeta para realizar el pago")) 
+                avisoL.setText("No hay cupo suficiente en la tarjeta para realizar el pago");
                 
             else {
-                CreditCard tarjetaNueva = tarjetaAntigua;
-                double cupoGastado = tarjetaAntigua.getCupoGastado();
-                tarjetaNueva.setCupoGastado(cupoGastado + reserva.getPrecio());
+                //CreditCard tarjetaNueva = tarjetaAntigua;
+                double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio();
+                //tarjetaNueva.setCupoGastado(cupoGastado + reserva.getPrecio());
                 
-                tdao.actualizarId(tarjetaAntigua, tarjetaNueva);
+                tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
                 
                 TicketDAO tckdao = new TicketDAO();
                 Ticket ticketPagado = new Ticket(reserva);
@@ -386,6 +389,8 @@ public class ReservationPayment extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setAlwaysOnTop(true);
             }
+            //if(tarjetaAntigua.equals(null))
+            if(tdao.leerquerycount(query) == 0)
             
             System.out.println("-------");
             System.out.println(resultado);

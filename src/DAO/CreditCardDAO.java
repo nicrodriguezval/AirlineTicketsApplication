@@ -55,12 +55,12 @@ public class CreditCardDAO {
         }
     }
     
-    public CreditCard leerId(CreditCard par){
+    public CreditCard leerId(int par){
         EntityManager em = emf.createEntityManager();
         CreditCard tarjeta = null;
         Query q = em.createQuery("SELECT t FROM CreditCard t " +
-                "WHERE t.id LIKE :id")
-                .setParameter("id",par.getId());
+                "WHERE t.id = :id")
+                .setParameter("id",par);
         try{
             tarjeta = (CreditCard) q.getSingleResult();
         } catch(NonUniqueResultException e){
@@ -78,7 +78,7 @@ public class CreditCardDAO {
         em.getTransaction().begin();
         boolean ret = false;
         try{
-            object = leerId(object);
+            object = leerId(object.getId());
             object.setId(nuevoObjeto.getId());
             ret = true;
         } catch (Exception e){
@@ -89,6 +89,26 @@ public class CreditCardDAO {
             return ret;
         }
     }
+ 
+    public boolean actualizarcupo(CreditCard object, double cupo){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try{
+            object = leerId(object.getId());
+            object.setCupoGastado(cupo);
+            em.merge(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally{
+            em.close();
+            return ret;
+        }
+    }
+    
     
     public List<CreditCard> leeralltolist(){
         EntityManager em = emf.createEntityManager();
@@ -104,4 +124,39 @@ public class CreditCardDAO {
         }
     }
  
+        
+    public List<CreditCard> leerquerytolist(String condition){
+        EntityManager em = emf.createEntityManager();
+        List<CreditCard> vuelo = null;
+        TypedQuery<CreditCard> q = em.createQuery("SELECT t FROM CreditCard t WHERE " + 
+                condition,CreditCard.class);
+        try{
+            vuelo = q.getResultList();
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return vuelo;
+        }
+    }
+    
+    
+    public long leerquerycount(String condition){
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        Query q = em.createQuery("SELECT COUNT(t) FROM CreditCard t WHERE " + condition);
+        try{
+            count = (long) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            count = (long) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return count;
+        }
+    }
+    
 }
+
+

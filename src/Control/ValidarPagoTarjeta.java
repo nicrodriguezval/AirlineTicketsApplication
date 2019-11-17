@@ -18,8 +18,6 @@ import java.util.List;
 public class ValidarPagoTarjeta {
     private ReservaDAO rdao = new ReservaDAO();
     private CreditCardDAO tdao = new CreditCardDAO();
-    private List<Reserva> listReservas = rdao.leeralltolist();
-    private List<CreditCard> listTarjetas = tdao.leeralltolist();
 
     public ValidarPagoTarjeta() {
     }
@@ -47,16 +45,20 @@ public class ValidarPagoTarjeta {
             return "La tarjeta de crédito no se encuentra registrada";
         
         else if(!validarCompra(tarjeta.getCupoGastado(), tarjeta.getCupoMaximo(), precioReserva))
-            return "No hay cupo necesario en la tarjeta para realizar el pago";
+            return "No hay cupo suficiente en la tarjeta para realizar el pago";
         
         else
             return "Todo correcto";
     }
     
     public boolean verificarReserva(int id) {
-        for(int i = 0; i < listReservas.size(); i++)
+        String query = "r.id = "+id;
+        if(rdao.leerquerycount(query)== 1){
+            return true;
+        }
+        /*for(int i = 0; i < listReservas.size(); i++)
             if(listReservas.get(i).getId() == id)
-                return true;
+                return true;*/
         
         return false;
     }
@@ -82,10 +84,17 @@ public class ValidarPagoTarjeta {
     }
     
     public boolean verificarTarjeta(CreditCard tarjeta) {
-        for(int i = 0; i < listTarjetas.size(); i++)
+        
+        String query = "t.nombreBanco LIKE '"+tarjeta.getNombreBanco()+"' AND t.fechaCaducidad LIKE '"+tarjeta.getFechaCaducidad()+
+        "' AND t.nombreTitular LIKE '"+tarjeta.getNombreTitular()+"' AND t.MarcaInternacional LIKE '"+tarjeta.getMarcaInternacional()+
+        "' AND t.numeroTarjeta LIKE '"+tarjeta.getNumeroTarjeta()+"'";
+        if(tdao.leerquerycount(query)== 1){
+            return true;
+        }
+        /*for(int i = 0; i < listTarjetas.size(); i++)
             if(listTarjetas.get(i).getNombreBanco().equals(tarjeta.getNombreBanco()) && listTarjetas.get(i).getFechaCaducidad().equals(tarjeta.getFechaCaducidad()) && listTarjetas.get(i).getMarcaInternacional().equals(tarjeta.getMarcaInternacional())
                         && listTarjetas.get(i).getNombreTitular().equals(tarjeta.getNombreTitular()) && listTarjetas.get(i).getNumeroTarjeta().equals(tarjeta.getNumeroTarjeta()))
-                return true;
+                return true;*/
         
         return false;
     }

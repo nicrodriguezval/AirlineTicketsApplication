@@ -104,13 +104,13 @@ public class Inicializacion {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-            udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            //udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
         
         CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "6564123458745691");
-        CreditCard t2 = new CreditCard("AV Villas", "2/1/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
+        CreditCard t2 = new CreditCard("AV Villas", "2/01/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
         CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
         
         t1.setCupoGastado(100.2);
@@ -141,7 +141,7 @@ public class Inicializacion {
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
             System.out.println("-------");
-            tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
@@ -202,32 +202,59 @@ public class Inicializacion {
             System.out.println("Hora del vuelo: " + v.getHora());
             System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
-            vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
-       
-/*        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         
-        Reserva r1 = new Reserva(v1,1,true,true,20,"Turista",a);
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+        CalcularPrecio calcular = new CalcularPrecio();
+        boolean idaVuelta[] = {true,true,false};
+        boolean Equipajeida[] = {true,false,true};
+        boolean Equipajevuelta[] = {true,false,true};
+        
+        Reserva r1 = new Reserva(v1,1,true,true,1,"Turista",a);
         Reserva r2 = new Reserva(v2,2,true,false,0,"Ejecutiva",b);
-        Reserva r3 = new Reserva(v3,3,false,true,10,"Primera clase",c);
-         
-        r1.setId(10);
-        r1.setCategoriaVuelta("Ejecutiva");
-        r1.setEquipajeVuelta(true);
+        Reserva r3 = new Reserva(v3,3,false,true,3,"Primera clase",c);
+        
+        r1.setCategoriaVuelta("Turista");
+        r1.setEquipajeVuelta(Equipajevuelta[0]);
         r1.setNumeroPuestosvuelta(1);
-        r1.setPesoVuelta(30);
+        r1.setPesoVuelta(1);
         r1.setVueloVuelta(v4);
         r1.setNumeroPuestosvuelta(1);
-        r1.setIva(19.0);
-        int[] puestos = new int[] {1};;
-        r1.setPuestosIda(puestos);
+        int[] puestos_r1 = {1};;
+        r1.setPuestosIda(puestos_r1);
+        r1.setPuestosVuelta(puestos_r1);
+        System.out.println("r1.getNumeroPuestos(): "+ r1.getNumeroPuestos() +", r1.getNumeroPuestosVuelta(): "+r1.getNumeroPuestosVuelta());
+        r1.setPrecio(calcular.calcularPrecio(r1) * (r1.getNumeroPuestos() + r1.getNumeroPuestosVuelta()));
+        r1.setIva(calcular.calcularIva(r1) * (r1.getNumeroPuestos() + r1.getNumeroPuestosVuelta()));
         
-        rdao.crear(r1);
-         
-        /*reservas.add(r1);
+        r2.setCategoriaVuelta("Ejecutiva");
+        r2.setEquipajeVuelta(true);
+        r2.setNumeroPuestosvuelta(1);
+        r2.setPesoVuelta(2);
+        r2.setVueloVuelta(v5);
+        r2.setNumeroPuestosvuelta(2);
+        int[] puestos_r2 = {2,3};
+        r2.setPuestosIda(puestos_r2);
+        r2.setPuestosVuelta(puestos_r2);
+        System.out.println("r2.getNumeroPuestos(): "+ r2.getNumeroPuestos() +", r2.getNumeroPuestosVuelta(): "+r2.getNumeroPuestosVuelta());
+        r2.setPrecio(calcular.calcularPrecio(r2) * (r2.getNumeroPuestos() + r2.getNumeroPuestosVuelta()));
+        r2.setIva(calcular.calcularIva(r2) * (r2.getNumeroPuestos() + r2.getNumeroPuestosVuelta()));
+        
+        int[] puestos_r3 = {4,5,6};
+        r3.setPuestosIda(puestos_r3);
+        int[] empty = {};
+        r3.setPuestosVuelta(empty);
+        System.out.println("r3.getNumeroPuestos(): "+ r3.getNumeroPuestos() +", r3.getNumeroPuestosVuelta(): "+r3.getNumeroPuestosVuelta());
+        r3.setPrecio(calcular.calcularPrecio(r3) * (r3.getNumeroPuestos() + r3.getNumeroPuestosVuelta()));
+        r3.setIva(calcular.calcularIva(r3) * (r3.getNumeroPuestos() + r3.getNumeroPuestosVuelta()));
+        
+        
+        reservas.add(r1);
         reservas.add(r2);
         reservas.add(r3);
-         
+        
+
         System.out.println();
         System.out.println("RESERVAS REGISTRADAS");
         System.out.println();
@@ -247,8 +274,8 @@ public class Inicializacion {
             System.out.println("");
             System.out.println("");
             System.out.println("-------");
-            //.crear(r1); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
-        }*/
+            //rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+        }
         
     }
 }
