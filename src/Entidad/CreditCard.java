@@ -19,19 +19,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tarjetas")
 public class CreditCard implements Serializable {
-    private String nombreBanco, fechaCaducidad, nombreTitular, MarcaInternacional, numeroTarjeta;
+    private String nombreBanco, mesExpiracion, añoExpiracion, nombreTitular, MarcaInternacional, numeroTarjeta, numeroSeguridad;
     private double cupoGastado, cupoMaximo;
 
     public CreditCard(){//NECESARIO PARA HACER PERSITENCIA!
     }
-    
-    public CreditCard(String nombreBanco, String fechaCaducidad, String nombreTitular, String MarcaInternacional, String numeroTarjeta) {
+
+    public CreditCard(String nombreBanco, String mesExpiracion, String añoExpiracion, String nombreTitular, String numeroTarjeta, String numeroSeguridad) {
         this.nombreBanco = nombreBanco;
-        this.fechaCaducidad = fechaCaducidad;
+        this.mesExpiracion = mesExpiracion;
+        this.añoExpiracion = añoExpiracion;
         this.nombreTitular = nombreTitular;
-        this.MarcaInternacional = MarcaInternacional;
         this.numeroTarjeta = numeroTarjeta;
+        this.numeroSeguridad = numeroSeguridad;
     }
+    
+    
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +47,32 @@ public class CreditCard implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getNumeroSeguridad() {
+        return numeroSeguridad;
+    }
+
+    public void setNumeroSeguridad(String numeroSeguridad) {
+        this.numeroSeguridad = numeroSeguridad;
+    }
+    
+    public String getMesExpiracion() {
+        return mesExpiracion;
+    }
+
+    public void setMesExpiracion(String mesExpiracion) {
+        this.mesExpiracion = mesExpiracion;
+    }
+
+    public String getAñoExpiracion() {
+        return añoExpiracion;
+    }
+
+    public void setAñoExpiracion(String añoExpiracion) {
+        this.añoExpiracion = añoExpiracion;
+    }
+    
+    
     
     public String getNombreBanco() {
         return nombreBanco;
@@ -51,14 +80,6 @@ public class CreditCard implements Serializable {
 
     public void setNombreBanco(String nombreBanco) {
         this.nombreBanco = nombreBanco;
-    }
-
-    public String getFechaCaducidad() {
-        return fechaCaducidad;
-    }
-
-    public void setFechaCaducidad(String fechaCaducidad) {
-        this.fechaCaducidad = fechaCaducidad;
     }
 
     public String getNombreTitular() {

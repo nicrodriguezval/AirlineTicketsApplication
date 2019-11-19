@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Usuario;
-import static javafx.scene.input.KeyCode.S;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

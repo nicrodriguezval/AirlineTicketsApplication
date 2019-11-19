@@ -29,8 +29,8 @@ public class ValidarPagoTarjeta {
         else if(!verificarNombreBanco(tarjeta.getNombreBanco()))
             return "Longitud del nombre del banco incorrecta";
         
-        else if(!verificarFechaCaducidad(tarjeta.getFechaCaducidad()))
-            return "Formato de fecha incorrecta";
+        else if(!verificarFechaExpiracion(tarjeta.getMesExpiracion(),tarjeta.getAñoExpiracion()))
+            return "Fecha de expiración incorrecta";
         
         else if(!verificarNombreTitular(tarjeta.getNombreTitular()))
             return "Longitud del nombre del titular incorrecta";
@@ -67,9 +67,11 @@ public class ValidarPagoTarjeta {
         return(nombreBanco.length() > 2 && nombreBanco.length() <= 25);
     }
     
-    public boolean verificarFechaCaducidad(String fechaCaducidad) {
-        return(fechaCaducidad.length() > 7 && fechaCaducidad.length() <= 10);
+    public boolean verificarFechaExpiracion(String mesExpiracion, String añoExpiracion ){
+        return(mesExpiracion.length() == 2 && añoExpiracion.length() == 2);
     }
+    
+  
     
     public boolean verificarMarcaInternacional(String marcaInternacional) {
         return(marcaInternacional.length() > 2 && marcaInternacional.length() <= 20);
@@ -85,9 +87,9 @@ public class ValidarPagoTarjeta {
     
     public boolean verificarTarjeta(CreditCard tarjeta) {
         
-        String query = "t.nombreBanco LIKE '"+tarjeta.getNombreBanco()+"' AND t.fechaCaducidad LIKE '"+tarjeta.getFechaCaducidad()+
-        "' AND t.nombreTitular LIKE '"+tarjeta.getNombreTitular()+"' AND t.MarcaInternacional LIKE '"+tarjeta.getMarcaInternacional()+
-        "' AND t.numeroTarjeta LIKE '"+tarjeta.getNumeroTarjeta()+"'";
+        String query = "t.nombreBanco LIKE '"+tarjeta.getNombreBanco()+
+                "' AND t.nombreTitular LIKE '"+tarjeta.getNombreTitular()+
+                "' AND t.numeroTarjeta LIKE '"+tarjeta.getNumeroTarjeta()+"'";
         if(tdao.leerquerycount(query)== 1){
             return true;
         }

@@ -109,9 +109,9 @@ public class Inicializacion {
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
         
-        CreditCard t1 = new CreditCard("Bancolombia", "10/10/2020", "Nicolás Rodríguez", "VISA", "6564123458745691");
-        CreditCard t2 = new CreditCard("AV Villas", "2/01/2021", "Juan Alberto", "MASTERCARD", "1234567891234567");
-        CreditCard t3 = new CreditCard("Banco Popular", "1/11/2019", "José Miguel", "VISA", "4545457878121223");
+        CreditCard t1 = new CreditCard("Bancolombia", "01", "25", "Fernando Salazar", "1234567890456789", "101");
+        CreditCard t2 = new CreditCard("AV Villas", "03","23", "Juan Alberto", "1234567891234567","102");
+        CreditCard t3 = new CreditCard("Banco Popular", "11","19", "José Miguel","4545457878121223","103");
         
         t1.setCupoGastado(100.2);
         t1.setCupoMaximo(3000);
@@ -139,7 +139,7 @@ public class Inicializacion {
             System.out.println("Nombre del titular: " + t.getNombreTitular());
             System.out.println("Numero de la tarjeta: " + t.getNumeroTarjeta());
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
-            System.out.println("Fecha de caducidad: " + t.getFechaCaducidad());
+            System.out.println("Fecha de caducidad: " + t.getMesExpiracion() + "/"+ t.getAñoExpiracion());
             System.out.println("-------");
             //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }

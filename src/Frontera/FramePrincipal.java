@@ -59,7 +59,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titulo.setText("Airline Tickets Application");
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
         ingresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ingresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
@@ -94,7 +94,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jPanel1.add(registrarseB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 290));
 

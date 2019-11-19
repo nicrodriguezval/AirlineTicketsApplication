@@ -144,7 +144,7 @@ public class CreditCardDAO {
     public long leerquerycount(String condition){
         EntityManager em = emf.createEntityManager();
         long count = 0;
-        Query q = em.createQuery("SELECT COUNT(t) FROM CreditCard t WHERE " + condition);
+        Query q = em.createQuery("SELECT COUNT(t) FROM CreditCard t WHERE " + condition );
         try{
             count = (long) q.getSingleResult();
         } catch(NonUniqueResultException e){
