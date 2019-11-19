@@ -104,14 +104,14 @@ public class Inicializacion {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-            //udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
         
-        CreditCard t1 = new CreditCard("Bancolombia", "01", "25", "Fernando Salazar", "1234567890456789", "101");
-        CreditCard t2 = new CreditCard("AV Villas", "03","23", "Juan Alberto", "1234567891234567","102");
-        CreditCard t3 = new CreditCard("Banco Popular", "11","19", "José Miguel","4545457878121223","103");
+        CreditCard t1 = new CreditCard("Bancolombia", "VISA", "01", "25", "Fernando Salazar", "1234567890456789", "101");
+        CreditCard t2 = new CreditCard("AV Villas", "MASTERCARD","03","23", "Juan Alberto", "1234567891234567","102");
+        CreditCard t3 = new CreditCard("Banco Popular", "AMERICAN EXPRESS","11","19", "José Miguel","4545457878121223","103");
         
         t1.setCupoGastado(100.2);
         t1.setCupoMaximo(3000);
@@ -141,7 +141,7 @@ public class Inicializacion {
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getMesExpiracion() + "/"+ t.getAñoExpiracion());
             System.out.println("-------");
-            //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
@@ -202,7 +202,7 @@ public class Inicializacion {
             System.out.println("Hora del vuelo: " + v.getHora());
             System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
-            //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
@@ -274,7 +274,7 @@ public class Inicializacion {
             System.out.println("");
             System.out.println("");
             System.out.println("-------");
-            //rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
     }

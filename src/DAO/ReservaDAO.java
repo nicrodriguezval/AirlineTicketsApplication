@@ -6,6 +6,7 @@
 package DAO;
 
 import Entidad.Reserva;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -73,11 +74,11 @@ public class ReservaDAO {
         }
     }
     
-    public Reserva getReserva(int ID){
+    public Reserva leerReserva(int ID){
         EntityManager em = emf.createEntityManager();
         Reserva reserva = null;
         Query q = em.createQuery("SELECT r FROM Reserva r " +
-                "WHERE r.id LIKE :id")
+                "WHERE r.id = :id")
                 .setParameter("id", ID);
         try {
             reserva = (Reserva) q.getSingleResult();
@@ -152,7 +153,7 @@ public class ReservaDAO {
             em.close();
             return ret;
         }
-    }     
+    }    
 
         public boolean resetId(int i){
         EntityManager em = emf.createEntityManager();

@@ -7,6 +7,7 @@ package DAO;
 
 import Entidad.CreditCard;
 import Entidad.Reserva;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -137,6 +138,32 @@ public class CreditCardDAO {
         } finally{
             em.close();
             return vuelo;
+        }
+    }
+    
+    public List<String> leerdiffallparametertolist(String param){
+        EntityManager em = emf.createEntityManager();
+        List<String> par = new ArrayList<String>();
+        List<CreditCard> result = null;
+        List<String> uniques = new ArrayList<String>();
+        TypedQuery<CreditCard> q = em.createQuery("SELECT t FROM CreditCard t",CreditCard.class);
+        try{
+            result = q.getResultList();
+            for(CreditCard t : result){
+                if(param.equals("nombreBanco")){par.add(t.getNombreBanco());}
+                else if(param.equals("marcaInternacional")){par.add(t.getMarcaInternacional());}
+                else {uniques = null;}
+                }
+            for(String s : par){
+                if(!uniques.contains(s)){
+                    uniques.add(s);
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return uniques;
         }
     }
     

@@ -20,11 +20,12 @@ import javax.swing.ImageIcon;
  * @author nicro
  */
 public class ReservationPayment extends javax.swing.JFrame {
+
     boolean reservaActived;
     Reserva reserva;
     ReservaDAO rdao;
     List<Reserva> listReserva;
-    
+
     /**
      * Creates new form TicketPayment
      */
@@ -37,9 +38,12 @@ public class ReservationPayment extends javax.swing.JFrame {
         rdao = new ReservaDAO();
         listReserva = rdao.leeralltolist();
         reservaActived = false;
+        inicializacion();
         informacionTarjetaL.setVisible(false);
         nombreBancoL.setVisible(false);
         nombreBancoCB.setVisible(false);
+        marcaInternacionalL.setVisible(false);
+        marcaInternacionalCB.setVisible(false);
         fechaCaducidadL.setVisible(false);
         mesCaducidadTF.setVisible(false);
         nombreTitularL.setVisible(false);
@@ -85,18 +89,24 @@ public class ReservationPayment extends javax.swing.JFrame {
         numeroSeguridadL = new javax.swing.JLabel();
         numeroSeguridadTF = new javax.swing.JTextField();
         nombreBancoCB = new javax.swing.JComboBox<>();
+        marcaInternacionalL = new javax.swing.JLabel();
+        marcaInternacionalCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().setLayout(new java.awt.GridLayout());
+        setMinimumSize(new java.awt.Dimension(540, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Pago de Reservación");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 13, -1, -1));
 
         idReservacionL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         idReservacionL.setText("ID reservación");
+        jPanel1.add(idReservacionL, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 58, -1, -1));
 
         idReservacionTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,17 +118,22 @@ public class ReservationPayment extends javax.swing.JFrame {
                 idReservacionTFKeyTyped(evt);
             }
         });
+        jPanel1.add(idReservacionTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 53, 176, -1));
 
         avisoL.setForeground(java.awt.Color.red);
+        jPanel1.add(avisoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 410, 19));
 
         informacionTarjetaL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         informacionTarjetaL.setText("Informacion Tarjeta de Crédito");
+        jPanel1.add(informacionTarjetaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 107, -1, -1));
 
         nombreBancoL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreBancoL.setText("Nombre del banco");
+        jPanel1.add(nombreBancoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 139, -1));
 
         fechaCaducidadL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fechaCaducidadL.setText("Fecha de caducidad");
+        jPanel1.add(fechaCaducidadL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         aceptarConfirmarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         aceptarConfirmarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -131,12 +146,15 @@ public class ReservationPayment extends javax.swing.JFrame {
                 aceptarConfirmarBActionPerformed(evt);
             }
         });
+        jPanel1.add(aceptarConfirmarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         nombreTitularL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreTitularL.setText("Nombre del titular");
+        jPanel1.add(nombreTitularL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, -1));
 
         numeroTarjetaL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numeroTarjetaL.setText("Número de la tarjeta");
+        jPanel1.add(numeroTarjetaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         volverCambiarDeReservaB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         volverCambiarDeReservaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -149,150 +167,100 @@ public class ReservationPayment extends javax.swing.JFrame {
                 volverCambiarDeReservaBActionPerformed(evt);
             }
         });
+        jPanel1.add(volverCambiarDeReservaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+        jPanel1.add(mesCaducidadTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 40, -1));
+        jPanel1.add(nombreTitularTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 179, -1));
+        jPanel1.add(numeroTarjetaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 180, -1));
 
         mesL.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         mesL.setText("Mes");
+        jPanel1.add(mesL, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
 
         añoL.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         añoL.setText("Año");
+        jPanel1.add(añoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
+        jPanel1.add(añoCaducidadTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 40, -1));
 
         numeroSeguridadL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numeroSeguridadL.setText("Número de Seguridad");
+        jPanel1.add(numeroSeguridadL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        numeroSeguridadTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroSeguridadTFActionPerformed(evt);
+            }
+        });
+        jPanel1.add(numeroSeguridadTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 90, -1));
 
         nombreBancoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bancolombia", "AV Villas", "Davivienda", "Banco Popular" }));
+        nombreBancoCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreBancoCBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombreBancoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 142, 179, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(idReservacionL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(idReservacionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(avisoL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(127, 127, 127))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel1)
-                .addGap(134, 134, 134))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nombreTitularL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(57, 57, 57))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(numeroTarjetaL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(numeroTarjetaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(informacionTarjetaL)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(nombreBancoL, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(87, 87, 87)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(nombreTitularTF)
-                                            .addComponent(nombreBancoCB, 0, 179, Short.MAX_VALUE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(94, 94, 94))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(volverCambiarDeReservaB)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(numeroSeguridadL)
-                                        .addGap(75, 75, 75)
-                                        .addComponent(numeroSeguridadTF))
-                                    .addComponent(fechaCaducidadL)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(226, 226, 226)
-                                        .addComponent(mesL)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(mesCaducidadTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(añoL)
-                                .addGap(3, 3, 3)
-                                .addComponent(añoCaducidadTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(aceptarConfirmarB)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idReservacionTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idReservacionL))
-                .addGap(32, 32, 32)
-                .addComponent(informacionTarjetaL)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreBancoL)
-                    .addComponent(nombreBancoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreTitularL)
-                    .addComponent(nombreTitularTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroTarjetaL)
-                    .addComponent(numeroTarjetaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mesL)
-                    .addComponent(mesCaducidadTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(añoCaducidadTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaCaducidadL)
-                    .addComponent(añoL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeroSeguridadL)
-                    .addComponent(numeroSeguridadTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volverCambiarDeReservaB)
-                    .addComponent(aceptarConfirmarB))
-                .addGap(62, 62, 62)
-                .addComponent(avisoL, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        marcaInternacionalL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        marcaInternacionalL.setText("Marca internacional");
+        jPanel1.add(marcaInternacionalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        getContentPane().add(jPanel1);
+        marcaInternacionalCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marcaInternacionalCBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(marcaInternacionalCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 180, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverCambiarDeReservaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverCambiarDeReservaBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        MenuInicial menu = new MenuInicial();
-        menu.setLocationRelativeTo(this);
-        menu.setVisible(true);
-        menu.setAlwaysOnTop(true);
+        if (!reservaActived) {
+            this.setVisible(false);
+            MenuInicial menu = new MenuInicial();
+            menu.setLocationRelativeTo(this);
+            menu.setVisible(true);
+            menu.setAlwaysOnTop(true);
+        } else {
+            idReservacionTF.setEnabled(true);
+            informacionTarjetaL.setVisible(false);
+            nombreBancoL.setVisible(false);
+            nombreBancoCB.setVisible(false);
+            marcaInternacionalL.setVisible(false);
+            marcaInternacionalCB.setVisible(false);
+            fechaCaducidadL.setVisible(false);
+            añoCaducidadTF.setVisible(false);
+            mesCaducidadTF.setVisible(false);
+            mesL.setVisible(false);
+            añoL.setVisible(false);
+            nombreTitularL.setVisible(false);
+            nombreTitularTF.setVisible(false);
+            numeroTarjetaL.setVisible(false);
+            numeroTarjetaTF.setVisible(false);
+            numeroSeguridadL.setVisible(false);
+            numeroSeguridadTF.setVisible(false);
+            avisoL.setText("");
+            aceptarConfirmarB.setText("Siguiente");
+            volverCambiarDeReservaB.setText("Volver");
+            reservaActived = false;
+        }
     }//GEN-LAST:event_volverCambiarDeReservaBActionPerformed
 
     private void aceptarConfirmarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarConfirmarBActionPerformed
-         ValidarPagoTarjeta validar = new ValidarPagoTarjeta();
+        ValidarPagoTarjeta validar = new ValidarPagoTarjeta();
         String id = idReservacionTF.getText();
-        
-        if(!reservaActived) {
-            if(id.length() != 0) {
-                if(validar.verificarReserva(Integer.parseInt(id))) {
+
+        if (!reservaActived) {
+            if (id.length() != 0) {
+                if (validar.verificarReserva(Integer.parseInt(id))) {
                     informacionTarjetaL.setVisible(true);
                     nombreBancoL.setVisible(true);
                     nombreBancoCB.setVisible(true);
+                    marcaInternacionalL.setVisible(true);
+                    marcaInternacionalCB.setVisible(true);
                     fechaCaducidadL.setVisible(true);
                     añoCaducidadTF.setVisible(true);
                     mesCaducidadTF.setVisible(true);
@@ -309,87 +277,76 @@ public class ReservationPayment extends javax.swing.JFrame {
                     aceptarConfirmarB.setText("Confirmar");
                     volverCambiarDeReservaB.setText("Cambiar reserva");
                     reservaActived = true;
-                
-                    for(int i = 0; i < listReserva.size(); i++) {
-                        if(listReserva.get(i).getId() == Integer.parseInt(id))
+                    
+                    reserva = rdao.leerReserva(Integer.parseInt(id));
+                    /*for (int i = 0; i < listReserva.size(); i++) {
+                        if (listReserva.get(i).getId() == Integer.parseInt(id)) {
                             reserva = listReserva.get(i);
-                    }    
+                        }
+                    }*/
+                } else {
+                    avisoL.setText("La reserva no existe");
                 }
-        
-                else {
-                avisoL.setText("La reserva no existe");
-                }
-            }
-        
-            else {
+            } else {
                 avisoL.setText("Ingrese una reservación");
             }
-        }
-        
-        else {
-            String nombreBanco = (String)nombreBancoCB.getSelectedItem(), mesCaducidad = mesCaducidadTF.getText(), añoCaducidad = añoCaducidadTF.getText(), nombreTitular = nombreTitularTF.getText(), 
-                     numeroTarjeta = numeroTarjetaTF.getText(), numeroSeguridad = numeroSeguridadTF.getText() ;
-            
-            CreditCard tarjetaIngresada = new CreditCard(nombreBanco, mesCaducidad, añoCaducidad, nombreTitular, numeroTarjeta, numeroSeguridad);
+        } else {
+            String nombreBanco = (String) nombreBancoCB.getSelectedItem(), mesCaducidad = mesCaducidadTF.getText(), añoCaducidad = añoCaducidadTF.getText(), nombreTitular = nombreTitularTF.getText(),
+                    numeroTarjeta = numeroTarjetaTF.getText(), numeroSeguridad = numeroSeguridadTF.getText(), marcaInternacional = (String)marcaInternacionalCB.getSelectedItem();
+
+            CreditCard tarjetaIngresada = new CreditCard(nombreBanco, marcaInternacional, mesCaducidad, añoCaducidad, nombreTitular, numeroTarjeta, numeroSeguridad);
             CreditCardDAO tdao = new CreditCardDAO();
             List<CreditCard> lista = tdao.leeralltolist();
             CreditCard tarjetaAntigua = null;
             String resultado = null;
-            
-          /*for(int i = 0; i < lista.size(); i++) {
+
+            /*for(int i = 0; i < lista.size(); i++) {
                 if(lista.get(i).getNombreBanco().equals(nombreBanco) && lista.get(i).getFechaCaducidad().equals(fechaCaducidad) && lista.get(i).getMarcaInternacional().equals(marcaInternacional)
                         && lista.get(i).getNombreTitular().equals(nombreTitular) && lista.get(i).getNumeroTarjeta().equals(numeroTarjeta)) {
                         
                     tarjetaAntigua = lista.get(i);
                 }
             }*/
-            String query = "t.nombreBanco LIKE '"+nombreBanco+
-                    "' AND t.nombreTitular LIKE '"+nombreTitular+
-                    "' AND t.numeroTarjeta LIKE '"+numeroTarjeta+"'";
-            if(tdao.leerquerycount(query) == 1){
-                for(CreditCard t : tdao.leerquerytolist(query)){
+            String query = "t.nombreBanco LIKE '" + nombreBanco
+                    + "' AND t.nombreTitular LIKE '" + nombreTitular
+                    + "' AND t.numeroTarjeta LIKE '" + numeroTarjeta + "'";
+            if (tdao.leerquerycount(query) == 1) {
+                for (CreditCard t : tdao.leerquerytolist(query)) {
                     tarjetaAntigua = t;
                 }
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
-            } else if(tdao.leerquerycount(query) == 0) {
+            } else if (tdao.leerquerycount(query) == 0) {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaIngresada, reserva.getPrecio());
             } else {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
             }
-            
-            if(resultado.equals("Longitud del nombre del banco incorrecta")) 
+
+            if (resultado.equals("Longitud del nombre del banco incorrecta")) {
                 avisoL.setText("Longitud del nombre del banco incorrecta");
-            
-            else if(resultado.equals("Fecha de expiración incorrecta")) 
+            } else if (resultado.equals("Fecha de expiración incorrecta")) {
                 avisoL.setText("Fecha de expiración incorrecta");
-            
-            else if(resultado.equals("Longitud del nombre del titular incorrecta")) 
+            } else if (resultado.equals("Longitud del nombre del titular incorrecta")) {
                 avisoL.setText("Longitud del nombre del titular incorrecta");
-            
-            else if(resultado.equals("Longitud de marca internacional incorrecta")) 
+            } else if (resultado.equals("Longitud de marca internacional incorrecta")) {
                 avisoL.setText("Longitud de marca internacional incorrecta");
-            
-            else if(resultado.equals("Longitud del numero de la tarjeta incorrecta")) 
+            } else if (resultado.equals("Longitud del numero de la tarjeta incorrecta")) {
                 avisoL.setText("Longitud del numero de la tarjeta incorrecta");
-            
-            else if(resultado.equals("La tarjeta de crédito no se encuentra registrada"))
+            } else if (resultado.equals("La tarjeta de crédito no se encuentra registrada")) {
                 avisoL.setText("La tarjeta de crédito no se encuentra registrada");
-            
-            else if(resultado.equals("No hay cupo suficiente en la tarjeta para realizar el pago")) 
+            } else if (resultado.equals("No hay cupo suficiente en la tarjeta para realizar el pago")) {
                 avisoL.setText("No hay cupo suficiente en la tarjeta para realizar el pago");
-                
-            else {
+            } else {
                 //CreditCard tarjetaNueva = tarjetaAntigua;
                 double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio();
                 //tarjetaNueva.setCupoGastado(cupoGastado + reserva.getPrecio());
-                
+
                 tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
-                
+
                 TicketDAO tckdao = new TicketDAO();
                 Ticket ticketPagado = new Ticket(reserva);
-                
+
                 tckdao.crear(ticketPagado);
-                
+
                 this.setVisible(false);
                 MenuInicial menu = new MenuInicial();
                 menu.setVisible(true);
@@ -398,20 +355,22 @@ public class ReservationPayment extends javax.swing.JFrame {
                 menu.setAlwaysOnTop(true);
             }
             //if(tarjetaAntigua.equals(null))
-            if(tdao.leerquerycount(query) == 0)
-            
-            System.out.println("-------");
+            if (tdao.leerquerycount(query) == 0) {
+                System.out.println("-------");
+            }
             System.out.println(resultado);
         }
-    
+
     }//GEN-LAST:event_aceptarConfirmarBActionPerformed
 
     private void idReservacionTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idReservacionTFKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if(c < '0' || c > '9') //Sólo se puede escribir números
-        evt.consume();
+        if (c < '0' || c > '9') //Sólo se puede escribir números
+        {
+            evt.consume();
+        }
     }//GEN-LAST:event_idReservacionTFKeyTyped
 
     private void idReservacionTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idReservacionTFActionPerformed
@@ -420,44 +379,80 @@ public class ReservationPayment extends javax.swing.JFrame {
 
         String id = idReservacionTF.getText();
 
-        if(id.length() != 0) {
-            if(validar.verificarReserva(Integer.parseInt(id))) {
+        if (id.length() != 0) {
+            if (validar.verificarReserva(Integer.parseInt(id))) {
                 informacionTarjetaL.setVisible(true);
                 nombreBancoL.setVisible(true);
                 nombreBancoCB.setVisible(true);
+                marcaInternacionalL.setVisible(true);
+                marcaInternacionalCB.setVisible(true);
                 fechaCaducidadL.setVisible(true);
+                añoCaducidadTF.setVisible(true);
                 mesCaducidadTF.setVisible(true);
+                mesL.setVisible(true);
+                añoL.setVisible(true);
                 nombreTitularL.setVisible(true);
                 nombreTitularTF.setVisible(true);
                 numeroTarjetaL.setVisible(true);
                 numeroTarjetaTF.setVisible(true);
-                añoL.setVisible(true);
-                mesL.setVisible(true);
-                numeroSeguridadTF.setVisible(true);
                 numeroSeguridadL.setVisible(true);
-                
+                numeroSeguridadTF.setVisible(true);
                 avisoL.setText("");
                 idReservacionTF.setEnabled(false);
                 aceptarConfirmarB.setText("Confirmar");
                 volverCambiarDeReservaB.setText("Cambiar reserva");
                 reservaActived = true;
+                
+                reserva = rdao.leerReserva(Integer.parseInt(id));
 
-                for(int i = 0; i < listReserva.size(); i++) {
-                    if(listReserva.get(i).getId() == Integer.parseInt(id))
-                    reserva = listReserva.get(i);
-                }
-            }
-
-            else {
+                /*for (int i = 0; i < listReserva.size(); i++) {
+                    if (listReserva.get(i).getId() == Integer.parseInt(id)) {
+                        reserva = listReserva.get(i);
+                    }
+                }*/
+            } else {
                 avisoL.setText("La reserva no existe");
             }
-        }
-
-        else {
+        } else {
             avisoL.setText("Ingrese una reservación");
         }
     }//GEN-LAST:event_idReservacionTFActionPerformed
 
+    private void numeroSeguridadTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroSeguridadTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroSeguridadTFActionPerformed
+
+    private void nombreBancoCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreBancoCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreBancoCBActionPerformed
+
+    private void marcaInternacionalCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaInternacionalCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcaInternacionalCBActionPerformed
+
+    private void inicializacion(){
+        CreditCardDAO tdao = new CreditCardDAO();
+        List<String> lista = tdao.leerdiffallparametertolist("nombreBanco");
+        
+        String bancos[] = new String[lista.size()];
+        
+        for(int i = 0; i < bancos.length; i++) {
+            bancos[i] = lista.get(i);
+        }
+        
+        nombreBancoCB.setModel(new javax.swing.DefaultComboBoxModel<>(bancos));
+        
+       List<String> listaMarcas = tdao.leerdiffallparametertolist("marcaInternacional");
+       
+       String marcas[] = new String[listaMarcas.size()];
+        
+        for(int i = 0; i < marcas.length; i++) {
+            marcas[i] = listaMarcas.get(i);
+        }
+        
+        marcaInternacionalCB.setModel(new javax.swing.DefaultComboBoxModel<>(marcas));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarConfirmarB;
     private javax.swing.JLabel avisoL;
@@ -469,6 +464,8 @@ public class ReservationPayment extends javax.swing.JFrame {
     private javax.swing.JLabel informacionTarjetaL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> marcaInternacionalCB;
+    private javax.swing.JLabel marcaInternacionalL;
     private javax.swing.JTextField mesCaducidadTF;
     private javax.swing.JLabel mesL;
     private javax.swing.JComboBox<String> nombreBancoCB;

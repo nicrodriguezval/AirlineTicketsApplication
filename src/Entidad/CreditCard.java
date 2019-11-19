@@ -25,8 +25,9 @@ public class CreditCard implements Serializable {
     public CreditCard(){//NECESARIO PARA HACER PERSITENCIA!
     }
 
-    public CreditCard(String nombreBanco, String mesExpiracion, String añoExpiracion, String nombreTitular, String numeroTarjeta, String numeroSeguridad) {
+    public CreditCard(String nombreBanco, String MarcaInternacional, String mesExpiracion, String añoExpiracion, String nombreTitular, String numeroTarjeta, String numeroSeguridad) {
         this.nombreBanco = nombreBanco;
+        this.MarcaInternacional = MarcaInternacional;
         this.mesExpiracion = mesExpiracion;
         this.añoExpiracion = añoExpiracion;
         this.nombreTitular = nombreTitular;
