@@ -225,27 +225,7 @@ public class ReservationPayment extends javax.swing.JFrame {
             menu.setVisible(true);
             menu.setAlwaysOnTop(true);
         } else {
-            idReservacionTF.setEnabled(true);
-            informacionTarjetaL.setVisible(false);
-            nombreBancoL.setVisible(false);
-            nombreBancoCB.setVisible(false);
-            marcaInternacionalL.setVisible(false);
-            marcaInternacionalCB.setVisible(false);
-            fechaCaducidadL.setVisible(false);
-            añoCaducidadTF.setVisible(false);
-            mesCaducidadTF.setVisible(false);
-            mesL.setVisible(false);
-            añoL.setVisible(false);
-            nombreTitularL.setVisible(false);
-            nombreTitularTF.setVisible(false);
-            numeroTarjetaL.setVisible(false);
-            numeroTarjetaTF.setVisible(false);
-            numeroSeguridadL.setVisible(false);
-            numeroSeguridadTF.setVisible(false);
-            avisoL.setText("");
-            aceptarConfirmarB.setText("Siguiente");
-            volverCambiarDeReservaB.setText("Volver");
-            reservaActived = false;
+            reservaoculta();
         }
     }//GEN-LAST:event_volverCambiarDeReservaBActionPerformed
 
@@ -256,34 +236,8 @@ public class ReservationPayment extends javax.swing.JFrame {
         if (!reservaActived) {
             if (id.length() != 0) {
                 if (validar.verificarReserva(Integer.parseInt(id))) {
-                    informacionTarjetaL.setVisible(true);
-                    nombreBancoL.setVisible(true);
-                    nombreBancoCB.setVisible(true);
-                    marcaInternacionalL.setVisible(true);
-                    marcaInternacionalCB.setVisible(true);
-                    fechaCaducidadL.setVisible(true);
-                    añoCaducidadTF.setVisible(true);
-                    mesCaducidadTF.setVisible(true);
-                    mesL.setVisible(true);
-                    añoL.setVisible(true);
-                    nombreTitularL.setVisible(true);
-                    nombreTitularTF.setVisible(true);
-                    numeroTarjetaL.setVisible(true);
-                    numeroTarjetaTF.setVisible(true);
-                    numeroSeguridadL.setVisible(true);
-                    numeroSeguridadTF.setVisible(true);
-                    avisoL.setText("");
-                    idReservacionTF.setEnabled(false);
-                    aceptarConfirmarB.setText("Confirmar");
-                    volverCambiarDeReservaB.setText("Cambiar reserva");
-                    reservaActived = true;
-                    
+                    reservamostrar();
                     reserva = rdao.leerReserva(Integer.parseInt(id));
-                    /*for (int i = 0; i < listReserva.size(); i++) {
-                        if (listReserva.get(i).getId() == Integer.parseInt(id)) {
-                            reserva = listReserva.get(i);
-                        }
-                    }*/
                 } else {
                     avisoL.setText("La reserva no existe");
                 }
@@ -291,25 +245,25 @@ public class ReservationPayment extends javax.swing.JFrame {
                 avisoL.setText("Ingrese una reservación");
             }
         } else {
-            String nombreBanco = (String) nombreBancoCB.getSelectedItem(), mesCaducidad = mesCaducidadTF.getText(), añoCaducidad = añoCaducidadTF.getText(), nombreTitular = nombreTitularTF.getText(),
-                    numeroTarjeta = numeroTarjetaTF.getText(), numeroSeguridad = numeroSeguridadTF.getText(), marcaInternacional = (String)marcaInternacionalCB.getSelectedItem();
+            String  nombreBanco = (String) nombreBancoCB.getSelectedItem(),
+                    mesCaducidad = mesCaducidadTF.getText(), 
+                    añoCaducidad = añoCaducidadTF.getText(), 
+                    nombreTitular = nombreTitularTF.getText(),
+                    numeroTarjeta = numeroTarjetaTF.getText(), 
+                    numeroSeguridad = numeroSeguridadTF.getText(), 
+                    marcaInternacional = (String)marcaInternacionalCB.getSelectedItem();
 
             CreditCard tarjetaIngresada = new CreditCard(nombreBanco, marcaInternacional, mesCaducidad, añoCaducidad, nombreTitular, numeroTarjeta, numeroSeguridad);
             CreditCardDAO tdao = new CreditCardDAO();
-            List<CreditCard> lista = tdao.leeralltolist();
             CreditCard tarjetaAntigua = null;
             String resultado = null;
 
-            /*for(int i = 0; i < lista.size(); i++) {
-                if(lista.get(i).getNombreBanco().equals(nombreBanco) && lista.get(i).getFechaCaducidad().equals(fechaCaducidad) && lista.get(i).getMarcaInternacional().equals(marcaInternacional)
-                        && lista.get(i).getNombreTitular().equals(nombreTitular) && lista.get(i).getNumeroTarjeta().equals(numeroTarjeta)) {
-                        
-                    tarjetaAntigua = lista.get(i);
-                }
-            }*/
             String query = "t.nombreBanco LIKE '" + nombreBanco
                     + "' AND t.nombreTitular LIKE '" + nombreTitular
-                    + "' AND t.numeroTarjeta LIKE '" + numeroTarjeta + "'";
+                    + "' AND t.numeroTarjeta LIKE '" + numeroTarjeta 
+                    + "' AND t.mesExpiracion LIKE '" + mesCaducidad
+                    + "' AND t.añoExpiracion LIKE '" + añoCaducidad
+                    + "' AND t.numeroSeguridad LIKE '" + numeroSeguridad + "'";
             if (tdao.leerquerycount(query) == 1) {
                 for (CreditCard t : tdao.leerquerytolist(query)) {
                     tarjetaAntigua = t;
@@ -320,28 +274,37 @@ public class ReservationPayment extends javax.swing.JFrame {
             } else {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
             }
-
-            if (resultado.equals("Longitud del nombre del banco incorrecta")) {
-                avisoL.setText("Longitud del nombre del banco incorrecta");
-            } else if (resultado.equals("Fecha de expiración incorrecta")) {
-                avisoL.setText("Fecha de expiración incorrecta");
+            
+            if (resultado.equals("Por favor seleccione un banco verificado")) {
+                avisoL.setText("Por favor seleccione un banco verificado");
+            } else if (resultado.equals("Por favor ingrese una de las marcas de tarjeta registradas")) {
+                avisoL.setText("Por favor ingrese una de las marcas de tarjeta registradas");
             } else if (resultado.equals("Longitud del nombre del titular incorrecta")) {
                 avisoL.setText("Longitud del nombre del titular incorrecta");
-            } else if (resultado.equals("Longitud de marca internacional incorrecta")) {
-                avisoL.setText("Longitud de marca internacional incorrecta");
-            } else if (resultado.equals("Longitud del numero de la tarjeta incorrecta")) {
-                avisoL.setText("Longitud del numero de la tarjeta incorrecta");
+            } else if (resultado.equals("La persona ingresada no es un titular activo")) {
+                avisoL.setText("La persona ingresada no es un titular activo");
+            } else if (resultado.equals("Longitud del número de la tarjeta incorrecta")) {
+                avisoL.setText("Longitud del número de la tarjeta incorrecta");
             } else if (resultado.equals("La tarjeta de crédito no se encuentra registrada")) {
                 avisoL.setText("La tarjeta de crédito no se encuentra registrada");
+            } else if (resultado.equals("La reserva no existe")) {
+                avisoL.setText("La reserva no existe");
+            } else if (resultado.equals("El mes ingresado no es válido")) {
+                avisoL.setText("El mes ingresado no es válido");
+            } else if (resultado.equals("El mes ingresado no coincide con los datos registrados")) {
+                avisoL.setText("El mes ingresado no coincide con los datos registrados");                        
+            } else if (resultado.equals("El año ingresado no es válido")) {
+                avisoL.setText("El año ingresado no es válido");
+            } else if (resultado.equals("El año ingresado no coincide con los datos registrados")) {
+                avisoL.setText("El año ingresado no coincide con los datos registrados");
+            } else if (resultado.equals("El número de seguridad es incorrecto")) {
+                avisoL.setText("El número de seguridad es incorrecto");
             } else if (resultado.equals("No hay cupo suficiente en la tarjeta para realizar el pago")) {
                 avisoL.setText("No hay cupo suficiente en la tarjeta para realizar el pago");
             } else {
-                //CreditCard tarjetaNueva = tarjetaAntigua;
+                avisoL.setText(resultado);
                 double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio();
-                //tarjetaNueva.setCupoGastado(cupoGastado + reserva.getPrecio());
-
                 tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
-
                 TicketDAO tckdao = new TicketDAO();
                 Ticket ticketPagado = new Ticket(reserva);
 
@@ -358,6 +321,7 @@ public class ReservationPayment extends javax.swing.JFrame {
             if (tdao.leerquerycount(query) == 0) {
                 System.out.println("-------");
             }
+            System.out.println("-------");
             System.out.println(resultado);
         }
 
@@ -381,27 +345,7 @@ public class ReservationPayment extends javax.swing.JFrame {
 
         if (id.length() != 0) {
             if (validar.verificarReserva(Integer.parseInt(id))) {
-                informacionTarjetaL.setVisible(true);
-                nombreBancoL.setVisible(true);
-                nombreBancoCB.setVisible(true);
-                marcaInternacionalL.setVisible(true);
-                marcaInternacionalCB.setVisible(true);
-                fechaCaducidadL.setVisible(true);
-                añoCaducidadTF.setVisible(true);
-                mesCaducidadTF.setVisible(true);
-                mesL.setVisible(true);
-                añoL.setVisible(true);
-                nombreTitularL.setVisible(true);
-                nombreTitularTF.setVisible(true);
-                numeroTarjetaL.setVisible(true);
-                numeroTarjetaTF.setVisible(true);
-                numeroSeguridadL.setVisible(true);
-                numeroSeguridadTF.setVisible(true);
-                avisoL.setText("");
-                idReservacionTF.setEnabled(false);
-                aceptarConfirmarB.setText("Confirmar");
-                volverCambiarDeReservaB.setText("Cambiar reserva");
-                reservaActived = true;
+               reservamostrar();
                 
                 reserva = rdao.leerReserva(Integer.parseInt(id));
 
@@ -434,23 +378,70 @@ public class ReservationPayment extends javax.swing.JFrame {
         CreditCardDAO tdao = new CreditCardDAO();
         List<String> lista = tdao.leerdiffallparametertolist("nombreBanco");
         
-        String bancos[] = new String[lista.size()];
-        
-        for(int i = 0; i < bancos.length; i++) {
-            bancos[i] = lista.get(i);
+        String bancos[] = new String[lista.size()+1];
+        bancos[0] = "-Seleccione una opción-"; 
+        for(int i = 0; i < bancos.length-1; i++) {
+            bancos[i+1] = lista.get(i);
         }
         
         nombreBancoCB.setModel(new javax.swing.DefaultComboBoxModel<>(bancos));
         
        List<String> listaMarcas = tdao.leerdiffallparametertolist("marcaInternacional");
        
-       String marcas[] = new String[listaMarcas.size()];
-        
-        for(int i = 0; i < marcas.length; i++) {
-            marcas[i] = listaMarcas.get(i);
+       String marcas[] = new String[listaMarcas.size()+1];
+       marcas[0] = "-Seleccione una opción-"; 
+        for(int i = 0; i < marcas.length-1; i++) {
+            marcas[i+1] = listaMarcas.get(i);
         }
-        
         marcaInternacionalCB.setModel(new javax.swing.DefaultComboBoxModel<>(marcas));
+    }
+    
+    private void reservaoculta(){
+            idReservacionTF.setEnabled(true);
+            informacionTarjetaL.setVisible(false);
+            nombreBancoL.setVisible(false);
+            nombreBancoCB.setVisible(false);
+            marcaInternacionalL.setVisible(false);
+            marcaInternacionalCB.setVisible(false);
+            fechaCaducidadL.setVisible(false);
+            añoCaducidadTF.setVisible(false);
+            mesCaducidadTF.setVisible(false);
+            mesL.setVisible(false);
+            añoL.setVisible(false);
+            nombreTitularL.setVisible(false);
+            nombreTitularTF.setVisible(false);
+            numeroTarjetaL.setVisible(false);
+            numeroTarjetaTF.setVisible(false);
+            numeroSeguridadL.setVisible(false);
+            numeroSeguridadTF.setVisible(false);
+            avisoL.setText("");
+            aceptarConfirmarB.setText("Siguiente");
+            volverCambiarDeReservaB.setText("Volver");
+            reservaActived = false;
+    }
+    
+    private void reservamostrar(){
+                    informacionTarjetaL.setVisible(true);
+                    nombreBancoL.setVisible(true);
+                    nombreBancoCB.setVisible(true);
+                    marcaInternacionalL.setVisible(true);
+                    marcaInternacionalCB.setVisible(true);
+                    fechaCaducidadL.setVisible(true);
+                    añoCaducidadTF.setVisible(true);
+                    mesCaducidadTF.setVisible(true);
+                    mesL.setVisible(true);
+                    añoL.setVisible(true);
+                    nombreTitularL.setVisible(true);
+                    nombreTitularTF.setVisible(true);
+                    numeroTarjetaL.setVisible(true);
+                    numeroTarjetaTF.setVisible(true);
+                    numeroSeguridadL.setVisible(true);
+                    numeroSeguridadTF.setVisible(true);
+                    avisoL.setText("");
+                    idReservacionTF.setEnabled(false);
+                    aceptarConfirmarB.setText("Confirmar");
+                    volverCambiarDeReservaB.setText("Cambiar reserva");
+                    reservaActived = true;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -152,6 +152,11 @@ public class CreditCardDAO {
             for(CreditCard t : result){
                 if(param.equals("nombreBanco")){par.add(t.getNombreBanco());}
                 else if(param.equals("marcaInternacional")){par.add(t.getMarcaInternacional());}
+                else if(param.equals("nombreTitular")){par.add(t.getNombreTitular());}
+                else if(param.equals("numeroSeguridad")){par.add(t.getNumeroSeguridad());}
+                else if(param.equals("numeroTarjeta")){par.add(t.getNumeroTarjeta());}
+                else if(param.equals("mesExpiracion")){par.add(t.getMesExpiracion());}
+                else if(param.equals("añoExpiracion")){par.add(t.getAñoExpiracion());}
                 else {uniques = null;}
                 }
             for(String s : par){
