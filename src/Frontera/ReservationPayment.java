@@ -303,7 +303,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 avisoL.setText("No hay cupo suficiente en la tarjeta para realizar el pago");
             } else {
                 avisoL.setText(resultado);
-                double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio();
+                double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio() + reserva.getIva();
                 tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
                 TicketDAO tckdao = new TicketDAO();
                 Ticket ticketPagado = new Ticket(reserva);

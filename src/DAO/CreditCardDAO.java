@@ -74,6 +74,24 @@ public class CreditCardDAO {
         }
     }
         
+        public CreditCard leernumtarjeta(String par){
+        EntityManager em = emf.createEntityManager();
+        CreditCard tarjeta = null;
+        Query q = em.createQuery("SELECT t FROM CreditCard t " +
+                "WHERE t.numeroTarjeta = :id")
+                .setParameter("id",par);
+        try{
+            tarjeta = (CreditCard) q.getSingleResult();
+        } catch(NonUniqueResultException e){
+            tarjeta = (CreditCard) q.getResultList().get(0);
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally{
+            em.close();
+            return tarjeta;
+        }
+    }
+    
     public boolean actualizarId(CreditCard object, CreditCard nuevoObjeto){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

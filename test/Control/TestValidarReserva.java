@@ -23,7 +23,7 @@ public class TestValidarReserva {
     private String DEST_ERROR = "Ubicación de destino inválida. Por favor escoja una de las opciones";
     private String DATE_ERROR = "Fecha de vuelo inválida. Por favor escoja una de las opciones";
     private String TIME_ERROR = "Hora de vuelo inválida. Por favor escoja una de las opciones";
-    private String SUCCESS = "Reserva Exitosa";
+    private String SUCCESS = "Todo Correcto";
     
     public TestValidarReserva() {
     }

@@ -112,6 +112,8 @@ public class Inicializacion {
         CreditCard t1 = new CreditCard("Bancolombia", "VISA", "01", "25", "Fernando Salazar", "1234567890456789", "101");
         CreditCard t2 = new CreditCard("AV Villas", "MASTERCARD","03","23", "Juan Alberto", "1234567891234567","102");
         CreditCard t3 = new CreditCard("Banco Popular", "AMERICAN EXPRESS","11","19", "José Miguel","4545457878121223","103");
+        CreditCard t4 = new CreditCard("Bancolombia", "DINERS CLUB","01","23", "Nicolás", "1234567891234567","104");
+        CreditCard t5 = new CreditCard("BBVA", "VISA","01","23", "Miguel", "1234567890123456","105");
         
         t1.setCupoGastado(100.2);
         t1.setCupoMaximo(3000);
@@ -122,12 +124,17 @@ public class Inicializacion {
         t3.setCupoGastado(0);
         t3.setCupoMaximo(2000);
         
-        //sistema.addTarjetas(t1);
-        //sistema.addTarjetas(t2);
-        //sistema.addTarjetas(t3);
+        t4.setCupoGastado(0);
+        t4.setCupoMaximo(20000);
+        
+        t5.setCupoGastado(0);
+        t5.setCupoMaximo(20000);
+        
         tarjetas.add(t1);
         tarjetas.add(t2);
         tarjetas.add(t3);
+        tarjetas.add(t4);
+        tarjetas.add(t5);
         
         System.out.println();
         System.out.println("TARJETAS DE CRÉDITO EXISTENTES");
@@ -141,7 +148,7 @@ public class Inicializacion {
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getMesExpiracion() + "/"+ t.getAñoExpiracion());
             System.out.println("-------");
-            tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();

@@ -86,9 +86,16 @@ public class ValidarPagoTarjeta {
     }
     
     public boolean verificarMesExpiracion(String mesExpiracion){
+        char[] ch = mesExpiracion.toCharArray();
+        boolean ret = true;
         if(!mesExpiracion.isEmpty()){
-            int mes = Integer.parseInt(mesExpiracion); 
-            if(mesExpiracion.length() == 2){
+            for (char c : ch){
+                if(c < '0' || c > '9'){
+                    ret = false;
+                    }   
+            }
+            if(mesExpiracion.length() == 2 && ret == true){
+            int mes = Integer.parseInt(mesExpiracion);     
                 if(mes > 0 && mes <= 12){
                     return true;
                 }
@@ -98,9 +105,15 @@ public class ValidarPagoTarjeta {
     }
     
     public boolean verificarAñoExpiracion(String añoExpiracion){
+        char[] ch = añoExpiracion.toCharArray();
+        boolean ret = true;
         if (!añoExpiracion.isEmpty()) {
+            for (char c : ch){
+                if(c < '0' || c > '9')
+                    ret = false;
+            }
+            if (añoExpiracion.length() == 2 && ret == true) {
             int año = Integer.parseInt(añoExpiracion);
-            if (añoExpiracion.length() == 2) {
                 if (año > 0 && año <= 99) {
                     return true;
                 }
@@ -174,7 +187,8 @@ public class ValidarPagoTarjeta {
     public boolean verificarTarjeta(CreditCard tarjeta) {
         String query = "t.nombreBanco LIKE '"+tarjeta.getNombreBanco()+
                 "' AND t.nombreTitular LIKE '"+tarjeta.getNombreTitular()+
-                "' AND t.numeroTarjeta LIKE '"+tarjeta.getNumeroTarjeta()+"'";
+                "' AND t.numeroTarjeta LIKE '"+tarjeta.getNumeroTarjeta()+
+                "' AND t.MarcaInternacional LIKE '"+tarjeta.getMarcaInternacional()+"'";
         if(tdao.leerquerycount(query)== 1){
             return true;
         }        

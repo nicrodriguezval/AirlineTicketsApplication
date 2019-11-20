@@ -31,7 +31,7 @@ public class ValidarReserva {
         } else if (!verificarHoraSelected(hora)){
             return "Hora de vuelo inválida. Por favor escoja una de las opciones";
         } else{
-            return "Reserva Exitosa";
+            return "Todo Correcto";
         }
     }
     
@@ -41,7 +41,7 @@ public class ValidarReserva {
         } else if (!verificarHoraSelected(hora)){
             return "Hora de vuelo inválida. Por favor escoja una de las opciones";
         } else{
-            return "Reserva Exitosa";
+            return "Todo Correcto";
         }
     }
 
