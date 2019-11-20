@@ -29,8 +29,8 @@ public class CustomerFrequent extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        puntosL = new javax.swing.JLabel();
+        puntosUsuarioL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -42,13 +42,13 @@ public class CustomerFrequent extends javax.swing.JFrame {
         jLabel1.setText("Programa Cliente Frecuente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Putntos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        puntosL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        puntosL.setText("Putntos");
+        jPanel1.add(puntosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 260, -1));
+        puntosUsuarioL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        puntosUsuarioL.setText("jLabel3");
+        jPanel1.add(puntosUsuarioL, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 260, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -57,8 +57,8 @@ public class CustomerFrequent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel puntosL;
+    private javax.swing.JLabel puntosUsuarioL;
     // End of variables declaration//GEN-END:variables
 }

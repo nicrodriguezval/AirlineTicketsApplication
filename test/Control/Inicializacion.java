@@ -67,24 +67,28 @@ public class Inicializacion {
         a.setEmail("nicrodriguezval@unal.edu.co");
         a.setUsername("nicrodriguezval");
         a.setPassword("123123");
+        a.setPoints(1010);
         
         b.setNombre("Lucas");
         b.setApellido("Peña");
         b.setEmail("lucas@gmail.com");
         b.setUsername("lucasps");
         b.setPassword("123456");
+        b.setPoints(700);
         
         c.setNombre("Juan");
         c.setApellido("Tovar");
         c.setEmail("juancho@hotmail.com");
         c.setUsername("juancho01");
         c.setPassword("a1b2c3");
+        c.setPoints(53);
         
         d.setNombre("Miguel");
         d.setApellido("Peña");
         d.setEmail("miapenahu@unal.edu.co");
         d.setUsername("miapenahu");
         d.setPassword("Abcd1234");
+        d.setPoints(1200);
         
         usuarios.add(a);
         usuarios.add(b);
@@ -103,7 +107,7 @@ public class Inicializacion {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-            //udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
@@ -201,7 +205,7 @@ public class Inicializacion {
             System.out.println("Hora del vuelo: " + v.getHora());
             System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
-            //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
@@ -273,7 +277,7 @@ public class Inicializacion {
             System.out.println("");
             System.out.println("");
             System.out.println("-------");
-            //rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
     }
 }
