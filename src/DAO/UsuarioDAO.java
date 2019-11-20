@@ -146,4 +146,23 @@ public class UsuarioDAO {
             return ret;
         }
     }
+    
+    public boolean actualizaPuntos(Usuario object, int puntos){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try{
+            object = leerusername(object.getUsername());
+            object.setPoints(puntos);
+            em.merge(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally{
+            em.close();
+            return ret;
+        }
+    }
 }

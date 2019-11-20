@@ -108,8 +108,7 @@ public class CreditCardDAO {
             em.close();
             return ret;
         }
-    }
-    
+    }  
     
     public List<CreditCard> leeralltolist(){
         EntityManager em = emf.createEntityManager();
@@ -124,7 +123,6 @@ public class CreditCardDAO {
             return creditCard;
         }
     }
- 
         
     public List<CreditCard> leerquerytolist(String condition){
         EntityManager em = emf.createEntityManager();
@@ -170,8 +168,7 @@ public class CreditCardDAO {
             em.close();
             return uniques;
         }
-    }
-    
+    }   
     
     public long leerquerycount(String condition){
         EntityManager em = emf.createEntityManager();

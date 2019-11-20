@@ -5,13 +5,16 @@
  */
 package Frontera;
 
+import Control.CalcularPuntos;
 import Control.ValidarPagoTarjeta;
 import DAO.CreditCardDAO;
 import DAO.ReservaDAO;
 import DAO.TicketDAO;
+import DAO.UsuarioDAO;
 import Entidad.CreditCard;
 import Entidad.Reserva;
 import Entidad.Ticket;
+import static Frontera.Login.user;
 import java.util.List;
 import javax.swing.ImageIcon;
 
@@ -303,12 +306,25 @@ public class ReservationPayment extends javax.swing.JFrame {
                 avisoL.setText("No hay cupo suficiente en la tarjeta para realizar el pago");
             } else {
                 avisoL.setText(resultado);
-                double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio();
+                double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio() + reserva.getIva();
                 tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
                 TicketDAO tckdao = new TicketDAO();
                 Ticket ticketPagado = new Ticket(reserva);
 
                 tckdao.crear(ticketPagado);
+                
+                CalcularPuntos calcular = new CalcularPuntos();
+                int puntos;
+                
+                if(!reserva.isIdaVuelta())
+                    puntos = calcular.generarPuntosIda(reserva.getVueloIda());
+                
+                else
+                    puntos = calcular.generarPuntosIdaVuelta(reserva.getVueloIda(), reserva.getVueloVuelta());
+                
+                UsuarioDAO udao = new UsuarioDAO();
+                
+                udao.actualizaPuntos(user, puntos);
 
                 this.setVisible(false);
                 MenuInicial menu = new MenuInicial();

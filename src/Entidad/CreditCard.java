@@ -36,7 +36,6 @@ public class CreditCard implements Serializable {
     }
     
     
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -72,8 +71,6 @@ public class CreditCard implements Serializable {
     public void setAñoExpiracion(String añoExpiracion) {
         this.añoExpiracion = añoExpiracion;
     }
-    
-    
     
     public String getNombreBanco() {
         return nombreBanco;

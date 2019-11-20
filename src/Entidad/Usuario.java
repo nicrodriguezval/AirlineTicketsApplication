@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table(name="usuarios")
 public class Usuario implements Serializable{
     private String nombre, apellido, username, email, password;
+    private int points;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +36,7 @@ public class Usuario implements Serializable{
     }
     
     public Usuario() { //NECESARIO PARA HACER PERSITENCIA!
+        this.points = 0;
     }
 
     public String getNombre() {
@@ -75,5 +77,13 @@ public class Usuario implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }
