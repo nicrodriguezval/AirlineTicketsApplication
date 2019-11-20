@@ -61,7 +61,7 @@ public class TestValidarReserva {
         String hora = "as:df";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaVuelta(fecha,hora));
         
-        fecha = "15/1/2020";
+        fecha = "15/01/2020";
         hora = "25:2d";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaVuelta(fecha,hora));
     }   
@@ -72,7 +72,7 @@ public class TestValidarReserva {
         String hora = "11:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaVuelta(fecha,hora));
         
-        fecha = "01/1/2020";
+        fecha = "01/01/2020";
         hora = "14:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaVuelta(fecha,hora));
     }   
@@ -132,7 +132,7 @@ public class TestValidarReserva {
         
         origen = "Miami";
         destino = "Madrid";
-        fecha = "15/1/2020";
+        fecha = "15/01/2020";
         hora = "25:25";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
     }
@@ -147,7 +147,7 @@ public class TestValidarReserva {
         
         origen = "Medellín";
         destino = "Bogotá";
-        fecha = "05/1/2020";
+        fecha = "05/01/2020";
         hora = "5:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
     }

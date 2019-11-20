@@ -48,8 +48,7 @@ public class Inicializacion {
 
     @Test
     public void initData(){
-        
-        int idVuelo = 1;
+        //int idVuelo = 1;
 
         UsuarioDAO udao = new UsuarioDAO();
         CreditCardDAO tdao = new CreditCardDAO();
@@ -68,24 +67,28 @@ public class Inicializacion {
         a.setEmail("nicrodriguezval@unal.edu.co");
         a.setUsername("nicrodriguezval");
         a.setPassword("123123");
+        a.setPoints(1010);
         
         b.setNombre("Lucas");
         b.setApellido("Peña");
         b.setEmail("lucas@gmail.com");
         b.setUsername("lucasps");
         b.setPassword("123456");
+        b.setPoints(700);
         
         c.setNombre("Juan");
         c.setApellido("Tovar");
         c.setEmail("juancho@hotmail.com");
         c.setUsername("juancho01");
         c.setPassword("a1b2c3");
+        c.setPoints(53);
         
         d.setNombre("Miguel");
         d.setApellido("Peña");
         d.setEmail("miapenahu@unal.edu.co");
         d.setUsername("miapenahu");
         d.setPassword("Abcd1234");
+        d.setPoints(1200);
         
         usuarios.add(a);
         usuarios.add(b);
@@ -104,7 +107,7 @@ public class Inicializacion {
             System.out.println("Apellido(s): " + u.getApellido());
             System.out.println("Username: " + u.getUsername());
             System.out.println("-------");
-            //udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            udao.crear(u); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<CreditCard> tarjetas = new ArrayList<CreditCard>();
@@ -148,32 +151,32 @@ public class Inicializacion {
             System.out.println("Marca internacional: " + t.getMarcaInternacional());
             System.out.println("Fecha de caducidad: " + t.getMesExpiracion() + "/"+ t.getAñoExpiracion());
             System.out.println("-------");
-            //tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            tdao.crear(t); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
 
         ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
         
-        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "14:00",100,500,1000,300);
-        Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000,400);
-        Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000,300);
+        Vuelo v1 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "14:00",100,500,1000,300, 250);
+        Vuelo v2 = new Vuelo("Madrid", "Miami", "30/12/2019", "3:00",100,500,1000,400, 4403);
+        Vuelo v3 = new Vuelo("Cali", "Bucaramanga", "01/12/2019", "9:00",100,500,1000,300, 470);
         
-        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/01/2020", "12:00",100,500,1000,400);
-        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/01/2020", "5:00",100,500,1000,500);
-        Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000,200);
+        Vuelo v4 = new Vuelo("Medellín", "Bogotá", "05/01/2020", "12:00",100,500,1000,400, 250);
+        Vuelo v5 = new Vuelo("Miami", "Madrid", "15/01/2020", "5:00",100,500,1000,500, 4403);
+        Vuelo v6 = new Vuelo("Bucaramanga", "Cali", "15/12/2019", "11:00",100,500,1000,200, 470);
         
         //TRES VUELOS DE IDA DESDE BOGOTÁ HASTA MEDELLÍN EL MISMO DÍA, A DIFERENTES HORAS
-        Vuelo v7 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "16:00",100,500,1000,300);
-        Vuelo v8 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "18:00",100,500,1000,300);
+        Vuelo v7 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "16:00",100,500,1000,300, 250);
+        Vuelo v8 = new Vuelo("Bogotá", "Medellín", "01/01/2020", "18:00",100,500,1000,300, 250);
         //TRES VUELOS MÁS DESDE BOGOTÁ HACIA DEDELLÍN, EL SIGUIENTE DÍA, A DIFERENTES HORAS
-        Vuelo v9 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "12:00",100,500,1000,300);
-        Vuelo v10 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "13:00",100,500,1000,300);
-        Vuelo v11 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "15:00",100,500,1000,300);
+        Vuelo v9 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "12:00",100,500,1000,300, 250);
+        Vuelo v10 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "13:00",100,500,1000,300, 250);
+        Vuelo v11 = new Vuelo("Bogotá", "Medellín", "02/01/2020", "15:00",100,500,1000,300, 250);
         //DOS UBICACIONES MÁS DESDE BOGOTÁ: MIAMI Y BUCARAMANGA
-        Vuelo v12 = new Vuelo("Bogotá", "Miami", "01/01/2020", "20:00",100,500,1000,300);
-        Vuelo v13 = new Vuelo("Bogotá", "Bucaramanga", "01/01/2020", "18:00",100,500,1000,300);
+        Vuelo v12 = new Vuelo("Bogotá", "Miami", "01/01/2020", "20:00",100,500,1000,300, 1509);
+        Vuelo v13 = new Vuelo("Bogotá", "Bucaramanga", "01/01/2020", "18:00",100,500,1000,300, 260);
         //LOS VUELOS DE VUELTA PAR LOS ULTIMOS DOS
-        Vuelo v14 = new Vuelo("Miami","Bogotá","01/05/2020", "23:00",100,500,1000,300);
-        Vuelo v15 = new Vuelo("Bucaramanga","Bogotá", "01/06/2020", "6:00",100,500,1000,300);
+        Vuelo v14 = new Vuelo("Miami","Bogotá","01/05/2020", "23:00",100,500,1000,300, 1509);
+        Vuelo v15 = new Vuelo("Bucaramanga","Bogotá", "01/06/2020", "6:00",100,500,1000,300, 260);
         //sistema.addVuelos(v1);
         //sistema.addVuelos(v2);
         //sistema.addVuelos(v3);
@@ -209,7 +212,7 @@ public class Inicializacion {
             System.out.println("Hora del vuelo: " + v.getHora());
             System.out.println("Asientos disponibles: " + v.getSillasTotales());
             System.out.println("-------");
-            //vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            vdao.crear(v); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
         
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
@@ -281,8 +284,7 @@ public class Inicializacion {
             System.out.println("");
             System.out.println("");
             System.out.println("-------");
-            //rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
+            rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
-        
     }
 }

@@ -73,8 +73,6 @@ public class CreditCard implements Serializable {
         this.añoExpiracion = añoExpiracion;
     }
     
-    
-    
     public String getNombreBanco() {
         return nombreBanco;
     }
