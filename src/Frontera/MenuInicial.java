@@ -203,6 +203,7 @@ public class MenuInicial extends javax.swing.JFrame {
         CustomerFrequent clienteFrecuente = new CustomerFrequent();
         clienteFrecuente.setLocationRelativeTo(this);
         clienteFrecuente.setVisible(true);
+        clienteFrecuente.setAlwaysOnTop(true);
     }//GEN-LAST:event_clienteFrecuenteBActionPerformed
 
 

@@ -7,6 +7,7 @@ package Control;
 
 import DAO.CreditCardDAO;
 import DAO.ReservaDAO;
+import DAO.TicketDAO;
 import DAO.UsuarioDAO;
 import DAO.VueloDAO;
 import Entidad.CreditCard;
@@ -48,12 +49,12 @@ public class Inicializacion {
 
     @Test
     public void initData(){
-        //int idVuelo = 1;
-
+        
         UsuarioDAO udao = new UsuarioDAO();
         CreditCardDAO tdao = new CreditCardDAO();
         VueloDAO vdao = new VueloDAO();
         ReservaDAO rdao = new ReservaDAO();
+        TicketDAO tckdao = new TicketDAO();
         
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         
@@ -94,14 +95,10 @@ public class Inicializacion {
         usuarios.add(b);
         usuarios.add(c);
         usuarios.add(d);
-        //sistema.addUsuarios(a);
-        //sistema.addUsuarios(b);
-        //sistema.addUsuarios(c);
         
         System.out.println("USUARIOS EXISTENTES");
         System.out.println();
-        
-        //for(Usuario u : sistema.getUsuarios()) {
+
         for(Usuario u: usuarios){
             System.out.println("Nombre(s): " + u.getNombre());
             System.out.println("Apellido(s): " + u.getApellido());
@@ -143,7 +140,6 @@ public class Inicializacion {
         System.out.println("TARJETAS DE CRÉDITO EXISTENTES");
         System.out.println();
         
-        //for(CreditCard t : sistema.getTarjetas()) {
         for(CreditCard t : tarjetas){
             System.out.println("Nombre del banco: " + t.getNombreBanco());
             System.out.println("Nombre del titular: " + t.getNombreTitular());
@@ -177,12 +173,7 @@ public class Inicializacion {
         //LOS VUELOS DE VUELTA PAR LOS ULTIMOS DOS
         Vuelo v14 = new Vuelo("Miami","Bogotá","01/05/2020", "23:00",100,500,1000,300, 1509);
         Vuelo v15 = new Vuelo("Bucaramanga","Bogotá", "01/06/2020", "6:00",100,500,1000,300, 260);
-        //sistema.addVuelos(v1);
-        //sistema.addVuelos(v2);
-        //sistema.addVuelos(v3);
-        //sistema.addVuelos(v4);
-        //sistema.addVuelos(v5);
-        //sistema.addVuelos(v6);
+
         vuelos.add(v1);
         vuelos.add(v2);
         vuelos.add(v3);
@@ -202,8 +193,7 @@ public class Inicializacion {
         System.out.println();
         System.out.println("VUELOS DISPONIBLES");
         System.out.println();
-        
-        //for(Vuelo v : sistema.getVuelos()) {
+
         for(Vuelo v : vuelos){
             System.out.println("ID vuelo: " + v.getId());
             System.out.println("Ciudad de origen: " + v.getOrigen());
@@ -286,5 +276,17 @@ public class Inicializacion {
             System.out.println("-------");
             rdao.crear(r); //ELEMENTOS YA AÑADIDOS A LA BASE DE DATOS
         }
+        //REINICIO DE LOS ID'S DE TODAS LAS ENTIDADES
+        int act = (int) udao.leerallcount()+1;
+        udao.resetId(act);
+        act = (int) vdao.leerallcount()+1;
+        vdao.resetId(act);
+        act = (int) tdao.leerallcount()+1;
+        tdao.resetId(act);
+        act = (int) rdao.leerallcount()+1;
+        rdao.resetId(act);
+        act = (int) tckdao.leerallcount()+1;
+        tckdao.resetId(act);
+
     }
 }

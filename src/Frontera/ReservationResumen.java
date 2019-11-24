@@ -551,6 +551,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         // TODO add your handling code here:
         //sistema.addReservas(reserva);
         ReservaDAO rdao = new ReservaDAO();
+        //rdao.resetId((int)rdao.leerallcount() + 1);
         rdao.crear(reserva);
         System.out.println("-------");
         System.out.println("RESERVACIÓN REALIZADA");
@@ -564,6 +565,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setLocationRelativeTo(this);
         menu.setVisible(true);
+        menu.setAlwaysOnTop(true);
     }//GEN-LAST:event_confirmarBActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
@@ -659,7 +661,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         precioImpuestos = (calcular.calcularIva(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioTotal = (calcular.precioFinal(reserva) * (puestosReservados + puestosReservadosVuelta));
         
-        reserva.setPrecio(precioTotal);
+        reserva.setPrecio(precioSubtotal);
         reserva.setIva(calcular.calcularIva(reserva));
         
         subTotalL.setText(("" + precioSubtotal + " USD"));

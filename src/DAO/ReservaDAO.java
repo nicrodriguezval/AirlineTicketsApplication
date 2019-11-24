@@ -161,6 +161,7 @@ public class ReservaDAO {
         boolean ret = false;
         try{
             em.createNativeQuery("ALTER TABLE reservas ALTER COLUMN id RESTART WITH " + i).executeUpdate();
+            em.getTransaction().commit();
             ret = true;
         } catch (Exception e){
             e.printStackTrace();

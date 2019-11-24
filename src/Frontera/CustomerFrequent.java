@@ -79,7 +79,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         jPanel1.add(tituloL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         puntosL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        puntosL.setText("Putntos");
+        puntosL.setText("Puntos");
         jPanel1.add(puntosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         puntosUsuarioL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
