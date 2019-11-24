@@ -6,6 +6,7 @@
 package Frontera;
 
 import Control.CalcularPuntos;
+import Control.ValidarLogin;
 import Control.ValidarPagoTarjeta;
 import DAO.CreditCardDAO;
 import DAO.ReservaDAO;
@@ -23,11 +24,10 @@ import javax.swing.ImageIcon;
  * @author nicro
  */
 public class ReservationPayment extends javax.swing.JFrame {
-
-    boolean reservaActived;
-    Reserva reserva;
-    ReservaDAO rdao;
-    List<Reserva> listReserva;
+    private boolean reservaActived;
+    private Reserva reserva;
+    private ReservaDAO rdao;
+    private List<Reserva> listReserva;
 
     /**
      * Creates new form TicketPayment
@@ -236,13 +236,28 @@ public class ReservationPayment extends javax.swing.JFrame {
         ValidarPagoTarjeta validar = new ValidarPagoTarjeta();
         String id = idReservacionTF.getText();
 
-        if (!reservaActived) {
+        if(!reservaActived) {
             if (id.length() != 0) {
                 if (validar.verificarReserva(Integer.parseInt(id))) {
-                    reservamostrar();
                     reserva = rdao.leerReserva(Integer.parseInt(id));
+                
+                    if(reserva.getUsuario().getUsername().equals(user.getUsername())) 
+                        if(!reserva.isPagada())
+                            reservamostrar();
+                    
+                        else
+                            avisoL.setText("La reservación ya fue pagada");
+                    
+                    else 
+                        avisoL.setText("La reservación no es del usuario activo");
+                    
+                    /*for (int i = 0; i < listReserva.size(); i++) {
+                        if (listReserva.get(i).getId() == Integer.parseInt(id)) {
+                            reserva = listReserva.get(i);
+                        }
+                    }*/
                 } else {
-                    avisoL.setText("La reserva no existe");
+                    avisoL.setText("La reservación no existe");
                 }
             } else {
                 avisoL.setText("Ingrese una reservación");
@@ -309,6 +324,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 double cupoGastado = tarjetaAntigua.getCupoGastado() + reserva.getPrecio() + reserva.getIva();
                 tdao.actualizarcupo(tarjetaAntigua, cupoGastado);
                 TicketDAO tckdao = new TicketDAO();
+                rdao.actualizaPago(reserva, true);
                 Ticket ticketPagado = new Ticket(reserva);
 
                 tckdao.crear(ticketPagado);
@@ -317,14 +333,16 @@ public class ReservationPayment extends javax.swing.JFrame {
                 int puntos;
                 
                 if(!reserva.isIdaVuelta())
-                    puntos = calcular.generarPuntosIda(reserva.getVueloIda());
+                    puntos = user.getPoints() + calcular.generarPuntosIda(reserva.getVueloIda());
                 
                 else
-                    puntos = calcular.generarPuntosIdaVuelta(reserva.getVueloIda(), reserva.getVueloVuelta());
+                    puntos = user.getPoints() + calcular.generarPuntosIdaVuelta(reserva.getVueloIda(), reserva.getVueloVuelta());
                 
+                //actualizar los puntos del usuario al comprar el ticket
                 UsuarioDAO udao = new UsuarioDAO();
-                
+                ValidarLogin validarL = new ValidarLogin();
                 udao.actualizaPuntos(user, puntos);
+                user = validarL.findUsuario(user.getUsername());
 
                 this.setVisible(false);
                 MenuInicial menu = new MenuInicial();
@@ -340,7 +358,6 @@ public class ReservationPayment extends javax.swing.JFrame {
             System.out.println("-------");
             System.out.println(resultado);
         }
-
     }//GEN-LAST:event_aceptarConfirmarBActionPerformed
 
     private void idReservacionTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idReservacionTFKeyTyped
@@ -361,17 +378,25 @@ public class ReservationPayment extends javax.swing.JFrame {
 
         if (id.length() != 0) {
             if (validar.verificarReserva(Integer.parseInt(id))) {
-               reservamostrar();
-                
                 reserva = rdao.leerReserva(Integer.parseInt(id));
-
+                
+                if(reserva.getUsuario().getUsername().equals(user.getUsername())) 
+                    if(!reserva.isPagada())
+                        reservamostrar();
+                    
+                    else
+                        avisoL.setText("La reservación ya fue pagada");
+                
+                else 
+                    avisoL.setText("La reservación no es del usuario activo");
+                
                 /*for (int i = 0; i < listReserva.size(); i++) {
                     if (listReserva.get(i).getId() == Integer.parseInt(id)) {
                         reserva = listReserva.get(i);
                     }
                 }*/
             } else {
-                avisoL.setText("La reserva no existe");
+                avisoL.setText("La reservación no existe");
             }
         } else {
             avisoL.setText("Ingrese una reservación");
@@ -413,51 +438,51 @@ public class ReservationPayment extends javax.swing.JFrame {
     }
     
     private void reservaoculta(){
-            idReservacionTF.setEnabled(true);
-            informacionTarjetaL.setVisible(false);
-            nombreBancoL.setVisible(false);
-            nombreBancoCB.setVisible(false);
-            marcaInternacionalL.setVisible(false);
-            marcaInternacionalCB.setVisible(false);
-            fechaCaducidadL.setVisible(false);
-            añoCaducidadTF.setVisible(false);
-            mesCaducidadTF.setVisible(false);
-            mesL.setVisible(false);
-            añoL.setVisible(false);
-            nombreTitularL.setVisible(false);
-            nombreTitularTF.setVisible(false);
-            numeroTarjetaL.setVisible(false);
-            numeroTarjetaTF.setVisible(false);
-            numeroSeguridadL.setVisible(false);
-            numeroSeguridadTF.setVisible(false);
-            avisoL.setText("");
-            aceptarConfirmarB.setText("Siguiente");
-            volverCambiarDeReservaB.setText("Volver");
-            reservaActived = false;
+        idReservacionTF.setEnabled(true);
+        informacionTarjetaL.setVisible(false);
+        nombreBancoL.setVisible(false);
+        nombreBancoCB.setVisible(false);
+        marcaInternacionalL.setVisible(false);
+        marcaInternacionalCB.setVisible(false);
+        fechaCaducidadL.setVisible(false);
+        añoCaducidadTF.setVisible(false);
+        mesCaducidadTF.setVisible(false);
+        mesL.setVisible(false);
+        añoL.setVisible(false);
+        nombreTitularL.setVisible(false);
+        nombreTitularTF.setVisible(false);
+        numeroTarjetaL.setVisible(false);
+        numeroTarjetaTF.setVisible(false);
+        numeroSeguridadL.setVisible(false);
+        numeroSeguridadTF.setVisible(false);
+        avisoL.setText("");
+        aceptarConfirmarB.setText("Siguiente");
+        volverCambiarDeReservaB.setText("Volver");
+        reservaActived = false;
     }
     
     private void reservamostrar(){
-                    informacionTarjetaL.setVisible(true);
-                    nombreBancoL.setVisible(true);
-                    nombreBancoCB.setVisible(true);
-                    marcaInternacionalL.setVisible(true);
-                    marcaInternacionalCB.setVisible(true);
-                    fechaCaducidadL.setVisible(true);
-                    añoCaducidadTF.setVisible(true);
-                    mesCaducidadTF.setVisible(true);
-                    mesL.setVisible(true);
-                    añoL.setVisible(true);
-                    nombreTitularL.setVisible(true);
-                    nombreTitularTF.setVisible(true);
-                    numeroTarjetaL.setVisible(true);
-                    numeroTarjetaTF.setVisible(true);
-                    numeroSeguridadL.setVisible(true);
-                    numeroSeguridadTF.setVisible(true);
-                    avisoL.setText("");
-                    idReservacionTF.setEnabled(false);
-                    aceptarConfirmarB.setText("Confirmar");
-                    volverCambiarDeReservaB.setText("Cambiar reserva");
-                    reservaActived = true;
+        informacionTarjetaL.setVisible(true);
+        nombreBancoL.setVisible(true);
+        nombreBancoCB.setVisible(true);
+        marcaInternacionalL.setVisible(true);
+        marcaInternacionalCB.setVisible(true);
+        fechaCaducidadL.setVisible(true);
+        añoCaducidadTF.setVisible(true);
+        mesCaducidadTF.setVisible(true);
+        mesL.setVisible(true);
+        añoL.setVisible(true);
+        nombreTitularL.setVisible(true);
+        nombreTitularTF.setVisible(true);
+        numeroTarjetaL.setVisible(true);
+        numeroTarjetaTF.setVisible(true);
+        numeroSeguridadL.setVisible(true);
+        numeroSeguridadTF.setVisible(true);
+        avisoL.setText("");
+        idReservacionTF.setEnabled(false);
+        aceptarConfirmarB.setText("Confirmar");
+        volverCambiarDeReservaB.setText("Cambiar reserva");
+        reservaActived = true;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

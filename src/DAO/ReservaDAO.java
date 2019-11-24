@@ -155,7 +155,7 @@ public class ReservaDAO {
         }
     }    
 
-        public boolean resetId(int i){
+    public boolean resetId(int i){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         boolean ret = false;
@@ -171,7 +171,24 @@ public class ReservaDAO {
         }
     }    
     
-
+    public boolean actualizaPago(Reserva object, boolean isPago) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try{
+            object = leerReserva(object.getId());
+            object.setPagada(isPago);
+            em.merge(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally{
+            em.close();
+            return ret;
+        }
+    }
 }
 
 

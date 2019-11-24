@@ -17,10 +17,11 @@ import javax.persistence.Table;
  * @author nicro
  */
 @Entity
-@Table(name="tickets")
-public class Ticket implements Serializable{
+@Table(name = "tickets")
+public class Ticket implements Serializable {
+
     Reserva reserva;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,8 +33,8 @@ public class Ticket implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
-    public Ticket(){ //NECESARIO PARA HACER PERSITENCIA!
+
+    public Ticket() { //NECESARIO PARA HACER PERSITENCIA!
     }
 
     public Ticket(Reserva reserva) {

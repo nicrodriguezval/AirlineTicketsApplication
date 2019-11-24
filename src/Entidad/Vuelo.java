@@ -16,24 +16,23 @@ import javax.persistence.Table;
  *
  * @author nicro
  */
-
 @Entity
-@Table(name="vuelos")
-public class Vuelo implements Serializable{
+@Table(name = "vuelos")
+public class Vuelo implements Serializable {
+
     private String origen, destino, hora, fecha;
-    private int sillasTotales, millas; 
+    private int sillasTotales, millas;
     private double precioClaseTurista, precioClaseEjecutiva, precioPrimeraClase;
     private boolean sillasDisponibles[];
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public Vuelo(){ //NECESARIO PARA HACER PERSITENCIA!
-        
+    public Vuelo() { //NECESARIO PARA HACER PERSITENCIA!
     }
 
-    public Vuelo(/*int id,*/ String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales, int millas) {
+    public Vuelo(/*int id,*/String origen, String destino, String fecha, String hora, double precioClaseTurista, double precioClaseEjecutiva, double precioPrimeraClase, int sillasTotales, int millas) {
         //this.id = id;
         this.origen = origen;
         this.destino = destino;
@@ -45,12 +44,11 @@ public class Vuelo implements Serializable{
         this.sillasTotales = sillasTotales;
         this.millas = millas;
         sillasDisponibles = new boolean[sillasTotales];
-        
-        for(int i = 0; i < sillasDisponibles.length; i++)
+
+        for (int i = 0; i < sillasDisponibles.length; i++) {
             sillasDisponibles[i] = true;
+        }
     }
-    
-    
 
     public int getId() {
         return id;
@@ -59,7 +57,7 @@ public class Vuelo implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getOrigen() {
         return origen;
     }
@@ -139,5 +137,5 @@ public class Vuelo implements Serializable{
     public void setMillas(int millas) {
         this.millas = millas;
     }
-    
- }
+
+}

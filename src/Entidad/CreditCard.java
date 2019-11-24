@@ -17,12 +17,13 @@ import javax.persistence.Table;
  * @author nicro
  */
 @Entity
-@Table(name="tarjetas")
+@Table(name = "tarjetas")
 public class CreditCard implements Serializable {
+
     private String nombreBanco, mesExpiracion, añoExpiracion, nombreTitular, MarcaInternacional, numeroTarjeta, numeroSeguridad;
     private double cupoGastado, cupoMaximo;
 
-    public CreditCard(){//NECESARIO PARA HACER PERSITENCIA!
+    public CreditCard() {//NECESARIO PARA HACER PERSITENCIA!
     }
 
     public CreditCard(String nombreBanco, String MarcaInternacional, String mesExpiracion, String añoExpiracion, String nombreTitular, String numeroTarjeta, String numeroSeguridad) {
@@ -34,9 +35,7 @@ public class CreditCard implements Serializable {
         this.numeroTarjeta = numeroTarjeta;
         this.numeroSeguridad = numeroSeguridad;
     }
-    
-    
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -56,7 +55,7 @@ public class CreditCard implements Serializable {
     public void setNumeroSeguridad(String numeroSeguridad) {
         this.numeroSeguridad = numeroSeguridad;
     }
-    
+
     public String getMesExpiracion() {
         return mesExpiracion;
     }
@@ -72,7 +71,7 @@ public class CreditCard implements Serializable {
     public void setAñoExpiracion(String añoExpiracion) {
         this.añoExpiracion = añoExpiracion;
     }
-    
+
     public String getNombreBanco() {
         return nombreBanco;
     }

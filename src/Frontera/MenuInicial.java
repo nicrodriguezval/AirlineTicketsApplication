@@ -37,7 +37,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bienvenido = new javax.swing.JLabel();
         reserva = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        terminarSesionB = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pagoReservacionB = new javax.swing.JButton();
         clienteFrecuenteB = new javax.swing.JButton();
@@ -73,16 +73,16 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
-        jButton1.setText("Terminar Sesión");
-        jButton1.setContentAreaFilled(false);
-        jButton1.setInheritsPopupMenu(true);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        terminarSesionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        terminarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
+        terminarSesionB.setText("Terminar Sesión");
+        terminarSesionB.setContentAreaFilled(false);
+        terminarSesionB.setInheritsPopupMenu(true);
+        terminarSesionB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
+        terminarSesionB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
+        terminarSesionB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                terminarSesionBActionPerformed(evt);
             }
         });
 
@@ -107,6 +107,11 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         clienteFrecuenteB.setText("Cliente Frecuente");
+        clienteFrecuenteB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteFrecuenteBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,7 +135,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(terminarSesionB)
                 .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,7 +157,7 @@ public class MenuInicial extends javax.swing.JFrame {
                             .addComponent(reserva, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(pagoReservacionB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)))
-                .addComponent(jButton1)
+                .addComponent(terminarSesionB)
                 .addGap(22, 22, 22))
         );
 
@@ -173,7 +178,7 @@ public class MenuInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_reservaMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void terminarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarSesionBActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         user = null;
@@ -181,7 +186,7 @@ public class MenuInicial extends javax.swing.JFrame {
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
         framePrincipal.setAlwaysOnTop(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_terminarSesionBActionPerformed
 
     private void pagoReservacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoReservacionBActionPerformed
         // TODO add your handling code here:
@@ -192,15 +197,23 @@ public class MenuInicial extends javax.swing.JFrame {
         ticketPayment.setAlwaysOnTop(true);
     }//GEN-LAST:event_pagoReservacionBActionPerformed
 
+    private void clienteFrecuenteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteFrecuenteBActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        CustomerFrequent clienteFrecuente = new CustomerFrequent();
+        clienteFrecuente.setLocationRelativeTo(this);
+        clienteFrecuente.setVisible(true);
+    }//GEN-LAST:event_clienteFrecuenteBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenido;
     private javax.swing.JButton clienteFrecuenteB;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pagoReservacionB;
     private javax.swing.JButton reserva;
+    private javax.swing.JButton terminarSesionB;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

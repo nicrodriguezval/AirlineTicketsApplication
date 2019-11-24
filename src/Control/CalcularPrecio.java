@@ -15,45 +15,35 @@ public class CalcularPrecio {
 
     public CalcularPrecio() {
     }
-    
+
     public double precioFinal(Reserva reserva) {
         return calcularPrecio(reserva) + calcularIva(reserva);
     }
-    
+
     public double calcularPrecio(Reserva reserva) { //Acá falta completar porque no sé cómo calcularemos el precio del viaje teniendo en cuenta si afora equipaje o si el viaje es ida y vuelta, o ambos
-        if(reserva.isIdaVuelta() && reserva.getCategoria().equals("Primera clase")) {
+        if (reserva.isIdaVuelta() && reserva.getCategoria().equals("Primera clase")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioPrimeraClase() + precioEquipaje(reserva.getPesoVuelta()) + reserva.getVueloVuelta().getPrecioPrimeraClase();
-        }
-        
-        else if(!reserva.isIdaVuelta() && reserva.getCategoria().equals("Primera clase")) {
+        } else if (!reserva.isIdaVuelta() && reserva.getCategoria().equals("Primera clase")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioPrimeraClase();
-        }
-        
-        else if(reserva.isIdaVuelta() && reserva.getCategoria().equals("Ejecutiva")) {
+        } else if (reserva.isIdaVuelta() && reserva.getCategoria().equals("Ejecutiva")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioClaseEjecutiva() + precioEquipaje(reserva.getPesoVuelta()) + reserva.getVueloVuelta().getPrecioClaseEjecutiva();
-        }
-        
-        else if(!reserva.isIdaVuelta() && reserva.getCategoria().equals("Ejecutiva")) {
+        } else if (!reserva.isIdaVuelta() && reserva.getCategoria().equals("Ejecutiva")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioClaseEjecutiva();
-        }
-        
-        else if(reserva.isIdaVuelta() && reserva.getCategoria().equals("Turista")) {
+        } else if (reserva.isIdaVuelta() && reserva.getCategoria().equals("Turista")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioClaseTurista() + precioEquipaje(reserva.getPesoVuelta()) + reserva.getVueloVuelta().getPrecioClaseTurista();
-        }
-        
-        else if(!reserva.isIdaVuelta() && reserva.getCategoria().equals("Turista")) {
+        } else if (!reserva.isIdaVuelta() && reserva.getCategoria().equals("Turista")) {
             return precioEquipaje(reserva.getPeso()) + reserva.getVueloIda().getPrecioClaseTurista();
+        } else {
+            return 0;
         }
-        
-        else return 0;
     }
-    
+
     public double calcularIva(Reserva reserva) {
         return calcularPrecio(reserva) * 0.19;
     }
-    
+
     public double precioEquipaje(int peso) {
-        switch(peso) {
+        switch (peso) {
             case 0:
                 return 0;
             case 1:

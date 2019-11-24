@@ -16,18 +16,20 @@ import javax.persistence.Table;
  * @author nicro
  */
 @Entity
-@Table(name="reservas")
+@Table(name = "reservas")
 public class Reserva {
+
     private Vuelo vueloIda, vueloVuelta;
-    private boolean equipaje, idaVuelta;
+    private boolean equipaje, idaVuelta, pagada;
     private String categoria;
     private int peso, numeroPuestos;
-    double precio, iva; /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
+    double precio, iva;
+    /*Si se afora equipaje, el peso del equipaje estará dado en kilogramos.
                                                             El precio es el precio inicial de la reserva,
                                                             cuando el se pague la reserva se genera el tiquete y se asigna el mismo precio del la reserva al ticket, 
                                                             el precio está dado en USD para más comodidad con la cantidad de dígitos*/
     private Usuario usuario;
-    
+
     private boolean equipajeVuelta;
     private String categoriaVuelta;
     private int pesoVuelta, numeroPuestosVuelta;
@@ -36,7 +38,7 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //ALTER TABLE reservas AUTO_INCREMENT = 0 para resetear
     private int id;
-    
+
     public int getId() {
         return id;
     }
@@ -44,11 +46,11 @@ public class Reserva {
     public void setId(int id) {
         this.id = id;
     }
-    
-    public Reserva(){ //NECESARIO PARA HACER PERSISTENCIA!
+
+    public Reserva() { //NECESARIO PARA HACER PERSISTENCIA!
     }
 
-    public Reserva(/*int id,*/ Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
+    public Reserva(/*int id,*/Vuelo vueloIda, int numeroPuestos, boolean idaVuelta, boolean equipaje, int peso, String categoria, Usuario usuario) {
         //this.id = id;
         this.vueloIda = vueloIda;
         this.equipaje = equipaje;
@@ -59,8 +61,9 @@ public class Reserva {
         this.numeroPuestos = numeroPuestos;
         puestosIda = new int[numeroPuestos];
         puestosIda = new int[numeroPuestosVuelta];
+        pagada = false;
     }
-    
+
     public int[] getPuestosIda() {
         return puestosIda;
     }
@@ -68,7 +71,7 @@ public class Reserva {
     public void setPuestosIda(int[] puestosIda) {
         this.puestosIda = puestosIda;
     }
-    
+
     public Vuelo getVueloIda() {
         return vueloIda;
     }
@@ -84,8 +87,7 @@ public class Reserva {
     public void setVueloVuelta(Vuelo vueloVuelta) {
         this.vueloVuelta = vueloVuelta;
     }
-    
-    
+
     public int getNumeroPuestos() {
         return numeroPuestos;
     }
@@ -93,7 +95,7 @@ public class Reserva {
     public void setNumeroPuestos(int numeroPuestos) {
         this.numeroPuestos = numeroPuestos;
     }
-    
+
     public boolean isEquipaje() {
         return equipaje;
     }
@@ -117,7 +119,7 @@ public class Reserva {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -188,5 +190,13 @@ public class Reserva {
 
     public void setPuestosVuelta(int[] puestosVuelta) {
         this.puestosVuelta = puestosVuelta;
+    }
+
+    public boolean isPagada() {
+        return pagada;
+    }
+
+    public void setPagada(boolean pagada) {
+        this.pagada = pagada;
     }
 }

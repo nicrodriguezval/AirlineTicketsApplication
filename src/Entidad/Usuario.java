@@ -16,13 +16,13 @@ import javax.persistence.Table;
  *
  * @author nicro
  */
-
 @Entity
-@Table(name="usuarios")
-public class Usuario implements Serializable{
+@Table(name = "usuarios")
+public class Usuario implements Serializable {
+
     private String nombre, apellido, username, email, password;
     private int points;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,7 +34,7 @@ public class Usuario implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public Usuario() { //NECESARIO PARA HACER PERSITENCIA!
     }
 
@@ -85,5 +85,5 @@ public class Usuario implements Serializable{
     public void setPoints(int points) {
         this.points = points;
     }
-    
+
 }

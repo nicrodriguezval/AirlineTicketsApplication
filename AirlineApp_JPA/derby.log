@@ -1,8 +1,8 @@
-Tue Nov 19 09:40:58 COT 2019 : Servidor de red Apache Derby: Se ha iniciado 10.11.1.2 - (1629631) y está listo para aceptar las conexiones en el puerto 1527
+Sat Nov 23 20:01:34 COT 2019 : Servidor de red Apache Derby: Se ha iniciado 10.11.1.2 - (1629631) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Tue Nov 19 09:41:27 COT 2019:
- Iniciando instancia a816c00e-016e-841c-00f8-ffffddf0fc06 de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
-en el directorio de base de datos D:\Google Drive\Respaldo Universitario\Semestres\2019-2 System V\Ingeniería de Software I\NetBeansProjects\Sprint2\RealizarPago\AirlineApp_JPA\AirlineApp_JPA con el cargador de clases sun.misc.Launcher$AppClassLoader@6f94fa3e
+Sat Nov 23 20:01:35 COT 2019:
+ Iniciando instancia a816c00e-016e-9aed-a0f2-ffff8df38daf de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
+en el directorio de base de datos C:\Users\nicro\Documents\NetBeansProjects\Clone6\AirlineTicketsApplication\AirlineApp_JPA\AirlineApp_JPA con el cargador de clases sun.misc.Launcher$AppClassLoader@6f94fa3e
 Cargado desde file:/C:/Program%20Files/Java/jdk1.8.0_111/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_111-b14
@@ -10,5 +10,5 @@ user.dir=C:\Program Files\Java\jdk1.8.0_111\db
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=D:\Google Drive\Respaldo Universitario\Semestres\2019-2 System V\Ingeniería de Software I\NetBeansProjects\Sprint2\RealizarPago\AirlineApp_JPA
+derby.system.home=C:\Users\nicro\Documents\NetBeansProjects\Clone6\AirlineTicketsApplication\AirlineApp_JPA
 Cargador de clases de base de datos iniciado - derby.database.classpath=''
