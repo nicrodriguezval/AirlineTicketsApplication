@@ -103,6 +103,11 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 idReservacionTFActionPerformed(evt);
             }
         });
+        idReservacionTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idReservacionTFKeyTyped(evt);
+            }
+        });
         jPanel1.add(idReservacionTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 170, -1));
 
         aceptarB.setText("Aceptar");
@@ -111,7 +116,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 aceptarBActionPerformed(evt);
             }
         });
-        jPanel1.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+        jPanel1.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         redimirPuntosB.setText("Redimir puntos");
         jPanel1.add(redimirPuntosB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
@@ -256,6 +261,16 @@ public class CustomerFrequent extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_aceptarBActionPerformed
+
+    private void idReservacionTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idReservacionTFKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') //Sólo se puede escribir números
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_idReservacionTFKeyTyped
 
     private void redimirPuntosBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
