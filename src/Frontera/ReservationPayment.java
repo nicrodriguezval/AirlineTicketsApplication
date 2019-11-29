@@ -105,7 +105,7 @@ public class ReservationPayment extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Pago de Reservación");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 13, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         idReservacionL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         idReservacionL.setText("ID reservación");
@@ -132,7 +132,7 @@ public class ReservationPayment extends javax.swing.JFrame {
 
         nombreBancoL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreBancoL.setText("Nombre del banco");
-        jPanel1.add(nombreBancoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 139, -1));
+        jPanel1.add(nombreBancoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 139, -1));
 
         fechaCaducidadL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fechaCaducidadL.setText("Fecha de caducidad");
@@ -201,7 +201,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 nombreBancoCBActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreBancoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 142, 179, -1));
+        jPanel1.add(nombreBancoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 179, -1));
 
         marcaInternacionalL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         marcaInternacionalL.setText("Marca internacional");

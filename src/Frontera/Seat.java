@@ -36,223 +36,83 @@ public class Seat extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         pasajero1T = new java.awt.Label();
         pasajero2T = new java.awt.Label();
         pasajero3T = new java.awt.Label();
         pasajero4T = new java.awt.Label();
         pasajero5T = new java.awt.Label();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         Pasajero5VueltaT = new java.awt.Label();
         pasajero4VueltaT = new java.awt.Label();
         pasajero3VueltaT = new java.awt.Label();
         pasajero2VueltaT = new java.awt.Label();
         pasajero1VueltaT = new java.awt.Label();
-        puestoVueltaL = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Pasajero 1");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Pasajero 2");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Pasajero 3");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Pasajero 4");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Pasajero 5");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pasajero1T.setAlignment(java.awt.Label.CENTER);
-        pasajero1T.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero1T.setBackground(new java.awt.Color(255, 255, 255));
         pasajero1T.setText("label1");
+        jPanel1.add(pasajero1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, -1));
 
         pasajero2T.setAlignment(java.awt.Label.CENTER);
-        pasajero2T.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero2T.setBackground(new java.awt.Color(255, 255, 255));
         pasajero2T.setText("label2");
+        jPanel1.add(pasajero2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, -1));
 
         pasajero3T.setAlignment(java.awt.Label.CENTER);
-        pasajero3T.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero3T.setBackground(new java.awt.Color(255, 255, 255));
         pasajero3T.setText("label3");
+        jPanel1.add(pasajero3T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, -1));
 
         pasajero4T.setAlignment(java.awt.Label.CENTER);
-        pasajero4T.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero4T.setBackground(new java.awt.Color(255, 255, 255));
         pasajero4T.setText("label4");
+        jPanel1.add(pasajero4T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, 20));
 
         pasajero5T.setAlignment(java.awt.Label.CENTER);
-        pasajero5T.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero5T.setBackground(new java.awt.Color(255, 255, 255));
         pasajero5T.setText("label5");
+        jPanel1.add(pasajero5T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 70, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setText("Puesto");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pasajero1T, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero2T, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero3T, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero4T, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero5T, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(57, 57, 57))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(pasajero1T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel2))
-                                    .addComponent(pasajero2T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3))
-                            .addComponent(pasajero3T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
-                    .addComponent(pasajero4T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(pasajero5T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SillasAvion.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 330));
 
         jTabbedPane1.addTab("Sillas Ida", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Pasajero 1");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Pasajero 2");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("Pasajero 3");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setText("Pasajero 4");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setText("Pasajero 5");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Pasajero5VueltaT.setAlignment(java.awt.Label.CENTER);
-        Pasajero5VueltaT.setBackground(new java.awt.Color(204, 204, 204));
+        Pasajero5VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         Pasajero5VueltaT.setText("Ninguno");
+        jPanel2.add(Pasajero5VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 70, -1));
 
         pasajero4VueltaT.setAlignment(java.awt.Label.CENTER);
-        pasajero4VueltaT.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero4VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         pasajero4VueltaT.setText("Ninguno");
+        jPanel2.add(pasajero4VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, -1));
 
         pasajero3VueltaT.setAlignment(java.awt.Label.CENTER);
-        pasajero3VueltaT.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero3VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         pasajero3VueltaT.setText("Ninguno");
+        jPanel2.add(pasajero3VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, -1));
 
         pasajero2VueltaT.setAlignment(java.awt.Label.CENTER);
-        pasajero2VueltaT.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero2VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         pasajero2VueltaT.setText("Ninguno");
+        jPanel2.add(pasajero2VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, -1));
 
         pasajero1VueltaT.setAlignment(java.awt.Label.CENTER);
-        pasajero1VueltaT.setBackground(new java.awt.Color(204, 204, 204));
+        pasajero1VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         pasajero1VueltaT.setText("Ninguno");
+        jPanel2.add(pasajero1VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, -1));
 
-        puestoVueltaL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        puestoVueltaL.setText("Puesto");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pasajero1VueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero2VueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero3VueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pasajero4VueltaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Pasajero5VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(puestoVueltaL)
-                .addGap(63, 63, 63))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(puestoVueltaL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(pasajero1VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel7))
-                                    .addComponent(pasajero2VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8))
-                            .addComponent(pasajero3VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
-                    .addComponent(pasajero4VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(Pasajero5VueltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SillasAvion.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 330));
 
         jTabbedPane1.addTab("Sillas Vuelta", jPanel2);
 
@@ -260,36 +120,25 @@ public class Seat extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void configuracionInicial() {
-        puestoVueltaL.setVisible(false);
-        
-        jLabel1.setVisible(false);
-        jLabel2.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
         
         pasajero1T.setVisible(false);
         pasajero2T.setVisible(false);
         pasajero3T.setVisible(false);
         pasajero4T.setVisible(false);
         pasajero5T.setVisible(false);
-        
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
         
         pasajero1VueltaT.setVisible(false);
         pasajero2VueltaT.setVisible(false);
@@ -301,27 +150,18 @@ public class Seat extends javax.swing.JFrame {
         
         switch(reserva.getNumeroPuestos()) {
             case 1:
-                jLabel1.setVisible(true);
-                
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] +1)));
                 break;
                 
-            case 2:
-                jLabel1.setVisible(true);
-                jLabel2.setVisible(true);
-                
+            case 2:       
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
                 pasajero2T.setText(("" + (puestosIda[1] + 1)));
                 break;
                 
-            case 3:
-                jLabel1.setVisible(true);
-                jLabel2.setVisible(true);
-                jLabel3.setVisible(true);
-                
+            case 3:             
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
@@ -331,11 +171,6 @@ public class Seat extends javax.swing.JFrame {
                 break;
                 
             case 4:
-                jLabel1.setVisible(true);
-                jLabel2.setVisible(true);
-                jLabel3.setVisible(true);
-                jLabel4.setVisible(true);
-                
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
@@ -347,12 +182,6 @@ public class Seat extends javax.swing.JFrame {
                 break;
             
             case 5:
-                jLabel1.setVisible(true);
-                jLabel2.setVisible(true);
-                jLabel3.setVisible(true);
-                jLabel4.setVisible(true);
-                jLabel5.setVisible(true);
-                
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
@@ -367,20 +196,16 @@ public class Seat extends javax.swing.JFrame {
         }
         
         if(reserva.isIdaVuelta()) {
-            puestoVueltaL.setVisible(true);
             int puestosVuelta[] = reserva.getPuestosVuelta();
         
             switch(reserva.getNumeroPuestosVuelta()) {
                 case 1:
-                    jLabel6.setVisible(true);
                 
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     break;
                 
                 case 2:
-                    jLabel6.setVisible(true);
-                    jLabel7.setVisible(true);
                 
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
@@ -389,9 +214,6 @@ public class Seat extends javax.swing.JFrame {
                     break;
                 
                 case 3:
-                    jLabel6.setVisible(true);
-                    jLabel7.setVisible(true);
-                    jLabel8.setVisible(true);
                 
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
@@ -402,10 +224,6 @@ public class Seat extends javax.swing.JFrame {
                     break;
                 
                 case 4:
-                    jLabel6.setVisible(true);
-                    jLabel7.setVisible(true);
-                    jLabel8.setVisible(true);
-                    jLabel9.setVisible(true);
                 
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
@@ -418,11 +236,6 @@ public class Seat extends javax.swing.JFrame {
                     break;
             
                 case 5:
-                    jLabel6.setVisible(true);
-                    jLabel7.setVisible(true);
-                    jLabel8.setVisible(true);
-                    jLabel9.setVisible(true);
-                    jLabel10.setVisible(true);
         
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
@@ -442,16 +255,7 @@ public class Seat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label Pasajero5VueltaT;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -464,6 +268,5 @@ public class Seat extends javax.swing.JFrame {
     private java.awt.Label pasajero4T;
     private java.awt.Label pasajero4VueltaT;
     private java.awt.Label pasajero5T;
-    private javax.swing.JLabel puestoVueltaL;
     // End of variables declaration//GEN-END:variables
 }

@@ -96,7 +96,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
 
         idReservacionL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         idReservacionL.setText("ID reservación");
-        jPanel1.add(idReservacionL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jPanel1.add(idReservacionL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         idReservacionTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,46 +108,73 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 idReservacionTFKeyTyped(evt);
             }
         });
-        jPanel1.add(idReservacionTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 170, -1));
+        jPanel1.add(idReservacionTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 170, -1));
 
+        aceptarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        aceptarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         aceptarB.setText("Aceptar");
+        aceptarB.setContentAreaFilled(false);
+        aceptarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
+        aceptarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);
             }
         });
-        jPanel1.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
+        jPanel1.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
 
+        redimirPuntosB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        redimirPuntosB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosP.png"))); // NOI18N
         redimirPuntosB.setText("Redimir puntos");
-        jPanel1.add(redimirPuntosB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        redimirPuntosB.setContentAreaFilled(false);
+        redimirPuntosB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        redimirPuntosB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosP.png"))); // NOI18N
+        redimirPuntosB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosG.png"))); // NOI18N
+        redimirPuntosB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        redimirPuntosB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(redimirPuntosB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 100));
 
+        volverB.setBackground(new java.awt.Color(255, 255, 255));
+        volverB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        volverB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         volverB.setText("Volver");
-        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        volverB.setContentAreaFilled(false);
+        volverB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
+        volverB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
+        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
+        informacionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        informacionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosP.png"))); // NOI18N
         informacionB.setText("Información puntos");
+        informacionB.setContentAreaFilled(false);
+        informacionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        informacionB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosG.png"))); // NOI18N
+        informacionB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosG.png"))); // NOI18N
+        informacionB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        informacionB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         informacionB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 informacionBActionPerformed(evt);
             }
         });
-        jPanel1.add(informacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
+        jPanel1.add(informacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 180, 110));
 
         infoReserva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         infoReserva.setText("Jlabel");
-        jPanel1.add(infoReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel1.add(infoReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         avisoL.setForeground(java.awt.Color.red);
-        jPanel1.add(avisoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 290, 20));
+        jPanel1.add(avisoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 290, 20));
 
         costoL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         costoL.setText("Costo");
-        jPanel1.add(costoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel1.add(costoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         costoReservaL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         costoReservaL.setText("jLabel1");
-        jPanel1.add(costoReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 170, -1));
+        jPanel1.add(costoReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
