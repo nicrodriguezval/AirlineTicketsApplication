@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Magnert\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA
 Cargador de clases de base de datos iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Nov 28 22:31:16 COT 2019: cerrando motor de Derby
