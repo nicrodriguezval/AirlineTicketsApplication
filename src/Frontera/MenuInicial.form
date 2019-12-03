@@ -199,16 +199,16 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/executive_person_icon-icons.com_72414.png"/>
+              <Image iconType="3" name="/Imagenes/btnClienteFrecuenteP.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente Frecuente"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/executive_person_icon-icons.com_72414.png"/>
+              <Image iconType="3" name="/Imagenes/btnClienteFrecuenteP.png"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/executive_person_icon-icons.com_72414 (1).png"/>
+              <Image iconType="3" name="/Imagenes/btnClienteFrecuenteG.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="3"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

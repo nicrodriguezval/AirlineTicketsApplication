@@ -15,6 +15,7 @@ import Entidad.Reserva;
 import Entidad.Ticket;
 import static Frontera.Login.user;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -221,6 +222,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "1. Los puntos se calculan teniendo en cuenta las millas por cada vuelo que realiza."
                 + "\n2. Cada punto equivale al 4% de las millas voladas en cada viaje."
                 + "\n3. Un punto equivale a un USD.", "Información Puntos", JOptionPane.INFORMATION_MESSAGE);
+        //JOptionPane.showMessageDialog 
     }//GEN-LAST:event_informacionBActionPerformed
 
     private void aceptarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBActionPerformed

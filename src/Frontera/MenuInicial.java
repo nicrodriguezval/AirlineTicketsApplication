@@ -107,12 +107,12 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         clienteFrecuenteB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        clienteFrecuenteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/executive_person_icon-icons.com_72414.png"))); // NOI18N
+        clienteFrecuenteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
         clienteFrecuenteB.setText("Cliente Frecuente");
         clienteFrecuenteB.setContentAreaFilled(false);
         clienteFrecuenteB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        clienteFrecuenteB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/executive_person_icon-icons.com_72414.png"))); // NOI18N
-        clienteFrecuenteB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/executive_person_icon-icons.com_72414 (1).png"))); // NOI18N
+        clienteFrecuenteB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
+        clienteFrecuenteB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteG.png"))); // NOI18N
         clienteFrecuenteB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         clienteFrecuenteB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         clienteFrecuenteB.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +205,7 @@ public class MenuInicial extends javax.swing.JFrame {
         CustomerFrequent clienteFrecuente = new CustomerFrequent();
         clienteFrecuente.setLocationRelativeTo(this);
         clienteFrecuente.setVisible(true);
-        clienteFrecuente.setAlwaysOnTop(true);
+        //clienteFrecuente.setAlwaysOnTop(true);
     }//GEN-LAST:event_clienteFrecuenteBActionPerformed
 
 

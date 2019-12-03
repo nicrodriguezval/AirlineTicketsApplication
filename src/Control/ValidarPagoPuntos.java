@@ -20,14 +20,14 @@ public class ValidarPagoPuntos {
     public String verificarPagoPuntos(Usuario usuario, Reserva reserva) {
         int puntosCosto = (int) (reserva.getPrecio() + reserva.getIva());
 
-        if (!redimirPuntos(usuario.getPoints(), puntosCosto)) {
+        if (!validarRedimirPuntos(usuario.getPoints(), puntosCosto)) {
             return "Los puntos no son suficientes";
         } else {
             return "Todo correcto";
         }
     }
 
-    private boolean redimirPuntos(int puntosUsuario, int puntosCosto) {
+    private boolean validarRedimirPuntos(int puntosUsuario, int puntosCosto) {
         return (puntosUsuario - puntosCosto >= 0);
     }
 }
