@@ -341,8 +341,8 @@ public class ReservationPayment extends javax.swing.JFrame {
                 //actualizar los puntos del usuario al comprar el ticket
                 UsuarioDAO udao = new UsuarioDAO();
                 ValidarLogin validarL = new ValidarLogin();
+                udao.actualizaPuntos(user, puntos);
                 user = validarL.findUsuario(user.getUsername());
-                udao.actualizaPuntos(user, puntos);                
 
                 this.setVisible(false);
                 MenuInicial menu = new MenuInicial();
