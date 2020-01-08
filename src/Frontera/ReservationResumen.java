@@ -11,8 +11,7 @@ import Entidad.Reserva;
 import Entidad.Vuelo;
 //import static Frontera.FramePrincipal.sistema;
 import static Frontera.Login.user;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
@@ -67,7 +66,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        nombreL = new javax.swing.JLabel();
         docIDL = new javax.swing.JLabel();
         nReservaL = new javax.swing.JLabel();
         confirmarB = new javax.swing.JButton();
@@ -123,8 +121,6 @@ public class ReservationResumen extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -133,12 +129,8 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        nombreL.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        nombreL.setForeground(new java.awt.Color(0, 0, 204));
-        jPanel1.add(nombreL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 30));
-        jPanel1.add(docIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 140, 20));
-        jPanel1.add(nReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 100, 20));
+        jPanel1.add(docIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 140, 20));
+        jPanel1.add(nReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 100, 20));
 
         confirmarB.setText("Confirmar");
         confirmarB.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +138,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 confirmarBActionPerformed(evt);
             }
         });
-        jPanel1.add(confirmarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(859, 265, 112, -1));
+        jPanel1.add(confirmarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 340, 112, -1));
 
         volverB.setText("Volver");
         volverB.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +146,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 volverBActionPerformed(evt);
             }
         });
-        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(742, 265, 111, -1));
+        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 111, -1));
 
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -461,7 +453,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vuelo Vuelta", jPanel3);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 158, 961, 90));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 961, 90));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Precio");
@@ -517,32 +509,31 @@ public class ReservationResumen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(panelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
+        jPanel1.add(panelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, -1, -1));
 
         asientoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/asiento.png"))); // NOI18N
+        asientoIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         asientoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 asientoIconMouseClicked(evt);
             }
         });
-        jPanel1.add(asientoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, -1, -1));
+        jPanel1.add(asientoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Ver asientos");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, -1, -1));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 210, 30));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 210, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 80));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 200, 20));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 120, 80));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 200, 20));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Check.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 440));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ResumenReserv.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 350));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -560,7 +551,8 @@ public class ReservationResumen extends javax.swing.JFrame {
         System.out.println("Apellido: " + reserva.getUsuario().getApellido());
         System.out.println("ID reserva: " + reserva.getId());
         System.out.println("Es ida y vuelta: " + reserva.isIdaVuelta());
-        
+        Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
+        JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
         MenuInicial menu = new MenuInicial();
         this.setVisible(false);
         menu.setLocationRelativeTo(this);
@@ -625,10 +617,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         ReservaDAO rdao = new ReservaDAO();
         int s = (int) rdao.leerallcount() + 1;
         jLabel1.setText(user.getNombre());
-        nombreL.setText(user.getNombre());
         jLabel8.setText(user.getApellido());
-        jLabel9.setText(origen.substring(0,3).toUpperCase());
-        jLabel10.setText(destino.substring(0, 3).toUpperCase());
         nReservaL.setText(("" + (s)));
         docIDL.setText("");
         origenL.setText(origen);
@@ -727,7 +716,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private javax.swing.JLabel horaVueltaL;
     private javax.swing.JLabel impuestosL;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -735,7 +723,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -749,7 +736,6 @@ public class ReservationResumen extends javax.swing.JFrame {
     private java.awt.Label noPuestosT;
     private javax.swing.JLabel noPuestosVueltaL;
     private java.awt.Label noPuestosVueltaT;
-    private javax.swing.JLabel nombreL;
     private javax.swing.JLabel origenL;
     private java.awt.Label origenT;
     private javax.swing.JLabel origenVueltaL;

@@ -55,27 +55,27 @@ public class Seat extends javax.swing.JFrame {
 
         pasajero1T.setAlignment(java.awt.Label.CENTER);
         pasajero1T.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero1T.setText("label1");
+        pasajero1T.setText("N/A");
         jPanel1.add(pasajero1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, -1));
 
         pasajero2T.setAlignment(java.awt.Label.CENTER);
         pasajero2T.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero2T.setText("label2");
+        pasajero2T.setText("N/A");
         jPanel1.add(pasajero2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, -1));
 
         pasajero3T.setAlignment(java.awt.Label.CENTER);
         pasajero3T.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero3T.setText("label3");
+        pasajero3T.setText("N/A");
         jPanel1.add(pasajero3T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, -1));
 
         pasajero4T.setAlignment(java.awt.Label.CENTER);
         pasajero4T.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero4T.setText("label4");
+        pasajero4T.setText("N/A");
         jPanel1.add(pasajero4T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, 20));
 
         pasajero5T.setAlignment(java.awt.Label.CENTER);
         pasajero5T.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero5T.setText("label5");
+        pasajero5T.setText("N/A");
         jPanel1.add(pasajero5T, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 70, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SillasAvion.png"))); // NOI18N
@@ -88,27 +88,27 @@ public class Seat extends javax.swing.JFrame {
 
         Pasajero5VueltaT.setAlignment(java.awt.Label.CENTER);
         Pasajero5VueltaT.setBackground(new java.awt.Color(255, 255, 255));
-        Pasajero5VueltaT.setText("Ninguno");
+        Pasajero5VueltaT.setText("N/A");
         jPanel2.add(Pasajero5VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 70, -1));
 
         pasajero4VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero4VueltaT.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero4VueltaT.setText("Ninguno");
+        pasajero4VueltaT.setText("N/A");
         jPanel2.add(pasajero4VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, -1));
 
         pasajero3VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero3VueltaT.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero3VueltaT.setText("Ninguno");
+        pasajero3VueltaT.setText("N/A");
         jPanel2.add(pasajero3VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, -1));
 
         pasajero2VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero2VueltaT.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero2VueltaT.setText("Ninguno");
+        pasajero2VueltaT.setText("N/A");
         jPanel2.add(pasajero2VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, -1));
 
         pasajero1VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero1VueltaT.setBackground(new java.awt.Color(255, 255, 255));
-        pasajero1VueltaT.setText("Ninguno");
+        pasajero1VueltaT.setText("N/A");
         jPanel2.add(pasajero1VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SillasAvion.png"))); // NOI18N
@@ -134,7 +134,7 @@ public class Seat extends javax.swing.JFrame {
     
     private void configuracionInicial() {
         
-        pasajero1T.setVisible(false);
+        /*pasajero1T.setVisible(false);
         pasajero2T.setVisible(false);
         pasajero3T.setVisible(false);
         pasajero4T.setVisible(false);
@@ -144,7 +144,7 @@ public class Seat extends javax.swing.JFrame {
         pasajero2VueltaT.setVisible(false);
         pasajero3VueltaT.setVisible(false);
         pasajero4VueltaT.setVisible(false);
-        Pasajero5VueltaT.setVisible(false);
+        Pasajero5VueltaT.setVisible(false);*/
                 
         int puestosIda[] = reserva.getPuestosIda();
         
