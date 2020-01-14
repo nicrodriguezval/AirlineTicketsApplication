@@ -30,6 +30,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
+        this.setSize(525, 320);
     }
 
     /**
@@ -59,7 +60,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titulo.setText("Airline Tickets Application");
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         ingresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ingresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
@@ -75,7 +76,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 ingresarBActionPerformed(evt);
             }
         });
-        jPanel1.add(ingresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 99, 90));
+        jPanel1.add(ingresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 99, 90));
 
         registrarseB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         registrarseB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
@@ -91,10 +92,10 @@ public class FramePrincipal extends javax.swing.JFrame {
                 registrarseBActionPerformed(evt);
             }
         });
-        jPanel1.add(registrarseB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, 90));
+        jPanel1.add(registrarseB, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 290));
 
@@ -120,7 +121,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         registro.setLocationRelativeTo(this);
         registro.setVisible(true);
-        registro.setAlwaysOnTop(true);
     }//GEN-LAST:event_registrarseBActionPerformed
 
     private void ingresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBActionPerformed
@@ -129,7 +129,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         ingreso.setLocationRelativeTo(this);
         ingreso.setVisible(true);
-        ingreso.setAlwaysOnTop(true);
     }//GEN-LAST:event_ingresarBActionPerformed
 
     /**

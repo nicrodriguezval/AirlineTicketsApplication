@@ -250,7 +250,6 @@ public class ReservationIda extends javax.swing.JFrame {
             ReservationResumen rResumen = new ReservationResumen(vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
             rResumen.setLocationRelativeTo(this);
             rResumen.setVisible(true);
-            rResumen.setAlwaysOnTop( true );
         }
     }
     }//GEN-LAST:event_siguienteActionPerformed
@@ -360,7 +359,6 @@ public class ReservationIda extends javax.swing.JFrame {
         MenuInicial menu = new MenuInicial();
         menu.setLocationRelativeTo(this);
         menu.setVisible(true);
-        menu.setAlwaysOnTop(true);
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void configuracionInicial() {

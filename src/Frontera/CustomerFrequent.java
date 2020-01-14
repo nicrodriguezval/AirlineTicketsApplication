@@ -14,6 +14,7 @@ import DAO.UsuarioDAO;
 import Entidad.Reserva;
 import Entidad.Ticket;
 import static Frontera.Login.user;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -281,12 +282,13 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 udao.actualizaPuntos(user, puntos);
                 user = validarL.findUsuario(user.getUsername());
 
+                Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
+                JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
                 this.setVisible(false);
-                MenuInicial menu = new MenuInicial();
-                menu.setVisible(true);
-                menu.setLocationRelativeTo(this);
-                menu.setVisible(true);
-                menu.setAlwaysOnTop(true);
+                TicketBoardingPass view = new TicketBoardingPass(ticketPagado);
+                view.setVisible(true);
+                view.setLocationRelativeTo(this);
+                view.setVisible(true);
             }
         }
     }//GEN-LAST:event_aceptarBActionPerformed
@@ -295,8 +297,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if (c < '0' || c > '9') //Sólo se puede escribir números
-        {
+        if (c < '0' || c > '9') { //Sólo se puede escribir números
             evt.consume();
         }
     }//GEN-LAST:event_idReservacionTFKeyTyped
@@ -311,7 +312,6 @@ public class CustomerFrequent extends javax.swing.JFrame {
         MenuInicial menu = new MenuInicial();
         menu.setLocationRelativeTo(this);
         menu.setVisible(true);
-        menu.setAlwaysOnTop(true);
     }
 
     private void inicializacion() {

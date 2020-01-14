@@ -17,7 +17,9 @@ import Entidad.Reserva;
 import Entidad.Ticket;
 import static Frontera.Login.user;
 import java.util.List;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -226,7 +228,6 @@ public class ReservationPayment extends javax.swing.JFrame {
             MenuInicial menu = new MenuInicial();
             menu.setLocationRelativeTo(this);
             menu.setVisible(true);
-            menu.setAlwaysOnTop(true);
         } else {
             reservaoculta();
         }
@@ -343,13 +344,14 @@ public class ReservationPayment extends javax.swing.JFrame {
                 ValidarLogin validarL = new ValidarLogin();
                 udao.actualizaPuntos(user, puntos);
                 user = validarL.findUsuario(user.getUsername());
-
+                
+                Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
+                JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
                 this.setVisible(false);
-                MenuInicial menu = new MenuInicial();
-                menu.setVisible(true);
-                menu.setLocationRelativeTo(this);
-                menu.setVisible(true);
-                menu.setAlwaysOnTop(true);
+                TicketBoardingPass view = new TicketBoardingPass(ticketPagado);
+                view.setVisible(true);
+                view.setLocationRelativeTo(this);
+                view.setVisible(true);
             }
             //if(tarjetaAntigua.equals(null))
             if (tdao.leerquerycount(query) == 0) {

@@ -154,7 +154,6 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
-        framePrincipal.setAlwaysOnTop( true );
     }//GEN-LAST:event_regresarBActionPerformed
 
     private void usernameTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTFKeyTyped

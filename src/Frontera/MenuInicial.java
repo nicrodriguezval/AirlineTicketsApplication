@@ -22,6 +22,18 @@ public class MenuInicial extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
+        
+        if(!user.getUsername().equals("admin")) {
+            estadisticasB.setVisible(false);
+            this.setSize(500, 350);
+        }
+        
+        else {
+            this.setSize(635, 350);
+            jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+            jPanel1.add(bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
+            jPanel1.add(terminarSesionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
+        }
     }
 
     /**
@@ -41,6 +53,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pagoReservacionB = new javax.swing.JButton();
         clienteFrecuenteB = new javax.swing.JButton();
+        estadisticasB = new javax.swing.JButton();
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setText("Iniciar sesión");
@@ -49,9 +62,11 @@ public class MenuInicial extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bienvenido.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         bienvenido.setText("BIENVENIDO");
+        jPanel1.add(bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, 35));
 
         reserva.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         reserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnReservarP.png"))); // NOI18N
@@ -72,6 +87,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 reservaActionPerformed(evt);
             }
         });
+        jPanel1.add(reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 107));
 
         terminarSesionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         terminarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -85,8 +101,10 @@ public class MenuInicial extends javax.swing.JFrame {
                 terminarSesionBActionPerformed(evt);
             }
         });
+        jPanel1.add(terminarSesionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         pagoReservacionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         pagoReservacionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPagoTarjetaP.png"))); // NOI18N
@@ -105,6 +123,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 pagoReservacionBActionPerformed(evt);
             }
         });
+        jPanel1.add(pagoReservacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 160, 107));
 
         clienteFrecuenteB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         clienteFrecuenteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
@@ -120,50 +139,17 @@ public class MenuInicial extends javax.swing.JFrame {
                 clienteFrecuenteBActionPerformed(evt);
             }
         });
+        jPanel1.add(clienteFrecuenteB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, 107));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(bienvenido)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(reserva, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pagoReservacionB, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(clienteFrecuenteB)
-                .addGap(12, 12, 12))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(terminarSesionB)
-                .addGap(21, 21, 21))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(reserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(clienteFrecuenteB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pagoReservacionB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(52, 52, 52)
-                .addComponent(terminarSesionB)
-                .addGap(22, 22, 22))
-        );
+        estadisticasB.setText("Estadísticas");
+        estadisticasB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadisticasBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(estadisticasB, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,7 +159,6 @@ public class MenuInicial extends javax.swing.JFrame {
        this.setVisible(false);
        reservation.setLocationRelativeTo(this);
        reservation.setVisible(true);
-       reservation.setAlwaysOnTop(true);
     }//GEN-LAST:event_reservaActionPerformed
 
     private void reservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reservaMouseClicked
@@ -187,7 +172,6 @@ public class MenuInicial extends javax.swing.JFrame {
         FramePrincipal framePrincipal = new FramePrincipal();
         framePrincipal.setLocationRelativeTo(this);
         framePrincipal.setVisible(true);
-        framePrincipal.setAlwaysOnTop(true);
     }//GEN-LAST:event_terminarSesionBActionPerformed
 
     private void pagoReservacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoReservacionBActionPerformed
@@ -196,7 +180,6 @@ public class MenuInicial extends javax.swing.JFrame {
         ReservationPayment ticketPayment = new ReservationPayment();
         ticketPayment.setLocationRelativeTo(this);
         ticketPayment.setVisible(true);
-        ticketPayment.setAlwaysOnTop(true);
     }//GEN-LAST:event_pagoReservacionBActionPerformed
 
     private void clienteFrecuenteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteFrecuenteBActionPerformed
@@ -208,10 +191,19 @@ public class MenuInicial extends javax.swing.JFrame {
         //clienteFrecuente.setAlwaysOnTop(true);
     }//GEN-LAST:event_clienteFrecuenteBActionPerformed
 
+    private void estadisticasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadisticasBActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Statistics estadisticas = new Statistics();
+        estadisticas.setLocationRelativeTo(this);
+        estadisticas.setVisible(true);
+    }//GEN-LAST:event_estadisticasBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenido;
     private javax.swing.JButton clienteFrecuenteB;
+    private javax.swing.JButton estadisticasB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pagoReservacionB;

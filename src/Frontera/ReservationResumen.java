@@ -551,13 +551,14 @@ public class ReservationResumen extends javax.swing.JFrame {
         System.out.println("Apellido: " + reserva.getUsuario().getApellido());
         System.out.println("ID reserva: " + reserva.getId());
         System.out.println("Es ida y vuelta: " + reserva.isIdaVuelta());
+        
         Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
         JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
+        
         MenuInicial menu = new MenuInicial();
         this.setVisible(false);
         menu.setLocationRelativeTo(this);
         menu.setVisible(true);
-        menu.setAlwaysOnTop(true);
     }//GEN-LAST:event_confirmarBActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked

@@ -58,10 +58,15 @@ public class Inicializacion {
         
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         
+        Usuario admin = new Usuario();
         Usuario a = new Usuario();
         Usuario b = new Usuario();
         Usuario c = new Usuario();
         Usuario d = new Usuario();
+        
+        admin.setNombre("admin");
+        admin.setUsername("admin");
+        admin.setPassword("admin");
         
         a.setNombre("Nicolás");
         a.setApellido("Rodríguez");
@@ -91,6 +96,7 @@ public class Inicializacion {
         d.setPassword("Abcd1234");
         d.setPoints(1200);
         
+        usuarios.add(admin);
         usuarios.add(a);
         usuarios.add(b);
         usuarios.add(c);
