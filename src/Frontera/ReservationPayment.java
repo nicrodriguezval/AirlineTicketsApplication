@@ -172,7 +172,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 volverCambiarDeReservaBActionPerformed(evt);
             }
         });
-        jPanel1.add(volverCambiarDeReservaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+        jPanel1.add(volverCambiarDeReservaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
         jPanel1.add(mesCaducidadTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 40, -1));
         jPanel1.add(nombreTitularTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 179, -1));
         jPanel1.add(numeroTarjetaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 180, -1));

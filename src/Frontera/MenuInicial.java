@@ -87,7 +87,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 reservaActionPerformed(evt);
             }
         });
-        jPanel1.add(reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 107));
+        jPanel1.add(reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, 107));
 
         terminarSesionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         terminarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -123,7 +123,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 pagoReservacionBActionPerformed(evt);
             }
         });
-        jPanel1.add(pagoReservacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 160, 107));
+        jPanel1.add(pagoReservacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 160, 107));
 
         clienteFrecuenteB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         clienteFrecuenteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
@@ -139,7 +139,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 clienteFrecuenteBActionPerformed(evt);
             }
         });
-        jPanel1.add(clienteFrecuenteB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, 107));
+        jPanel1.add(clienteFrecuenteB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 160, 107));
 
         estadisticasB.setText("Estadísticas");
         estadisticasB.addActionListener(new java.awt.event.ActionListener() {
