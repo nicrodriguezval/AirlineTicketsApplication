@@ -121,7 +121,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         fechaPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         fechaPassL.setText("FECHA");
         fechaPassL.setOpaque(true);
-        getContentPane().add(fechaPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 250, 100, 40));
+        getContentPane().add(fechaPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 250, 150, 40));
 
         vueloPassL.setBackground(new java.awt.Color(255, 255, 255));
         vueloPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -151,7 +151,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         nombrePassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         nombrePassL.setText("Nombre");
         nombrePassL.setOpaque(true);
-        getContentPane().add(nombrePassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 190, 20));
+        getContentPane().add(nombrePassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 370, 20));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BoardingPass.png"))); // NOI18N
@@ -186,6 +186,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         fechaTicketL.setText(fecha);
         horaTicketL.setText(hora);
         vueloTicketL.setText(vuelo);
+        System.out.println("Longitud: " + asientos.length);
         asientoTicketL.setText("" + asientos[0]);
 
         //Información del pase de abordar
@@ -195,7 +196,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         fechaPassL.setText(fecha);
         horaPassL.setText(hora);
         asientoPassL.setText("" + asientos[0]);
-        vueloPassL.setText(vuelo);
+        vueloPassL.setText("Vuelo " + vuelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

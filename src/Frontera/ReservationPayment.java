@@ -173,7 +173,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 volverCambiarDeReservaBActionPerformed(evt);
             }
         });
-        jPanel1.add(volverCambiarDeReservaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
+        jPanel1.add(volverCambiarDeReservaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
         jPanel1.add(mesCaducidadTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 40, -1));
         jPanel1.add(nombreTitularTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 179, -1));
         jPanel1.add(numeroTarjetaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 180, -1));
@@ -242,7 +242,6 @@ public class ReservationPayment extends javax.swing.JFrame {
             if (id.length() != 0) {
                 if (validar.verificarReserva(Integer.parseInt(id))) {
                     reserva = rdao.leerReserva(Integer.parseInt(id));
-
                     if (reserva.getUsuario().getUsername().equals(user.getUsername())) {
                         if (!reserva.isPagada()) {
                             reservamostrar();
@@ -328,7 +327,6 @@ public class ReservationPayment extends javax.swing.JFrame {
                 TicketDAO tckdao = new TicketDAO();
                 rdao.actualizaPago(reserva, true);
                 Ticket ticketPagado = new Ticket(reserva);
-
                 tckdao.crear(ticketPagado);
 
                 CalcularPuntos calcular = new CalcularPuntos();

@@ -560,13 +560,16 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         reserva.setPuestosIda(puestos);
         VueloDAO vuelod = new VueloDAO();
+        ReservaDAO reservad = new ReservaDAO();
         vuelod.actualizaPuestos(reserva.getVueloIda(), puestos);
+        reservad.actualizarPuestos(reserva, puestos);
 
         if (isIdaVuelta) {
             reserva.setPuestosVuelta(puestosV);
             vuelod.actualizaPuestos(reserva.getVueloVuelta(), puestosV);
+            reservad.actualizarPuestos(reserva, puestosV);
         }
-
+        
         Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
         JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
 
@@ -699,9 +702,8 @@ public class ReservationResumen extends javax.swing.JFrame {
                     break;
                 }
             }
-            System.out.println(i);
         }
-
+           
         puestos = puestosIda;
 
         if (isIdaVuelta) {

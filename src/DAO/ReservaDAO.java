@@ -190,6 +190,24 @@ public class ReservaDAO {
             return ret;
         }
     }
+        public boolean actualizarPuestos(Reserva object, int[] puestos) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try{
+            object = leerReserva(object.getId());
+            object.setPuestosIda(puestos);
+            em.merge(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally{
+            em.close();
+            return ret;
+        }
+    }
 }
 
 
