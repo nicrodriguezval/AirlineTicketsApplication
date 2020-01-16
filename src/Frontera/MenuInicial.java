@@ -156,8 +156,8 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaActionPerformed
        ReservationIda reservation = new ReservationIda();
-       this.setVisible(false);
        reservation.setLocationRelativeTo(this);
+       this.setVisible(false);
        reservation.setVisible(true);
     }//GEN-LAST:event_reservaActionPerformed
 
@@ -167,35 +167,35 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void terminarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarSesionBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         user = null;
         FramePrincipal framePrincipal = new FramePrincipal();
         framePrincipal.setLocationRelativeTo(this);
+        this.setVisible(false);
         framePrincipal.setVisible(true);
     }//GEN-LAST:event_terminarSesionBActionPerformed
 
     private void pagoReservacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoReservacionBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         ReservationPayment ticketPayment = new ReservationPayment();
         ticketPayment.setLocationRelativeTo(this);
+        this.setVisible(false);
         ticketPayment.setVisible(true);
     }//GEN-LAST:event_pagoReservacionBActionPerformed
 
     private void clienteFrecuenteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteFrecuenteBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         CustomerFrequent clienteFrecuente = new CustomerFrequent();
         clienteFrecuente.setLocationRelativeTo(this);
+        this.setVisible(false);
         clienteFrecuente.setVisible(true);
         //clienteFrecuente.setAlwaysOnTop(true);
     }//GEN-LAST:event_clienteFrecuenteBActionPerformed
 
     private void estadisticasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadisticasBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         Statistics estadisticas = new Statistics();
         estadisticas.setLocationRelativeTo(this);
+        this.setVisible(false);
         estadisticas.setVisible(true);
     }//GEN-LAST:event_estadisticasBActionPerformed
 

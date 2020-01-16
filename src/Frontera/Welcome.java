@@ -6,6 +6,7 @@
 package Frontera;
 
 import static Frontera.Login.user;
+import static Frontera.Login.welcome;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
@@ -88,14 +89,13 @@ public class Welcome extends javax.swing.JFrame {
             @Override
             public void run() {
                 MenuInicial menu = new MenuInicial();
+                menu.setLocationRelativeTo(welcome);
                 setVisible(false);
-                menu.setLocationRelativeTo(null);
                 menu.setVisible(true);
-                menu.setAlwaysOnTop(true);
             }
         };
         
-        timer.schedule(task, 1600);
+        timer.schedule(task, 1300);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

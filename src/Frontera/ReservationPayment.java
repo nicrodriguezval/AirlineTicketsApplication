@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
  * @author nicro
  */
 public class ReservationPayment extends javax.swing.JFrame {
+
     private boolean reservaActived;
     private Reserva reserva;
     private ReservaDAO rdao;
@@ -38,7 +39,7 @@ public class ReservationPayment extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
-        
+
         reserva = null;
         rdao = new ReservaDAO();
         listReserva = rdao.leeralltolist();
@@ -224,9 +225,9 @@ public class ReservationPayment extends javax.swing.JFrame {
     private void volverCambiarDeReservaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverCambiarDeReservaBActionPerformed
         // TODO add your handling code here:
         if (!reservaActived) {
-            this.setVisible(false);
             MenuInicial menu = new MenuInicial();
             menu.setLocationRelativeTo(this);
+            this.setVisible(false);
             menu.setVisible(true);
         } else {
             reservaoculta();
@@ -237,21 +238,21 @@ public class ReservationPayment extends javax.swing.JFrame {
         ValidarPagoTarjeta validar = new ValidarPagoTarjeta();
         String id = idReservacionTF.getText();
 
-        if(!reservaActived) {
+        if (!reservaActived) {
             if (id.length() != 0) {
                 if (validar.verificarReserva(Integer.parseInt(id))) {
                     reserva = rdao.leerReserva(Integer.parseInt(id));
-                
-                    if(reserva.getUsuario().getUsername().equals(user.getUsername())) 
-                        if(!reserva.isPagada())
+
+                    if (reserva.getUsuario().getUsername().equals(user.getUsername())) {
+                        if (!reserva.isPagada()) {
                             reservamostrar();
-                    
-                        else
+                        } else {
                             avisoL.setText("La reservación ya fue pagada");
-                    
-                    else 
+                        }
+                    } else {
                         avisoL.setText("La reservación no es del usuario activo");
-                    
+                    }
+
                     /*for (int i = 0; i < listReserva.size(); i++) {
                         if (listReserva.get(i).getId() == Integer.parseInt(id)) {
                             reserva = listReserva.get(i);
@@ -264,13 +265,13 @@ public class ReservationPayment extends javax.swing.JFrame {
                 avisoL.setText("Ingrese una reservación");
             }
         } else {
-            String  nombreBanco = (String) nombreBancoCB.getSelectedItem(),
-                    mesCaducidad = mesCaducidadTF.getText(), 
-                    añoCaducidad = añoCaducidadTF.getText(), 
+            String nombreBanco = (String) nombreBancoCB.getSelectedItem(),
+                    mesCaducidad = mesCaducidadTF.getText(),
+                    añoCaducidad = añoCaducidadTF.getText(),
                     nombreTitular = nombreTitularTF.getText(),
-                    numeroTarjeta = numeroTarjetaTF.getText(), 
-                    numeroSeguridad = numeroSeguridadTF.getText(), 
-                    marcaInternacional = (String)marcaInternacionalCB.getSelectedItem();
+                    numeroTarjeta = numeroTarjetaTF.getText(),
+                    numeroSeguridad = numeroSeguridadTF.getText(),
+                    marcaInternacional = (String) marcaInternacionalCB.getSelectedItem();
 
             CreditCard tarjetaIngresada = new CreditCard(nombreBanco, marcaInternacional, mesCaducidad, añoCaducidad, nombreTitular, numeroTarjeta, numeroSeguridad);
             CreditCardDAO tdao = new CreditCardDAO();
@@ -279,7 +280,7 @@ public class ReservationPayment extends javax.swing.JFrame {
 
             String query = "t.nombreBanco LIKE '" + nombreBanco
                     + "' AND t.nombreTitular LIKE '" + nombreTitular
-                    + "' AND t.numeroTarjeta LIKE '" + numeroTarjeta 
+                    + "' AND t.numeroTarjeta LIKE '" + numeroTarjeta
                     + "' AND t.mesExpiracion LIKE '" + mesCaducidad
                     + "' AND t.añoExpiracion LIKE '" + añoCaducidad
                     + "' AND t.numeroSeguridad LIKE '" + numeroSeguridad + "'";
@@ -293,7 +294,7 @@ public class ReservationPayment extends javax.swing.JFrame {
             } else {
                 resultado = validar.verificarPagoTarjeta(Integer.parseInt(id), tarjetaAntigua, reserva.getPrecio());
             }
-            
+
             if (resultado.equals("Por favor seleccione un banco verificado")) {
                 avisoL.setText("Por favor seleccione un banco verificado");
             } else if (resultado.equals("Por favor ingrese una de las marcas de tarjeta registradas")) {
@@ -311,7 +312,7 @@ public class ReservationPayment extends javax.swing.JFrame {
             } else if (resultado.equals("El mes ingresado no es válido")) {
                 avisoL.setText("El mes ingresado no es válido");
             } else if (resultado.equals("El mes ingresado no coincide con los datos registrados")) {
-                avisoL.setText("El mes ingresado no coincide con los datos registrados");                        
+                avisoL.setText("El mes ingresado no coincide con los datos registrados");
             } else if (resultado.equals("El año ingresado no es válido")) {
                 avisoL.setText("El año ingresado no es válido");
             } else if (resultado.equals("El año ingresado no coincide con los datos registrados")) {
@@ -329,28 +330,27 @@ public class ReservationPayment extends javax.swing.JFrame {
                 Ticket ticketPagado = new Ticket(reserva);
 
                 tckdao.crear(ticketPagado);
-                
+
                 CalcularPuntos calcular = new CalcularPuntos();
                 int puntos;
-                
-                if(!reserva.isIdaVuelta())
+
+                if (!reserva.isIdaVuelta()) {
                     puntos = user.getPoints() + calcular.generarPuntosIda(reserva.getVueloIda());
-                
-                else
+                } else {
                     puntos = user.getPoints() + calcular.generarPuntosIdaVuelta(reserva.getVueloIda(), reserva.getVueloVuelta());
-                
+                }
+
                 //actualizar los puntos del usuario al comprar el ticket
                 UsuarioDAO udao = new UsuarioDAO();
                 ValidarLogin validarL = new ValidarLogin();
                 udao.actualizaPuntos(user, puntos);
                 user = validarL.findUsuario(user.getUsername());
-                
+
                 Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
                 JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
-                this.setVisible(false);
                 TicketBoardingPass view = new TicketBoardingPass(ticketPagado);
-                view.setVisible(true);
                 view.setLocationRelativeTo(this);
+                this.setVisible(false);
                 view.setVisible(true);
             }
             //if(tarjetaAntigua.equals(null))
@@ -381,17 +381,17 @@ public class ReservationPayment extends javax.swing.JFrame {
         if (id.length() != 0) {
             if (validar.verificarReserva(Integer.parseInt(id))) {
                 reserva = rdao.leerReserva(Integer.parseInt(id));
-                
-                if(reserva.getUsuario().getUsername().equals(user.getUsername())) 
-                    if(!reserva.isPagada())
+
+                if (reserva.getUsuario().getUsername().equals(user.getUsername())) {
+                    if (!reserva.isPagada()) {
                         reservamostrar();
-                    
-                    else
+                    } else {
                         avisoL.setText("La reservación ya fue pagada");
-                
-                else 
+                    }
+                } else {
                     avisoL.setText("La reservación no es del usuario activo");
-                
+                }
+
                 /*for (int i = 0; i < listReserva.size(); i++) {
                     if (listReserva.get(i).getId() == Integer.parseInt(id)) {
                         reserva = listReserva.get(i);
@@ -417,29 +417,29 @@ public class ReservationPayment extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_marcaInternacionalCBActionPerformed
 
-    private void inicializacion(){
+    private void inicializacion() {
         CreditCardDAO tdao = new CreditCardDAO();
         List<String> lista = tdao.leerdiffallparametertolist("nombreBanco");
-        
-        String bancos[] = new String[lista.size()+1];
-        bancos[0] = "-Seleccione una opción-"; 
-        for(int i = 0; i < bancos.length-1; i++) {
-            bancos[i+1] = lista.get(i);
+
+        String bancos[] = new String[lista.size() + 1];
+        bancos[0] = "-Seleccione una opción-";
+        for (int i = 0; i < bancos.length - 1; i++) {
+            bancos[i + 1] = lista.get(i);
         }
-        
+
         nombreBancoCB.setModel(new javax.swing.DefaultComboBoxModel<>(bancos));
-        
-       List<String> listaMarcas = tdao.leerdiffallparametertolist("marcaInternacional");
-       
-       String marcas[] = new String[listaMarcas.size()+1];
-       marcas[0] = "-Seleccione una opción-"; 
-        for(int i = 0; i < marcas.length-1; i++) {
-            marcas[i+1] = listaMarcas.get(i);
+
+        List<String> listaMarcas = tdao.leerdiffallparametertolist("marcaInternacional");
+
+        String marcas[] = new String[listaMarcas.size() + 1];
+        marcas[0] = "-Seleccione una opción-";
+        for (int i = 0; i < marcas.length - 1; i++) {
+            marcas[i + 1] = listaMarcas.get(i);
         }
         marcaInternacionalCB.setModel(new javax.swing.DefaultComboBoxModel<>(marcas));
     }
-    
-    private void reservaoculta(){
+
+    private void reservaoculta() {
         idReservacionTF.setEnabled(true);
         informacionTarjetaL.setVisible(false);
         nombreBancoL.setVisible(false);
@@ -462,8 +462,8 @@ public class ReservationPayment extends javax.swing.JFrame {
         volverCambiarDeReservaB.setText("Volver");
         reservaActived = false;
     }
-    
-    private void reservamostrar(){
+
+    private void reservamostrar() {
         informacionTarjetaL.setVisible(true);
         nombreBancoL.setVisible(true);
         nombreBancoCB.setVisible(true);
@@ -486,7 +486,7 @@ public class ReservationPayment extends javax.swing.JFrame {
         volverCambiarDeReservaB.setText("Cambiar reserva");
         reservaActived = true;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarConfirmarB;
     private javax.swing.JLabel avisoL;

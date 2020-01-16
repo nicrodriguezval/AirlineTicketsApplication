@@ -251,8 +251,8 @@ public class Join extends javax.swing.JFrame {
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
         FramePrincipal framePrincipal = new FramePrincipal();
-        this.setVisible(false);
         framePrincipal.setLocationRelativeTo(this);
+        this.setVisible(false);
         framePrincipal.setVisible(true);
     }//GEN-LAST:event_regresarActionPerformed
 

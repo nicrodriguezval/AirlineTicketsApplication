@@ -13,16 +13,23 @@ import javax.swing.ImageIcon;
  * @author alemr
  */
 public class Seat extends javax.swing.JFrame {
-    Reserva reserva;
+
+    private int[] puestosIda, puestosVuelta;
+    private Reserva reserva;
+
     /**
      * Creates new form Seat
      */
-    public Seat(Reserva reserva) {
+    
+    public Seat(int[] puestosIda, Reserva reserva) {
         initComponents();
+        this.puestosIda = puestosIda;
         this.reserva = reserva;
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
-        configuracionInicial();
+        if (!reserva.isIdaVuelta()) {
+            configuracionInicial();
+        }
     }
 
     /**
@@ -131,9 +138,8 @@ public class Seat extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void configuracionInicial() {
-        
         /*pasajero1T.setVisible(false);
         pasajero2T.setVisible(false);
         pasajero3T.setVisible(false);
@@ -145,23 +151,21 @@ public class Seat extends javax.swing.JFrame {
         pasajero3VueltaT.setVisible(false);
         pasajero4VueltaT.setVisible(false);
         Pasajero5VueltaT.setVisible(false);*/
-                
-        int puestosIda[] = reserva.getPuestosIda();
         
-        switch(reserva.getNumeroPuestos()) {
+        switch (reserva.getNumeroPuestos()) {
             case 1:
                 pasajero1T.setVisible(true);
-                pasajero1T.setText(("" + (puestosIda[0] +1)));
+                pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 break;
-                
-            case 2:       
+
+            case 2:
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
                 pasajero2T.setText(("" + (puestosIda[1] + 1)));
                 break;
-                
-            case 3:             
+
+            case 3:
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
@@ -169,7 +173,7 @@ public class Seat extends javax.swing.JFrame {
                 pasajero3T.setVisible(true);
                 pasajero3T.setText(("" + (puestosIda[2] + 1)));
                 break;
-                
+
             case 4:
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
@@ -180,7 +184,7 @@ public class Seat extends javax.swing.JFrame {
                 pasajero4T.setVisible(true);
                 pasajero4T.setText(("" + (puestosIda[3] + 1)));
                 break;
-            
+
             case 5:
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
@@ -194,27 +198,25 @@ public class Seat extends javax.swing.JFrame {
                 pasajero5T.setText(("" + (puestosIda[4] + 1)));
                 break;
         }
-        
-        if(reserva.isIdaVuelta()) {
-            int puestosVuelta[] = reserva.getPuestosVuelta();
-        
-            switch(reserva.getNumeroPuestosVuelta()) {
+
+        if (reserva.isIdaVuelta()) {
+            switch (reserva.getNumeroPuestosVuelta()) {
                 case 1:
-                
+
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     break;
-                
+
                 case 2:
-                
+
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
                     pasajero2VueltaT.setText(("" + (puestosVuelta[1] + 1)));
                     break;
-                
+
                 case 3:
-                
+
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
@@ -222,9 +224,9 @@ public class Seat extends javax.swing.JFrame {
                     pasajero3VueltaT.setVisible(true);
                     pasajero3VueltaT.setText(("" + (puestosVuelta[2] + 1)));
                     break;
-                
+
                 case 4:
-                
+
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
@@ -234,9 +236,9 @@ public class Seat extends javax.swing.JFrame {
                     pasajero4VueltaT.setVisible(true);
                     pasajero4VueltaT.setText(("" + (puestosVuelta[3] + 1)));
                     break;
-            
+
                 case 5:
-        
+
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
@@ -251,7 +253,7 @@ public class Seat extends javax.swing.JFrame {
             }
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label Pasajero5VueltaT;
     private javax.swing.JLabel jLabel1;
@@ -269,4 +271,9 @@ public class Seat extends javax.swing.JFrame {
     private java.awt.Label pasajero4VueltaT;
     private java.awt.Label pasajero5T;
     // End of variables declaration//GEN-END:variables
+
+    public void setPuestosVuelta(int[] puestosVuelta) {
+        this.puestosVuelta = puestosVuelta;
+        configuracionInicial();
+    }
 }

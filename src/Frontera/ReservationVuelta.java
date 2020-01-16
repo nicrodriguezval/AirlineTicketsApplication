@@ -19,21 +19,20 @@ import javax.swing.ImageIcon;
  * @author nicro
  */
 public class ReservationVuelta extends javax.swing.JFrame {
-    
+
     private VueloDAO vdao = new VueloDAO();
-    
+
     private boolean esEquipaje;
-    private String lugarOrigen, lugarDestino, fechaSalida ,horaSalida, categoria1, peso1; 
+    private String lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1;
     private int puestos, peso; //Hasta acá es la información de la ida
-    
+
     private boolean esEquipajeVuelta;
-    private String fechaVuelta, horaVuelta, categoriaVuelta, peso1Vuelta; 
+    private String fechaVuelta, horaVuelta, categoriaVuelta, peso1Vuelta;
     private int puestosVuelta, pesoVuelta;
-    
+
     /**
      * Creates new form reservationVuelta
      */
-
     public ReservationVuelta(boolean esEquipaje, String lugarOrigen, String lugarDestino, String fechaSalida, String horaSalida, String categoria1, String peso1, int puestos, int peso) {
         this.esEquipaje = esEquipaje;
         this.lugarOrigen = lugarOrigen;
@@ -46,7 +45,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
         this.peso = peso;
         puestosVuelta = puestos;
         categoriaVuelta = categoria1;
-        
+
         initComponents();
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
@@ -180,55 +179,51 @@ public class ReservationVuelta extends javax.swing.JFrame {
         horaVuelta = horaCB.getItemAt(horaCB.getSelectedIndex());
         fechaVuelta = fechaCB.getItemAt(fechaCB.getSelectedIndex());
         esEquipajeVuelta = equipajeCB.isSelected();
-        
+
         ValidarReserva validar = new ValidarReserva();
-        
+
         System.out.println("-------");
         String resultado = validar.VerificarReservaVuelta(fechaVuelta, horaVuelta);
         System.out.println(resultado);
-        
+
         aviso.setForeground(Color.red);
 
-        if(resultado.equals("Fecha de vuelo inválida. Por favor escoja una de las opciones")){
-        aviso.setText("Fecha de vuelo inválida. Por favor escoja una de las opciones");
-        } else if(resultado.equals("Hora de vuelo inválida. Por favor escoja una de las opciones")){
-        aviso.setText("Hora de vuelo inválida. Por favor escoja una de las opciones");
-        } else{
-        
-        if(esEquipajeVuelta) {
-            peso1Vuelta = pesoEquipajeCB.getItemAt(pesoEquipajeCB.getSelectedIndex());
-            pesoVuelta = pesoEquipajeCB.getSelectedIndex() + 1;
-        }
-        
-        else {
-            peso1Vuelta = "Ninguno";
-            pesoVuelta = 0;
-        }
-        
-        Vuelo vueloIda = null;
-        Vuelo vueloVuelta = null;
+        if (resultado.equals("Fecha de vuelo inválida. Por favor escoja una de las opciones")) {
+            aviso.setText("Fecha de vuelo inválida. Por favor escoja una de las opciones");
+        } else if (resultado.equals("Hora de vuelo inválida. Por favor escoja una de las opciones")) {
+            aviso.setText("Hora de vuelo inválida. Por favor escoja una de las opciones");
+        } else {
+            if (esEquipajeVuelta) {
+                peso1Vuelta = pesoEquipajeCB.getItemAt(pesoEquipajeCB.getSelectedIndex());
+                pesoVuelta = pesoEquipajeCB.getSelectedIndex() + 1;
+            } else {
+                peso1Vuelta = "Ninguno";
+                pesoVuelta = 0;
+            }
 
-        if(vdao.leer(lugarOrigen,lugarDestino,fechaSalida,horaSalida) != null){
-            vueloIda = vdao.leer(lugarOrigen,lugarDestino,fechaSalida,horaSalida);
-        }
-                
-        if(vdao.leer(lugarDestino,lugarOrigen,fechaVuelta,horaVuelta) != null){
-            vueloVuelta = vdao.leer(lugarDestino,lugarOrigen,fechaVuelta,horaVuelta);
-        }
-        
-        ReservationResumen rResumen = new ReservationResumen(vueloIda, puestos, categoria1, esEquipaje, peso, peso1, true);
-        
-        rResumen.setVueloVuelta1(vueloVuelta);
-        rResumen.setCategoriaVuelta(categoriaVuelta);
-        rResumen.setIsEquipajeVuelta(esEquipajeVuelta);
-        rResumen.setPuestosReservadosVuelta(puestosVuelta);
-        rResumen.setPeso1vuelta(peso1Vuelta);
-        rResumen.setPesoVuelta(pesoVuelta);
-       
-        
-        this.setVisible(false);
-        rResumen.setLocationRelativeTo(this);
-        rResumen.setVisible(true);
+            Vuelo vueloIda = null;
+            Vuelo vueloVuelta = null;
+
+            if (vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida) != null) {
+                vueloIda = vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
+            }
+
+            if (vdao.leer(lugarDestino, lugarOrigen, fechaVuelta, horaVuelta) != null) {
+                vueloVuelta = vdao.leer(lugarDestino, lugarOrigen, fechaVuelta, horaVuelta);
+            }
+
+            ReservationResumen rResumen = new ReservationResumen(vueloIda, puestos, categoria1, esEquipaje, peso, peso1, true);
+
+            rResumen.setVueloVuelta1(vueloVuelta);
+            rResumen.setCategoriaVuelta(categoriaVuelta);
+            rResumen.setIsEquipajeVuelta(esEquipajeVuelta);
+            rResumen.setPuestosReservadosVuelta(puestosVuelta);
+            rResumen.setPeso1vuelta(peso1Vuelta);
+            rResumen.setPesoVuelta(pesoVuelta);
+
+            rResumen.setLocationRelativeTo(this);
+            this.setVisible(false);
+            rResumen.setVisible(true);
         }
     }//GEN-LAST:event_siguienteActionPerformed
 
@@ -241,12 +236,10 @@ public class ReservationVuelta extends javax.swing.JFrame {
     private void equipajeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipajeCBActionPerformed
         esEquipajeVuelta = equipajeCB.isSelected();
 
-        if(esEquipaje) {
+        if (esEquipajeVuelta) {
             pesoEquipaje.setVisible(true);
             pesoEquipajeCB.setVisible(true);
-        }
-
-        else {
+        } else {
             pesoEquipaje.setVisible(false);
             pesoEquipajeCB.setVisible(false);
         }
@@ -257,34 +250,34 @@ public class ReservationVuelta extends javax.swing.JFrame {
         fechaVuelta = fechaCB.getItemAt(fechaCB.getSelectedIndex());
         ArrayList<String> al = new ArrayList<>();
         int count = 0;
-        
-        String query = "v.origen LIKE '"+lugarDestino+"' AND v.destino LIKE '"+lugarOrigen+"' AND v.fecha LIKE '"+fechaVuelta+"'";
-        for(String s : vdao.leerdiffparametertolist("hora",query)){
+
+        String query = "v.origen LIKE '" + lugarDestino + "' AND v.destino LIKE '" + lugarOrigen + "' AND v.fecha LIKE '" + fechaVuelta + "'";
+        for (String s : vdao.leerdiffparametertolist("hora", query)) {
             count++;
             al.add(s);
         }
-        
+
         /*for(Vuelo v : sistema.getVuelos()) {
             if(v.getOrigen().equals(lugarDestino) && v.getDestino().equals(lugarOrigen) && v.getFecha().equals(fechaVuelta)) {
                 count++;
                 al.add(v.getHora());   
             }
         }*/
-        
         String horasSalida[] = new String[(count + 1)];
         horasSalida[0] = "Ninguna";
-        
-        for(int i = 0; i < count; i++)
+
+        for (int i = 0; i < count; i++) {
             horasSalida[(i + 1)] = al.get(i);
-        
+        }
+
         horaCB.setModel(new javax.swing.DefaultComboBoxModel<>(horasSalida));
     }//GEN-LAST:event_fechaCBActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         ReservationIda reservacion = new ReservationIda();
         reservacion.setLocationRelativeTo(this);
+        this.setVisible(false);
         reservacion.setVisible(true);
     }//GEN-LAST:event_cancelarActionPerformed
 
@@ -295,32 +288,32 @@ public class ReservationVuelta extends javax.swing.JFrame {
         categoriaL.setText(categoriaVuelta);
         pesoEquipaje.setVisible(false);
         pesoEquipajeCB.setVisible(false);
-        
+
         ArrayList<String> al = new ArrayList<>();
         int count = 0;
-        
-        String query = "v.origen LIKE '"+lugarDestino+"' AND v.destino LIKE '"+lugarOrigen+"'";
-        for(String s : vdao.leerdiffparametertolist("fecha",query)){
+
+        String query = "v.origen LIKE '" + lugarDestino + "' AND v.destino LIKE '" + lugarOrigen + "'";
+        for (String s : vdao.leerdiffparametertolist("fecha", query)) {
             count++;
             al.add(s);
         }
-        
+
         /*for(Vuelo v : sistema.getVuelos()) {
             if(v.getOrigen().equals(lugarDestino) && v.getDestino().equals(lugarOrigen)) {
                 count++;
                 al.add(v.getFecha());
             }
         }*/
-        
         String fechaVuelta[] = new String[(count + 1)];
         fechaVuelta[0] = "Ninguna";
-        
-        for(int i = 0; i < count; i++)
+
+        for (int i = 0; i < count; i++) {
             fechaVuelta[(i + 1)] = al.get(i);
-        
+        }
+
         fechaCB.setModel(new javax.swing.DefaultComboBoxModel<>(fechaVuelta));
-        horaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ninguna"}));
-        pesoEquipajeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"10-20 Kg", "21-30 Kg", "30-40 Kg", "40-50 Kg"}));
+        horaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ninguna"}));
+        pesoEquipajeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"10-20 Kg", "21-30 Kg", "30-40 Kg", "40-50 Kg"}));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,5 +334,3 @@ public class ReservationVuelta extends javax.swing.JFrame {
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
-
-

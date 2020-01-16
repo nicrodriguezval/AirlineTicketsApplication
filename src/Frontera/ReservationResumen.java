@@ -7,6 +7,7 @@ package Frontera;
 
 import Control.CalcularPrecio;
 import DAO.ReservaDAO;
+import DAO.VueloDAO;
 import Entidad.Reserva;
 import Entidad.Vuelo;
 //import static Frontera.FramePrincipal.sistema;
@@ -16,27 +17,31 @@ import javax.swing.*;
 /**
  *
  * @author lucas
- * 
- * icon: <div>Iconos diseñados por <a href="https://www.flaticon.es/autores/smashicons" 
- * title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
+ *
+ * icon: <div>Iconos diseñados por <a href="https://www.flaticon.es/autores/smashicons"
+ * title="Smashicons">Smashicons</a> from
+ * <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
  */
 public class ReservationResumen extends javax.swing.JFrame {
+
     private double precioSubtotal, precioImpuestos, precioTotal;
     public static int idReserva = 0;
-    
+
     private Reserva reserva;
-    
+
     private String origen, destino, fechaSalida, horaSalida, categoria, peso1;
     private boolean isIdaVuelta, isEquipaje;
     int puestosReservados, peso;
     private Vuelo vueloIda;
-    
+    private int[] puestos;
+
     private String categoriaVuelta, peso1Vuelta;
     private boolean isEquipajeVuelta;
     int puestosReservadosVuelta, pesoVuelta;
     private Vuelo vueloVuelta1;
-   
-    public ReservationResumen(/*int numeroReserva,*/ Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
+    private int[] puestosV;
+
+    public ReservationResumen(/*int numeroReserva,*/Vuelo vueloIda, int puestosReservados, String categoria, boolean isEquipaje, int peso, String peso1, boolean isIdaVuelta) {
         this.vueloIda = vueloIda;
         this.origen = vueloIda.getOrigen();
         this.puestosReservados = puestosReservados;
@@ -44,18 +49,19 @@ public class ReservationResumen extends javax.swing.JFrame {
         this.fechaSalida = vueloIda.getFecha();
         this.horaSalida = vueloIda.getHora();
         this.categoria = categoria;
-        this.isIdaVuelta = isIdaVuelta;    
+        this.isIdaVuelta = isIdaVuelta;
         this.isEquipaje = isEquipaje;
         this.peso = peso;
         this.peso1 = peso1;
         initComponents();
         this.setTitle("Airline Tickets Application");
         this.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
-        
-        if(!isIdaVuelta)
+
+        if (!isIdaVuelta) {
             configuracionInicial();
+        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -551,13 +557,22 @@ public class ReservationResumen extends javax.swing.JFrame {
         System.out.println("Apellido: " + reserva.getUsuario().getApellido());
         System.out.println("ID reserva: " + reserva.getId());
         System.out.println("Es ida y vuelta: " + reserva.isIdaVuelta());
-        
+
+        reserva.setPuestosIda(puestos);
+        VueloDAO vuelod = new VueloDAO();
+        vuelod.actualizaPuestos(reserva.getVueloIda(), puestos);
+
+        if (isIdaVuelta) {
+            reserva.setPuestosVuelta(puestosV);
+            vuelod.actualizaPuestos(reserva.getVueloVuelta(), puestosV);
+        }
+
         Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
         JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        
+
         MenuInicial menu = new MenuInicial();
-        this.setVisible(false);
         menu.setLocationRelativeTo(this);
+        this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_confirmarBActionPerformed
 
@@ -571,15 +586,18 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-        if(isIdaVuelta) {
+        if (isIdaVuelta) {
             origenVueltaL.setText(destino);
             destinoVueltaL.setText(origen);
             fechaVueltaL.setText(vueloVuelta1.getFecha());
             horaVueltaL.setText(vueloVuelta1.getHora());
             categoriaVueltaL.setText(categoriaVuelta);
             String resultado2;
-            if(isEquipajeVuelta) resultado2 = "Sí";
-            else resultado2 = "No";
+            if (isEquipajeVuelta) {
+                resultado2 = "Sí";
+            } else {
+                resultado2 = "No";
+            }
             noPuestosVueltaL.setText(("" + puestosReservadosVuelta));
             equipajeVueltaL.setText(resultado2);
             pesoEquipajeVueltaL.setText(peso1Vuelta);
@@ -589,31 +607,30 @@ public class ReservationResumen extends javax.swing.JFrame {
 
     private void volverBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverBActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        
-        if(isIdaVuelta) {
+        if (isIdaVuelta) {
             ReservationVuelta reservacion = new ReservationVuelta(isEquipaje, origen, destino, fechaSalida, horaSalida, categoria, peso1, puestosReservados, peso);
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
-            reservacion.setAlwaysOnTop(true);
-        }
-        
-        else {
+        } else {
             ReservationIda reservacion = new ReservationIda();
             reservacion.setLocationRelativeTo(this);
             reservacion.setVisible(true);
-            reservacion.setAlwaysOnTop(true);
         }
+
+        this.setVisible(false);
     }//GEN-LAST:event_volverBActionPerformed
 
     private void asientoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asientoIconMouseClicked
         // TODO add your handling code here:
-        Seat seat = new Seat(reserva);
+        Seat seat = new Seat(puestos, reserva);
+        if (isIdaVuelta) {
+            seat.setPuestosVuelta(puestosV);
+        }
         seat.setLocationRelativeTo(this);
         seat.setVisible(true);
         seat.setAlwaysOnTop(true);
     }//GEN-LAST:event_asientoIconMouseClicked
-    
+
     private void configuracionInicial() {
         ReservaDAO rdao = new ReservaDAO();
         int s = (int) rdao.leerallcount() + 1;
@@ -628,67 +645,91 @@ public class ReservationResumen extends javax.swing.JFrame {
         horaSalidaL.setText(horaSalida);
         categoriaL.setText(categoria);
         String resultado1;
-        if(isEquipaje) resultado1 = "Sí";
-        else resultado1 = "No";
+        if (isEquipaje) {
+            resultado1 = "Sí";
+        } else {
+            resultado1 = "No";
+        }
         equipajeL.setText(resultado1);
         pesoEquipajeL.setText(peso1);
         vueloL.setText(("" + vueloIda.getId()));
-        
+
         CalcularPrecio calcular = new CalcularPrecio();
-        
+
         reserva = new Reserva(vueloIda, puestosReservados, isIdaVuelta, isEquipaje, peso, categoria, user);
         reserva.setPeso(peso);
-        
-        if(isIdaVuelta) {
+
+        if (isIdaVuelta) {
             reserva.setVueloVuelta(vueloVuelta1);
             reserva.setEquipajeVuelta(isEquipajeVuelta);
             reserva.setCategoriaVuelta(categoriaVuelta);
             reserva.setPesoVuelta(pesoVuelta);
             reserva.setNumeroPuestosvuelta(puestosReservadosVuelta);
         }
-        
+
         precioSubtotal = (calcular.calcularPrecio(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioImpuestos = (calcular.calcularIva(reserva) * (puestosReservados + puestosReservadosVuelta));
         precioTotal = (calcular.precioFinal(reserva) * (puestosReservados + puestosReservadosVuelta));
-        
+
         reserva.setPrecio(precioSubtotal);
         reserva.setIva(calcular.calcularIva(reserva));
-        
+
         subTotalL.setText(("" + precioSubtotal + " USD"));
         impuestosL.setText(("" + precioImpuestos + " USD"));
         totalL.setText(("" + precioTotal + " USD"));
-        
+
+        //Cálculo de puestos para el pasajero
         int puestosIda[] = new int[reserva.getNumeroPuestos()];
-        
-        int j = 0;
-        
-        for(int i = 0; i < reserva.getVueloIda().getSillasDisponibles().length; i++) {
-            if(reserva.getVueloIda().getSillasDisponibles()[i]) {
+        int index = 0, cantidadPuestosCategoria = reserva.getVueloIda().getSillasDisponibles().length / 3, j = 0; //Dividí los puestos por categoría de a un tercio
+
+        if (reserva.getCategoria().equals("Ejecutiva")) {
+            index = cantidadPuestosCategoria + 1;
+            cantidadPuestosCategoria = cantidadPuestosCategoria * 2;
+        } else if (reserva.getCategoria().equals("Turista")) {
+            index = (cantidadPuestosCategoria * 2) + 1;
+            cantidadPuestosCategoria = reserva.getVueloIda().getSillasDisponibles().length;
+        }
+
+        for (int i = index; i < cantidadPuestosCategoria; i++) {
+            if (reserva.getVueloIda().getSillasDisponibles()[i]) {
                 puestosIda[j] = i;
-               reserva.getVueloIda().getSillasDisponibles()[i] = false;
+                reserva.getVueloIda().getSillasDisponibles()[i] = false;
                 j++;
-                if(j == puestosIda.length) break;
+                if (j == puestosIda.length) {
+                    break;
+                }
             }
             System.out.println(i);
         }
-        
-        reserva.setPuestosIda(puestosIda);
-        
-        if(isIdaVuelta) {
+
+        puestos = puestosIda;
+
+        if (isIdaVuelta) {
             int puestosVuelta[] = new int[reserva.getNumeroPuestosVuelta()];
-        
+            index = 0;
+            cantidadPuestosCategoria = reserva.getVueloVuelta().getSillasDisponibles().length / 3;
             j = 0;
-        
-            for(int i = 0; i < reserva.getVueloVuelta().getSillasDisponibles().length; i++) {
-                if(reserva.getVueloVuelta().getSillasDisponibles()[i]) {
+
+            if (reserva.getCategoriaVuelta().equals("Ejecutiva")) {
+                index = cantidadPuestosCategoria + 1;
+                cantidadPuestosCategoria = cantidadPuestosCategoria * 2;
+            } else if (reserva.getCategoriaVuelta().equals("Turista")) {
+                index = (cantidadPuestosCategoria * 2) + 1;
+                cantidadPuestosCategoria = reserva.getVueloVuelta().getSillasDisponibles().length;
+            }
+
+            for (int i = index; i < cantidadPuestosCategoria; i++) {
+                if (reserva.getVueloVuelta().getSillasDisponibles()[i]) {
                     puestosVuelta[j] = i;
                     reserva.getVueloVuelta().getSillasDisponibles()[i] = false;
                     j++;
-                    if(j == puestosVuelta.length) break;
+                    if (j == puestosVuelta.length) {
+                        break;
+                    }
                 }
             }
-        
-            reserva.setPuestosVuelta(puestosVuelta);
+
+            puestosV = puestosVuelta;
         }
     }
 
@@ -792,13 +833,13 @@ public class ReservationResumen extends javax.swing.JFrame {
     public void setPeso1vuelta(String peso1Vuelta) {
         this.peso1Vuelta = peso1Vuelta;
     }
-    
+
     public Vuelo getVueloVuelta1() {
         return vueloVuelta1;
     }
 
     public void setVueloVuelta1(Vuelo vueloVuelta1) {
         this.vueloVuelta1 = vueloVuelta1;
-        
+
     }
 }

@@ -228,30 +228,31 @@ public class ReservationIda extends javax.swing.JFrame {
         } else if(resultado.equals("Hora de vuelo inválida. Por favor escoja una de las opciones")){
             aviso.setText("Hora de vuelo inválida. Por favor escoja una de las opciones");
         } else{
-        if(esEquipaje){
-            peso1 = pesoEquipajeCB.getItemAt(pesoEquipajeCB.getSelectedIndex());
-            peso = pesoEquipajeCB.getSelectedIndex() + 1;
-        } else {
-            peso1 = "Ninguno";
-            peso = 0;
-        }
-        this.setVisible(false);
-        if(esIdaVuelta) {
-            ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
-            reservacion.setLocationRelativeTo(this);
-            reservacion.setVisible(true);
-            reservacion.setAlwaysOnTop(true);
-        } else {
-            Vuelo vuelo = null;
-           
-            if(vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida) != null){
-                vuelo = vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
+            if(esEquipaje){
+                peso1 = pesoEquipajeCB.getItemAt(pesoEquipajeCB.getSelectedIndex());
+                peso = pesoEquipajeCB.getSelectedIndex() + 1;
+            } else {
+                peso1 = "Ninguno";
+                peso = 0;
             }
-            ReservationResumen rResumen = new ReservationResumen(vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
-            rResumen.setLocationRelativeTo(this);
-            rResumen.setVisible(true);
+       
+            if(esIdaVuelta) {
+                ReservationVuelta reservacion = new ReservationVuelta(esEquipaje, lugarOrigen, lugarDestino, fechaSalida, horaSalida, categoria1, peso1, puestos, peso);
+                reservacion.setLocationRelativeTo(this);
+                reservacion.setVisible(true);
+            } else {
+                Vuelo vuelo = null;
+           
+                if(vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida) != null){
+                    vuelo = vdao.leer(lugarOrigen, lugarDestino, fechaSalida, horaSalida);
+                }
+                ReservationResumen rResumen = new ReservationResumen(vuelo, puestos, categoria1, esEquipaje, peso, peso1, false);
+                rResumen.setLocationRelativeTo(this);
+                rResumen.setVisible(true);
+            }
+        
+            this.setVisible(false);
         }
-    }
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void pesoEquipajeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoEquipajeCBActionPerformed
@@ -355,9 +356,9 @@ public class ReservationIda extends javax.swing.JFrame {
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         MenuInicial menu = new MenuInicial();
         menu.setLocationRelativeTo(this);
+        this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_cancelarActionPerformed
 

@@ -17,7 +17,8 @@ import javax.swing.ImageIcon;
  */
 public class Login extends javax.swing.JFrame {
     public static Usuario user;
-
+    public static Welcome welcome; //Es para mantener el frame de la clase Welcome relativo a la posición del frame de la clase Login
+    
     /**
      * Creates new form NewJFrame
      */
@@ -140,19 +141,18 @@ public class Login extends javax.swing.JFrame {
         } else if(resultado.equals("Contraseña incorrecta. Escríbala nuevamente")){
             aviso.setText("Contraseña incorrecta. Escríbala nuevamente");
         } else {
-            Welcome welcome = new Welcome();
-            this.setVisible(false);
+            welcome = new Welcome();
             welcome.setLocationRelativeTo(this);
+            this.setVisible(false);
             welcome.setVisible(true);
-            welcome.setAlwaysOnTop(true);
         }
     }//GEN-LAST:event_aceptarBActionPerformed
 
     private void regresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBActionPerformed
         // TODO add your handling code here
         FramePrincipal framePrincipal = new FramePrincipal();
-        this.setVisible(false);
         framePrincipal.setLocationRelativeTo(this);
+        this.setVisible(false);
         framePrincipal.setVisible(true);
     }//GEN-LAST:event_regresarBActionPerformed
 

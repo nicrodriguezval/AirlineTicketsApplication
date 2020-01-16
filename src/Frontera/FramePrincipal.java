@@ -118,16 +118,16 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void registrarseBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseBActionPerformed
         // TODO add your handling code here:
         Join registro = new Join();
-        this.setVisible(false);
         registro.setLocationRelativeTo(this);
+        this.setVisible(false);
         registro.setVisible(true);
     }//GEN-LAST:event_registrarseBActionPerformed
 
     private void ingresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBActionPerformed
         // TODO add your handling code here:
         Login ingreso = new Login();
-        this.setVisible(false);
         ingreso.setLocationRelativeTo(this);
+        this.setVisible(false);
         ingreso.setVisible(true);
     }//GEN-LAST:event_ingresarBActionPerformed
 

@@ -284,10 +284,9 @@ public class CustomerFrequent extends javax.swing.JFrame {
 
                 Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
                 JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
-                this.setVisible(false);
                 TicketBoardingPass view = new TicketBoardingPass(ticketPagado);
-                view.setVisible(true);
                 view.setLocationRelativeTo(this);
+                this.setVisible(false);
                 view.setVisible(true);
             }
         }
@@ -308,9 +307,9 @@ public class CustomerFrequent extends javax.swing.JFrame {
     }
 
     private void volverBActionPerformed(java.awt.event.ActionEvent evt) {
-        this.setVisible(false);
         MenuInicial menu = new MenuInicial();
         menu.setLocationRelativeTo(this);
+        this.setVisible(false);
         menu.setVisible(true);
     }
 
