@@ -189,7 +189,7 @@ public class VueloDAO {
                     
                     if(year >= año){
                         if(month >= mes){
-                            if(day >= dia){
+                            if(day > dia){
                                 par.add(v.getFecha());
                             }
                         }

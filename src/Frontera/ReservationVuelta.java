@@ -252,7 +252,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
         int count = 0;
 
         String query = "v.origen LIKE '" + lugarDestino + "' AND v.destino LIKE '" + lugarOrigen + "' AND v.fecha LIKE '" + fechaVuelta + "'";
-        for (String s : vdao.leerposteriorparametertolist("hora", horaSalida, query)) {
+        for (String s : vdao.leerdiffparametertolist("hora", query)) {
             count++;
             al.add(s);
         }
