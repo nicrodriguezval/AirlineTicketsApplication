@@ -164,6 +164,73 @@ public class VueloDAO {
         }
     }
 
+        public List<String> leerposteriorparametertolist(String param, String limite, String condition) {
+        EntityManager em = emf.createEntityManager();
+        List<String> par = new ArrayList<String>();
+        List<Vuelo> result = null;
+        List<String> uniques = new ArrayList<String>();
+        TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v WHERE "
+                + condition, Vuelo.class);
+        try {
+            result = q.getResultList();
+            for (Vuelo v : result) {
+                if (param.equals("origen")) {
+                    par.add(v.getOrigen());
+                } else if (param.equals("destino")) {
+                    par.add(v.getDestino());
+                } else if (param.equals("fecha")) {
+                    int dia = Integer.parseInt(limite.substring(0,2));
+                    int mes = Integer.parseInt(limite.substring(3,5));
+                    int año = Integer.parseInt(limite.substring(6));
+                    
+                    int day = Integer.parseInt(v.getFecha().substring(0,2));
+                    int month = Integer.parseInt(v.getFecha().substring(3,5));
+                    int year = Integer.parseInt(v.getFecha().substring(6));
+                    
+                    if(year >= año){
+                        if(month >= mes){
+                            if(day >= dia){
+                                par.add(v.getFecha());
+                            }
+                        }
+                    }
+                } else if (param.equals("hora")) {
+                    int hora = Integer.parseInt(limite.substring(0,2));
+                    int minuto = Integer.parseInt(limite.substring(3,5));
+                    
+                    int hour = Integer.parseInt(v.getHora().substring(0,2));
+                    int minute = Integer.parseInt(v.getHora().substring(3,5));
+                    
+                    if(hour > hora){
+                            par.add(v.getHora());
+                    }
+                } else if (param.equals("id")) {
+                    par.add("" + v.getId());
+                } else if (param.equals("sillasTotales")) {
+                    par.add("" + v.getSillasTotales());
+                } else if (param.equals("precioClaseEjecutiva")) {
+                    par.add("" + v.getPrecioClaseEjecutiva());
+                } else if (param.equals("precioClaseTurista")) {
+                    par.add("" + v.getPrecioClaseTurista());
+                } else if (param.equals("precioPrimeraClase")) {
+                    par.add("" + v.getPrecioPrimeraClase());
+                } else {
+                    uniques = null;
+                }
+            }
+            for (String s : par) {
+                if (!uniques.contains(s)) {
+                    uniques.add(s);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            return uniques;
+        }
+    }
+    
     public List<String> leerdiffallparametertolist(String param) {
         EntityManager em = emf.createEntityManager();
         List<String> par = new ArrayList<String>();
