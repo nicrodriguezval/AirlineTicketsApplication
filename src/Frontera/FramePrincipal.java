@@ -51,6 +51,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 320));
+        setResizable(false);
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,6 +67,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         ingresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
         ingresarB.setText("Ingresar");
         ingresarB.setContentAreaFilled(false);
+        ingresarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ingresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ingresarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
         ingresarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginG.png"))); // NOI18N
@@ -82,6 +84,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         registrarseB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
         registrarseB.setText("Registrarse");
         registrarseB.setContentAreaFilled(false);
+        registrarseB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarseB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registrarseB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
         registrarseB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroG.png"))); // NOI18N
@@ -97,7 +100,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 290));
+        panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,9 +110,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

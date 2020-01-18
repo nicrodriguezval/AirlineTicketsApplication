@@ -53,6 +53,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         asientoTicketL.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,6 +105,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         getContentPane().add(nombreTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, 20));
 
         aceptarB.setText("Aceptar");
+        aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);

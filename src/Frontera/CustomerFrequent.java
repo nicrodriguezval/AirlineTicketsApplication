@@ -71,6 +71,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         costoReservaL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -116,6 +117,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         aceptarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         aceptarB.setText("Aceptar");
         aceptarB.setContentAreaFilled(false);
+        aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aceptarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         aceptarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +131,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         redimirPuntosB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosP.png"))); // NOI18N
         redimirPuntosB.setText("Redimir puntos");
         redimirPuntosB.setContentAreaFilled(false);
+        redimirPuntosB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         redimirPuntosB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         redimirPuntosB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosP.png"))); // NOI18N
         redimirPuntosB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRedimirPuntosG.png"))); // NOI18N
@@ -141,14 +144,16 @@ public class CustomerFrequent extends javax.swing.JFrame {
         volverB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         volverB.setText("Volver");
         volverB.setContentAreaFilled(false);
+        volverB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volverB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         volverB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
-        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         informacionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         informacionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosP.png"))); // NOI18N
         informacionB.setText("Información puntos");
         informacionB.setContentAreaFilled(false);
+        informacionB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         informacionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         informacionB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosG.png"))); // NOI18N
         informacionB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnInformacionPuntosG.png"))); // NOI18N
@@ -176,7 +181,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
         costoReservaL.setText("jLabel1");
         jPanel1.add(costoReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

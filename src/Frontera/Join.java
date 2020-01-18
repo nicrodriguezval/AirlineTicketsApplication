@@ -57,6 +57,7 @@ public class Join extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -68,6 +69,7 @@ public class Join extends javax.swing.JFrame {
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         aceptar.setText("Registrar");
         aceptar.setContentAreaFilled(false);
+        aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         aceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         aceptar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -76,12 +78,13 @@ public class Join extends javax.swing.JFrame {
                 aceptarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 160, 40));
+        panelPrincipal.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 160, 40));
 
         regresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         regresar.setText("Regresar");
         regresar.setContentAreaFilled(false);
+        regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         regresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         regresar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -90,14 +93,14 @@ public class Join extends javax.swing.JFrame {
                 regresarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 160, 40));
+        panelPrincipal.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 160, 40));
 
         nombreTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nombreTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
+        panelPrincipal.add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 190, -1));
 
         apellidoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,35 +112,35 @@ public class Join extends javax.swing.JFrame {
                 apellidoTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(apellidoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 190, -1));
+        panelPrincipal.add(apellidoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 190, -1));
 
         emailTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 emailTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(emailTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 210, -1));
+        panelPrincipal.add(emailTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 190, -1));
 
         usernameTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 usernameTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, -1));
+        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 190, -1));
 
         passwordTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passwordTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 190, -1));
+        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 190, -1));
 
         verificarPasswordTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 verificarPasswordTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(verificarPasswordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 190, -1));
+        panelPrincipal.add(verificarPasswordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 190, -1));
 
         aviso.setBackground(new java.awt.Color(255, 255, 255));
         aviso.setForeground(Color.red);
@@ -162,20 +165,20 @@ public class Join extends javax.swing.JFrame {
         emailL.setBackground(new java.awt.Color(255, 255, 255));
         emailL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         emailL.setText("E-mail");
-        panelPrincipal.add(emailL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        panelPrincipal.add(emailL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         verificarPasswordL.setBackground(new java.awt.Color(255, 255, 255));
         verificarPasswordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         verificarPasswordL.setText("Ver. Contraseña");
-        panelPrincipal.add(verificarPasswordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        panelPrincipal.add(verificarPasswordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
         passwordL.setBackground(new java.awt.Color(255, 255, 255));
         passwordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         passwordL.setText("Contraseña");
-        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JoinFormulario.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 570));
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 580));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 570));
 

@@ -131,6 +131,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -139,6 +140,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         jPanel1.add(nReservaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 100, 20));
 
         confirmarB.setText("Confirmar");
+        confirmarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarBActionPerformed(evt);
@@ -147,6 +149,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         jPanel1.add(confirmarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 340, 112, -1));
 
         volverB.setText("Volver");
+        volverB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volverB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverBActionPerformed(evt);
@@ -273,7 +276,7 @@ public class ReservationResumen extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(vueloL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IDVueloT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,6 +522,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         asientoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/asiento.png"))); // NOI18N
         asientoIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        asientoIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         asientoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 asientoIconMouseClicked(evt);

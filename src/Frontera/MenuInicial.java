@@ -59,6 +59,8 @@ public class MenuInicial extends javax.swing.JFrame {
         titulo.setText("Iniciar sesión");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -72,6 +74,7 @@ public class MenuInicial extends javax.swing.JFrame {
         reserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnReservarP.png"))); // NOI18N
         reserva.setText("Reservar");
         reserva.setContentAreaFilled(false);
+        reserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reserva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         reserva.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnReservarP.png"))); // NOI18N
         reserva.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnReservarG.png"))); // NOI18N
@@ -93,6 +96,7 @@ public class MenuInicial extends javax.swing.JFrame {
         terminarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         terminarSesionB.setText("Terminar Sesión");
         terminarSesionB.setContentAreaFilled(false);
+        terminarSesionB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         terminarSesionB.setInheritsPopupMenu(true);
         terminarSesionB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         terminarSesionB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
@@ -101,7 +105,7 @@ public class MenuInicial extends javax.swing.JFrame {
                 terminarSesionBActionPerformed(evt);
             }
         });
-        jPanel1.add(terminarSesionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        jPanel1.add(terminarSesionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono avion.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
@@ -109,6 +113,7 @@ public class MenuInicial extends javax.swing.JFrame {
         pagoReservacionB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         pagoReservacionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPagoTarjetaP.png"))); // NOI18N
         pagoReservacionB.setContentAreaFilled(false);
+        pagoReservacionB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pagoReservacionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pagoReservacionB.setLabel("Pago Reservación");
         pagoReservacionB.setMaximumSize(new java.awt.Dimension(97, 93));
@@ -129,6 +134,7 @@ public class MenuInicial extends javax.swing.JFrame {
         clienteFrecuenteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
         clienteFrecuenteB.setText("Cliente Frecuente");
         clienteFrecuenteB.setContentAreaFilled(false);
+        clienteFrecuenteB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clienteFrecuenteB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         clienteFrecuenteB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteP.png"))); // NOI18N
         clienteFrecuenteB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnClienteFrecuenteG.png"))); // NOI18N
@@ -142,6 +148,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jPanel1.add(clienteFrecuenteB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 160, 107));
 
         estadisticasB.setText("Estadísticas");
+        estadisticasB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         estadisticasB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estadisticasBActionPerformed(evt);
@@ -149,7 +156,7 @@ public class MenuInicial extends javax.swing.JFrame {
         });
         jPanel1.add(estadisticasB, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

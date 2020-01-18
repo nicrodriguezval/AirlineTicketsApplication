@@ -49,6 +49,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -59,43 +60,43 @@ public class Login extends javax.swing.JFrame {
                 usernameTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 280, -1));
+        panelPrincipal.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 280, -1));
 
         aceptarB.setBackground(new java.awt.Color(0, 0, 0));
         aceptarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         aceptarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         aceptarB.setText("Ingresar");
         aceptarB.setContentAreaFilled(false);
+        aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aceptarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        aceptarB.setOpaque(false);
         aceptarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 160, 40));
+        panelPrincipal.add(aceptarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 160, 40));
 
         regresarB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistro.png"))); // NOI18N
         regresarB.setText("Regresar");
         regresarB.setContentAreaFilled(false);
+        regresarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        regresarB.setOpaque(false);
         regresarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAceptarRegistroG.png"))); // NOI18N
         regresarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(regresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 160, 40));
+        panelPrincipal.add(regresarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 160, 40));
 
         passwordTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passwordTFKeyTyped(evt);
             }
         });
-        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 280, -1));
+        panelPrincipal.add(passwordTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 280, -1));
 
         aviso.setForeground(java.awt.Color.red);
         panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 480, 20));
@@ -106,10 +107,10 @@ public class Login extends javax.swing.JFrame {
 
         passwordL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         passwordL.setText("Contraseña");
-        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+        panelPrincipal.add(passwordL, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LoginFormulario.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 370));
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 380));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
 

@@ -61,6 +61,7 @@ public class ReservationIda extends javax.swing.JFrame {
         aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(java.awt.Color.white);
@@ -71,6 +72,7 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         OrigenCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bogotá", "Medellin", "Cali", "Barranquilla" }));
+        OrigenCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         OrigenCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrigenCBActionPerformed(evt);
@@ -79,6 +81,7 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(OrigenCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 30));
 
         destinoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bogotá", "Medellin", "Cali", "Barranquilla" }));
+        destinoCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         destinoCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destinoCBActionPerformed(evt);
@@ -86,6 +89,7 @@ public class ReservationIda extends javax.swing.JFrame {
         });
         panelPrincipal.add(destinoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 170, 30));
 
+        horaCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         horaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 horaCBActionPerformed(evt);
@@ -93,6 +97,7 @@ public class ReservationIda extends javax.swing.JFrame {
         });
         panelPrincipal.add(horaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 30));
 
+        idaVueltaCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         idaVueltaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idaVueltaCBActionPerformed(evt);
@@ -101,6 +106,7 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(idaVueltaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         noPuestosCB.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] { 1, 2, 3, 4, 5 }));
+        noPuestosCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         noPuestosCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noPuestosCBActionPerformed(evt);
@@ -109,6 +115,7 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(noPuestosCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 170, 30));
 
         categoriaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Turista", "Ejecutiva", "Primera clase" }));
+        categoriaCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         categoriaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoriaCBActionPerformed(evt);
@@ -116,6 +123,7 @@ public class ReservationIda extends javax.swing.JFrame {
         });
         panelPrincipal.add(categoriaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 170, 30));
 
+        equipajeCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         equipajeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 equipajeCBActionPerformed(evt);
@@ -128,17 +136,19 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(pesoEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 137, 43));
 
         pesoEquipajeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10-20 Kg", "21-30 Kg", "30-40 Kg", "40-50 Kg" }));
+        pesoEquipajeCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pesoEquipajeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesoEquipajeCBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(pesoEquipajeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 94, -1));
+        panelPrincipal.add(pesoEquipajeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 94, -1));
 
         cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setContentAreaFilled(false);
+        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -146,12 +156,13 @@ public class ReservationIda extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
+        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
 
         siguiente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setText("Siguiente");
         siguiente.setContentAreaFilled(false);
+        siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         siguiente.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         siguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -159,8 +170,9 @@ public class ReservationIda extends javax.swing.JFrame {
                 siguienteActionPerformed(evt);
             }
         });
-        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, -1, -1));
+        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
 
+        fechaCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fechaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaCBActionPerformed(evt);
@@ -169,7 +181,7 @@ public class ReservationIda extends javax.swing.JFrame {
         panelPrincipal.add(fechaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 70, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ReservIda.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 330));
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 860, 330));
 
         aviso.setForeground(java.awt.Color.red);
         panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 530, 20));

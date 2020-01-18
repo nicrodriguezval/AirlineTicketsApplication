@@ -78,13 +78,14 @@ public class ReservationVuelta extends javax.swing.JFrame {
         aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(java.awt.Color.white);
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        titulo.setText("Informaciónde vuelo de vuelta");
+        titulo.setText("Información de vuelo de vuelta");
         panelPrincipal.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         horaCB.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +100,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 equipajeCBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(equipajeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+        panelPrincipal.add(equipajeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 55, -1, 40));
 
         pesoEquipaje.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pesoEquipaje.setText("Peso del equipaje");
@@ -117,6 +118,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setText("Volver");
         cancelar.setContentAreaFilled(false);
+        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,12 +126,13 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 120, -1));
+        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 120, -1));
 
         siguiente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setText("Siguiente");
         siguiente.setContentAreaFilled(false);
+        siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         siguiente.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         siguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +140,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 siguienteActionPerformed(evt);
             }
         });
-        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, -1, -1));
+        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
 
         origenVuelta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         panelPrincipal.add(origenVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 30));
@@ -165,7 +168,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
         aviso.setForeground(java.awt.Color.red);
         panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 540, 20));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 320));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

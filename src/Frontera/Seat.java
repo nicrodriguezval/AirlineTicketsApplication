@@ -57,6 +57,8 @@ public class Seat extends javax.swing.JFrame {
         pasajero1VueltaT = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
 
+        setResizable(false);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

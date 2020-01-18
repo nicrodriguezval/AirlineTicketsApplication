@@ -101,6 +101,7 @@ public class ReservationPayment extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(540, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -145,6 +146,7 @@ public class ReservationPayment extends javax.swing.JFrame {
         aceptarConfirmarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         aceptarConfirmarB.setText("Siguiente");
         aceptarConfirmarB.setContentAreaFilled(false);
+        aceptarConfirmarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         aceptarConfirmarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         aceptarConfirmarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         aceptarConfirmarB.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +168,7 @@ public class ReservationPayment extends javax.swing.JFrame {
         volverCambiarDeReservaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         volverCambiarDeReservaB.setText("Cancelar");
         volverCambiarDeReservaB.setContentAreaFilled(false);
+        volverCambiarDeReservaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volverCambiarDeReservaB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         volverCambiarDeReservaB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
         volverCambiarDeReservaB.addActionListener(new java.awt.event.ActionListener() {
