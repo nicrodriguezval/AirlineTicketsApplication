@@ -164,7 +164,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 informacionBActionPerformed(evt);
             }
         });
-        jPanel1.add(informacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 180, 110));
+        jPanel1.add(informacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 180, 100));
 
         infoReserva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         infoReserva.setText("Jlabel");
