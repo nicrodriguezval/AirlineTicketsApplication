@@ -378,12 +378,13 @@ public class ReservationIda extends javax.swing.JFrame {
         pesoEquipaje.setVisible(false);
         pesoEquipajeCB.setVisible(false);
         
-        int x = vdao.leerdiffallparametertolist("origen").size();
+        String query = "v.hora LIKE '05:00' AND v.fecha LIKE '01%'";
+        int x = vdao.leerdiffparametertolist("origen",query).size();
         String ciudadesOrigen[] = new String[(x + 1)];
         ciudadesOrigen[0] = "Ninguno";
         
         int i = 1;
-        for(String s : vdao.leerdiffallparametertolist("origen")){
+        for(String s : vdao.leerdiffparametertolist("origen",query)){
             ciudadesOrigen[i] = s;
             i++;
         }

@@ -47,37 +47,33 @@ public class ValidarReserva {
     }
 
     public boolean verificarOrigenSelected(String origen) {
-        for (Vuelo v : vdao.leeralltolist()) {
-            if (v.getOrigen().equals(origen)) {
-                return true;
-            }
+        String query = "v.origen LIKE '" + origen + "'";
+        if (vdao.leerquerycount(query) != 0) {
+            return true;
         }
         return false;
     }
 
     public boolean verificarDestinoSelected(String destino) {
-        for (Vuelo v : vdao.leeralltolist()) {
-            if (v.getDestino().equals(destino)) {
-                return true;
-            }
+        String query = "v.destino LIKE '" + destino + "'";
+        if (vdao.leerquerycount(query) != 0) {
+            return true;
         }
         return false;
     }
 
     public boolean verificarFechaSelected(String fecha) {
-        for (Vuelo v : vdao.leeralltolist()) {
-            if (v.getFecha().equals(fecha)) {
-                return true;
-            }
+        String query = "v.fecha LIKE '" + fecha + "'";
+        if (vdao.leerquerycount(query) != 0) {
+            return true;
         }
         return false;
     }
 
     public boolean verificarHoraSelected(String hora) {
-        for (Vuelo v : vdao.leeralltolist()) {
-            if (v.getHora().equals(hora)) {
-                return true;
-            }
+        String query = "v.hora LIKE '" + hora + "'";
+        if (vdao.leerquerycount(query) != 0) {
+            return true;
         }
         return false;
     }
