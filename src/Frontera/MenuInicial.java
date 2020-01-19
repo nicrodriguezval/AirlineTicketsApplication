@@ -147,14 +147,24 @@ public class MenuInicial extends javax.swing.JFrame {
         });
         jPanel1.add(clienteFrecuenteB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 160, 107));
 
+        estadisticasB.setBackground(new java.awt.Color(255, 255, 255));
+        estadisticasB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        estadisticasB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEstadisticasP.png"))); // NOI18N
         estadisticasB.setText("Estadísticas");
+        estadisticasB.setContentAreaFilled(false);
         estadisticasB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        estadisticasB.setHideActionText(true);
+        estadisticasB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        estadisticasB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEstadisticasP.png"))); // NOI18N
+        estadisticasB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnEstadisticasG.png"))); // NOI18N
+        estadisticasB.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        estadisticasB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         estadisticasB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estadisticasBActionPerformed(evt);
             }
         });
-        jPanel1.add(estadisticasB, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
+        jPanel1.add(estadisticasB, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 89, 120, 120));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 320));
 

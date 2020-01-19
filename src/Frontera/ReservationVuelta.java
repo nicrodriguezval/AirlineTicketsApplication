@@ -126,7 +126,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 120, -1));
+        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 120, -1));
 
         siguiente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -140,7 +140,7 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 siguienteActionPerformed(evt);
             }
         });
-        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
+        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
 
         origenVuelta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         panelPrincipal.add(origenVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, 30));
@@ -153,22 +153,22 @@ public class ReservationVuelta extends javax.swing.JFrame {
                 fechaCBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(fechaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 70, 30));
+        panelPrincipal.add(fechaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 130, 30));
 
         noPuestosL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         panelPrincipal.add(noPuestosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 170, 30));
 
         categoriaL.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        panelPrincipal.add(categoriaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 170, 30));
+        panelPrincipal.add(categoriaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 170, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ReservVuelta.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 330));
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 330));
 
         aviso.setForeground(java.awt.Color.red);
         panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 540, 20));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 320));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -121,7 +121,7 @@ public class ReservationIda extends javax.swing.JFrame {
                 categoriaCBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(categoriaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 170, 30));
+        panelPrincipal.add(categoriaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 170, 30));
 
         equipajeCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         equipajeCB.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class ReservationIda extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+        panelPrincipal.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
 
         siguiente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
@@ -170,7 +170,7 @@ public class ReservationIda extends javax.swing.JFrame {
                 siguienteActionPerformed(evt);
             }
         });
-        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
+        panelPrincipal.add(siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
 
         fechaCB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fechaCB.addActionListener(new java.awt.event.ActionListener() {
@@ -178,15 +178,15 @@ public class ReservationIda extends javax.swing.JFrame {
                 fechaCBActionPerformed(evt);
             }
         });
-        panelPrincipal.add(fechaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 70, 30));
+        panelPrincipal.add(fechaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ReservIda.png"))); // NOI18N
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 860, 330));
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 890, 330));
 
         aviso.setForeground(java.awt.Color.red);
         panelPrincipal.add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 530, 20));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 320));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
