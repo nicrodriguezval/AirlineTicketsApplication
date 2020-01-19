@@ -17,10 +17,10 @@ public class CalcularPuntos { //Por cada milla el usuario obtiene el 4% en punto
     }
 
     public int generarPuntosIda(Vuelo vuelo) {
-        return (int) (vuelo.getMillas() * 0.04);
+        return (int) (vuelo.getMillas() * 0.015);
     }
 
     public int generarPuntosIdaVuelta(Vuelo vueloIda, Vuelo vueloVuelta) {
-        return (int) ((vueloIda.getMillas() + vueloVuelta.getMillas()) * 0.4);
+        return (int) ((vueloIda.getMillas() + vueloVuelta.getMillas()) * 0.015);
     }
 }

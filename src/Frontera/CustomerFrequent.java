@@ -199,10 +199,10 @@ public class CustomerFrequent extends javax.swing.JFrame {
                 if (reserva.getUsuario().getUsername().equals(user.getUsername())) {
                     if (!reserva.isPagada()) {
                         if (reserva.isIdaVuelta()) {
-                            infoReserva.setText(reserva.getVueloIda().getOrigen() + '-' + reserva.getVueloIda().getDestino() + ", "
-                                    + reserva.getVueloVuelta().getOrigen() + '-' + reserva.getVueloVuelta().getDestino());
+                            infoReserva.setText(reserva.getVueloIda().getOrigen() + " - " + reserva.getVueloIda().getDestino() + ", "
+                                    + reserva.getVueloVuelta().getOrigen() + " - " + reserva.getVueloVuelta().getDestino());
                         } else {
-                            infoReserva.setText(reserva.getVueloIda().getOrigen() + '-' + reserva.getVueloIda().getDestino());
+                            infoReserva.setText(reserva.getVueloIda().getOrigen() + " - " + reserva.getVueloIda().getDestino());
                         }
 
                         costo = (int) (reserva.getPrecio() + reserva.getIva());
@@ -226,7 +226,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
     private void informacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacionBActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "1. Los puntos se calculan teniendo en cuenta las millas por cada vuelo que realiza."
-                + "\n2. Cada punto equivale al 4% de las millas voladas en cada viaje."
+                + "\n2. Cada punto equivale al 1.5% de las millas voladas en cada viaje."
                 + "\n3. Un punto equivale a un USD.", "Información Puntos", JOptionPane.INFORMATION_MESSAGE);
         //JOptionPane.showMessageDialog 
     }//GEN-LAST:event_informacionBActionPerformed

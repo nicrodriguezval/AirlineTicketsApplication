@@ -49,6 +49,9 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         destinoPassL = new javax.swing.JLabel();
         origenPassL = new javax.swing.JLabel();
         nombrePassL = new javax.swing.JLabel();
+        origenPassL1 = new javax.swing.JLabel();
+        destinoPassL1 = new javax.swing.JLabel();
+        vueloPassL1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,51 +61,55 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
 
         asientoTicketL.setBackground(new java.awt.Color(255, 255, 255));
         asientoTicketL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        asientoTicketL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asientoTicketL.setText("0");
         asientoTicketL.setOpaque(true);
-        getContentPane().add(asientoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 110, 40));
+        getContentPane().add(asientoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 130, 40));
 
         vueloTicketL.setBackground(new java.awt.Color(255, 255, 255));
         vueloTicketL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        vueloTicketL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vueloTicketL.setText("VUELO");
         vueloTicketL.setOpaque(true);
-        getContentPane().add(vueloTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, 30));
+        getContentPane().add(vueloTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 150, 30));
 
         horaTicketL.setBackground(new java.awt.Color(255, 255, 255));
         horaTicketL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        horaTicketL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         horaTicketL.setText("HORA");
         horaTicketL.setOpaque(true);
-        getContentPane().add(horaTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 110, 30));
+        getContentPane().add(horaTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 210, 30));
 
         fechaTicketL.setBackground(new java.awt.Color(255, 255, 255));
         fechaTicketL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        fechaTicketL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fechaTicketL.setText("Fecha");
         fechaTicketL.setOpaque(true);
-        getContentPane().add(fechaTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 110, 30));
+        getContentPane().add(fechaTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 120, 30));
 
         destinoTicketL.setBackground(new java.awt.Color(255, 255, 255));
         destinoTicketL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         destinoTicketL.setText("Destino");
         destinoTicketL.setOpaque(true);
-        getContentPane().add(destinoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 130, 30));
+        getContentPane().add(destinoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 170, 30));
 
         origenTicketL.setBackground(new java.awt.Color(255, 255, 255));
         origenTicketL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         origenTicketL.setText("Origen");
         origenTicketL.setOpaque(true);
-        getContentPane().add(origenTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 130, 30));
+        getContentPane().add(origenTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 170, 30));
 
         claseTicketL.setBackground(new java.awt.Color(255, 255, 255));
         claseTicketL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         claseTicketL.setText("Clase");
         claseTicketL.setOpaque(true);
-        getContentPane().add(claseTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 140, 30));
+        getContentPane().add(claseTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 150, 30));
 
         nombreTicketL.setBackground(new java.awt.Color(255, 255, 255));
         nombreTicketL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         nombreTicketL.setText("Nombre");
         nombreTicketL.setOpaque(true);
-        getContentPane().add(nombreTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, 20));
+        getContentPane().add(nombreTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 290, 40));
 
         aceptarB.setText("Aceptar");
         aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -115,24 +122,26 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
 
         asientoPassL.setBackground(new java.awt.Color(255, 255, 255));
         asientoPassL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        asientoPassL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asientoPassL.setText("SILLA");
         asientoPassL.setOpaque(true);
-        getContentPane().add(asientoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 120, 110, -1));
+        getContentPane().add(asientoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 110, -1));
 
         fechaPassL.setBackground(new java.awt.Color(255, 255, 255));
         fechaPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         fechaPassL.setText("FECHA");
         fechaPassL.setOpaque(true);
-        getContentPane().add(fechaPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 250, 150, 40));
+        getContentPane().add(fechaPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 240, 130, 40));
 
         vueloPassL.setBackground(new java.awt.Color(255, 255, 255));
         vueloPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         vueloPassL.setText("VUELO");
         vueloPassL.setOpaque(true);
-        getContentPane().add(vueloPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 250, 110, 40));
+        getContentPane().add(vueloPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 90, 40));
 
         horaPassL.setBackground(new java.awt.Color(255, 255, 255));
         horaPassL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        horaPassL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         horaPassL.setText("HORA");
         horaPassL.setOpaque(true);
         getContentPane().add(horaPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 120, 50));
@@ -141,19 +150,37 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         destinoPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         destinoPassL.setText("Destino");
         destinoPassL.setOpaque(true);
-        getContentPane().add(destinoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 380, 190, 30));
+        getContentPane().add(destinoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 360, 250, 40));
 
         origenPassL.setBackground(new java.awt.Color(255, 255, 255));
         origenPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         origenPassL.setText("Origen");
         origenPassL.setOpaque(true);
-        getContentPane().add(origenPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 320, 190, 40));
+        getContentPane().add(origenPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 300, 250, 40));
 
         nombrePassL.setBackground(new java.awt.Color(255, 255, 255));
         nombrePassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         nombrePassL.setText("Nombre");
         nombrePassL.setOpaque(true);
-        getContentPane().add(nombrePassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 370, 20));
+        getContentPane().add(nombrePassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 360, 30));
+
+        origenPassL1.setBackground(new java.awt.Color(255, 255, 255));
+        origenPassL1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        origenPassL1.setText("Origen");
+        origenPassL1.setOpaque(true);
+        getContentPane().add(origenPassL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 90, 40));
+
+        destinoPassL1.setBackground(new java.awt.Color(255, 255, 255));
+        destinoPassL1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        destinoPassL1.setText("Destino");
+        destinoPassL1.setOpaque(true);
+        getContentPane().add(destinoPassL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 360, 100, 40));
+
+        vueloPassL1.setBackground(new java.awt.Color(255, 255, 255));
+        vueloPassL1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        vueloPassL1.setText("Vuelo");
+        vueloPassL1.setOpaque(true);
+        getContentPane().add(vueloPassL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 80, 40));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BoardingPass.png"))); // NOI18N
@@ -198,7 +225,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         fechaPassL.setText(fecha);
         horaPassL.setText(hora);
         asientoPassL.setText("" + asientos[0]);
-        vueloPassL.setText("Vuelo " + vuelo);
+        vueloPassL.setText(vuelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,6 +234,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
     private javax.swing.JLabel asientoTicketL;
     private javax.swing.JLabel claseTicketL;
     private javax.swing.JLabel destinoPassL;
+    private javax.swing.JLabel destinoPassL1;
     private javax.swing.JLabel destinoTicketL;
     private javax.swing.JLabel fechaPassL;
     private javax.swing.JLabel fechaTicketL;
@@ -216,8 +244,10 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
     private javax.swing.JLabel nombrePassL;
     private javax.swing.JLabel nombreTicketL;
     private javax.swing.JLabel origenPassL;
+    private javax.swing.JLabel origenPassL1;
     private javax.swing.JLabel origenTicketL;
     private javax.swing.JLabel vueloPassL;
+    private javax.swing.JLabel vueloPassL1;
     private javax.swing.JLabel vueloTicketL;
     // End of variables declaration//GEN-END:variables
 }

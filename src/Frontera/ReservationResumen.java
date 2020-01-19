@@ -157,6 +157,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         });
         jPanel1.add(volverB, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 111, -1));
 
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
@@ -167,6 +168,8 @@ public class ReservationResumen extends javax.swing.JFrame {
                 jTabbedPane1MouseClicked(evt);
             }
         });
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         origenT.setAlignment(java.awt.Label.CENTER);
         origenT.setBackground(java.awt.Color.lightGray);
@@ -310,6 +313,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vuelo Ida", jPanel2);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
@@ -462,7 +466,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vuelo Vuelta", jPanel3);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 961, 90));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 961, 100));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Precio");
@@ -535,10 +539,10 @@ public class ReservationResumen extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 200, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 200, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 220, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ResumenReserv.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 350));
@@ -672,8 +676,13 @@ public class ReservationResumen extends javax.swing.JFrame {
             reserva.setCategoriaVuelta(categoriaVuelta);
             reserva.setPesoVuelta(pesoVuelta);
             reserva.setNumeroPuestosvuelta(puestosReservadosVuelta);
+        } else {
+            jTabbedPane1.remove(jPanel3);
+            jTabbedPane1.add("Vuelo", jPanel2);
+            jTabbedPane1.disable();
         }
-
+        
+        
         precioSubtotal = (calcular.calcularPrecio(reserva));
         precioImpuestos = (calcular.calcularIva(reserva));
         precioTotal = (calcular.precioFinal(reserva));

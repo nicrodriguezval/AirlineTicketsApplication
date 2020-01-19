@@ -103,7 +103,7 @@ public class Seat extends javax.swing.JFrame {
         pasajero4VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero4VueltaT.setBackground(new java.awt.Color(255, 255, 255));
         pasajero4VueltaT.setText("N/A");
-        jPanel2.add(pasajero4VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, -1));
+        jPanel2.add(pasajero4VueltaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, 20));
 
         pasajero3VueltaT.setAlignment(java.awt.Label.CENTER);
         pasajero3VueltaT.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,6 +158,10 @@ public class Seat extends javax.swing.JFrame {
             case 1:
                 pasajero1T.setVisible(true);
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
+                pasajero2T.disable();
+                pasajero3T.disable();
+                pasajero4T.disable();
+                pasajero5T.disable();
                 break;
 
             case 2:
@@ -165,6 +169,9 @@ public class Seat extends javax.swing.JFrame {
                 pasajero1T.setText(("" + (puestosIda[0] + 1)));
                 pasajero2T.setVisible(true);
                 pasajero2T.setText(("" + (puestosIda[1] + 1)));
+                pasajero3T.disable();
+                pasajero4T.disable();
+                pasajero5T.disable();
                 break;
 
             case 3:
@@ -174,6 +181,8 @@ public class Seat extends javax.swing.JFrame {
                 pasajero2T.setText(("" + (puestosIda[1] + 1)));
                 pasajero3T.setVisible(true);
                 pasajero3T.setText(("" + (puestosIda[2] + 1)));
+                pasajero4T.disable();
+                pasajero5T.disable();
                 break;
 
             case 4:
@@ -185,6 +194,7 @@ public class Seat extends javax.swing.JFrame {
                 pasajero3T.setText(("" + (puestosIda[2] + 1)));
                 pasajero4T.setVisible(true);
                 pasajero4T.setText(("" + (puestosIda[3] + 1)));
+                pasajero5T.disable();
                 break;
 
             case 5:
@@ -204,31 +214,36 @@ public class Seat extends javax.swing.JFrame {
         if (reserva.isIdaVuelta()) {
             switch (reserva.getNumeroPuestosVuelta()) {
                 case 1:
-
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
+                    pasajero2VueltaT.disable();
+                    pasajero3VueltaT.disable();
+                    pasajero4VueltaT.disable();
+                    Pasajero5VueltaT.disable();
                     break;
 
                 case 2:
-
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
                     pasajero2VueltaT.setText(("" + (puestosVuelta[1] + 1)));
+                    pasajero3VueltaT.disable();
+                    pasajero4VueltaT.disable();
+                    Pasajero5VueltaT.disable();
                     break;
 
                 case 3:
-
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
                     pasajero2VueltaT.setText(("" + (puestosVuelta[1] + 1)));
                     pasajero3VueltaT.setVisible(true);
                     pasajero3VueltaT.setText(("" + (puestosVuelta[2] + 1)));
+                    pasajero4VueltaT.disable();
+                    Pasajero5VueltaT.disable();
                     break;
 
                 case 4:
-
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
@@ -237,10 +252,10 @@ public class Seat extends javax.swing.JFrame {
                     pasajero3VueltaT.setText(("" + (puestosVuelta[2] + 1)));
                     pasajero4VueltaT.setVisible(true);
                     pasajero4VueltaT.setText(("" + (puestosVuelta[3] + 1)));
+                    Pasajero5VueltaT.disable();
                     break;
 
                 case 5:
-
                     pasajero1VueltaT.setVisible(true);
                     pasajero1VueltaT.setText(("" + (puestosVuelta[0] + 1)));
                     pasajero2VueltaT.setVisible(true);
@@ -253,6 +268,10 @@ public class Seat extends javax.swing.JFrame {
                     Pasajero5VueltaT.setText(("" + (puestosVuelta[4] + 1)));
                     break;
             }
+        } else {
+            jTabbedPane1.remove(jPanel2);
+            jTabbedPane1.add("Sillas", jPanel1);
+            jTabbedPane1.disable();
         }
     }
 
