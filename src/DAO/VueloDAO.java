@@ -102,6 +102,67 @@ public class VueloDAO {
             return vuelo;
         }
     }
+    
+     public List<String> distincttolist(String condition) {
+        EntityManager em = emf.createEntityManager();
+        List<String> vuelo = null;
+        TypedQuery<String> q = em.createQuery("SELECT DISTINCT v." + condition +" FROM Vuelo v"
+                , String.class);
+        try {
+            vuelo = q.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            return vuelo;
+        }
+    }
+    
+    public List<String> trayectotolist() {
+        EntityManager em = emf.createEntityManager();
+        List<String> origen;
+        List<String> trayecto = new ArrayList<String>();
+        TypedQuery<String> q = em.createQuery("SELECT DISTINCT v.origen FROM Vuelo v"
+                , String.class);
+        try {
+            origen = q.getResultList();
+            List<String> destino;
+            trayecto.clear();
+            for (String string : origen) {
+                TypedQuery<String> p = em.createQuery("SELECT DISTINCT v.destino "+ 
+                "FROM Vuelo v WHERE v.origen = '"+ string+"'", String.class);
+                try{
+                    destino = p.getResultList();
+                    for (String s : destino) {
+                        String tr = string + "-"+s;                        
+                        trayecto.add(tr);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+             }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            return trayecto;
+        }
+    }
+    
+    public List<Vuelo> vuelosTrayecto(String trayecto){
+        String tr[] = trayecto.split("-");
+        EntityManager em = emf.createEntityManager();
+        List<Vuelo> vuelo = null;
+        TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v WHERE v.origen ='"+
+             tr[0] + "' AND v.destino ='" + tr[1] + "'"   , Vuelo.class);
+        try {
+            vuelo = q.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vuelo;
+    }
+    
 
     public long leerquerycount(String condition) {
         EntityManager em = emf.createEntityManager();

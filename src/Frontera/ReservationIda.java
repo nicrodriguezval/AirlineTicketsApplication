@@ -148,7 +148,7 @@ public class ReservationIda extends javax.swing.JFrame {
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setContentAreaFilled(false);
-        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnBack.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public class ReservationIda extends javax.swing.JFrame {
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setText("Siguiente");
         siguiente.setContentAreaFilled(false);
-        siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         siguiente.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlane.png"))); // NOI18N
         siguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnNext.png"))); // NOI18N
         siguiente.addActionListener(new java.awt.event.ActionListener() {
