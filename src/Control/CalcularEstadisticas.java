@@ -23,6 +23,7 @@ public class CalcularEstadisticas {
         String tr = null;
         List<String> vList = vDao.trayectotolist();
         int i = 0;
+        
         int ventas = 0;
         int[] indx = new int[vList.size()];
         List<Vuelo> trayecto;
@@ -37,7 +38,6 @@ public class CalcularEstadisticas {
             trayecto.clear();
         }
         tr = vList.get(calcularMayor(indx));
-        
         return tr;
     }
     

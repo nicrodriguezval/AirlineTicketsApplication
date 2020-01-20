@@ -12,3 +12,8 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\lucas\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Jan 19 20:19:52 COT 2020: Shutting down Derby engine
+----------------------------------------------------------------
+Sun Jan 19 20:19:52 COT 2020:
+Shutting down instance a816c00e-016f-c05f-cad4-000072f8bc03 on database directory C:\Users\lucas\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA\AirlineApp_JPA with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
