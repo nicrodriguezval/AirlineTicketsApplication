@@ -205,7 +205,7 @@ public class CustomerFrequent extends javax.swing.JFrame {
                             infoReserva.setText(reserva.getVueloIda().getOrigen() + " - " + reserva.getVueloIda().getDestino());
                         }
 
-                        costo = (int) (reserva.getPrecio() + reserva.getIva());
+                        costo = (int) (reserva.getPrecio() + reserva.getIva()*reserva.getNumeroPuestos());
                         costoReservaL.setText(costo + " puntos");
                         visivilidadInfoReserva(true);
                         redimir = true;

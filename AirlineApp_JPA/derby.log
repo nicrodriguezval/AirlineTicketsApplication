@@ -1,7 +1,7 @@
-Mon Jan 20 20:14:45 COT 2020 : Servidor de red Apache Derby: Se ha iniciado 10.11.1.2 - (1629631) y está listo para aceptar las conexiones en el puerto 1527
+Tue Jan 21 01:42:14 COT 2020 : Servidor de red Apache Derby: Se ha iniciado 10.11.1.2 - (1629631) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Mon Jan 20 20:14:46 COT 2020:
- Iniciando instancia a816c00e-016f-c5aa-6682-ffff81ec1a6b de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
+Tue Jan 21 01:42:14 COT 2020:
+ Iniciando instancia a816c00e-016f-c6d6-35af-ffff81ec1a6b de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
 en el directorio de base de datos D:\Google Drive\Respaldo Universitario\Semestres\2019-2 System V\Ingeniería de Software I\NetBeansProjects\Sprint2\GUIandEstatistics\AirlineApp_JPA\AirlineApp_JPA con el cargador de clases sun.misc.Launcher$AppClassLoader@6f94fa3e
 Cargado desde file:/C:/Program%20Files/Java/jdk1.8.0_111/db/lib/derby.jar
 java.vendor=Oracle Corporation

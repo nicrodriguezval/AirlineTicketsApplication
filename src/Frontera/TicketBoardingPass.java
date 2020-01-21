@@ -64,7 +64,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         asientoTicketL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asientoTicketL.setText("0");
         asientoTicketL.setOpaque(true);
-        getContentPane().add(asientoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 130, 40));
+        getContentPane().add(asientoTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 230, 40));
 
         vueloTicketL.setBackground(new java.awt.Color(255, 255, 255));
         vueloTicketL.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -112,7 +112,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         getContentPane().add(nombreTicketL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 290, 40));
 
         aceptarB.setText("Aceptar");
-        aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aceptarB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         aceptarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBActionPerformed(evt);
@@ -125,7 +125,7 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         asientoPassL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asientoPassL.setText("SILLA");
         asientoPassL.setOpaque(true);
-        getContentPane().add(asientoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 110, -1));
+        getContentPane().add(asientoPassL, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 220, -1));
 
         fechaPassL.setBackground(new java.awt.Color(255, 255, 255));
         fechaPassL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -216,7 +216,11 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         horaTicketL.setText(hora);
         vueloTicketL.setText(vuelo);
         System.out.println("Longitud: " + asientos.length);
+        if(asientos.length == 1){
         asientoTicketL.setText("" + asientos[0]);
+        } else {
+        asientoTicketL.setText("" + asientos[0] + "-" + asientos[asientos.length-1]);
+        }
 
         //Información del pase de abordar
         nombrePassL.setText(nombre);
@@ -224,7 +228,11 @@ public class TicketBoardingPass extends javax.swing.JFrame { //Esta clase se ini
         destinoPassL.setText(destino);
         fechaPassL.setText(fecha);
         horaPassL.setText(hora);
+        if(asientos.length == 1){
         asientoPassL.setText("" + asientos[0]);
+        } else {
+        asientoPassL.setText("" + asientos[0] + "-" + asientos[asientos.length-1]);
+        }
         vueloPassL.setText(vuelo);
     }
 

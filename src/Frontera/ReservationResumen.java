@@ -696,7 +696,7 @@ public class ReservationResumen extends javax.swing.JFrame {
 
         //Cálculo de puestos para el pasajero
         int puestosIda[] = new int[reserva.getNumeroPuestos()];
-        int index = 0, cantidadPuestosCategoria = reserva.getVueloIda().getSillasDisponibles().length / 3, j = 0; //Dividí los puestos por categoría de a un tercio
+        int index = 1, cantidadPuestosCategoria = reserva.getVueloIda().getSillasDisponibles().length / 3, j = 0; //Dividí los puestos por categoría de a un tercio
 
         if (reserva.getCategoria().equals("Ejecutiva")) {
             index = cantidadPuestosCategoria + 1;

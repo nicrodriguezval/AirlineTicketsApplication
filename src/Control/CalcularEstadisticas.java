@@ -28,7 +28,7 @@ public class CalcularEstadisticas {
         if(tckdao.leerallcount() != 0){
             tckList = tckdao.leeralltolist();
         } else {
-            return "No hay tickets registrados";
+            return "No hay datos";
         }
         
         List<Vuelo> vuelos = new ArrayList<Vuelo>();
@@ -44,16 +44,22 @@ public class CalcularEstadisticas {
         }
 
         List<Vuelo> uniques = new ArrayList<Vuelo>();
+        
         for (Vuelo v : vuelos) {
-            if (!uniques.contains(v)) {
+            if(v.getId() != -1){
                 Vuelo h = new Vuelo();
                 h.setSillasTotales(0);
                 h.setOrigen(v.getOrigen());
                 h.setDestino(v.getDestino());
                 uniques.add(h);
+                for(Vuelo f: vuelos){
+                    if(v.getOrigen().equals(f.getOrigen()) && v.getDestino().equals(f.getDestino()) && f.getId() != -2){
+                        f.setId(-1);
+                    }
+                }
             }
-        }
-                    
+        }    
+                
         for (Vuelo v : uniques){
             for(Vuelo r : vuelos){
                 if(r.getOrigen().equals(v.getOrigen()) && r.getDestino().equals(v.getDestino())){
@@ -61,7 +67,13 @@ public class CalcularEstadisticas {
                 }
             }
         }
-        
+        System.out.println("-------");
+        System.out.println("VUELOS PAGADOS POR NÚMERO DE ASIENTOS");
+        for(Vuelo v : uniques){
+            System.out.println("");
+            System.out.println("Vuelo: "+v.getOrigen()+"-"+v.getDestino()+" = "+v.getSillasTotales()+" asientos vendidos");
+        }
+        System.out.println("-------");
         Vuelo ans = calcularMayor(uniques);
         return ans.getOrigen()+"-"+ans.getDestino()+" ("+ans.getSillasTotales()+" puestos)";
     }
