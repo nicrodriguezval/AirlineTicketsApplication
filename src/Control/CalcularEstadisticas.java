@@ -5,8 +5,12 @@
  */
 package Control;
 
+import DAO.TicketDAO;
 import DAO.VueloDAO;
+import Entidad.Reserva;
+import Entidad.Ticket;
 import Entidad.Vuelo;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -16,46 +20,68 @@ public class CalcularEstadisticas {
     
     
     VueloDAO vDao = new VueloDAO();
-    
+    TicketDAO tckdao = new TicketDAO();
    
     
     public String trayectoMasVendido(){
-        String tr = null;
-        List<String> vList = vDao.trayectotolist();
-        int i = 0;
-        
-        int ventas = 0;
-        int[] indx = new int[vList.size()];
-        List<Vuelo> trayecto;
-        for (String string : vList) {
-            trayecto = vDao.vuelosTrayecto(string);
-            for (Vuelo vuelo : trayecto) {
-                ventas += calcularVentas(vuelo);
-            }
-            indx[i] = ventas;
-            i++;
-            ventas = 0;
-            trayecto.clear();
+        List<Ticket> tckList = null;
+        if(tckdao.leerallcount() != 0){
+            tckList = tckdao.leeralltolist();
+        } else {
+            return "No hay tickets registrados";
         }
-        tr = vList.get(calcularMayor(indx));
-        return tr;
+        
+        List<Vuelo> vuelos = new ArrayList<Vuelo>();
+        for(Ticket t : tckList){
+        }
+        for(Ticket t : tckList){
+            t.getReserva().getVueloIda().setSillasTotales(t.getReserva().getNumeroPuestos());
+            vuelos.add(t.getReserva().getVueloIda());
+            if(t.getReserva().isIdaVuelta()){
+                t.getReserva().getVueloVuelta().setSillasTotales(t.getReserva().getNumeroPuestosVuelta());
+                vuelos.add(t.getReserva().getVueloVuelta());
+            }
+        }
+
+        List<Vuelo> uniques = new ArrayList<Vuelo>();
+        for (Vuelo v : vuelos) {
+            if (!uniques.contains(v)) {
+                Vuelo h = new Vuelo();
+                h.setSillasTotales(0);
+                h.setOrigen(v.getOrigen());
+                h.setDestino(v.getDestino());
+                uniques.add(h);
+            }
+        }
+                    
+        for (Vuelo v : uniques){
+            for(Vuelo r : vuelos){
+                if(r.getOrigen().equals(v.getOrigen()) && r.getDestino().equals(v.getDestino())){
+                    v.setSillasTotales(v.getSillasTotales() + r.getSillasTotales());
+                }
+            }
+        }
+        
+        Vuelo ans = calcularMayor(uniques);
+        return ans.getOrigen()+"-"+ans.getDestino()+" ("+ans.getSillasTotales()+" puestos)";
     }
     
     public int calcularVentas(Vuelo v){
         int ventas = v.getSillasTotales() - v.getSillasDisponibles().length;
         return ventas;
     }
-    
-    public int calcularMayor(int[] arr){
-        int i=0;
-        int max = arr[0];
-        for (int j = 0; j < arr.length; j++) {
-            if(arr[j]>max){
-                max=arr[j];
-                i=j;
+        
+    public Vuelo calcularMayor(List<Vuelo> arr){
+        Vuelo max = new Vuelo();
+        max.setOrigen("Bad");
+        max.setDestino("Plane");
+        max.setSillasTotales(0);
+        for(Vuelo v : arr){
+            if(v.getSillasTotales() > max.getSillasTotales()){
+                max = v;
             }
         }
-        return i;
+        return max;
     }
     
     public void fechaMasVendida(){

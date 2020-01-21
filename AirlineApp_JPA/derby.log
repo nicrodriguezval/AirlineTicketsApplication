@@ -1,19 +1,14 @@
-Sun Jan 19 19:35:10 COT 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Mon Jan 20 20:14:45 COT 2020 : Servidor de red Apache Derby: Se ha iniciado 10.11.1.2 - (1629631) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Sun Jan 19 19:35:10 COT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016f-c05f-cad4-000072f8bc03 
-on database directory C:\Users\lucas\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA\AirlineApp_JPA with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
-Loaded from file:/C:/Users/lucas/Downloads/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar
+Mon Jan 20 20:14:46 COT 2020:
+ Iniciando instancia a816c00e-016f-c5aa-6682-ffff81ec1a6b de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
+en el directorio de base de datos D:\Google Drive\Respaldo Universitario\Semestres\2019-2 System V\Ingeniería de Software I\NetBeansProjects\Sprint2\GUIandEstatistics\AirlineApp_JPA\AirlineApp_JPA con el cargador de clases sun.misc.Launcher$AppClassLoader@6f94fa3e
+Cargado desde file:/C:/Program%20Files/Java/jdk1.8.0_111/db/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=13.0.1+9
-user.dir=C:\Users\lucas\Downloads\db-derby-10.14.2.0-lib\db-derby-10.14.2.0-lib
+java.runtime.version=1.8.0_111-b14
+user.dir=C:\Program Files\Java\jdk1.8.0_111\db
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=C:\Users\lucas\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Sun Jan 19 20:19:52 COT 2020: Shutting down Derby engine
-----------------------------------------------------------------
-Sun Jan 19 20:19:52 COT 2020:
-Shutting down instance a816c00e-016f-c05f-cad4-000072f8bc03 on database directory C:\Users\lucas\Documents\NetBeansProjects\AirlineTicketsApplication\AirlineApp_JPA\AirlineApp_JPA with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
+derby.system.home=D:\Google Drive\Respaldo Universitario\Semestres\2019-2 System V\Ingeniería de Software I\NetBeansProjects\Sprint2\GUIandEstatistics\AirlineApp_JPA
+Cargador de clases de base de datos iniciado - derby.database.classpath=''

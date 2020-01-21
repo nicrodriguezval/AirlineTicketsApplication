@@ -683,9 +683,9 @@ public class ReservationResumen extends javax.swing.JFrame {
         }
         
         
-        precioSubtotal = (calcular.calcularPrecio(reserva));
-        precioImpuestos = (calcular.calcularIva(reserva));
-        precioTotal = (calcular.precioFinal(reserva));
+        precioSubtotal = (calcular.calcularPrecio(reserva)*(reserva.getNumeroPuestos() + reserva.getNumeroPuestosVuelta()));
+        precioImpuestos = (calcular.calcularIva(reserva)*(reserva.getNumeroPuestos() + reserva.getNumeroPuestosVuelta()));
+        precioTotal = (calcular.precioFinal(reserva)*(reserva.getNumeroPuestos() + reserva.getNumeroPuestosVuelta()));
 
         reserva.setPrecio(precioSubtotal);
         reserva.setIva(calcular.calcularIva(reserva));

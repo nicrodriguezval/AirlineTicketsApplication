@@ -6,11 +6,14 @@
 package DAO;
 
 import Entidad.Ticket;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -118,6 +121,20 @@ private static EntityManagerFactory
         } finally{
             em.close();
             return ret;
+        }
+    }
+ 
+        public List<Ticket> leeralltolist() { //RETORNA UNA LISTA CON TODOS LOS VUELOS EN LA DATABASE
+        EntityManager em = emf.createEntityManager();
+        List<Ticket> ticket = null;
+        TypedQuery<Ticket> q = em.createQuery("SELECT t FROM Ticket t ", Ticket.class);
+        try {
+            ticket = q.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            return ticket;
         }
     }
     

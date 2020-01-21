@@ -76,7 +76,7 @@ public class VueloDAO {
 
     public List<Vuelo> leeralltolist() { //RETORNA UNA LISTA CON TODOS LOS VUELOS EN LA DATABASE
         EntityManager em = emf.createEntityManager();
-        List<Vuelo> vuelo = null;
+ List<Vuelo> vuelo = null;
         TypedQuery<Vuelo> q = em.createQuery("SELECT v FROM Vuelo v ", Vuelo.class);
         try {
             vuelo = q.getResultList();
@@ -225,7 +225,7 @@ public class VueloDAO {
         }
     }
 
-        public List<String> leerposteriorparametertolist(String param, String limite, String condition) {
+public List<String> leerposteriorparametertolist(String param, String limite, String condition) {
         EntityManager em = emf.createEntityManager();
         List<String> par = new ArrayList<String>();
         List<Vuelo> result = null;
