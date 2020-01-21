@@ -27,6 +27,7 @@ public class Statistics extends javax.swing.JFrame {
     
     private void getEstadisticas(){
         trayecto.setText(est.trayectoMasVendido());
+        mes.setText(est.fechaMasVendida());
     }
 
     /**

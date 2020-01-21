@@ -399,7 +399,7 @@ public class TestValidarPagoTarjeta {
     @Test
     public void TestValidarCompra(){
         CreditCard t = new CreditCard();
-        int id_reserva = 2;
+        int id_reserva = 8;
         double precio = rdao.leerReserva(id_reserva).getPrecio() + rdao.leerReserva(id_reserva).getIva();
         t.setNombreBanco("AV Villas");
         t.setMarcaInternacional("MASTERCARD");
@@ -414,7 +414,7 @@ public class TestValidarPagoTarjeta {
         
         assertEquals(VAL_COMPRA, validarPagoTarjeta.verificarPagoTarjeta(id_reserva,t, precio));
         
-        id_reserva = 3;
+        id_reserva = 8;
         precio = rdao.leerReserva(id_reserva).getPrecio();
         t.setNombreBanco("AV Villas");
         t.setMarcaInternacional("MASTERCARD");

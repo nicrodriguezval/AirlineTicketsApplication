@@ -57,23 +57,23 @@ public class TestValidarReserva {
     
     @Test
     public void testHoraExisteVuelta(){
-        String fecha = "01/12/2019";
+        String fecha = "03/05/2020";
         String hora = "as:df";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaVuelta(fecha,hora));
         
-        fecha = "15/01/2020";
+        fecha = "07/02/2021";
         hora = "25:2d";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaVuelta(fecha,hora));
     }   
     
     @Test
     public void testAllCorrectVuelta(){
-        String fecha = "15/12/2019";
+        String fecha = "10/12/2020";
         String hora = "11:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaVuelta(fecha,hora));
         
-        fecha = "01/01/2020";
-        hora = "14:00";
+        fecha = "02/03/2021";
+        hora = "18:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaVuelta(fecha,hora));
     }   
 
@@ -115,7 +115,7 @@ public class TestValidarReserva {
         String hora = "12:00";
         assertEquals(DATE_ERROR,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
         
-        origen = "Bucaramanga";
+        origen = "Tokio";
         destino = "Cali";
         fecha = "00/00/0000";
         hora = "12:00";
@@ -125,14 +125,14 @@ public class TestValidarReserva {
     @Test
     public void testHoraExisteIda(){
         String origen = "Cali";
-        String destino = "Bucaramanga";
-        String fecha = "01/12/2019";
+        String destino = "San Andrés";
+        String fecha = "01/09/2020";
         String hora = "99:00";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
         
-        origen = "Miami";
+        origen = "Roma";
         destino = "Madrid";
-        fecha = "15/01/2020";
+        fecha = "07/01/2021";
         hora = "25:25";
         assertEquals(TIME_ERROR,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
     }
@@ -140,15 +140,15 @@ public class TestValidarReserva {
     @Test
     public void testAllCorrectIda(){
         String origen = "Madrid";
-        String destino = "Miami";
-        String fecha = "30/12/2019";
-        String hora = "3:00";
+        String destino = "Leticia";
+        String fecha = "08/12/2020";
+        String hora = "12:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
         
         origen = "Medellín";
         destino = "Bogotá";
-        fecha = "05/01/2020";
-        hora = "5:00";
+        fecha = "05/03/2020";
+        hora = "19:00";
         assertEquals(SUCCESS,validarReserva.VerificarReservaIda(origen,destino,fecha,hora));
     }
 }
