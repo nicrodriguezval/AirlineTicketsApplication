@@ -175,6 +175,7 @@ public class CalcularEstadisticas {
     
     public List<Vuelo> toMonth(List<Vuelo> list){
         for(Vuelo v : list){
+            if(v.getFecha().length() >= 5){
             if(v.getFecha().substring(3,5).equals("01")){
                 v.setFecha("Enero");
             } else if(v.getFecha().substring(3,5).equals("02")){
@@ -200,6 +201,7 @@ public class CalcularEstadisticas {
             } else if(v.getFecha().substring(3,5).equals("12")){
                 v.setFecha("Diciembre");
             } 
+        }
         }
         return list;
     }

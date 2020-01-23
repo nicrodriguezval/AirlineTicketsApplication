@@ -50,7 +50,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 320));
         setResizable(false);
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -67,7 +66,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         ingresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
         ingresarB.setText("Ingresar");
         ingresarB.setContentAreaFilled(false);
-        ingresarB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ingresarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ingresarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ingresarB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginP.png"))); // NOI18N
         ingresarB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnLoginG.png"))); // NOI18N
@@ -84,7 +83,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         registrarseB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
         registrarseB.setText("Registrarse");
         registrarseB.setContentAreaFilled(false);
-        registrarseB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registrarseB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarseB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registrarseB.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroP.png"))); // NOI18N
         registrarseB.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnRegistroG.png"))); // NOI18N
