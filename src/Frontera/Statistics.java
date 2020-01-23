@@ -7,6 +7,12 @@ package Frontera;
 
 import javax.swing.ImageIcon;
 import Control.CalcularEstadisticas;
+import Entidad.Vuelo;
+import java.util.List;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author Nicolás
@@ -14,6 +20,7 @@ import Control.CalcularEstadisticas;
 public class Statistics extends javax.swing.JFrame {
 
     CalcularEstadisticas est = new CalcularEstadisticas();
+    List<Vuelo> vuelosVendidos;
     /**
      * Creates new form Statistics
      */
@@ -26,7 +33,9 @@ public class Statistics extends javax.swing.JFrame {
     }
     
     private void getEstadisticas(){
-        trayecto.setText(est.trayectoMasVendido());
+        vuelosVendidos = est.trayectoMasVendido();
+        Vuelo v = est.calcularMayor(vuelosVendidos);
+        trayecto.setText(v.getOrigen()+"-"+v.getDestino() + " (" + v.getSillasTotales() + " puestos)");
         mes.setText(est.fechaMasVendida());
     }
 
@@ -46,6 +55,7 @@ public class Statistics extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         mes = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -75,6 +85,7 @@ public class Statistics extends javax.swing.JFrame {
         mes.setText("mes");
         jPanel1.add(mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +93,14 @@ public class Statistics extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+
+        jButton2.setText("Crear gráfica trayectos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,8 +123,41 @@ public class Statistics extends javax.swing.JFrame {
             menu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        generarEstadisticas();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    public void generarEstadisticas() {
+        try {
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            
+            if(vuelosVendidos.size() <= 5) {
+                for(Vuelo v : vuelosVendidos) {
+                    ds.addValue(v.getSillasTotales(), v.getOrigen() + " - " + v.getDestino(), "");
+                }
+            } else {
+                for (int i = 0; i < 5; i++) {
+                    Vuelo v = vuelosVendidos.get(i);
+                    ds.addValue(v.getSillasTotales(), v.getOrigen() + " - " + v.getDestino(), "");
+                }
+            }
+            
+            JFreeChart jf = ChartFactory.createBarChart3D("Vuelos más vendidos", "Vuelos", "Cantidad de ventas", ds, PlotOrientation.VERTICAL, true, true, true);
+            
+            ChartFrame cf = new ChartFrame("Estadísticas vuelos más vendidos", jf);
+            cf.setSize(700, 800);
+            cf.setLocationRelativeTo(null);
+            cf.setVisible(true);
+            
+        } catch(Exception e) {
+            System.out.println("Error" + e);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

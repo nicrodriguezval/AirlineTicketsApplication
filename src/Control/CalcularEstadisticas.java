@@ -23,12 +23,12 @@ public class CalcularEstadisticas {
     TicketDAO tckdao = new TicketDAO();
    
     
-    public String trayectoMasVendido(){
+    public List<Vuelo> trayectoMasVendido(){
         List<Ticket> tckList = null;
         if(tckdao.leerallcount() != 0){
             tckList = tckdao.leeralltolist();
         } else {
-            return "No hay datos";
+            //return "No hay datos";
         }
         
         List<Vuelo> vuelos = new ArrayList<Vuelo>();
@@ -75,7 +75,8 @@ public class CalcularEstadisticas {
         }
         System.out.println("-------");
         Vuelo ans = calcularMayor(uniques);
-        return ans.getOrigen()+"-"+ans.getDestino()+" ("+ans.getSillasTotales()+" puestos)";
+        return uniques;
+        //return ans.getOrigen()+"-"+ans.getDestino()+" ("+ans.getSillasTotales()+" puestos)";
     }
     
     public int calcularVentas(Vuelo v){
