@@ -119,9 +119,9 @@ public class Statistics extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MenuInicial menu = new MenuInicial();
-            menu.setLocationRelativeTo(this);
-            this.setVisible(false);
-            menu.setVisible(true);
+        menu.setLocationRelativeTo(this);
+        this.setVisible(false);
+        menu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -148,15 +148,15 @@ public class Statistics extends javax.swing.JFrame {
                 }
             }
             
-            JFreeChart jf = ChartFactory.createBarChart3D("Vuelos más vendidos", "Vuelos", "Cantidad de ventas", ds, PlotOrientation.VERTICAL, true, true, true);
+            JFreeChart jf = ChartFactory.createBarChart3D("Trayectos más vendidos", "Trayectos", "Cantidad de ventas", ds, PlotOrientation.VERTICAL, true, true, true);
             
-            ChartFrame cf = new ChartFrame("Estadísticas vuelos más vendidos", jf);
+            ChartFrame cf = new ChartFrame("Estadísticas Trayectos", jf);
             cf.setSize(700, 800);
             cf.setLocationRelativeTo(null);
             cf.setVisible(true);
-            
+            cf.setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono avion.png")).getImage());
         } catch(Exception e) {
-            System.out.println("Error" + e);
+            System.out.println("Error " + e);
         }
     }
     

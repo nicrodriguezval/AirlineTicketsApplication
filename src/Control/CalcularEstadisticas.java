@@ -76,7 +76,16 @@ public class CalcularEstadisticas {
         }
         System.out.println("-------");
         Vuelo ans = calcularMayor(uniques);
-        return uniques;
+        
+        List<Vuelo> finals = new ArrayList<Vuelo>();
+        int tam = uniques.size();
+        for(int i = 0; i < tam;i++){
+        Vuelo a = calcularMayor(uniques);
+        finals.add(a);
+        uniques.remove(a);
+        }
+        
+        return finals;
         //return ans.getOrigen()+"-"+ans.getDestino()+" ("+ans.getSillasTotales()+" puestos)";
     }
     
