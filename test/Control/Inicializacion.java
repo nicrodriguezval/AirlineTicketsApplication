@@ -47148,21 +47148,23 @@ public class Inicializacion {
         
         admin.setNombre("admin");
         admin.setUsername("admin");
+        admin.setApellido("");
         admin.setPassword("admin");
+        admin.setPoints(1000000);
         
         a.setNombre("Nicolás");
         a.setApellido("Rodríguez");
         a.setEmail("nicrodriguezval@unal.edu.co");
         a.setUsername("nicrodriguezval");
         a.setPassword("123123");
-        a.setPoints(1010);
+        a.setPoints(10010);
         
         b.setNombre("Lucas");
         b.setApellido("Peña");
         b.setEmail("lucas@gmail.com");
         b.setUsername("lucasps");
         b.setPassword("123456");
-        b.setPoints(700);
+        b.setPoints(7000);
         
         c.setNombre("Juan");
         c.setApellido("Tovar");
@@ -47176,7 +47178,7 @@ public class Inicializacion {
         d.setEmail("miapenahu@unal.edu.co");
         d.setUsername("miapenahu");
         d.setPassword("Abcd1234");
-        d.setPoints(1200);
+        d.setPoints(10200);
         
         usuarios.add(admin);
         usuarios.add(a);

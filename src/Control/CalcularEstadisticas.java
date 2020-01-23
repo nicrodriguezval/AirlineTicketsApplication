@@ -150,12 +150,18 @@ public class CalcularEstadisticas {
         max.setDestino("Plane");
         max.setFecha("NoData");
         max.setSillasTotales(0);
+    try{
         for(Vuelo v : arr){
             if(v.getSillasTotales() > max.getSillasTotales()){
                 max = v;
             }
         }
-        return max;
+        
+    } catch (Exception e) {
+        System.out.println("Error: " + e + ", no hay datos de tickets");
+    } finally {
+       return max;
+    }
     }
     
     public List<Vuelo> toMonth(List<Vuelo> list){
