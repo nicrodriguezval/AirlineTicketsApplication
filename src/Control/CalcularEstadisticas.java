@@ -28,7 +28,8 @@ public class CalcularEstadisticas {
         if(tckdao.leerallcount() != 0){
             tckList = tckdao.leeralltolist();
         } else {
-            //return "No hay datos";
+            List<Vuelo> nulo = null;
+            return nulo;
         }
         
         List<Vuelo> vuelos = new ArrayList<Vuelo>();

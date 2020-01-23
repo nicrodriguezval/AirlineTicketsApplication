@@ -579,7 +579,7 @@ public class ReservationResumen extends javax.swing.JFrame {
         }
         
         Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
-        JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
+        JOptionPane.showMessageDialog(null, "Vuelo reservado con éxito", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
 
         MenuInicial menu = new MenuInicial();
         menu.setLocationRelativeTo(this);

@@ -348,7 +348,7 @@ public class ReservationPayment extends javax.swing.JFrame {
                 user = validarL.findUsuario(user.getUsername());
 
                 Icon icono = new ImageIcon(getClass().getResource("/Imagenes/Success.png"));
-                JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "", JOptionPane.INFORMATION_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null, "Pago de la reservación con éxito", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
                 TicketBoardingPass view = new TicketBoardingPass(ticketPagado);
                 view.setLocationRelativeTo(this);
                 this.setVisible(false);

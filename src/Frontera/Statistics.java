@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import Control.CalcularEstadisticas;
 import Entidad.Vuelo;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -125,7 +126,11 @@ public class Statistics extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        generarEstadisticas();
+        if(vuelosVendidos.size() == 0) {
+            generarEstadisticas();
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay datos", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
     
     public void generarEstadisticas() {
